@@ -1,3 +1,9 @@
+// @flow
+
+declare var describe: any;
+declare var test: any;
+declare var expect: any;
+
 const PrivateKey = require('../lib/PrivateKey').default;
 
 describe('PrivateKey', () => {

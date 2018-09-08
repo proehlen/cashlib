@@ -13,6 +13,10 @@ export default class PrivateKey {
     this._bytes = bytes;
   }
 
+  get bytes() {
+    return this._bytes;
+  }
+
   static fromHexString(hexString: string) {
     const argType = 'string';
     const argLength = (BYTES_LENGTH * 2);
