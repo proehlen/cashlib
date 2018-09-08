@@ -1,5 +1,6 @@
 // @flow
 import crypto from 'crypto';
+import base58 from './base58';
 
 const KEY_LENGTH: number = 32;
 const WIF_VERSION = 0x80;
@@ -32,6 +33,21 @@ export default class PrivateKey {
 
   toHexString(): string {
     return Buffer.from(this._key.buffer).toString('hex').toUpperCase();
+  }
+
+  toWif(): string {
+    if (!this._wif) {
+      const privKeyAndVersion = new Uint8Array(KEY_LENGTH + 1);
+      privKeyAndVersion[0] = WIF_VERSION;
+      privKeyAndVersion.set(this._key, 1);
+      const firstSHA = crypto.createHash('sha256').update(Buffer.from(privKeyAndVersion)).digest();
+      const secondSHA = crypto.createHash('sha256').update(firstSHA).digest();
+      const checksum = secondSHA.slice(0, 4);
+      const keyWithChecksum = Buffer.concat([Buffer.from(privKeyAndVersion), checksum]);
+      this._wif = base58.encode(keyWithChecksum);
+    }
+
+    return this._wif;
   }
 
 }

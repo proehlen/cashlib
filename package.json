@@ -27,5 +27,8 @@
     "flow-remove-types": "^1.2.3",
     "jest": "^23.5.0",
     "jest-cli": "^23.5.0"
+  },
+  "dependencies": {
+    "base-x": "^3.0.4"
   }
 }
