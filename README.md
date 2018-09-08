@@ -10,5 +10,5 @@ Existing Bitcoin JavaScript libraries are quite large and involve learning the l
 
 * Avoid use of external libraries where practical.
 * Use standard nodejs modules where they exist.
-* Where external libraries are required (e.g. SECP256K1), favor JavaScript implementations over those requiring binary builds.
+* Where external libraries are required, favor pure JavaScript implementations over those requiring binary builds.
 

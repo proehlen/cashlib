@@ -2,44 +2,44 @@
 import crypto from 'crypto';
 import base58 from './base58';
 
-const KEY_LENGTH: number = 32;
+const BYTES_LENGTH: number = 32;
 const WIF_VERSION = 0x80;
 
 export default class PrivateKey {
-  _key: Uint8Array;
+  _bytes: Uint8Array;
   _wif: string;
 
-  constructor(key: Uint8Array) {
-    this._key = key;
+  constructor(bytes: Uint8Array) {
+    this._bytes = bytes;
   }
 
   static fromHexString(hexString: string) {
     const argType = 'string';
-    const argLength = (KEY_LENGTH * 2);
+    const argLength = (BYTES_LENGTH * 2);
     if (typeof hexString !== argType || hexString.length !== argLength) {
       throw new Error(`Invalid argument. Expected type '${argType}' with length '${argLength}'`);
     }
 
-    let key = new Uint8Array(KEY_LENGTH);
+    let bytes = new Uint8Array(BYTES_LENGTH);
     for (let sourcePos = 0, targetIndex = 0; sourcePos < hexString.length; sourcePos += 2, ++targetIndex) {
       const byteString = hexString.substr(sourcePos, 2);
       const byte = parseInt(byteString, 16);
-      key[targetIndex] = byte;
+      bytes[targetIndex] = byte;
     }
       
-    const privKey = new PrivateKey(key);
+    const privKey = new PrivateKey(bytes);
     return privKey;
   }
 
   toHexString(): string {
-    return Buffer.from(this._key.buffer).toString('hex').toUpperCase();
+    return Buffer.from(this._bytes.buffer).toString('hex').toUpperCase();
   }
 
   toWif(): string {
     if (!this._wif) {
-      const privKeyAndVersion = new Uint8Array(KEY_LENGTH + 1);
+      const privKeyAndVersion = new Uint8Array(BYTES_LENGTH + 1);
       privKeyAndVersion[0] = WIF_VERSION;
-      privKeyAndVersion.set(this._key, 1);
+      privKeyAndVersion.set(this._bytes, 1);
       const firstSHA = crypto.createHash('sha256').update(Buffer.from(privKeyAndVersion)).digest();
       const secondSHA = crypto.createHash('sha256').update(firstSHA).digest();
       const checksum = secondSHA.slice(0, 4);
