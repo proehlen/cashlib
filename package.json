@@ -1,0 +1,31 @@
+{
+  "name": "tinycash",
+  "version": "0.0.1",
+  "description": "Tiny Bitcoin Cash library",
+  "scripts": {
+    "flow": "flow",
+    "pretest": "npm run build",
+    "test": "jest",
+    "build": "babel src/ -d lib/",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "Bitcoin",
+    "Cash",
+    "BCH",
+    "library",
+    "nodejs",
+    "browser"
+  ],
+  "author": "Peter Roehlen",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.80.0",
+    "flow-remove-types": "^1.2.3",
+    "jest": "^23.5.0",
+    "jest-cli": "^23.5.0"
+  }
+}
