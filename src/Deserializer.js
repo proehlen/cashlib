@@ -1,4 +1,8 @@
 // @flow
+
+// Number of values represented by unsigned 32 bit int (0 indexed)
+const BASE_32_BIT = 0x100000000; 
+
 export default class Deserializer {
   _dataView: DataView
   _byteOffset: number
@@ -81,7 +85,7 @@ export default class Deserializer {
    */
   getSatoshis(): number {
     let low = this.getUint32();
-    let high = this.getInt32();
+    let high = this.getUint32();
     if (high) {
       const lastByte = this._peek(this._byteOffset - 1);
       if ((lastByte >>> 7) === 0x1) {
@@ -90,7 +94,7 @@ export default class Deserializer {
         throw new Error('Negative satoshi values not yet implemented')
       }
     }
-    return (high * 0x10000000) + low;;
+    return (high * BASE_32_BIT) + low;;
   }
   
   _bytesToString(bytes: Uint8Array): string {
@@ -136,7 +140,7 @@ export default class Deserializer {
         // No JavaScript unsigned int 64 so do it manually
         const low = this.getUint32();
         const high = this.getUint32();
-        value = (high * 0x100000000) + low;
+        value = (high *  BASE_32_BIT) + low;
         if (value > Number.MAX_SAFE_INTEGER) {
           // TODO - possibly use bignum library but I first want to discover
           // which values might require it since MAX_SAFE_INTEGER is a huge 
