@@ -1,7 +1,7 @@
 {
-  "name": "tinycash",
+  "name": "my-bitcoin-cash-lib",
   "version": "0.0.1",
-  "description": "Tiny Bitcoin Cash library",
+  "description": "My Bitcoin Cash library",
   "scripts": {
     "flow": "flow",
     "pretest": "npm run build",
