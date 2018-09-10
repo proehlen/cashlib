@@ -28,17 +28,23 @@ export default class Transaction {
     // Get transaction inputs
     const txInCount = deserializer.getCompactSize();
     for (let inputIndex = 0; inputIndex < txInCount; ++inputIndex) {
-      const utxoTxId = deserializer.getBytes(32);
+      const utxoTxId = deserializer.getData(32);
       const utxoIndex = deserializer.getUint32();
       const scriptBytesLength = deserializer.getCompactSize();
-      const signatureScript = deserializer.getBytes(scriptBytesLength);
+      const signatureScript = deserializer.getData(scriptBytesLength);
       const sequence = deserializer.getUint32();
     }
       
     // Get transaction outputs
     const txOutCount = deserializer.getCompactSize();
-    for (let outputIndex = 0; outputIndex < txInCount; ++outputIndex) {
+    for (let outputIndex = 0; outputIndex < txOutCount; ++outputIndex) {
+      const value = deserializer.getSatoshis();
+      const pubkeyScriptBytesLen = deserializer.getCompactSize();
+      const pubKeyScript = deserializer.getData(pubkeyScriptBytesLen);
     }
+
+    // Get locktime
+    const lockTime = deserializer.getUint32();
       
     return new Transaction();
   }
