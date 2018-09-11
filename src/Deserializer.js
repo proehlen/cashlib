@@ -1,7 +1,6 @@
 // @flow
+import { Int64, UInt64 } from 'int64_t';
 
-// Number of values represented by unsigned 32 bit int (0 indexed)
-const BASE_32_BIT = 0x100000000; 
 
 export default class Deserializer {
   _dataView: DataView
@@ -28,6 +27,34 @@ export default class Deserializer {
     const result = this._dataView.getUint32(this._byteOffset, true);
     this._byteOffset += 4;
     return result;
+  }
+
+  /**
+   * Get signed integer of 64 bits
+   */
+  getInt64(): number {
+    const high = this.getUint32();
+    const low = this.getUint32();
+    const bigint = new Int64(low, high);
+    const int = parseInt(bigint.toString());
+    if (!Number.isSafeInteger(int)) {
+      throw new Error('Value is outside of safe range');
+    }
+    return int;
+  }
+
+  /**
+   * Get unsigned signed integer of 64 bits
+   */
+  getUInt64(): number {
+    const high = this.getUint32();
+    const low = this.getUint32();
+    const bigint = new UInt64(low, high);
+    const int = parseInt(bigint.toString());
+    if (!Number.isSafeInteger(int)) {
+      throw new Error('Value is outside of safe range');
+    }
+    return int;
   }
 
   /**
@@ -76,29 +103,11 @@ export default class Deserializer {
    * Note: Despite the use of a 64 bit (signed) integer in the protocol,
    * JavaScript's number format easily handles amounts an order
    * of magnitude larger than the total number of satoshis
-   * that will ever be mined so no need to work with a bignum
-   * library for these amounts. See Number.MIN_SAFE_INTEGER and
-   * Number.MAX_SAFE_INTEGER for range.
+   * that will ever be mined so we can safely disable safety checking
    */
   getSatoshis(): number {
-    const highestByte = this._peek(this._byteOffset + 7);
-    let low: number;
-    let high: number;
-    let result: number;
-    if (this._highestBit(highestByte) === 0x1) {
-      // Number is negative use two'scomplement logic to rebuild
-      // from low and high 32 bit numbers
-      low = ~this.getUint32(); // Get as unsigned (raw); invert bits
-      high = ~this.getUint32(); // Get as unsigned (raw); invert bits
-      result = (((high * BASE_32_BIT) + low) + 1 ) * -1;
-    } else {
-      // Number is positive
-      low = this.getUint32(); // Get as unsigned
-      high = this.getUint32(); // Get as unsigned
-      result = (high * BASE_32_BIT) + low;
-    }
-    return result;
- }
+    return this.getInt64();
+  }
   
   _bytesToString(bytes: Uint8Array): string {
     return Array.from(bytes).map(byte => this._byteToString(byte)).join('');
@@ -121,13 +130,9 @@ export default class Deserializer {
   /**
    * Get compactSize unsigned int from current offset
    *
-   * For numbers from 0 to 252, compactSize unsigned integers look like regular unsigned integers.
-   * For other numbers up to 0xffffffffffffffff, a byte is prefixed to the number to indicate its
-   * length—but otherwise the numbers look like regular unsigned integers in little-endian order.
-   * Source: https://bitcoin.org/en/developer-reference#compactsize-unsigned-integers
-   *
+   * See https://bitcoin.org/en/developer-reference#compactsize-unsigned-integers
    */
-  getCompactSize(): number {
+  getCompactSize(): number | BN {
     let value = 0;
     let bytesUsed = 0;
 
@@ -141,16 +146,7 @@ export default class Deserializer {
         break;
       case 0xff:
         // No JavaScript unsigned int 64 so do it manually
-        const low = this.getUint32();
-        const high = this.getUint32();
-        value = (high *  BASE_32_BIT) + low;
-        if (value > Number.MAX_SAFE_INTEGER) {
-          // TODO - possibly use bignum library but I first want to discover
-          // which values might require it since MAX_SAFE_INTEGER is a huge 
-          // number (an order of magnatitude greater than the all of the
-          // satoshis that will ever be mined for example)
-          throw new Error('compactSize value > MAX_SAFE_INTEGER');
-        }
+        value = this.getUInt64();
         break;
       default:
         // value <= 0xfc means single byte already read is value
