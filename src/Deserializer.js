@@ -30,13 +30,6 @@ export default class Deserializer {
     return result;
   }
 
-  // TODO remove if not needed
-  getInt32() {
-    const result = this._dataView.getInt32(this._byteOffset, true);
-    this._byteOffset += 4;
-    return result;
-  }
-
   /**
    * Get raw bytes
    * 
@@ -73,6 +66,10 @@ export default class Deserializer {
     return this._dataView.getUint8(offset);
   }
 
+  _highestBit(byte: number) {
+    return byte >>> 7;
+  }
+
   /**
    * Get value in satoshis via C int64_t type in buffer and return as number
    * 
@@ -84,18 +81,24 @@ export default class Deserializer {
    * Number.MAX_SAFE_INTEGER for range.
    */
   getSatoshis(): number {
-    let low = this.getUint32();
-    let high = this.getUint32();
-    if (high) {
-      const lastByte = this._peek(this._byteOffset - 1);
-      if ((lastByte >>> 7) === 0x1) {
-        // TODO implement two's-complement for negative values when we
-        // understand where they are used
-        throw new Error('Negative satoshi values not yet implemented')
-      }
+    const highestByte = this._peek(this._byteOffset + 7);
+    let low: number;
+    let high: number;
+    let result: number;
+    if (this._highestBit(highestByte) === 0x1) {
+      // Number is negative use two'scomplement logic to rebuild
+      // from low and high 32 bit numbers
+      low = ~this.getUint32(); // Get as unsigned (raw); invert bits
+      high = ~this.getUint32(); // Get as unsigned (raw); invert bits
+      result = (((high * BASE_32_BIT) + low) + 1 ) * -1;
+    } else {
+      // Number is positive
+      low = this.getUint32(); // Get as unsigned
+      high = this.getUint32(); // Get as unsigned
+      result = (high * BASE_32_BIT) + low;
     }
-    return (high * BASE_32_BIT) + low;;
-  }
+    return result;
+ }
   
   _bytesToString(bytes: Uint8Array): string {
     return Array.from(bytes).map(byte => this._byteToString(byte)).join('');

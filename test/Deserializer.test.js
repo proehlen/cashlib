@@ -42,6 +42,22 @@ describe('Deserializer', () => {
     });
   });
   describe('#getSatoshis', () => {
+    test('1', () => {
+      const data = new Uint8Array([
+        0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+      ]);
+      const deserializer = new Deserializer(data);
+      const value = deserializer.getSatoshis();
+      expect(value).toEqual(1);
+    });
+    test('-1', () => {
+      const data = new Uint8Array([
+        0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff 
+      ]);
+      const deserializer = new Deserializer(data);
+      const value = deserializer.getSatoshis();
+      expect(value).toEqual(-1);
+    });
     test('1000', () => {
       const data = new Uint8Array([
         0xe8, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -55,7 +71,8 @@ describe('Deserializer', () => {
         0x18, 0xfc, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
       ]);
       const deserializer = new Deserializer(data);
-      expect(() => deserializer.getSatoshis()).toThrow('Negative');
+      const value = deserializer.getSatoshis();
+      expect(value).toEqual(-1000);
     });
     test('Max Satoshis (21 million * 10^8)', () => {
       const data = new Uint8Array([
