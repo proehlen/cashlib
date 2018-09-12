@@ -2,18 +2,29 @@
 
 import Deserializer from './Deserializer';
 import Input from './Input';
+import Output from './Output';
 
 export default class Transaction {
-  _version: number
   _inputs: Input[]
+  _outputs: Output[]
+  _lockTime: number;
 
-  constructor (version: number = 1) {
-    this._version = version;
+  constructor () {
     this._inputs = [];
+    this._outputs = [];
+    this._lockTime = 0;
   }
 
   addInput(input: Input) {
     this._inputs.push(input);
+  }
+
+  addOutput(output: Output) {
+    this._outputs.push(output);
+  }
+
+  setLockTime(lockTime: number) {
+    this._lockTime = lockTime;
   }
 
   static fromHex(raw: string) : Transaction {
@@ -23,7 +34,7 @@ export default class Transaction {
 
     // Get tx version and create new Transaction instance
     const version = bytes.getUint32();
-    const transaction = new Transaction(version);
+    const transaction = new Transaction();
 
     // Get transaction inputs
     const txInCount = bytes.getCompactSize();
@@ -44,10 +55,13 @@ export default class Transaction {
       const value = bytes.getSatoshis();
       const pubkeyScriptBytesLen = bytes.getCompactSize();
       const pubKeyScript = bytes.getData(pubkeyScriptBytesLen);
+
+      const output = new Output(value, pubKeyScript);
+      transaction.addOutput(output);
     }
 
-    // Get locktime
-    const lockTime = bytes.getUint32();
+    // Locktime
+    transaction.setLockTime(bytes.getUint32());
       
     return new Transaction();
   }
