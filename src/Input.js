@@ -1,13 +1,13 @@
 // @flow
 
 export default class Input {
-  _utxoTxId: Uint8Array;
-  _utxoIndex: number;
+  _transactionId: Uint8Array;
+  _outputIndex: number;
   _signatureScript: Uint8Array;
 
-  constructor(utxoTxId: Uint8Array, utxoIndex: number, signatureScript: Uint8Array) {
-    this._utxoTxId =  utxoTxId;
-    this._utxoIndex = utxoIndex;
+  constructor(transactionId: Uint8Array, outputIndex: number, signatureScript: Uint8Array) {
+    this._transactionId =  transactionId;
+    this._outputIndex = outputIndex;
     this._signatureScript = signatureScript;
   }
 }

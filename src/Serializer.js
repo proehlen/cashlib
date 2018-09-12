@@ -3,7 +3,7 @@
  */
 
 // @flow
-import { leftZeroPad, reverseBytes } from './string';
+import { leftPad, reverseBytes } from './string';
 // import { Int64, UInt64 } from 'int64_t';
 
 export default class Serializer {
@@ -19,7 +19,7 @@ export default class Serializer {
 
   _addUint(value: number, sizeBytes: number) {
     let hex = value.toString(16);
-    hex = leftZeroPad(hex, sizeBytes * 2);
+    hex = leftPad(hex, sizeBytes * 2);
     hex = reverseBytes(hex);
     this._hex += hex;
   }

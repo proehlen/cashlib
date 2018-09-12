@@ -45,8 +45,8 @@ export default class Transaction {
     // Get transaction inputs
     const txInCount = bytes.getCompactSize();
     for (let inputIndex = 0; inputIndex < txInCount; ++inputIndex) {
-      const utxoTxId = bytes.getData(32);
-      const utxoIndex = bytes.getUint32();
+      const transactionId = bytes.getData(32);
+      const outputIndex = bytes.getUint32();
       const scriptBytesLength = bytes.getCompactSize();
       const signatureScript = bytes.getData(scriptBytesLength);
       const sequence = bytes.getUint32();
@@ -54,7 +54,7 @@ export default class Transaction {
         throw new Error(`Unexpected sequence value ${sequence.toString(16)}`);
       }
 
-      const input = new Input(utxoTxId, utxoIndex, signatureScript);
+      const input = new Input(transactionId, outputIndex, signatureScript);
       transaction.addInput(input);
     }
       
@@ -81,9 +81,10 @@ export default class Transaction {
 
     // Add transaction inputs
     bytes.addCompactSize(this._inputs.length);
-    // for (let inputIndex = 0; inputIndex < txInCount; ++inputIndex) {
-    //   const utxoTxId = bytes.getData(32);
-    //   const utxoIndex = bytes.getUint32();
+    for (let inputIndex = 0; inputIndex < this._inputs.length; ++inputIndex) {
+      const input = this._inputs[inputIndex];
+    //   const transactionId = bytes.getData(32);
+    //   const outputIndex = bytes.getUint32();
     //   const scriptBytesLength = bytes.getCompactSize();
     //   const signatureScript = bytes.getData(scriptBytesLength);
     //   const sequence = bytes.getUint32();
@@ -91,9 +92,9 @@ export default class Transaction {
     //     throw new Error(`Unexpected sequence value ${sequence.toString(16)}`);
     //   }
 
-    //   const input = new Input(utxoTxId, utxoIndex, signatureScript);
+    //   const input = new Input(transactionId, outputIndex, signatureScript);
     //   transaction.addInput(input);
-    // }
+    }
       
     // // Get transaction outputs
     // const txOutCount = bytes.getCompactSize();

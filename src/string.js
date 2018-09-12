@@ -1,6 +1,6 @@
 // @flow
 
-export function leftZeroPad(str: string, length: number = 2, padChar: string = '0') {
+export function leftPad(str: string, length: number = 2, padChar: string = '0') {
   let result = str;
   const padLength = length - str.length;
   for (let i = 0; i < padLength; ++i) {
