@@ -1,12 +1,19 @@
 // @flow
 
 import Deserializer from './Deserializer';
+import Input from './Input';
 
 export default class Transaction {
   _version: number
+  _inputs: Input[]
 
   constructor (version: number = 1) {
     this._version = version;
+    this._inputs = [];
+  }
+
+  addInput(input: Input) {
+    this._inputs.push(input);
   }
 
   static fromHex(raw: string) : Transaction {
@@ -26,6 +33,9 @@ export default class Transaction {
       const scriptBytesLength = bytes.getCompactSize();
       const signatureScript = bytes.getData(scriptBytesLength);
       const sequence = bytes.getUint32();
+
+      const input = new Input(utxoTxId, utxoIndex, signatureScript);
+      transaction.addInput(input);
     }
       
     // Get transaction outputs

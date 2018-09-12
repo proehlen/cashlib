@@ -1,6 +1,9 @@
+/**
+ * Raw Bitcoin protocol data deserializer
+ */
+
 // @flow
 import { Int64, UInt64 } from 'int64_t';
-
 
 export default class Deserializer {
   _dataView: DataView
