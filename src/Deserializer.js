@@ -4,6 +4,7 @@
 
 // @flow
 import { Int64, UInt64 } from 'int64_t';
+import { leftZeroPad } from './string';
 
 export default class Deserializer {
   _dataView: DataView
@@ -131,16 +132,7 @@ export default class Deserializer {
 
   _byteToString(byte: number): string {
     let hex = byte.toString(16);
-    return this._leftZeroPad(hex);
-  }
-
-  _leftZeroPad(str: string, length: number = 2) {
-    let result = str;
-    const padLength = length - str.length;
-    for (let i = 0; i < padLength; ++i) {
-      result = `0${result}`;
-    }
-    return result;
+    return leftZeroPad(hex);
   }
 
   /**

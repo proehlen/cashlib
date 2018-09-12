@@ -1,8 +1,12 @@
 // @flow
 
 import Deserializer from './Deserializer';
+import Serializer from './Serializer';
 import Input from './Input';
 import Output from './Output';
+
+const VERSION = 0x00000001;
+const SEQUENCE = 0xfffffffe;
 
 export default class Transaction {
   _inputs: Input[]
@@ -29,12 +33,14 @@ export default class Transaction {
 
   static fromHex(raw: string) : Transaction {
 
-    // Initialize data view
     const bytes = new Deserializer(raw);
-
-    // Get tx version and create new Transaction instance
-    const version = bytes.getUint32();
     const transaction = new Transaction();
+
+    // Get tx version
+    const version = bytes.getUint32();
+    if (version !== VERSION) {
+      throw new Error(`Unrecognized transaction version (${version.toString(16)})`);
+    }
 
     // Get transaction inputs
     const txInCount = bytes.getCompactSize();
@@ -44,6 +50,9 @@ export default class Transaction {
       const scriptBytesLength = bytes.getCompactSize();
       const signatureScript = bytes.getData(scriptBytesLength);
       const sequence = bytes.getUint32();
+      if (sequence !== SEQUENCE)  {
+        throw new Error(`Unexpected sequence value ${sequence.toString(16)}`);
+      }
 
       const input = new Input(utxoTxId, utxoIndex, signatureScript);
       transaction.addInput(input);
@@ -63,11 +72,43 @@ export default class Transaction {
     // Locktime
     transaction.setLockTime(bytes.getUint32());
       
-    return new Transaction();
+    return transaction;
   }
 
   toHex(): string {
-    // return Buffer.from(this._bytes.buffer).toString('hex').toUpperCase();
-    return 'XXXX';
+    const bytes = new Serializer();
+    bytes.addUint32(VERSION);
+
+    // Add transaction inputs
+    bytes.addCompactSize(this._inputs.length);
+    // for (let inputIndex = 0; inputIndex < txInCount; ++inputIndex) {
+    //   const utxoTxId = bytes.getData(32);
+    //   const utxoIndex = bytes.getUint32();
+    //   const scriptBytesLength = bytes.getCompactSize();
+    //   const signatureScript = bytes.getData(scriptBytesLength);
+    //   const sequence = bytes.getUint32();
+    //   if (sequence !== SEQUENCE)  {
+    //     throw new Error(`Unexpected sequence value ${sequence.toString(16)}`);
+    //   }
+
+    //   const input = new Input(utxoTxId, utxoIndex, signatureScript);
+    //   transaction.addInput(input);
+    // }
+      
+    // // Get transaction outputs
+    // const txOutCount = bytes.getCompactSize();
+    // for (let outputIndex = 0; outputIndex < txOutCount; ++outputIndex) {
+    //   const value = bytes.getSatoshis();
+    //   const pubkeyScriptBytesLen = bytes.getCompactSize();
+    //   const pubKeyScript = bytes.getData(pubkeyScriptBytesLen);
+
+    //   const output = new Output(value, pubKeyScript);
+    //   transaction.addOutput(output);
+    // }
+
+    // // Locktime
+    // transaction.setLockTime(bytes.getUint32());
+      
+    return bytes.hex;
   }
 }
