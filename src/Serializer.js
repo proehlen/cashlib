@@ -85,7 +85,13 @@ export default class Serializer {
    * Add bytes in corrected order
    * @param {number} length 
    */
-  addData(length: number) {
+  addData(length: number, data: Uint8Array) {
+    const converted = Array
+      .from(data)
+      .reverse()
+      .map(byte => leftPad(byte.toString(16), 2))
+      .join('');
+    this._hex += converted;
     // const bytes = this._getBytes(length);
     // bytes.reverse();
     // return bytes;

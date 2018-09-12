@@ -7,7 +7,7 @@ declare var expect: any;
 const Transaction = require('../lib/Transaction').default;
 
 // TODO REMOVE
-const ONLY_TEST_DESERIALIZE_TO = 10;
+const ONLY_TEST_DESERIALIZE_TO = 80;
 
 describe('Transaction', () => {
   describe('Deserialize/serialize', () => {
@@ -20,7 +20,7 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex();
+          const returnedString = transaction.toHex().substr(0, ONLY_TEST_DESERIALIZE_TO);
           expect(returnedString).toEqual(hex.substr(0, ONLY_TEST_DESERIALIZE_TO));
         });
       });
@@ -32,7 +32,7 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex();
+          const returnedString = transaction.toHex().substr(0, ONLY_TEST_DESERIALIZE_TO);
           expect(returnedString).toEqual(hex.substr(0, ONLY_TEST_DESERIALIZE_TO));
         });
       });
@@ -44,7 +44,7 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex();
+          const returnedString = transaction.toHex().substr(0, ONLY_TEST_DESERIALIZE_TO);
           expect(returnedString).toEqual(hex.substr(0, ONLY_TEST_DESERIALIZE_TO));
         });
       });
@@ -56,7 +56,7 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex();
+          const returnedString = transaction.toHex().substr(0, ONLY_TEST_DESERIALIZE_TO);
           expect(returnedString).toEqual(hex.substr(0, ONLY_TEST_DESERIALIZE_TO));
         });
       });
@@ -68,7 +68,7 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex();
+          const returnedString = transaction.toHex().substr(0, ONLY_TEST_DESERIALIZE_TO);
           expect(returnedString).toEqual(hex.substr(0, ONLY_TEST_DESERIALIZE_TO));
         });
       });

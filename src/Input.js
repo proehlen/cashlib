@@ -10,4 +10,12 @@ export default class Input {
     this._outputIndex = outputIndex;
     this._signatureScript = signatureScript;
   }
+
+  get transactionId() {
+    return this._transactionId;
+  }
+
+  get outputIndex() {
+    return this._outputIndex;
+  }
 }

@@ -83,8 +83,8 @@ export default class Transaction {
     bytes.addCompactSize(this._inputs.length);
     for (let inputIndex = 0; inputIndex < this._inputs.length; ++inputIndex) {
       const input = this._inputs[inputIndex];
-    //   const transactionId = bytes.getData(32);
-    //   const outputIndex = bytes.getUint32();
+      bytes.addData(32, input.transactionId);
+      bytes.addUint32(input.outputIndex);
     //   const scriptBytesLength = bytes.getCompactSize();
     //   const signatureScript = bytes.getData(scriptBytesLength);
     //   const sequence = bytes.getUint32();
