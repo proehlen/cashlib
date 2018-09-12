@@ -11,40 +11,33 @@ export default class Transaction {
 
   static fromHex(raw: string) : Transaction {
 
-    let bytes = new Uint8Array(raw.length / 2);
-    for (let sourcePos = 0, targetIndex = 0; sourcePos < raw.length; sourcePos += 2, ++targetIndex) {
-      const byteString = raw.substr(sourcePos, 2);
-      const byte = parseInt(byteString, 16);
-      bytes[targetIndex] = byte;
-    }
-
     // Initialize data view
-    const deserializer = new Deserializer(bytes);
+    const bytes = new Deserializer(raw);
 
     // Get tx version and create new Transaction instance
-    const version = deserializer.getUint32();
+    const version = bytes.getUint32();
     const transaction = new Transaction(version);
 
     // Get transaction inputs
-    const txInCount = deserializer.getCompactSize();
+    const txInCount = bytes.getCompactSize();
     for (let inputIndex = 0; inputIndex < txInCount; ++inputIndex) {
-      const utxoTxId = deserializer.getData(32);
-      const utxoIndex = deserializer.getUint32();
-      const scriptBytesLength = deserializer.getCompactSize();
-      const signatureScript = deserializer.getData(scriptBytesLength);
-      const sequence = deserializer.getUint32();
+      const utxoTxId = bytes.getData(32);
+      const utxoIndex = bytes.getUint32();
+      const scriptBytesLength = bytes.getCompactSize();
+      const signatureScript = bytes.getData(scriptBytesLength);
+      const sequence = bytes.getUint32();
     }
       
     // Get transaction outputs
-    const txOutCount = deserializer.getCompactSize();
+    const txOutCount = bytes.getCompactSize();
     for (let outputIndex = 0; outputIndex < txOutCount; ++outputIndex) {
-      const value = deserializer.getSatoshis();
-      const pubkeyScriptBytesLen = deserializer.getCompactSize();
-      const pubKeyScript = deserializer.getData(pubkeyScriptBytesLen);
+      const value = bytes.getSatoshis();
+      const pubkeyScriptBytesLen = bytes.getCompactSize();
+      const pubKeyScript = bytes.getData(pubkeyScriptBytesLen);
     }
 
     // Get locktime
-    const lockTime = deserializer.getUint32();
+    const lockTime = bytes.getUint32();
       
     return new Transaction();
   }

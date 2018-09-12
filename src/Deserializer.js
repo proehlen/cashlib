@@ -6,7 +6,20 @@ export default class Deserializer {
   _dataView: DataView
   _byteOffset: number
 
-  constructor (bytes: Uint8Array) {
+  constructor (data: Uint8Array | string) {
+    let bytes: Uint8Array;
+    if (data instanceof Uint8Array) {
+      bytes = data;
+    } else if (typeof data === 'string') {
+      bytes = new Uint8Array(data.length / 2);
+      for (let sourcePos = 0, targetIndex = 0; sourcePos < data.length; sourcePos += 2, ++targetIndex) {
+        const byteString = data.substr(sourcePos, 2);
+        const byte = parseInt(byteString, 16);
+        bytes[targetIndex] = byte;
+      }
+    } else {
+      throw new Error('Invalid data for constructing Deserializer');
+    }
     this._dataView = new DataView(bytes.buffer);
     this._byteOffset = 0;
   }
