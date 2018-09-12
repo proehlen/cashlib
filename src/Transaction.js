@@ -83,17 +83,11 @@ export default class Transaction {
     bytes.addCompactSize(this._inputs.length);
     for (let inputIndex = 0; inputIndex < this._inputs.length; ++inputIndex) {
       const input = this._inputs[inputIndex];
-      bytes.addData(32, input.transactionId);
+      bytes.addData(input.transactionId);
       bytes.addUint32(input.outputIndex);
-    //   const scriptBytesLength = bytes.getCompactSize();
-    //   const signatureScript = bytes.getData(scriptBytesLength);
-    //   const sequence = bytes.getUint32();
-    //   if (sequence !== SEQUENCE)  {
-    //     throw new Error(`Unexpected sequence value ${sequence.toString(16)}`);
-    //   }
-
-    //   const input = new Input(transactionId, outputIndex, signatureScript);
-    //   transaction.addInput(input);
+      bytes.addCompactSize(input.signatureScript.length);
+      bytes.addData(input.signatureScript);
+      bytes.addUint32(SEQUENCE);
     }
       
     // // Get transaction outputs

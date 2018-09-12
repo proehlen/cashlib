@@ -7,7 +7,7 @@ declare var expect: any;
 const Transaction = require('../lib/Transaction').default;
 
 // TODO REMOVE
-const ONLY_TEST_DESERIALIZE_TO = 80;
+const ONLY_TEST_DESERIALIZE_TO = 120;
 
 describe('Transaction', () => {
   describe('Deserialize/serialize', () => {

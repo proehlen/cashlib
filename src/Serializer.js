@@ -85,7 +85,7 @@ export default class Serializer {
    * Add bytes in corrected order
    * @param {number} length 
    */
-  addData(length: number, data: Uint8Array) {
+  addData(data: Uint8Array) {
     const converted = Array
       .from(data)
       .reverse()

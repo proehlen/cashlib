@@ -18,4 +18,8 @@ export default class Input {
   get outputIndex() {
     return this._outputIndex;
   }
+
+  get signatureScript() {
+    return this._signatureScript;
+  }
 }
