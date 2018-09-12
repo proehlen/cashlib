@@ -9,7 +9,7 @@ export default class Transaction {
     this._version = version;
   }
 
-  static fromHexString(raw: string) : Transaction {
+  static fromHex(raw: string) : Transaction {
 
     let bytes = new Uint8Array(raw.length / 2);
     for (let sourcePos = 0, targetIndex = 0; sourcePos < raw.length; sourcePos += 2, ++targetIndex) {
@@ -49,7 +49,7 @@ export default class Transaction {
     return new Transaction();
   }
 
-  toHexString(): string {
+  toHex(): string {
     // return Buffer.from(this._bytes.buffer).toString('hex').toUpperCase();
     return 'XXXX';
   }

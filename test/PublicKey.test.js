@@ -13,12 +13,12 @@ describe('PublicKey', () => {
     const publicKeyString = '04D0988BFA799F7D7EF9AB3DE97EF481CD0F75D2367AD456607647EDDE665D6F6FBDD594388756A7BEAF73B4822BC22D36E9BDA7DB82DF2B8B623673EEFC0B7495';
     let publicKey: PublicKey;
     test('#constructor', () => {
-      const privateKey = PrivateKey.fromHexString(privateKeyString);
+      const privateKey = PrivateKey.fromHex(privateKeyString);
       publicKey = PublicKey.fromPrivateKey(privateKey);
       expect(publicKey).toBeDefined();
     });
-    test('#toHexString', () => {
-      const returnedString = publicKey.toHexString();
+    test('#toHex', () => {
+      const returnedString = publicKey.toHex();
       expect(returnedString).toEqual(publicKeyString);
     });
   });

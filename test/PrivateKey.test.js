@@ -12,11 +12,11 @@ describe('PrivateKey', () => {
     let wifString = '5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD';
     let privateKey;
     test('#constructor', () => {
-      privateKey = PrivateKey.fromHexString(keyString);
+      privateKey = PrivateKey.fromHex(keyString);
       expect(privateKey).toBeDefined();
     });
-    test('#toHexString', () => {
-      const returnedString = privateKey.toHexString();
+    test('#toHex', () => {
+      const returnedString = privateKey.toHex();
       expect(returnedString).toEqual(keyString);
     });
     test('#toWif', () => {

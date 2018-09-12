@@ -17,16 +17,16 @@ export default class PrivateKey {
     return this._bytes;
   }
 
-  static fromHexString(hexString: string) {
+  static fromHex(hex: string) {
     const argType = 'string';
     const argLength = (BYTES_LENGTH * 2);
-    if (typeof hexString !== argType || hexString.length !== argLength) {
+    if (typeof hex !== argType || hex.length !== argLength) {
       throw new Error(`Invalid argument. Expected type '${argType}' with length '${argLength}'`);
     }
 
     let bytes = new Uint8Array(BYTES_LENGTH);
-    for (let sourcePos = 0, targetIndex = 0; sourcePos < hexString.length; sourcePos += 2, ++targetIndex) {
-      const byteString = hexString.substr(sourcePos, 2);
+    for (let sourcePos = 0, targetIndex = 0; sourcePos < hex.length; sourcePos += 2, ++targetIndex) {
+      const byteString = hex.substr(sourcePos, 2);
       const byte = parseInt(byteString, 16);
       bytes[targetIndex] = byte;
     }
@@ -35,7 +35,7 @@ export default class PrivateKey {
     return privKey;
   }
 
-  toHexString(): string {
+  toHex(): string {
     return Buffer.from(this._bytes.buffer).toString('hex').toUpperCase();
   }
 

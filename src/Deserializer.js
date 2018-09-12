@@ -132,7 +132,7 @@ export default class Deserializer {
    *
    * See https://bitcoin.org/en/developer-reference#compactsize-unsigned-integers
    */
-  getCompactSize(): number | BN {
+  getCompactSize(): number {
     let value = 0;
     let bytesUsed = 0;
 
