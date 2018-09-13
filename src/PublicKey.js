@@ -15,7 +15,7 @@ export default class PublicKey {
     return new PublicKey(secp256k1.getPublicKey());
   }
 
-  toHex(): string {
+  get hex(): string {
     return Buffer.from(this._bytes.buffer).toString('hex').toUpperCase();
   }
 }

@@ -35,7 +35,7 @@ export default class PrivateKey {
     return privKey;
   }
 
-  toHex(): string {
+  get hex(): string {
     return Buffer.from(this._bytes.buffer).toString('hex').toUpperCase();
   }
 

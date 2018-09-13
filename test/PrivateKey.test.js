@@ -16,7 +16,7 @@ describe('PrivateKey', () => {
       expect(privateKey).toBeDefined();
     });
     test('#toHex', () => {
-      const returnedString = privateKey.toHex();
+      const returnedString = privateKey.hex;
       expect(returnedString).toEqual(keyString);
     });
     test('#toWif', () => {

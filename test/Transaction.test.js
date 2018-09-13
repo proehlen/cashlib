@@ -17,7 +17,7 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex();
+          const returnedString = transaction.hex;
           expect(returnedString).toEqual(hex);
         });
       });
@@ -29,7 +29,7 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex();
+          const returnedString = transaction.hex;
           expect(returnedString).toEqual(hex);
         });
       });
@@ -41,7 +41,7 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex();
+          const returnedString = transaction.hex;
           expect(returnedString).toEqual(hex);
         });
       });
@@ -55,7 +55,7 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex();
+          const returnedString = transaction.hex;
           expect(returnedString).toEqual(hex);
         });
       });
@@ -67,7 +67,7 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex();
+          const returnedString = transaction.hex;
           expect(returnedString).toEqual(hex);
         });
       });

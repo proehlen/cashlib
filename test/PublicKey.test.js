@@ -18,7 +18,7 @@ describe('PublicKey', () => {
       expect(publicKey).toBeDefined();
     });
     test('#toHex', () => {
-      const returnedString = publicKey.toHex();
+      const returnedString = publicKey.hex;
       expect(returnedString).toEqual(publicKeyString);
     });
   });

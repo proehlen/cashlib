@@ -75,7 +75,7 @@ export default class Transaction {
     return transaction;
   }
 
-  toHex(): string {
+  get hex(): string {
     const bytes = new Serializer();
     bytes.addUint32(VERSION);
 
