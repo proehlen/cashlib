@@ -23,11 +23,11 @@ describe('Serializer', () => {
       serializer.addCompactSize(4294967295);
       expect(serializer.hex).toEqual('feffffffff');
     });
-    // test('Uint64', () => {
-    //   const serializer = new Serializer();
-    //   serializer.addCompactSize(2100000000000000);
-    //   expect(serializer.hex).toEqual('ff0040075af0750700');
-    // });
+    test('Uint64', () => {
+      const serializer = new Serializer();
+      serializer.addCompactSize(2100000000000000);
+      expect(serializer.hex).toEqual('ff0040075af0750700');
+    });
   });
   describe('#addInt64', () => {
     test('0', () => {
