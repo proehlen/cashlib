@@ -3,27 +3,23 @@
  */
 
 // @flow
-import { Int64, UInt64 } from 'int64_t';
-import { leftPad } from './string';
+import { leftPad, toBytes } from './string';
 
 export default class Deserializer {
   _dataView: DataView
   _byteOffset: number
 
   constructor (data: Uint8Array | string) {
-    let bytes: Uint8Array;
+    let bytes;
     if (data instanceof Uint8Array) {
       bytes = data;
     } else if (typeof data === 'string') {
-      bytes = new Uint8Array(data.length / 2);
-      for (let sourcePos = 0, targetIndex = 0; sourcePos < data.length; sourcePos += 2, ++targetIndex) {
-        const byteString = data.substr(sourcePos, 2);
-        const byte = parseInt(byteString, 16);
-        bytes[targetIndex] = byte;
-      }
-    } else {
-      throw new Error('Invalid data for constructing Deserializer');
+      bytes = toBytes(data);
     }
+    if (!bytes || !bytes.length) {
+      throw new Error('Invalid argument for constructing Deserializer');
+    }
+
     this._dataView = new DataView(bytes.buffer);
     this._byteOffset = 0;
   }
@@ -50,28 +46,50 @@ export default class Deserializer {
    * Get signed integer of 64 bits
    */
   getInt64(): number {
-    const high = this.getUint32();
-    const low = this.getUint32();
-    const bigint = new Int64(low, high);
-    const int = parseInt(bigint.toString());
-    if (!Number.isSafeInteger(int)) {
-      throw new Error('Value is outside of safe range');
+    const data =this.getData(8);
+    let sign = 1;
+    if (data[0] >>> 7 === 1)  {
+      // High bit set, number is signed (two's complement)
+      sign = -1;
+      // Flip bits
+      data.forEach((byte, index) => {
+        const inverted = (~ byte) % 256;
+        data[index] = inverted;
+      }); 
     }
-    return int;
+
+    const numberString =  Array.from(data)
+      .map(byte => leftPad(byte.toString(16), 2))
+      .join('');
+
+    let number = parseInt(numberString, 16);
+
+    if (sign < 0) {
+      number *= sign;
+      number -= 1;
+    }
+
+    if (!Number.isSafeInteger(number)) {
+      throw new Error('Integer is outside of safe range');
+    }
+
+    return number;
   }
 
   /**
    * Get unsigned signed integer of 64 bits
    */
   getUInt64(): number {
-    const high = this.getUint32();
-    const low = this.getUint32();
-    const bigint = new UInt64(low, high);
-    const int = parseInt(bigint.toString());
-    if (!Number.isSafeInteger(int)) {
-      throw new Error('Value is outside of safe range');
+    const data = Array.from(this.getData(8));
+    const numberString = data
+      .map(byte => leftPad(byte.toString(16), 2))
+      .join('');
+    let number = parseInt(numberString, 16);
+    if (!Number.isSafeInteger(number)) {
+      throw new Error('Integer is outside of safe range');
     }
-    return int;
+
+    return number;
   }
 
   /**
@@ -114,18 +132,6 @@ export default class Deserializer {
     return byte >>> 7;
   }
 
-  /**
-   * Get value in satoshis via C int64_t type in buffer and return as number
-   * 
-   * Note: Despite the use of a 64 bit (signed) integer in the protocol,
-   * JavaScript's number format easily handles amounts an order
-   * of magnitude larger than the total number of satoshis
-   * that will ever be mined so we can safely disable safety checking
-   */
-  getSatoshis(): number {
-    return this.getInt64();
-  }
-  
   _bytesToString(bytes: Uint8Array): string {
     return Array.from(bytes).map(byte => this._byteToString(byte)).join('');
   }

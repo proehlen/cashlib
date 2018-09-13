@@ -61,7 +61,7 @@ export default class Transaction {
     // Get transaction outputs
     const txOutCount = bytes.getCompactSize();
     for (let outputIndex = 0; outputIndex < txOutCount; ++outputIndex) {
-      const value = bytes.getSatoshis();
+      const value = bytes.getInt64();
       const pubkeyScriptBytesLen = bytes.getCompactSize();
       const pubKeyScript = bytes.getData(pubkeyScriptBytesLen);
 
@@ -81,8 +81,8 @@ export default class Transaction {
 
     // Add transaction inputs
     bytes.addCompactSize(this._inputs.length);
-    for (let inputIndex = 0; inputIndex < this._inputs.length; ++inputIndex) {
-      const input = this._inputs[inputIndex];
+    for (let x = 0; x < this._inputs.length; ++x) {
+      const input = this._inputs[x];
       bytes.addData(input.transactionId);
       bytes.addUint32(input.outputIndex);
       bytes.addCompactSize(input.signatureScript.length);
@@ -90,19 +90,17 @@ export default class Transaction {
       bytes.addUint32(SEQUENCE);
     }
       
-    // // Get transaction outputs
-    // const txOutCount = bytes.getCompactSize();
-    // for (let outputIndex = 0; outputIndex < txOutCount; ++outputIndex) {
-    //   const value = bytes.getSatoshis();
-    //   const pubkeyScriptBytesLen = bytes.getCompactSize();
-    //   const pubKeyScript = bytes.getData(pubkeyScriptBytesLen);
+    // Add transaction outputs
+    bytes.addCompactSize(this._outputs.length);
+    for (let x = 0; x < this._outputs.length; ++x) {
+      const output = this._outputs[x];
+      bytes.addInt64(output.value);
+      bytes.addCompactSize(output.pubKeyScript.length);
+      bytes.addData(output.pubKeyScript);
+    }
 
-    //   const output = new Output(value, pubKeyScript);
-    //   transaction.addOutput(output);
-    // }
-
-    // // Locktime
-    // transaction.setLockTime(bytes.getUint32());
+    // Locktime
+    bytes.addUint32(this._lockTime);
       
     return bytes.hex;
   }

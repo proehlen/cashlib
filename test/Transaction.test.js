@@ -6,9 +6,6 @@ declare var expect: any;
 
 const Transaction = require('../lib/Transaction').default;
 
-// TODO REMOVE
-const ONLY_TEST_DESERIALIZE_TO = 120;
-
 describe('Transaction', () => {
   describe('Deserialize/serialize', () => {
     describe('Regtest', () => {
@@ -20,8 +17,8 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex().substr(0, ONLY_TEST_DESERIALIZE_TO);
-          expect(returnedString).toEqual(hex.substr(0, ONLY_TEST_DESERIALIZE_TO));
+          const returnedString = transaction.toHex();
+          expect(returnedString).toEqual(hex);
         });
       });
       describe('10 million sats', () => {
@@ -32,8 +29,8 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex().substr(0, ONLY_TEST_DESERIALIZE_TO);
-          expect(returnedString).toEqual(hex.substr(0, ONLY_TEST_DESERIALIZE_TO));
+          const returnedString = transaction.toHex();
+          expect(returnedString).toEqual(hex);
         });
       });
       describe('1 sat', () => {
@@ -44,11 +41,13 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex().substr(0, ONLY_TEST_DESERIALIZE_TO);
-          expect(returnedString).toEqual(hex.substr(0, ONLY_TEST_DESERIALIZE_TO));
+          const returnedString = transaction.toHex();
+          expect(returnedString).toEqual(hex);
         });
       });
-      describe('Negative sats', () => {
+      describe('Negative sats (faked)', () => {
+        // This tx is not real-world value but has been created to test  negative sat values
+        // at the protocol level, the field is a signed integer
         let transaction: Transaction;
         const hex = '0100000001408837a9f3e5b5fa27a6a3d732e5df3fc7777012dc5488d6298458a3b0368f5c010000006a473044022014f2cfcffa45fa4821ffffc4b80bdcf54f8a52a4075796f8acb04f0f11540c4b0220027d8c4be61eff6d6ee829e0949fa2f6645ba144779864ea4547f5055f1669de412102f37d4c002ec772a60bdf9e3c574349c864507f2597a8c07bcf7b7a6fc253ad91feffffff020ad11000000000001976a914c4ce62e72807ca6861654276bfe772858db2bd9188ac01000000000000001976a9142ab1cc778d2ffc8a72d9cb730e5370c8d39d0bfe88ac72020000';
         test('#fromHex', () => {
@@ -56,8 +55,8 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex().substr(0, ONLY_TEST_DESERIALIZE_TO);
-          expect(returnedString).toEqual(hex.substr(0, ONLY_TEST_DESERIALIZE_TO));
+          const returnedString = transaction.toHex();
+          expect(returnedString).toEqual(hex);
         });
       });
       describe('256 sats', () => {
@@ -68,8 +67,8 @@ describe('Transaction', () => {
           expect(transaction).toBeDefined();
         });
         test('#toHex', () => {
-          const returnedString = transaction.toHex().substr(0, ONLY_TEST_DESERIALIZE_TO);
-          expect(returnedString).toEqual(hex.substr(0, ONLY_TEST_DESERIALIZE_TO));
+          const returnedString = transaction.toHex();
+          expect(returnedString).toEqual(hex);
         });
       });
     });

@@ -8,4 +8,13 @@ export default class Output {
     this._value = value;
     this._pubKeyScript = pubKeyScript;
   }
+
+  get value() {
+    return this._value;
+  }
+
+  get pubKeyScript() {
+    return this._pubKeyScript;
+  }
+
 }

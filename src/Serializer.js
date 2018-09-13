@@ -3,8 +3,7 @@
  */
 
 // @flow
-import { leftPad, reverseBytes } from './string';
-// import { Int64, UInt64 } from 'int64_t';
+import { leftPad, reverseBytes, toBytes } from './string';
 
 export default class Serializer {
   _hex: string
@@ -39,47 +38,29 @@ export default class Serializer {
   /**
    * Add signed integer of 64 bits
    */
-  addInt64() {
-    // const high = this.getUint32();
-    // const low = this.getUint32();
-    // const bigint = new Int64(low, high);
-    // const int = parseInt(bigint.toString());
-    // if (!Number.isSafeInteger(int)) {
-    //   throw new Error('Value is outside of safe range');
-    // }
-    // return int;
-  }
+  addInt64(value: number) {
+    // Operating value is value with 1 subtracted to support two's complement conversion.
+    // Much easier to do it now than later when we are working in bytes
+    let operatingValue = value < 0 ?
+      Math.abs(value) - 1 :
+      Math.abs(value)
 
-  /**
-   * Add unsigned signed integer of 64 bits
-   */
-  addUint64(value: number) {
-    // const high = this.getUint32();
-    // const low = this.getUint32();
-    // const bigint = new UInt64(low, high);
-    // const int = parseInt(bigint.toString());
-    // if (!Number.isSafeInteger(int)) {
-    //   throw new Error('Value is outside of safe range');
-    // }
-    // return int;
-  }
+    // Get operating value as bytes
+    let hexString = Math.abs(operatingValue).toString(16);
+    hexString = leftPad(hexString, 16);
+    const bytes = Array.from(toBytes(hexString)).reverse();
 
-  /**
-   * Add raw bytes
-   * 
-   * Endianess / order is not handled.  Use public methods for
-   * numbers / data.
-   * @param {number} length 
-   */
-  // _addBytes(length: number) {
-    // const bytesBuffer = this._dataView.buffer.slice(
-    //   this._byteOffset,
-    //   this._byteOffset + length
-    // );
-    // const bytes = new Uint8Array(bytesBuffer)
-    // this._byteOffset += length;
-    // return bytes;
-  // }
+    // Add bytes to output
+    bytes.forEach((byte) => {
+      // Handle negatives
+      if (value < 0) {
+        // Flip bits
+        byte = 0xff - byte;
+      }
+
+      this._hex += leftPad(byte.toString(16),2);
+    }); 
+  }
 
   /**
    * Add bytes in corrected order
@@ -98,13 +79,6 @@ export default class Serializer {
   }
 
   /**
-   * Add value in satoshis
-   */
-  addSatoshis() {
-    // return this.getInt64();
-  }
-  
-  /**
    * Add compactSize unsigned int from current offset
    */
   addCompactSize(value: number) {
@@ -120,7 +94,9 @@ export default class Serializer {
       this.addUint32(value);
     } else {
       this.addUint8(0xff);
-      this.addUint64(value);
+      // Add 64-bit unsigned int.  Use method for signed int because up to 
+      // (ridiculously high) max value, int/uint is same for positive integers
+      this.addInt64(value);  
     }
   }
 }

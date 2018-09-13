@@ -9,6 +9,23 @@ export function leftPad(str: string, length: number = 2, padChar: string = '0') 
   return result;
 }
 
+/**
+ * Takes a hex string and returns Uint8Array of bytes
+ * @param {string} str 
+ */
+export function toBytes(str: string): Uint8Array {
+  if (str.length % 2) {
+    throw new Error('String to bytes conversion requires even length string');
+  }
+  const bytes = new Uint8Array(str.length / 2);
+  for (let sourcePos = 0, targetIndex = 0; sourcePos < str.length; sourcePos += 2, ++targetIndex) {
+    const byteString = str.substr(sourcePos, 2);
+    const byte = parseInt(byteString, 16);
+    bytes[targetIndex] = byte;
+  }
+  return bytes;
+}
+
 export function reverseBytes(str: string) {
   if (str.length % 2) {
     throw new Error('Cannnot reverse bytes in uneven length string');

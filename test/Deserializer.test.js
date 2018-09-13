@@ -42,6 +42,41 @@ describe('Deserializer', () => {
     });
   });
   describe('#getInt64', () => {
+    test('0', () => {
+      const deserializer = new Deserializer('0000000000000000');
+      const value = deserializer.getInt64();
+      expect(value).toEqual(0);
+    });
+    test('1', () => {
+      const deserializer = new Deserializer('0100000000000000');
+      const value = deserializer.getInt64();
+      expect(value).toEqual(1);
+    });
+    test('-1', () => {
+      const deserializer = new Deserializer('ffffffffffffffff');
+      const value = deserializer.getInt64();
+      expect(value).toEqual(-1);
+    });
+    test('1000', () => {
+      const deserializer = new Deserializer('e803000000000000');
+      const value = deserializer.getInt64();
+      expect(value).toEqual(1000);
+    });
+    test('-1000', () => {
+      const deserializer = new Deserializer('18fcffffffffffff');
+      const value = deserializer.getInt64();
+      expect(value).toEqual(-1000);
+    });
+    test('21 million sats', () => {
+      const deserializer = new Deserializer('0040075af0750700');
+      const value = deserializer.getInt64();
+      expect(value).toEqual(2100000000000000);
+    });
+    test('-21 million sats', () => {
+      const deserializer = new Deserializer('00c0f8a50f8af8ff');
+      const value = deserializer.getInt64();
+      expect(value).toEqual(-2100000000000000);
+    });
     test('MIN_SAFE_INTEGER', () => {
       const data = new Uint8Array([
         0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xff
@@ -71,50 +106,6 @@ describe('Deserializer', () => {
       ]);
       const deserializer = new Deserializer(data);
       expect(() => deserializer.getInt64()).toThrow('safe range');
-    });
-  });
-  describe('#getSatoshis', () => {
-    test('1', () => {
-      const data = new Uint8Array([
-        0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-      ]);
-      const deserializer = new Deserializer(data);
-      const value = deserializer.getSatoshis();
-      expect(value).toEqual(1);
-    });
-    test('-1', () => {
-      const data = new Uint8Array([
-        0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff 
-      ]);
-      const deserializer = new Deserializer(data);
-      const value = deserializer.getSatoshis();
-      expect(value).toEqual(-1);
-    });
-    test('1000', () => {
-      const data = new Uint8Array([
-        0xe8, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-      ]);
-      const deserializer = new Deserializer(data);
-      const value = deserializer.getSatoshis();
-      expect(value).toEqual(1000);
-    });
-    test('-1000', () => {
-      const data = new Uint8Array([
-        0x18, 0xfc, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff
-      ]);
-      const deserializer = new Deserializer(data);
-      const result = deserializer.getSatoshis();
-      const expected = -1000;
-      expect(result).toEqual(expected);
-    });
-    test('Max Satoshis (21 million * 10^8)', () => {
-      const data = new Uint8Array([
-        0x00, 0x40, 0x07, 0x5a, 0xf0, 0x75, 0x07, 0x00
-      ]);
-      const deserializer = new Deserializer(data);
-      const result = deserializer.getSatoshis();
-      const expected = 21000000 * (10 ** 8);
-      expect(result).toEqual(expected);
     });
   });
 });
