@@ -40,6 +40,9 @@ export default class Transaction {
   }
 
   static fromHex(raw: string) : Transaction {
+    if (raw.length < 10) {
+      throw new Error('Raw string provided is too short');
+    }
 
     const bytes = new Deserializer(raw);
     const transaction = new Transaction();
