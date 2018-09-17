@@ -19,6 +19,14 @@ export default class Transaction {
     this._lockTime = 0;
   }
 
+  get inputs() {
+    return this._inputs;
+  }
+
+  get outputs() {
+    return this._outputs;
+  }
+
   addInput(input: Input) {
     this._inputs.push(input);
   }
