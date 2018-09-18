@@ -46,7 +46,7 @@ export default class Deserializer {
    * Get signed integer of 64 bits
    */
   getInt64(): number {
-    const data =this.getData(8);
+    const data =this.getBytes(8).reverse();
     let sign = 1;
     if (data[0] >>> 7 === 1)  {
       // High bit set, number is signed (two's complement)
@@ -80,7 +80,7 @@ export default class Deserializer {
    * Get unsigned signed integer of 64 bits
    */
   getUInt64(): number {
-    const data = Array.from(this.getData(8));
+    const data = Array.from(this.getBytes(8).reverse());
     const numberString = data
       .map(byte => leftPad(byte.toString(16), 2))
       .join('');
@@ -99,24 +99,13 @@ export default class Deserializer {
    * numbers / data.
    * @param {number} length 
    */
-  _getBytes(length: number) {
+  getBytes(length: number) {
     const bytesBuffer = this._dataView.buffer.slice(
       this._byteOffset,
       this._byteOffset + length
     );
     const bytes = new Uint8Array(bytesBuffer)
     this._byteOffset += length;
-    return bytes;
-  }
-
-  /**
-   * Get bytes in corrected order
-   * Gets raw bytes and reverses them
-   * @param {number} length 
-   */
-  getData(length: number) {
-    const bytes = this._getBytes(length);
-    bytes.reverse();
     return bytes;
   }
 

@@ -56,10 +56,10 @@ export default class Transaction {
     // Get transaction inputs
     const txInCount = bytes.getCompactSize();
     for (let inputIndex = 0; inputIndex < txInCount; ++inputIndex) {
-      const transactionId = bytes.getData(32);
+      const transactionId = bytes.getBytes(32);
       const outputIndex = bytes.getUint32();
       const scriptBytesLength = bytes.getCompactSize();
-      const signatureScript = bytes.getData(scriptBytesLength);
+      const signatureScript = bytes.getBytes(scriptBytesLength);
       const sequence = bytes.getUint32();
       if (sequence !== SEQUENCE)  {
         throw new Error(`Unexpected sequence value ${sequence.toString(16)}`);
@@ -74,7 +74,7 @@ export default class Transaction {
     for (let outputIndex = 0; outputIndex < txOutCount; ++outputIndex) {
       const value = bytes.getInt64();
       const pubkeyScriptBytesLen = bytes.getCompactSize();
-      const pubKeyScript = bytes.getData(pubkeyScriptBytesLen);
+      const pubKeyScript = bytes.getBytes(pubkeyScriptBytesLen);
 
       const output = new Output(value, pubKeyScript);
       transaction.addOutput(output);
@@ -94,10 +94,10 @@ export default class Transaction {
     bytes.addCompactSize(this._inputs.length);
     for (let x = 0; x < this._inputs.length; ++x) {
       const input = this._inputs[x];
-      bytes.addData(input.transactionId);
+      bytes.addBytes(input.transactionId);
       bytes.addUint32(input.outputIndex);
       bytes.addCompactSize(input.signatureScript.length);
-      bytes.addData(input.signatureScript);
+      bytes.addBytes(input.signatureScript);
       bytes.addUint32(SEQUENCE);
     }
       
@@ -107,7 +107,7 @@ export default class Transaction {
       const output = this._outputs[x];
       bytes.addInt64(output.value);
       bytes.addCompactSize(output.pubKeyScript.length);
-      bytes.addData(output.pubKeyScript);
+      bytes.addBytes(output.pubKeyScript);
     }
 
     // Locktime
