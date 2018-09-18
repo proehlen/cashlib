@@ -56,7 +56,7 @@ export default class Transaction {
     // Get transaction inputs
     const txInCount = bytes.getCompactSize();
     for (let inputIndex = 0; inputIndex < txInCount; ++inputIndex) {
-      const transactionId = bytes.getBytesString(32);
+      const transactionId = bytes.getBytesString(32, true);
       const outputIndex = bytes.getUint32();
       const scriptBytesLength = bytes.getCompactSize();
       const signatureScript = bytes.getBytes(scriptBytesLength);
@@ -94,7 +94,7 @@ export default class Transaction {
     bytes.addCompactSize(this._inputs.length);
     for (let x = 0; x < this._inputs.length; ++x) {
       const input = this._inputs[x];
-      bytes.addBytesString(input.transactionId);
+      bytes.addBytesString(input.transactionId, true);
       bytes.addUint32(input.outputIndex);
       bytes.addCompactSize(input.signatureScript.length);
       bytes.addBytes(input.signatureScript);
