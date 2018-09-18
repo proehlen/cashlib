@@ -94,9 +94,7 @@ export default class Deserializer {
 
   /**
    * Get raw bytes
-   * 
-   * Endianess / order is not handled.  Use public methods for
-   * numbers / data.
+   *
    * @param {number} length 
    */
   getBytes(length: number) {
@@ -107,6 +105,10 @@ export default class Deserializer {
     const bytes = new Uint8Array(bytesBuffer)
     this._byteOffset += length;
     return bytes;
+  }
+
+  getBytesString(length: number) {
+    return this._bytesToString(this.getBytes(length));
   }
 
   /**

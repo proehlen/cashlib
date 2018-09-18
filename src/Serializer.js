@@ -63,7 +63,7 @@ export default class Serializer {
   }
 
   /**
-   * Add bytes in corrected order
+   * Add bytes
    * @param {number} length 
    */
   addBytes(data: Uint8Array) {
@@ -73,6 +73,11 @@ export default class Serializer {
       .join('');
     this._hex += converted;
   }
+
+  addBytesString(bytes: string) {
+    this._hex += bytes;
+  }
+
 
   /**
    * Add compactSize unsigned int from current offset
