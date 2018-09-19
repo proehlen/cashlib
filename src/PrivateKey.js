@@ -1,9 +1,9 @@
 // @flow
 import crypto from 'crypto';
 import base58 from './base58';
+import type { Network } from './networks';
 
 const BYTES_LENGTH: number = 32;
-const WIF_VERSION = 0x80;
 
 export default class PrivateKey {
   _bytes: Uint8Array;
@@ -15,6 +15,41 @@ export default class PrivateKey {
 
   get bytes() {
     return this._bytes;
+  }
+
+  static fromWif(wifKey: string): PrivateKey {
+    const firstChar = wifKey.substr(0, 1);
+    let compressed: boolean;
+    switch (firstChar) {
+      case '5':
+        // Mainnet
+        compressed = false;
+        break;
+      case 'K':
+      case 'L':
+        // Mainnet
+        compressed = true;
+        break;
+      case '9':
+        // Testnet
+        compressed = false;
+        break;
+      case 'c':
+        // Testnet
+        compressed = true;
+        break;
+      default:
+        // Don't know how to handle this (refer 'WIF to private key' @
+        // https://en.bitcoin.it/wiki/Wallet_import_format ).
+        throw new Error('Unrecognized WIF private key');
+    }
+    const wifBytes = new Uint8Array(base58.decode(wifKey));
+    const keyBytes = wifBytes.slice(1, wifBytes.length - 4);
+    if (compressed) {
+      return new PrivateKey(keyBytes.slice(0, keyBytes.length -1));
+    } else {
+      return new PrivateKey(keyBytes);
+    }
   }
 
   static fromHex(hex: string) {
@@ -39,10 +74,10 @@ export default class PrivateKey {
     return Buffer.from(this._bytes.buffer).toString('hex').toUpperCase();
   }
 
-  toWif(): string {
+  toWif(network: Network): string {
     if (!this._wif) {
       const privKeyAndVersion = new Uint8Array(BYTES_LENGTH + 1);
-      privKeyAndVersion[0] = WIF_VERSION;
+      privKeyAndVersion[0] = network.prefixes.privateKeyWif;
       privKeyAndVersion.set(this._bytes, 1);
       const firstSHA = crypto.createHash('sha256').update(Buffer.from(privKeyAndVersion)).digest();
       const secondSHA = crypto.createHash('sha256').update(firstSHA).digest();
