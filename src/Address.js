@@ -18,16 +18,10 @@ export default class Address {
     return base58.encode(this._unencoded);
   }
 
-  static fromPublicKey(publicKey: PublicKey, network: Network): Address {
-    const pubkey256 = crypto
-      .createHash('sha256')
-      // $flow-disable-line cipher.update accepts Uint8Array contrary to flow error
-      .update(publicKey.bytes)
-      .digest();
-    const hash160 = crypto.createHash('RIPEMD160').update(pubkey256).digest();
-    const versionAndHash160 = new Uint8Array(1 + hash160.length);
+  static fromPublicKeyHash(publicKeyHash: Uint8Array, network: Network): Address {
+    const versionAndHash160 = new Uint8Array(1 + publicKeyHash.length);
     versionAndHash160.set([network.prefixes.publicKeyAddress]);
-    versionAndHash160.set(hash160, 1);
+    versionAndHash160.set(publicKeyHash, 1);
     const firstSha = crypto
       .createHash('sha256')
       // $flow-disable-line cipher.update accepts Uint8Array contrary to flow error
@@ -41,5 +35,15 @@ export default class Address {
     unencoded.set(addressChecksum, versionAndHash160.length);
 
     return new Address(unencoded);
+  }
+
+  static fromPublicKey(publicKey: PublicKey, network: Network): Address {
+    const pubkey256 = crypto
+      .createHash('sha256')
+      // $flow-disable-line cipher.update accepts Uint8Array contrary to flow error
+      .update(publicKey.bytes)
+      .digest();
+    const hash160 = crypto.createHash('RIPEMD160').update(pubkey256).digest();
+    return Address.fromPublicKeyHash(hash160, network);
   }
 }
