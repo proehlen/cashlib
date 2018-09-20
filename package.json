@@ -9,8 +9,8 @@
     "pretest": "npm run build",
     "test": "jest",
     "flowbuild": "flow-copy-source src lib",
-    "prebuild": "npm run clean && npm run flowbuild",
-    "build": "babel src/ -d lib/",
+    "prebuild": "npm run clean && npm run flowbuild ",
+    "build": "babel --plugins transform-flow-strip-types src/ -d lib/",
     "prepublish": "npm run build"
   },
   "keywords": [
@@ -25,13 +25,13 @@
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "^0.80.0",
     "flow-copy-source": "^2.0.2",
-    "flow-remove-types": "^1.2.3",
-    "jest": "^23.5.0",
-    "jest-cli": "^23.5.0",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
     "rimraf": "^2.6.2"
   },
   "dependencies": {
