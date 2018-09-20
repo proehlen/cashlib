@@ -7,14 +7,20 @@ const BYTES_LENGTH: number = 32;
 
 export default class PrivateKey {
   _bytes: Uint8Array;
+  _compressed: boolean
   _wif: string;
 
-  constructor(bytes: Uint8Array) {
+  constructor(bytes: Uint8Array, compressed: boolean = false) {
     this._bytes = bytes;
+    this._compressed = compressed;
   }
 
   get bytes() {
     return this._bytes;
+  }
+
+  get compressed() {
+    return this._compressed;
   }
 
   static fromWif(wifKey: string): PrivateKey {
@@ -44,12 +50,15 @@ export default class PrivateKey {
         throw new Error('Unrecognized WIF private key');
     }
     const wifBytes = new Uint8Array(base58.decode(wifKey));
-    const keyBytes = wifBytes.slice(1, wifBytes.length - 4);
+    const dropLast4 = wifBytes.slice(0, wifBytes.length - 4);
+    const dropFirst = dropLast4.slice(1);
+    let keyBytes;
     if (compressed) {
-      return new PrivateKey(keyBytes.slice(0, keyBytes.length -1));
+      keyBytes = dropFirst.slice(0, dropFirst.length - 1);
     } else {
-      return new PrivateKey(keyBytes);
+      keyBytes = dropFirst;
     }
+    return new PrivateKey(keyBytes, compressed);
   }
 
   static fromHex(hex: string) {
