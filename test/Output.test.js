@@ -7,7 +7,9 @@ declare var expect: any;
 const Transaction = require('../lib/Transaction').default;
 const Output = require('../lib/Output').default;
 const Address = require('../lib/Address').default;
-const { regtest } = require('../lib/networks');
+const Network = require('../lib/Network').default;
+
+const regtest = Network.fromString('regtest');
 
 describe('Output', () => {
   describe('Standard regtest transaction', () => {

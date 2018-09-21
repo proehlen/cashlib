@@ -1,7 +1,7 @@
 // @flow
 import crypto from 'crypto';
 import base58 from './base58';
-import type { Network } from './networks';
+import Network from './Network';
 
 const BYTES_LENGTH: number = 32;
 

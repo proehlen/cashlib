@@ -1,7 +1,7 @@
 // @flow
 import opCodes from './opCodes';
 import Address from './Address';
-import type { Network } from './networks';
+import Network from './Network';
 
 export default class Output {
   _value: number

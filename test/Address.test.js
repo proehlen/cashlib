@@ -7,11 +7,11 @@ declare var expect: any;
 const PublicKey = require('../lib/PublicKey').default;
 const PrivateKey = require('../lib/PrivateKey').default;
 const Address = require('../lib/Address').default;
-const { regtest, testnet, mainnet } = require('../lib/networks');
+const Network = require('../lib/Network').default;
 
 describe('Address', () => {
   describe('mainnet', () => {
-    const network = mainnet;
+    const network = Network.fromString('mainnet');
     describe('From private key', () => {
       const privateKeyString = '1184CD2CDD640CA42CFC3A091C51D549B2F016D454B2774019C2B2D2E08529FD';
       const btcAddress = '16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS';
@@ -59,7 +59,7 @@ describe('Address', () => {
   });
   describe('testnet', () => {
     describe('BU generated key / address', () => {
-      const network = testnet;
+      const network = Network.fromString('testnet');
       describe('From public key (string)', () => {
         const publicKeyString = '03919f9806cd4d07b588b14bcf7f5e8466d1c59f3694eb24101bbf59b91f933bfa';
         const btcAddress = 'myoHLLj722YG9dbyXuFSMC5WhBL4h7nqhs';
@@ -91,7 +91,7 @@ describe('Address', () => {
       });
     });
     describe('Electron Cash generated key / address', () => {
-      const network = testnet;
+      const network = Network.fromString('testnet');
       describe('From private key (wif)', () => {
         const privateKeyWif = 'cUdCUwAa3QX1GEzUnQWY6yzb7NXNKypMnD4JtpCxzNurmD3mx2NY';
         const btcAddress = 'muHpKNJfDSDWUEc5f3YbSYbR9toAV1sfqt';
@@ -110,7 +110,7 @@ describe('Address', () => {
     });
   });
   describe('regtest', () => {
-    const network = regtest;
+    const network = Network.fromString('regtest');
     describe('From private key (wif)', () => {
       const privateKeyWif = 'cSF9RZbPkkpt1ShowJ3rgkLj8gv4goujzfS7x7Aw4BiuQRkraxcW';
       const btcAddress = 'mgyMRHuyCMjDwFK5eg3qjJBPgduBnPL1hK';
