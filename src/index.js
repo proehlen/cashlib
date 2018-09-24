@@ -7,6 +7,7 @@ import opCodesMap from './opCodesMap';
 import Output from './Output';
 import PrivateKey from './PrivateKey';
 import PublicKey from './PublicKey';
+import string from './string';
 import Transaction from './Transaction';
 
 module.exports = {
@@ -19,5 +20,6 @@ module.exports = {
   Output,
   PrivateKey,
   PublicKey,
+  string, // TODO move to own library
   Transaction,
 }

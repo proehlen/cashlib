@@ -46,3 +46,16 @@ export function stringReverseBytes(str: string): string {
 
   return result;
 }
+
+export function stringFixedWidth(str: string, width: number): string {
+  let result = str;
+  let difference = width - str.length;
+  if (difference > 0) {
+    result = `${str}${' '.repeat(difference)}`;
+  } else if (difference < 0) {
+    result = str.substr(8, width);
+  } else {
+    result = str;
+  }
+  return result;
+}
