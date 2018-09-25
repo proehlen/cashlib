@@ -1,16 +1,20 @@
 {
   "name": "cashlib",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Experimental Bitcoin Cash library",
   "homepage": "https://github.com/proehlen/cashlib#README.md",
-  "main": "lib/index.js",
-  "browser": "lib/index.js",
   "author": "Peter Roehlen",
   "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/proehlen/cashlib.git"
+  },
+  "main": "lib/index.js",
+  "browser": "lib/index.js",
   "keywords": [
-    "Bitcoin",
-    "Cash",
-    "BCH",
+    "bitcoin",
+    "cash",
+    "bch",
     "library",
     "nodejs",
     "browser"
