@@ -1,8 +1,20 @@
 {
-  "name": "my-bitcoin-cash-lib",
+  "name": "cashlib",
   "version": "0.0.1",
-  "description": "My Bitcoin Cash library",
+  "description": "Experimental Bitcoin Cash library",
+  "homepage": "https://github.com/proehlen/cashlib#README.md",
   "main": "lib/index.js",
+  "browser": "lib/index.js",
+  "author": "Peter Roehlen",
+  "license": "MIT",
+  "keywords": [
+    "Bitcoin",
+    "Cash",
+    "BCH",
+    "library",
+    "nodejs",
+    "browser"
+  ],
   "scripts": {
     "clean": "rimraf lib",
     "flow": "flow",
@@ -13,16 +25,6 @@
     "build": "babel --plugins transform-flow-strip-types src/ -d lib/",
     "prepublish": "npm run build"
   },
-  "keywords": [
-    "Bitcoin",
-    "Cash",
-    "BCH",
-    "library",
-    "nodejs",
-    "browser"
-  ],
-  "author": "Peter Roehlen",
-  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
