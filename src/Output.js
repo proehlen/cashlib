@@ -6,7 +6,7 @@ import Network from './Network';
 export default class Output {
   _value: number
   _pubKeyScript: Uint8Array 
-  _scriptType: 'P2PKH' | 'unkown'
+  _scriptType: 'P2PK' | 'P2PKH' | 'unkown'
 
   constructor(value: number, pubKeyScript: Uint8Array) {
     this._value = value;
@@ -18,6 +18,10 @@ export default class Output {
         pubKeyScript[pubKeyScript.length - 2] === opCodes.OP_EQUALVERIFY.value &&
         pubKeyScript[pubKeyScript.length - 1] === opCodes.OP_CHECKSIG.value) {
       this._scriptType = 'P2PKH';
+    } else if (pubKeyScript[0] >= 0x01
+        && pubKeyScript[0] <= 0x4b
+        && pubKeyScript[pubKeyScript[0] + 1] === opCodes.OP_CHECKSIG.value) {
+      this._scriptType = 'P2PK';
     } else {
       this._scriptType = 'unkown';
     }
