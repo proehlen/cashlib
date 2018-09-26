@@ -19,4 +19,5 @@ export default class Input {
   get outputIndex() { return this._outputIndex; }
   get signatureScript() { return this._signatureScript; }
   get sequence() { return this._sequence; }
+  get isCoinbase() { return this._outputIndex === 0xFFFFFFFF };
 }
