@@ -38,7 +38,7 @@ export default class Transaction {
     this._lockTime = lockTime;
   }
 
-  static fromHex(raw: string) : Transaction {
+  static deserialize(raw: string) : Transaction {
     if (raw.length < 10) {
       throw new Error('Raw string provided is too short');
     }
@@ -82,7 +82,7 @@ export default class Transaction {
     return transaction;
   }
 
-  get hex(): string {
+  serialize(): string {
     const bytes = new Serializer();
     bytes.addUint32(VERSION);
 
