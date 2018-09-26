@@ -6,8 +6,8 @@
   "author": "Peter Roehlen",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/proehlen/cashlib.git"
+    "type": "git",
+    "url": "https://github.com/proehlen/cashlib.git"
   },
   "main": "lib/index.js",
   "browser": "lib/index.js",
