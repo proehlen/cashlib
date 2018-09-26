@@ -6,7 +6,6 @@ import Input from './Input';
 import Output from './Output';
 
 const VERSION = 0x00000001;
-const SEQUENCE = 0xfffffffe;
 
 export default class Transaction {
   _inputs: Input[]
@@ -61,11 +60,8 @@ export default class Transaction {
       const scriptBytesLength = bytes.getCompactSize();
       const signatureScript = bytes.getBytes(scriptBytesLength);
       const sequence = bytes.getUint32();
-      if (sequence !== SEQUENCE)  {
-        throw new Error(`Unexpected sequence value ${sequence.toString(16)}`);
-      }
 
-      const input = new Input(transactionId, outputIndex, signatureScript);
+      const input = new Input(transactionId, outputIndex, signatureScript, sequence);
       transaction.addInput(input);
     }
       
@@ -98,7 +94,7 @@ export default class Transaction {
       bytes.addUint32(input.outputIndex);
       bytes.addCompactSize(input.signatureScript.length);
       bytes.addBytes(input.signatureScript);
-      bytes.addUint32(SEQUENCE);
+      bytes.addUint32(input.sequence);
     }
       
     // Add transaction outputs
