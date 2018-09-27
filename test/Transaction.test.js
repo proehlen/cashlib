@@ -28,6 +28,9 @@ describe('Transaction', () => {
           transaction = Transaction.deserialize(hex);
           expect(transaction).toBeDefined();
         });
+        test('#isCoinbase', () => {
+          expect(transaction.inputs[0].isCoinbase).toEqual(true);
+        });
         test('#toHex', () => {
           const returnedString = transaction.serialize();
           expect(returnedString).toEqual(hex);
