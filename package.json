@@ -1,6 +1,6 @@
 {
   "name": "cashlib",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Experimental Bitcoin Cash library",
   "homepage": "https://github.com/proehlen/cashlib#README.md",
   "author": "Peter Roehlen",
