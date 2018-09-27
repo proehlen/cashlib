@@ -1,9 +1,12 @@
 // @flow
 
+import crypto from 'crypto';
+
 import Deserializer from './Deserializer';
 import Serializer from './Serializer';
 import Input from './Input';
 import Output from './Output';
+import { stringToBytes } from './string';
 
 const VERSION = 0x00000001;
 
@@ -110,5 +113,17 @@ export default class Transaction {
     bytes.addUint32(this._lockTime);
       
     return bytes.hex;
+  }
+
+  getId(): string {
+    const byteString = this.serialize();
+    const bytes = stringToBytes(byteString);
+    const firstSha = crypto
+      .createHash('sha256')
+      // $flow-disable-line cipher.update accepts Uint8Array contrary to flow error
+      .update(bytes)
+      .digest();
+    const secondSha = crypto.createHash('sha256').update(firstSha).digest();
+    return secondSha.reverse().toString('hex');
   }
 }

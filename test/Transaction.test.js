@@ -16,6 +16,9 @@ describe('Transaction', () => {
           transaction = Transaction.deserialize(hex);
           expect(transaction).toBeDefined();
         });
+        test('#getId', () => {
+          expect(transaction.getId()).toEqual('d21633ba23f70118185227be58a63527675641ad37967e2aa461559f577aec43');
+        });
         test('#toHex', () => {
           const returnedString = transaction.serialize();
           expect(returnedString).toEqual(hex);
@@ -31,6 +34,9 @@ describe('Transaction', () => {
         test('#isCoinbase', () => {
           expect(transaction.inputs[0].isCoinbase).toEqual(true);
         });
+        test('#getId', () => {
+          expect(transaction.getId()).toEqual('322b42d13b5187d09571cbbd09799dcef00ea266d73bae3d355cfdd210c1196f');
+        });
         test('#toHex', () => {
           const returnedString = transaction.serialize();
           expect(returnedString).toEqual(hex);
@@ -42,6 +48,9 @@ describe('Transaction', () => {
         test('#fromHex', () => {
           transaction = Transaction.deserialize(hex);
           expect(transaction).toBeDefined();
+        });
+        test('#getId', () => {
+          expect(transaction.getId()).toEqual('b4b6e6ff6506a623510ca14625d15f6b183590b16c71b6264e3a451cd740e9ea');
         });
         test('#toHex', () => {
           const returnedString = transaction.serialize();
@@ -55,6 +64,9 @@ describe('Transaction', () => {
           transaction = Transaction.deserialize(hex);
           expect(transaction).toBeDefined();
         });
+        test('#getId', () => {
+          expect(transaction.getId()).toEqual('5c8f36b0a3588429d68854dc127077c73fdfe532d7a3a627fab5e5f3a9378840');
+        });
         test('#toHex', () => {
           const returnedString = transaction.serialize();
           expect(returnedString).toEqual(hex);
@@ -66,6 +78,9 @@ describe('Transaction', () => {
         test('#fromHex', () => {
           transaction = Transaction.deserialize(hex);
           expect(transaction).toBeDefined();
+        });
+        test('#getId', () => {
+          expect(transaction.getId()).toEqual('2935c38689f801c1e2e4946871ebeaf0338c9b66aaa3eddfe02580a1e5e1636a');
         });
         test('#toHex', () => {
           const returnedString = transaction.serialize();
@@ -81,6 +96,9 @@ describe('Transaction', () => {
           transaction = Transaction.deserialize(hex);
           expect(transaction).toBeDefined();
         });
+        test('#getId', () => {
+          expect(transaction.getId()).toEqual('2935c38689f801c1e2e4946871ebeaf0338c9b66aaa3eddfe02580a1e5e1636a');
+        });
         test('#toHex', () => {
           const returnedString = transaction.serialize();
           expect(returnedString).toEqual(hex);
@@ -92,6 +110,9 @@ describe('Transaction', () => {
         test('#fromHex', () => {
           transaction = Transaction.deserialize(hex);
           expect(transaction).toBeDefined();
+        });
+        test('#getId', () => {
+          expect(transaction.getId()).toEqual('c8132dda0f032d6d8add8f464970b9765f6653c4b54d6cbbe3d3c42919ce9837');
         });
         test('#toHex', () => {
           const returnedString = transaction.serialize();
