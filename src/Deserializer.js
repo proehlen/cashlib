@@ -3,7 +3,7 @@
  */
 
 // @flow
-import { stringLeftPad, stringToBytes, stringFromBytes } from './string';
+import { leftPad, toBytes, fromBytes } from 'stringfu';
 
 export default class Deserializer {
   _dataView: DataView
@@ -14,7 +14,7 @@ export default class Deserializer {
     if (data instanceof Uint8Array) {
       bytes = data;
     } else if (typeof data === 'string') {
-      bytes = stringToBytes(data);
+      bytes = toBytes(data);
     }
     if (!bytes || !bytes.length) {
       throw new Error('Invalid argument for constructing Deserializer');
@@ -58,7 +58,7 @@ export default class Deserializer {
       }); 
     }
 
-    const numberString = stringFromBytes(data);
+    const numberString = fromBytes(data);
     let number = parseInt(numberString, 16);
 
     if (sign < 0) {
@@ -79,7 +79,7 @@ export default class Deserializer {
   getUInt64(): number {
     const data = Array.from(this.getBytes(8).reverse());
     const numberString = data
-      .map(byte => stringLeftPad(byte.toString(16), 2))
+      .map(byte => leftPad(byte.toString(16), 2, '0'))
       .join('');
     let number = parseInt(numberString, 16);
     if (!Number.isSafeInteger(number)) {
@@ -130,7 +130,7 @@ export default class Deserializer {
 
   _byteToString(byte: number): string {
     let hex = byte.toString(16);
-    return stringLeftPad(hex);
+    return leftPad(hex, 2, '0');
   }
 
   /**

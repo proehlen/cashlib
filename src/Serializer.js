@@ -3,7 +3,7 @@
  */
 
 // @flow
-import { stringLeftPad, stringReverseBytes, stringToBytes } from './string';
+import { leftPad, reverseBytes, toBytes } from 'stringfu';
 
 export default class Serializer {
   _hex: string
@@ -18,8 +18,8 @@ export default class Serializer {
 
   _addUint(value: number, sizeBytes: number) {
     let hex = value.toString(16);
-    hex = stringLeftPad(hex, sizeBytes * 2);
-    hex = stringReverseBytes(hex);
+    hex = leftPad(hex, sizeBytes * 2, '0');
+    hex = reverseBytes(hex);
     this._hex += hex;
   }
 
@@ -47,8 +47,8 @@ export default class Serializer {
 
     // Get operating value as bytes
     let hexString = Math.abs(operatingValue).toString(16);
-    hexString = stringLeftPad(hexString, 16);
-    const bytes = Array.from(stringToBytes(hexString)).reverse();
+    hexString = leftPad(hexString, 16, '0');
+    const bytes = Array.from(toBytes(hexString)).reverse();
 
     // Add bytes to output
     bytes.forEach((byte) => {
@@ -58,7 +58,7 @@ export default class Serializer {
         byte = 0xff - byte;
       }
 
-      this._hex += stringLeftPad(byte.toString(16),2);
+      this._hex += leftPad(byte.toString(16), 2, '0');
     }); 
   }
 
@@ -69,7 +69,7 @@ export default class Serializer {
   addBytes(data: Uint8Array) {
     const converted = Array
       .from(data)
-      .map(byte => stringLeftPad(byte.toString(16), 2))
+      .map(byte => leftPad(byte.toString(16), 2, '0'))
       .join('');
     this._hex += converted;
   }
@@ -78,7 +78,7 @@ export default class Serializer {
     if (!reverse) {
       this._hex += bytes;
     } else {
-      this._hex += stringReverseBytes(bytes);
+      this._hex += reverseBytes(bytes);
     }
   }
 
