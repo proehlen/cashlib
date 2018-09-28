@@ -3,7 +3,6 @@ import crypto from 'crypto';
 
 import PublicKey from './PublicKey';
 import base58 from './base58';
-import { stringFromBytes } from './string';
 import Network from './Network';
 
 

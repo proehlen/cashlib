@@ -41,6 +41,7 @@
     "rimraf": "^2.6.2"
   },
   "dependencies": {
-    "base-x": "^3.0.4"
+    "base-x": "^3.0.4",
+    "stringfu": "0.0.2"
   }
 }
