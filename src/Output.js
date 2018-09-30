@@ -59,4 +59,20 @@ export default class Output {
     return address;
   }
 
+  /**
+   * Generate and return a new Pay to Public Key Hash output
+   */
+  static createP2PKH(address: string, value: number): Output {
+    const addr = Address.fromString(address);
+    const pubKeyHash = addr.toPublicKeyHash();
+    const pubKeyScript: Uint8Array = new Uint8Array(pubKeyHash.length + 5); 
+    pubKeyScript.set([opCodes.OP_DUP.value], 0);
+    pubKeyScript.set([opCodes.OP_HASH160.value], 1);
+    pubKeyScript.set([pubKeyHash.length], 2);
+    pubKeyScript.set(pubKeyHash, 3);
+    pubKeyScript.set([opCodes.OP_EQUALVERIFY.value], pubKeyHash.length + 3);
+    pubKeyScript.set([opCodes.OP_CHECKSIG.value], pubKeyHash.length + 4);
+    return new Output(value, pubKeyScript);
+  }
+
 }

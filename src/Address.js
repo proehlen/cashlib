@@ -7,14 +7,27 @@ import Network from './Network';
 
 
 export default class Address {
-  _unencoded: Uint8Array
+  _bytes: Uint8Array  // Currently includes checksum?
 
-  constructor(unencoded: Uint8Array) {
-    this._unencoded = unencoded;
+  constructor(bytes: Uint8Array) {
+    this._bytes = bytes;
+  }
+
+  get bytes() {
+    return this._bytes;
   }
 
   toString(): string {
-    return base58.encode(this._unencoded);
+    return base58.encode(this._bytes);
+  }
+
+  toPublicKeyHash(): Uint8Array {
+    // Return bytes minus 1 byte version (start) and 4 byte checksum (end)
+    return this._bytes.slice(1, this._bytes.length - 4);
+  }
+
+  static fromString(address: string) {
+    return new Address(base58.decode(address));
   }
 
   static fromPublicKeyHash(publicKeyHash: Uint8Array, network: Network): Address {
@@ -29,11 +42,11 @@ export default class Address {
     const secondSha = crypto.createHash('sha256').update(firstSha).digest();
     const addressChecksum = secondSha.slice(0, 4);
 
-    const unencoded = new Uint8Array(versionAndHash160.length + addressChecksum.length);
-    unencoded.set(versionAndHash160);
-    unencoded.set(addressChecksum, versionAndHash160.length);
+    const bytes = new Uint8Array(versionAndHash160.length + addressChecksum.length);
+    bytes.set(versionAndHash160);
+    bytes.set(addressChecksum, versionAndHash160.length);
 
-    return new Address(unencoded);
+    return new Address(bytes);
   }
 
   static fromPublicKey(publicKey: PublicKey, network: Network): Address {

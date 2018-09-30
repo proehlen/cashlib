@@ -8,6 +8,7 @@ const Transaction = require('../lib/Transaction').default;
 const Output = require('../lib/Output').default;
 const Address = require('../lib/Address').default;
 const Network = require('../lib/Network').default;
+const fromBytes = require('stringfu').fromBytes;
 
 const regtest = Network.fromString('regtest');
 
@@ -34,6 +35,18 @@ describe('Output', () => {
         const addressString = address.toString();
         expect(addressString).toEqual('mkZ48Hs35sa1dyHZH6wwiYfPo1ssgPGSNJ');
       });
+      test('value', () => {
+        expect(output.value).toEqual(33300000);
+      });
+    });
+  });
+  describe('Output.createP2PKH', () => {
+    const address = 'mkZ48Hs35sa1dyHZH6wwiYfPo1ssgPGSNJ';
+    const value = 33300000;
+    const output = Output.createP2PKH(address, value);
+    test('scriptPubKey', () => {
+      const byteString = fromBytes(output.pubKeyScript);
+      expect(byteString).toEqual('76a914373e5431d04e79aa1435923f68efb4e4be69aa8188ac');
     });
   });
 });
