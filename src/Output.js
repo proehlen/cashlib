@@ -7,7 +7,7 @@ import PublicKey from './PublicKey';
 export default class Output {
   _value: number
   _pubKeyScript: Uint8Array 
-  _scriptType: 'P2PK' | 'P2PKH' | 'unkown'
+  _scriptType: 'P2PK' | 'P2PKH' | 'unknown'
 
   constructor(value: number, pubKeyScript: Uint8Array) {
     this._value = value;
@@ -24,7 +24,7 @@ export default class Output {
         && pubKeyScript[pubKeyScript[0] + 1] === opCodes.OP_CHECKSIG.value) {
       this._scriptType = 'P2PK';
     } else {
-      this._scriptType = 'unkown';
+      this._scriptType = 'unknown';
     }
   }
 
