@@ -4,6 +4,8 @@ declare var describe: any;
 declare var test: any;
 declare var expect: any;
 
+const toBytes = require('stringfu').toBytes;
+
 const PrivateKey = require('../lib/PrivateKey').default;
 const Network = require('../lib/Network').default;
 
@@ -39,4 +41,17 @@ describe('PrivateKey', () => {
       expect(returnedString).toEqual(keyString);
     });
   });
+  describe('#toPem', () => {
+    const privateKeyString = '3cd0560f5b27591916c643a0b7aa69d03839380a738d2e912990dcc573715d2c';
+    const privateKey = new PrivateKey(toBytes(privateKeyString));
+    test('#toPem', () => {
+      const returnedString = privateKey.toPem();
+      const expected = 
+        '-----BEGIN EC PRIVATE KEY-----\n' +
+        'MC4CAQEEIDzQVg9bJ1kZFsZDoLeqadA4OTgKc40ukSmQ3MVzcV0soAcGBSuBBAAK\n' +
+        '-----END EC PRIVATE KEY-----';
+      expect(returnedString).toEqual(expected);
+    });
+  });
+
 });

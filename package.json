@@ -42,6 +42,6 @@
   },
   "dependencies": {
     "base-x": "^3.0.4",
-    "stringfu": "0.0.2"
+    "stringfu": "0.0.4"
   }
 }

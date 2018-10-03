@@ -1,6 +1,9 @@
 // @flow
 import crypto from 'crypto';
+import { fromBytes, splitWidth } from 'stringfu';
+
 import base58 from './base58';
+import base64 from './base64';
 import Network from './Network';
 
 const BYTES_LENGTH: number = 32;
@@ -96,6 +99,37 @@ export default class PrivateKey {
     }
 
     return this._wif;
+  }
+
+  toAsn1(): Uint8Array {
+    const keyLen = this.bytes.length;
+    const asn1PreString = [
+      0x30, // declares the start of an ASN.1 sequence
+      0x2e, // length of following sequence 
+      0x02, // declares the start of an integer
+      0x01, // length of integer in bytes (1 byte)
+      0x01, // value of integer (1)
+      0x04, // declares the start of an "octet string"
+      keyLen, // length of string to follow (should be 32/0x20 bytes)
+    ];
+
+    const asn1Seckp256k1 = [0xa0, 0x07, 0x06, 0x05, 0x2b, 0x81, 0x04, 0x00, 0x0a];
+
+    const asn1 = new Uint8Array(asn1PreString.length + keyLen + asn1Seckp256k1.length);
+    asn1.set(asn1PreString, 0);
+    asn1.set(this._bytes, asn1PreString.length);
+    asn1.set(asn1Seckp256k1, asn1PreString.length + keyLen);
+    return asn1;
+  }
+
+  toPem() {
+    const prefix = '-----BEGIN EC PRIVATE KEY-----\n';
+    const suffix = '\n-----END EC PRIVATE KEY-----';
+    const asn1 = this.toAsn1();
+    const asn1encoded = base64.encode(asn1);
+    const asn1Lines = splitWidth(asn1encoded, 64).join('\n');
+    const pem = `${prefix}${asn1Lines}${suffix}`;
+    return pem;
   }
 
 }
