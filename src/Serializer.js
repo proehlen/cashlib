@@ -16,6 +16,10 @@ export default class Serializer {
     return this._hex;
   }
 
+  toBytes(): Uint8Array {
+    return toBytes(this._hex);
+  }
+
   _addUint(value: number, sizeBytes: number) {
     let hex = value.toString(16);
     hex = leftPad(hex, sizeBytes * 2, '0');
@@ -82,6 +86,12 @@ export default class Serializer {
     }
   }
 
+  addText(text: string) {
+    for (let n = 0, l = text.length; n < l; n ++) {
+      let hex = Number(text.charCodeAt(n)).toString(16);
+      this._hex += leftPad(hex, 2, '0');
+    }
+  }
 
   /**
    * Add compactSize unsigned int from current offset

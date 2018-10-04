@@ -1,10 +1,11 @@
 // @flow
 import crypto from 'crypto';
-import { fromBytes, splitWidth } from 'stringfu';
+import { leftPad, fromBytes, splitWidth } from 'stringfu';
 
 import base58 from './base58';
 import base64 from './base64';
 import Network from './Network';
+import Serializer from './Serializer';
 
 const BYTES_LENGTH: number = 32;
 
@@ -132,4 +133,35 @@ export default class PrivateKey {
     return pem;
   }
 
+  signMessage(message: string): string {
+    if (message.length > 255) {
+      throw new Error('Messages with length > 255 not supported yet.');
+    }
+    const prefix = 'Bitcoin Signed Message:\n';
+    debugger;
+    // const fullMessage = new Serializer();
+    // fullMessage.addCompactSize(prefix.length);
+    // fullMessage.addText(prefix);
+    // fullMessage.addCompactSize(message.length)
+    // fullMessage.addText(message);
+    // const fullMessage = `${prefix}\\x${leftPad(length, 2, '0')}${message}`;
+    // const fullMessage = `${prefix}\x0c${message}`;
+
+
+
+    const hash = crypto.createHash('SHA256');
+    // $flow-disable-line Uint8Array *is* compatible with cipher/update
+    // const hashed = hash.update(fullMessage.toBytes()).digest();
+    const hashed = hash.update(`\x18Bitcoin Signed Message:\n${message}`).digest();
+    const signer = crypto.createSign('SHA256');
+    // signer.write(fullMessage.toBytes());
+    signer.write(hashed);
+    // signer.update(`${prefix}${leftPad(length, 2, 0)}${message}`);
+    // signer.end();
+    const signed = signer.sign(this.toPem(), 'base64');
+    debugger;
+    // const x = fromBytes(signed);
+    // const x64 = signed.toString('base64');
+    return signed;
+  }
 }

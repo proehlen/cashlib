@@ -53,5 +53,10 @@ describe('PrivateKey', () => {
       expect(returnedString).toEqual(expected);
     });
   });
-
+  describe('#sign', () => {
+    // RPC equivalent of test: signmessage "mha3noC7oBSjMeLtc7zvy1QDNPTwvXRzKX" "Hello, World"
+    const privateKey = PrivateKey.fromWif('cVVWDQDSHajpQGP9dnNf3QKoPGL9fjD6mRVJWMUqWDXMHdpfC43C');
+    const result = privateKey.signMessage('Hello, World');
+    expect(result).toEqual('HyDhcA0vNd0FlwG9W9EOXL0eQ99Lhgehmo8dMVVulUevCgw7eiiXkNpQM/5EowEmRk89M8MQc9nGOwVViQaWrBM=');
+  });
 });
