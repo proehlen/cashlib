@@ -24,7 +24,7 @@
     "test": "jest",
     "flowbuild": "flow-copy-source src lib",
     "prebuild": "npm run clean && npm run flowbuild ",
-    "build": "babel --plugins transform-flow-strip-types src/ -d lib/",
+    "build": "babel --plugins transform-flow-strip-types src/ -d lib/ --copy-files",
     "prepublish": "npm run build"
   },
   "devDependencies": {
