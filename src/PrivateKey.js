@@ -5,6 +5,8 @@ import { fromBytes, splitWidth } from 'stringfu';
 import base58 from './base58';
 import base64 from './base64';
 import Network from './Network';
+import PublicKey from './PublicKey';
+import { generatePublicKeyBytes } from './secp256k1';
 
 const BYTES_LENGTH: number = 32;
 
@@ -132,4 +134,8 @@ export default class PrivateKey {
     return pem;
   }
 
+  toPublicKey(): PublicKey {
+    const pubKeyBytes = generatePublicKeyBytes(this._bytes);
+    return new PublicKey(pubKeyBytes);
+  }
 }

@@ -15,6 +15,7 @@ const regtest = Network.fromString('regtest');
 describe('PrivateKey', () => {
   const keyString = '1184CD2CDD640CA42CFC3A091C51D549B2F016D454B2774019C2B2D2E08529FD';
   const wifString = '5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD';
+  const publicKeyString = '04D0988BFA799F7D7EF9AB3DE97EF481CD0F75D2367AD456607647EDDE665D6F6FBDD594388756A7BEAF73B4822BC22D36E9BDA7DB82DF2B8B623673EEFC0B7495';
   describe('from hex', () => {
     let privateKey;
     test('#constructor', () => {
@@ -28,6 +29,10 @@ describe('PrivateKey', () => {
     test('#toWif', () => {
       const returnedString = privateKey.toWif(mainnet);
       expect(returnedString).toEqual(wifString);
+    });
+    test('#toPublicKey', () => {
+      const pubKey = privateKey.toPublicKey();
+      expect(pubKey.hex).toEqual(publicKeyString);
     });
   });
   describe('from wif', () => {
