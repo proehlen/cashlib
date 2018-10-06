@@ -1,7 +1,9 @@
 // @flow
 import crypto from 'crypto';
 import { fromBytes, splitWidth } from 'stringfu';
+import * as stringfu from 'stringfu';
 
+import Data from './Data';
 import base58 from './base58';
 import base64 from './base64';
 import Network from './Network';
@@ -10,22 +12,22 @@ import { generatePublicKeyBytes } from './secp256k1';
 
 const BYTES_LENGTH: number = 32;
 
-export default class PrivateKey {
-  _bytes: Uint8Array;
+export default class PrivateKey extends Data {
   _compressed: boolean
   _wif: string;
 
   constructor(bytes: Uint8Array, compressed: boolean = false) {
-    this._bytes = bytes;
+    super(bytes);
     this._compressed = compressed;
-  }
-
-  get bytes() {
-    return this._bytes;
   }
 
   get compressed() {
     return this._compressed;
+  }
+
+  static fromHex(hex: string) {
+    const bytes = stringfu.toBytes(hex);
+    return new this(bytes);
   }
 
   static fromWif(wifKey: string): PrivateKey {
@@ -66,33 +68,11 @@ export default class PrivateKey {
     return new PrivateKey(keyBytes, compressed);
   }
 
-  static fromHex(hex: string) {
-    const argType = 'string';
-    const argLength = (BYTES_LENGTH * 2);
-    if (typeof hex !== argType || hex.length !== argLength) {
-      throw new Error(`Invalid argument. Expected type '${argType}' with length '${argLength}'`);
-    }
-
-    let bytes = new Uint8Array(BYTES_LENGTH);
-    for (let sourcePos = 0, targetIndex = 0; sourcePos < hex.length; sourcePos += 2, ++targetIndex) {
-      const byteString = hex.substr(sourcePos, 2);
-      const byte = parseInt(byteString, 16);
-      bytes[targetIndex] = byte;
-    }
-      
-    const privKey = new PrivateKey(bytes);
-    return privKey;
-  }
-
-  get hex(): string {
-    return Buffer.from(this._bytes.buffer).toString('hex').toUpperCase();
-  }
-
   toWif(network: Network): string {
     if (!this._wif) {
       const privKeyAndVersion = new Uint8Array(BYTES_LENGTH + 1);
       privKeyAndVersion[0] = network.prefixes.privateKeyWif;
-      privKeyAndVersion.set(this._bytes, 1);
+      privKeyAndVersion.set(this.bytes, 1);
       const firstSHA = crypto.createHash('sha256').update(Buffer.from(privKeyAndVersion)).digest();
       const secondSHA = crypto.createHash('sha256').update(firstSHA).digest();
       const checksum = secondSHA.slice(0, 4);
@@ -119,7 +99,7 @@ export default class PrivateKey {
 
     const asn1 = new Uint8Array(asn1PreString.length + keyLen + asn1Seckp256k1.length);
     asn1.set(asn1PreString, 0);
-    asn1.set(this._bytes, asn1PreString.length);
+    asn1.set(this.bytes, asn1PreString.length);
     asn1.set(asn1Seckp256k1, asn1PreString.length + keyLen);
     return asn1;
   }
@@ -135,7 +115,7 @@ export default class PrivateKey {
   }
 
   toPublicKey(): PublicKey {
-    const pubKeyBytes = generatePublicKeyBytes(this._bytes);
+    const pubKeyBytes = generatePublicKeyBytes(this.bytes);
     return new PublicKey(pubKeyBytes);
   }
 }

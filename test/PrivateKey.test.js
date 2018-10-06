@@ -13,18 +13,18 @@ const mainnet = Network.fromString('mainnet');
 const regtest = Network.fromString('regtest');
 
 describe('PrivateKey', () => {
-  const keyString = '1184CD2CDD640CA42CFC3A091C51D549B2F016D454B2774019C2B2D2E08529FD';
+  const keyHex = '1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd';
   const wifString = '5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD';
-  const publicKeyString = '04D0988BFA799F7D7EF9AB3DE97EF481CD0F75D2367AD456607647EDDE665D6F6FBDD594388756A7BEAF73B4822BC22D36E9BDA7DB82DF2B8B623673EEFC0B7495';
+  const publicKeyHex = '04d0988bfa799f7d7ef9ab3de97ef481cd0f75d2367ad456607647edde665d6f6fbdd594388756a7beaf73b4822bc22d36e9bda7db82df2b8b623673eefc0b7495';
   describe('from hex', () => {
     let privateKey;
     test('#constructor', () => {
-      privateKey = PrivateKey.fromHex(keyString);
+      privateKey = PrivateKey.fromHex(keyHex);
       expect(privateKey).toBeDefined();
     });
     test('#toHex', () => {
-      const returnedString = privateKey.hex;
-      expect(returnedString).toEqual(keyString);
+      const returnedString = privateKey.toHex();
+      expect(returnedString).toEqual(keyHex);
     });
     test('#toWif', () => {
       const returnedString = privateKey.toWif(mainnet);
@@ -32,7 +32,7 @@ describe('PrivateKey', () => {
     });
     test('#toPublicKey', () => {
       const pubKey = privateKey.toPublicKey();
-      expect(pubKey.hex).toEqual(publicKeyString);
+      expect(pubKey.toHex()).toEqual(publicKeyHex);
     });
   });
   describe('from wif', () => {
@@ -42,8 +42,8 @@ describe('PrivateKey', () => {
       expect(privateKey).toBeDefined();
     });
     test('#toHex', () => {
-      const returnedString = privateKey.hex;
-      expect(returnedString).toEqual(keyString);
+      const returnedString = privateKey.toHex();
+      expect(returnedString).toEqual(keyHex);
     });
   });
   describe('#toPem', () => {

@@ -12,3 +12,15 @@ Existing Bitcoin JavaScript libraries are quite large and involve learning the l
 
 * Avoid use of external libraries where practical to learn more about the Bitcoin protocol.
 * Use Flow static type checking to both learn it and see what it's like in a non-trivial project.
+
+## Terminology
+
+This library uses the following terms:
+
+| Term | Uses | Meaning |
+|------|------|---------|
+| hex  | toHex, fromHex | Hex is a JavaScript String of equal length consisting of two character hexadecimal bytes.  E.g. 'FF00'. |
+| bytes | toBytes, fromBytes | A JavaScript Uint8Array consisting of 8-bit bytes. Order/endianess is undefined. |
+| string | | Undefined. Should be avoided. |
+
+
