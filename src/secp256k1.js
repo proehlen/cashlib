@@ -5,6 +5,9 @@
 import BigInt from 'big-integer';
 import * as stringfu from 'stringfu';
 
+import PrivateKey from './PrivateKey';
+import PublicKey from './PublicKey';
+
 class EcPoint {
   _x: BigInt
   _y: BigInt
@@ -83,17 +86,16 @@ function ecDouble(point: EcPoint) {
   return new EcPoint(x, y);
 }
 
-export function generatePublicKeyBytes(privKeyBytes: Uint8Array): Uint8Array {
+export function generatePublicKey(privateKey: PrivateKey): PublicKey {
   // Convert bytes to BigInt (big-integer lib array functions are troublesome so
   // do via strings) & validate 
-  const privKeyString = stringfu.leftPad(stringfu.fromBytes(privKeyBytes), 32, '0');
-  const privKey = new BigInt(privKeyString, 16);
-  if (privKey.isZero() || privKey.greaterOrEquals(prime)) {
+  const privKeyNumber = new BigInt(privateKey.toHex(), 16);
+  if (privKeyNumber.isZero() || privKeyNumber.greaterOrEquals(prime)) {
     throw new Error('Invalid private key');
   }
 
   // Get point on curve represented by private key
-  const privKeyBits = privKey.toString(2).split('');
+  const privKeyBits = privKeyNumber.toString(2).split('');
   let q = new EcPoint(basePoint.x, basePoint.y);
   for (let i = 1; i <  privKeyBits.length; i++) {
     q = ecDouble(q);
@@ -102,13 +104,5 @@ export function generatePublicKeyBytes(privKeyBytes: Uint8Array): Uint8Array {
     }
   }
 
-  // Convert point to public key bytes (big-integer lib array functions are troublesome so
-  // do via strings)
-  const x = stringfu.toBytes(stringfu.leftPad(q.x.toString(16), 32, '0'));
-  const y = stringfu.toBytes(stringfu.leftPad(q.y.toString(16), 32, '0'));
-  const pubKeyBytes = new Uint8Array(65);
-  pubKeyBytes.set([0x04], 0);
-  pubKeyBytes.set(x, 1);
-  pubKeyBytes.set(y, 33);
-  return pubKeyBytes;
+  return PublicKey.fromHex(q.toHex());
 }

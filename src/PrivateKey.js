@@ -8,7 +8,7 @@ import base58 from './base58';
 import base64 from './base64';
 import Network from './Network';
 import PublicKey from './PublicKey';
-import { generatePublicKeyBytes } from './secp256k1';
+import { generatePublicKey } from './secp256k1';
 
 const BYTES_LENGTH: number = 32;
 
@@ -115,7 +115,6 @@ export default class PrivateKey extends Data {
   }
 
   toPublicKey(): PublicKey {
-    const pubKeyBytes = generatePublicKeyBytes(this.bytes);
-    return new PublicKey(pubKeyBytes);
+    return generatePublicKey(this);
   }
 }
