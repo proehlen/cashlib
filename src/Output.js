@@ -7,7 +7,7 @@ import PublicKey from './PublicKey';
 export default class Output {
   _value: number
   _pubKeyScript: Uint8Array 
-  _scriptType: 'P2PK' | 'P2PKH' | 'unkown'
+  _scriptType: 'P2PK' | 'P2PKH' | 'unknown'
 
   constructor(value: number, pubKeyScript: Uint8Array) {
     this._value = value;
@@ -24,7 +24,7 @@ export default class Output {
         && pubKeyScript[pubKeyScript[0] + 1] === opCodes.OP_CHECKSIG.value) {
       this._scriptType = 'P2PK';
     } else {
-      this._scriptType = 'unkown';
+      this._scriptType = 'unknown';
     }
   }
 
@@ -47,14 +47,13 @@ export default class Output {
       const hashStart = 3; // OP_DUP + OP_HASH160 + OP_PUSHx
       const hashEnd = this._pubKeyScript.length - 2; // OP_EQUALVERIFY + OP_CHECKSIG
       const hash = this._pubKeyScript.slice(hashStart, hashEnd);
-      address = new Address.fromPublicKeyHash(hash, network);
+      address = Address.fromPublicKeyHash(hash, network);
     } else if (this.scriptType === 'P2PK') {
       const keyStart = 1; // push data 1 to 75
       const keyEnd = this._pubKeyScript.length - 1; // OP_CHECKSIG
       const keyBytes = this._pubKeyScript.slice(keyStart, keyEnd);
       const publicKey = new PublicKey(keyBytes);
-      address = new Address.fromPublicKey(publicKey, network);
-
+      address = Address.fromPublicKey(publicKey, network);
     }
     return address;
   }

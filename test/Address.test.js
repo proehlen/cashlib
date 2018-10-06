@@ -28,9 +28,9 @@ describe('Address', () => {
       });
     });
     describe('From public key (string)', () => {
-      const publicKeyString = '03919f9806cd4d07b588b14bcf7f5e8466d1c59f3694eb24101bbf59b91f933bfa';
+      const publicKeyHex = '03919f9806cd4d07b588b14bcf7f5e8466d1c59f3694eb24101bbf59b91f933bfa';
       const btcAddress = '1KHL3He8D171NX8MpLH4XGsBqBjMmEDrHC';
-      const publicKey = PublicKey.fromString(publicKeyString);
+      const publicKey: PublicKey = PublicKey.fromHex(publicKeyHex);
       let address: Address;
       test('#fromPublicKey', () => {
         address = Address.fromPublicKey(publicKey, network);
@@ -61,9 +61,9 @@ describe('Address', () => {
     describe('BU generated key / address', () => {
       const network = Network.fromString('testnet');
       describe('From public key (string)', () => {
-        const publicKeyString = '03919f9806cd4d07b588b14bcf7f5e8466d1c59f3694eb24101bbf59b91f933bfa';
+        const publicKeyHex = '03919f9806cd4d07b588b14bcf7f5e8466d1c59f3694eb24101bbf59b91f933bfa';
         const btcAddress = 'myoHLLj722YG9dbyXuFSMC5WhBL4h7nqhs';
-        const publicKey = PublicKey.fromString(publicKeyString);
+        const publicKey = PublicKey.fromHex(publicKeyHex);
         let address: Address;
         test('#fromPublicKey', () => {
           address = Address.fromPublicKey(publicKey, network);

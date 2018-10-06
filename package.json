@@ -1,6 +1,6 @@
 {
   "name": "cashlib",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Experimental Bitcoin Cash library",
   "homepage": "https://github.com/proehlen/cashlib#README.md",
   "author": "Peter Roehlen",
@@ -10,14 +10,12 @@
     "url": "https://github.com/proehlen/cashlib.git"
   },
   "main": "lib/index.js",
-  "browser": "lib/index.js",
   "keywords": [
     "bitcoin",
     "cash",
     "bch",
     "library",
-    "nodejs",
-    "browser"
+    "nodejs"
   ],
   "scripts": {
     "clean": "rimraf lib",
@@ -26,7 +24,7 @@
     "test": "jest",
     "flowbuild": "flow-copy-source src lib",
     "prebuild": "npm run clean && npm run flowbuild ",
-    "build": "babel --plugins transform-flow-strip-types src/ -d lib/",
+    "build": "babel --plugins transform-flow-strip-types src/ -d lib/ --copy-files",
     "prepublish": "npm run build"
   },
   "devDependencies": {
@@ -42,6 +40,7 @@
   },
   "dependencies": {
     "base-x": "^3.0.4",
-    "stringfu": "0.0.2"
+    "big-integer": "^1.6.36",
+    "stringfu": "0.0.4"
   }
 }

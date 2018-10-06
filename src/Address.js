@@ -1,29 +1,21 @@
 // @flow
 import crypto from 'crypto';
 
+import Data from './Data';
 import PublicKey from './PublicKey';
 import base58 from './base58';
 import Network from './Network';
 
 
-export default class Address {
-  _bytes: Uint8Array  // Currently includes checksum?
-
-  constructor(bytes: Uint8Array) {
-    this._bytes = bytes;
-  }
-
-  get bytes() {
-    return this._bytes;
-  }
+export default class Address extends Data {
 
   toString(): string {
-    return base58.encode(this._bytes);
+    return base58.encode(this.bytes);
   }
 
   toPublicKeyHash(): Uint8Array {
     // Return bytes minus 1 byte version (start) and 4 byte checksum (end)
-    return this._bytes.slice(1, this._bytes.length - 4);
+    return this.bytes.slice(1, this.bytes.length - 4);
   }
 
   static fromString(address: string) {
