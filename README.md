@@ -1,4 +1,4 @@
-# Bitcoin Cash Library
+# Experimental Bitcoin Cash Library
 
 Experimental Bitcoin Cash library.  This sofware is in pre-alpha state and should not be used for any purpose.
 
@@ -19,8 +19,6 @@ This library uses the following terms:
 
 | Term | Uses | Meaning |
 |------|------|---------|
-| hex  | toHex, fromHex | Hex is a JavaScript String of equal length consisting of two character hexadecimal bytes.  E.g. 'FF00'. |
-| bytes | toBytes, fromBytes | A JavaScript Uint8Array consisting of 8-bit bytes. Order/endianess is undefined. |
-| string | | Undefined. Should be avoided. |
-
-
+| bytes | toBytes, fromBytes | A JavaScript Uint8Array consisting of 8-bit bytes. Order/endianess/signed is not defined. |
+| hex  | toHex, fromHex | A JavaScript String of equal length consisting of two character hexadecimal bytes without any special prefix (ie no '0x').  Example data: "FF00". |
+| string | toString, fromString | Undefined. Should be avoided. |
