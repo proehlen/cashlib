@@ -34,9 +34,7 @@ describe('MnemonicSeed', () => {
       const wallet = new MnemonicSeed(['caution', 'polar', 'pottery', 'envelope', 'west', 'there', 'car', 'congress', 'bird', 'rare', 'genius', 'model']);
       expect(wallet).toBeDefined();
       const seed = wallet.seed.toHex();
-      // expect(seed).toEqual('xprv9s21ZrQH143K3Y5Tc11smGi6MycGZ5wCcEVP2Qdt1gDeXpT4ujyHsEDwhxCqkVgcmzGf9dJGeSDWocwKj8QWvZ87Er7sKFS69ReQm5f2ram')
       expect(seed).toEqual('5a067daab7e5a157ab20e66870aa7b0ad28c91a97344d555d54ee406ead53f88fe246291362b99b97b7f6c9c627ced671b0155f06e99d2eb7c885c3974585e36');
-
     });
     // // TODO implement checksum check
     // test('Invalid checksum word should fail', () => {

@@ -70,7 +70,7 @@ export default class PrivateKey extends Data {
 
   toWif(network: Network): string {
     if (!this._wif) {
-      const privKeyAndVersion = new Uint8Array(BYTES_LENGTH + 1);
+      const privKeyAndVersion = new Uint8Array(this.bytes.length + 1);
       privKeyAndVersion[0] = network.prefixes.privateKeyWif;
       privKeyAndVersion.set(this.bytes, 1);
       const firstSHA = crypto.createHash('sha256').update(Buffer.from(privKeyAndVersion)).digest();
