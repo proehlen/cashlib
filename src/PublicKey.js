@@ -4,7 +4,6 @@ import * as stringfu from 'stringfu';
 
 import Data from './Data';
 import PrivateKey from './PrivateKey';
-import { generatePublicKey } from './secp256k1';
 
 export default class PublicKey extends Data {
 
@@ -18,6 +17,6 @@ export default class PublicKey extends Data {
   }
 
   static fromPrivateKey(privateKey: PrivateKey) {
-    return generatePublicKey(privateKey);
+    return privateKey.toPublicKey();
   }
 }

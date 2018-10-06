@@ -5,39 +5,9 @@
 import BigInt from 'big-integer';
 import * as stringfu from 'stringfu';
 
-import PrivateKey from './PrivateKey';
-import PublicKey from './PublicKey';
-
-class EcPoint {
-  _x: BigInt
-  _y: BigInt
-
-  constructor(x: BigInt, y: BigInt) {
-    this._x = x;
-    this._y = y;
-  }
-
-  get x() { return this._x; }
-  get y() { return this._y; }
-
-  toHex(compressed: boolean = true) {
-    let prefix = '';
-    const x = stringfu.leftPad(this.x.toString(16), 64, '0');
-    let maybeY = '';
-    if (!compressed) {
-      prefix = '04'
-      maybeY = stringfu.leftPad(this.y.toString(16), 64, '0');
-    } else {
-      if (this.y.isEven()) {
-        prefix = '02'
-      } else {
-        prefix = '03'
-      }
-    }
-
-    return `${prefix}${x}${maybeY}`;
-  }
-}
+import PrivateKey from '../PrivateKey';
+import PublicKey from '../PublicKey';
+import EcPoint from './EcPoint';
 
 // secp256k1 constants.  Unlike for other curves, we only need 3 here.  They are:
 //   field.  aka 'p' - integer specifying the finite field

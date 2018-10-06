@@ -1,6 +1,6 @@
 // @flow
-import OpCode from './OpCode';
-import opCodes from './opCodes';
+import OpCode from '../OpCode';
+import opCodes from '.';
 
 const mapValues = Object
   .values(opCodes)
