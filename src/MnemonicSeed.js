@@ -1,3 +1,7 @@
+/**
+ * This module implements BIP-0039 - using mnemonic sentences to generate binary
+ * seeds
+ */
 // @flow
 
 import path from 'path';
@@ -6,17 +10,17 @@ import crypto from 'crypto';
 
 import PrivateKey from './PrivateKey';
 
-const wordlistFile = path.join(__dirname, 'Wallet', 'wordlist');
+const wordlistFile = path.join(__dirname, 'MnemonicSeed', 'wordlist');
 const wordlist = fs.readFileSync(wordlistFile, { encoding: 'utf8' }).split('\n');
 
-export default class Wallet {
+export default class MnemonicSeed {
   _seedWords: string[]
   _seed: PrivateKey
 
   constructor(seedWords: string[]) {
     // Validate seedWords provided and correct type/length
     if (!seedWords || !Array.isArray(seedWords) || seedWords.length !== 12) {
-      throw new Error(`Wallet requires exactly 12 seed words`);
+      throw new Error(`MnemonicSeed requires exactly 12 seed words`);
     }
 
     // Validate each word is in word list

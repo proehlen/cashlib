@@ -5,16 +5,16 @@ declare var test: any;
 declare var expect: any;
 
 const fromBytes = require('stringfu').fromBytes;
-const Wallet = require('../lib/Wallet').default;
+const MnemonicSeed = require('../lib/MnemonicSeed').default;
 
-describe('Wallet', () => {
+describe('MnemonicSeed', () => {
   describe('#constructor', () => {
     test('Invalid number of words should fail', () => {
-      const createWallet = () => new Wallet(['abandon', 'ability', 'able']);
-      expect(createWallet).toThrow('seed words');
+      const createMnemonicSeed = () => new MnemonicSeed(['abandon', 'ability', 'able']);
+      expect(createMnemonicSeed).toThrow('seed words');
     });
     test('Invalid words should fail', () => {
-      const createWallet = () => new Wallet([
+      const createMnemonicSeed = () => new MnemonicSeed([
         'abandon',
         'ability',
         'able',
@@ -28,10 +28,10 @@ describe('Wallet', () => {
         'access',
         'accident',
       ]);
-      expect(createWallet).toThrow('not in the word list');
+      expect(createMnemonicSeed).toThrow('not in the word list');
     });
     test('Valid words should succeed', () => {
-      const wallet = new Wallet(['caution', 'polar', 'pottery', 'envelope', 'west', 'there', 'car', 'congress', 'bird', 'rare', 'genius', 'model']);
+      const wallet = new MnemonicSeed(['caution', 'polar', 'pottery', 'envelope', 'west', 'there', 'car', 'congress', 'bird', 'rare', 'genius', 'model']);
       expect(wallet).toBeDefined();
       const seed = wallet.seed.toHex();
       // expect(seed).toEqual('xprv9s21ZrQH143K3Y5Tc11smGi6MycGZ5wCcEVP2Qdt1gDeXpT4ujyHsEDwhxCqkVgcmzGf9dJGeSDWocwKj8QWvZ87Er7sKFS69ReQm5f2ram')
@@ -40,7 +40,7 @@ describe('Wallet', () => {
     });
     // // TODO implement checksum check
     // test('Invalid checksum word should fail', () => {
-    //   const createWallet = () => new Wallet([
+    //   const createMnemonicSeed = () => new MnemonicSeed([
     //     'abandon',
     //     'ability',
     //     'able',
@@ -54,7 +54,7 @@ describe('Wallet', () => {
     //     'access',
     //     'accident', // Not a valid checksum
     //   ]);
-    //   expect(createWallet).toThrow('invalid checksum');
+    //   expect(createMnemonicSeed).toThrow('invalid checksum');
     // });
 
   });
