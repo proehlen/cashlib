@@ -109,7 +109,7 @@ export default class Deserializer {
     if (reverse) {
       bytes = bytes.reverse();
     }
-    return this._bytesToString(bytes);
+    return fromBytes(bytes);
   }
 
   /**
@@ -122,15 +122,6 @@ export default class Deserializer {
 
   _highestBit(byte: number) {
     return byte >>> 7;
-  }
-
-  _bytesToString(bytes: Uint8Array): string {
-    return Array.from(bytes).map(byte => this._byteToString(byte)).join('');
-  }
-
-  _byteToString(byte: number): string {
-    let hex = byte.toString(16);
-    return leftPad(hex, 2, '0');
   }
 
   /**

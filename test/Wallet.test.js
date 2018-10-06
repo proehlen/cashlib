@@ -33,9 +33,9 @@ describe('Wallet', () => {
     test('Valid words should succeed', () => {
       const wallet = new Wallet(['caution', 'polar', 'pottery', 'envelope', 'west', 'there', 'car', 'congress', 'bird', 'rare', 'genius', 'model']);
       expect(wallet).toBeDefined();
-      const seed = wallet.seed.hex;
+      const seed = wallet.seed.toHex();
       // expect(seed).toEqual('xprv9s21ZrQH143K3Y5Tc11smGi6MycGZ5wCcEVP2Qdt1gDeXpT4ujyHsEDwhxCqkVgcmzGf9dJGeSDWocwKj8QWvZ87Er7sKFS69ReQm5f2ram')
-      expect(seed).toEqual('5A067DAAB7E5A157AB20E66870AA7B0AD28C91A97344D555D54EE406EAD53F88FE246291362B99B97B7F6C9C627CED671B0155F06E99D2EB7C885C3974585E36');
+      expect(seed).toEqual('5a067daab7e5a157ab20e66870aa7b0ad28c91a97344d555d54ee406ead53f88fe246291362b99b97b7f6c9c627ced671b0155f06e99d2eb7c885c3974585e36');
 
     });
     // // TODO implement checksum check

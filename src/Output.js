@@ -47,14 +47,13 @@ export default class Output {
       const hashStart = 3; // OP_DUP + OP_HASH160 + OP_PUSHx
       const hashEnd = this._pubKeyScript.length - 2; // OP_EQUALVERIFY + OP_CHECKSIG
       const hash = this._pubKeyScript.slice(hashStart, hashEnd);
-      address = new Address.fromPublicKeyHash(hash, network);
+      address = Address.fromPublicKeyHash(hash, network);
     } else if (this.scriptType === 'P2PK') {
       const keyStart = 1; // push data 1 to 75
       const keyEnd = this._pubKeyScript.length - 1; // OP_CHECKSIG
       const keyBytes = this._pubKeyScript.slice(keyStart, keyEnd);
       const publicKey = new PublicKey(keyBytes);
-      address = new Address.fromPublicKey(publicKey, network);
-
+      address = Address.fromPublicKey(publicKey, network);
     }
     return address;
   }

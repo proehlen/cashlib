@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "base-x": "^3.0.4",
+    "big-integer": "^1.6.36",
     "stringfu": "0.0.4"
   }
 }
