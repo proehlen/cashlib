@@ -1,5 +1,5 @@
 /**
- * Base class for objects that primarily consist of bytes
+ * Base/wrapper class for objects that primarily consist or derive from data in bytes
  */
 // @flow
 import * as stringfu from 'stringfu';

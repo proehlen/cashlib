@@ -83,7 +83,10 @@ export default class PrivateKey extends Data {
     return this._wif;
   }
 
-  toAsn1(): Uint8Array {
+  /**
+   * Returns private key encoded in ASN.1/DER format
+   */
+  toDer(): Uint8Array {
     const keyLen = this.bytes.length;
     const asn1PreString = [
       0x30, // declares the start of an ASN.1 sequence
@@ -107,7 +110,7 @@ export default class PrivateKey extends Data {
   toPem() {
     const prefix = '-----BEGIN EC PRIVATE KEY-----\n';
     const suffix = '\n-----END EC PRIVATE KEY-----';
-    const asn1 = this.toAsn1();
+    const asn1 = this.toDer();
     const asn1encoded = base64.encode(asn1);
     const asn1Lines = splitWidth(asn1encoded, 64).join('\n');
     const pem = `${prefix}${asn1Lines}${suffix}`;

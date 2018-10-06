@@ -19,6 +19,6 @@ This library uses the following terms:
 
 | Term | Uses | Meaning |
 |------|------|---------|
-| bytes | toBytes, fromBytes | A JavaScript Uint8Array consisting of 8-bit bytes. Order/endianess/signed is not defined. |
+| bytes | toBytes, fromBytes | Bytes are data stores as a JavaScript Uint8Array consisting of 8-bit bytes. Order/endianess/signed is not defined. The Data class provides a convenience wrapper for storing and working with bytes. |
 | hex  | toHex, fromHex | A JavaScript String of equal length consisting of two character hexadecimal bytes without any special prefix (ie no '0x').  Example data: "FF00". |
 | string | toString, fromString | Undefined. Should be avoided. |

@@ -8,14 +8,14 @@ import path from 'path';
 import fs from 'fs';
 import crypto from 'crypto';
 
-import PrivateKey from './PrivateKey';
+import Data from './Data';
 
 const wordlistFile = path.join(__dirname, 'MnemonicSeed', 'wordlist');
 const wordlist = fs.readFileSync(wordlistFile, { encoding: 'utf8' }).split('\n');
 
 export default class MnemonicSeed {
   _seedWords: string[]
-  _seed: PrivateKey
+  _seed: Data
 
   constructor(seedWords: string[]) {
     // Validate seedWords provided and correct type/length
@@ -38,7 +38,7 @@ export default class MnemonicSeed {
       64,
       'SHA512',
     );
-    this._seed = new PrivateKey(seedBytes);
+    this._seed = new Data(seedBytes);
   }
 
   get seed() { return this._seed; }
