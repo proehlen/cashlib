@@ -20,13 +20,22 @@ class EcPoint {
   get x() { return this._x; }
   get y() { return this._y; }
 
-  toHex(compressionByte: boolean = true) {
+  toHex(compressed: boolean = true) {
+    let prefix = '';
     const x = stringfu.leftPad(this.x.toString(16), 64, '0');
-    const y = stringfu.leftPad(this.y.toString(16), 64, '0');
-    const prefix = compressionByte
-      ? '04'
-      : '';
-    return `${prefix}${x}${y}`;
+    let maybeY = '';
+    if (!compressed) {
+      prefix = '04'
+      maybeY = stringfu.leftPad(this.y.toString(16), 64, '0');
+    } else {
+      if (this.y.isEven()) {
+        prefix = '02'
+      } else {
+        prefix = '03'
+      }
+    }
+
+    return `${prefix}${x}${maybeY}`;
   }
 }
 
@@ -104,5 +113,5 @@ export function generatePublicKey(privateKey: PrivateKey): PublicKey {
     }
   }
 
-  return PublicKey.fromHex(q.toHex());
+  return PublicKey.fromHex(q.toHex(privateKey.compressed));
 }

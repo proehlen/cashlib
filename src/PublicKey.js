@@ -1,10 +1,10 @@
 // @flow
 import { toBytes } from 'stringfu';
-import { createECDH, privateEncrypt } from 'crypto';
 import * as stringfu from 'stringfu';
 
 import Data from './Data';
 import PrivateKey from './PrivateKey';
+import { generatePublicKey } from './secp256k1';
 
 export default class PublicKey extends Data {
 
@@ -18,16 +18,6 @@ export default class PublicKey extends Data {
   }
 
   static fromPrivateKey(privateKey: PrivateKey) {
-    const secp256k1 = createECDH('secp256k1');
-    secp256k1.setPrivateKey(privateKey.bytes);
-    let publicKey: PublicKey;
-    if (privateKey.compressed) {
-      const bytesString = secp256k1.getPublicKey('hex', 'compressed');
-      const bytes = toBytes(bytesString);
-      publicKey = new PublicKey(bytes);
-    } else {
-      publicKey = new PublicKey(secp256k1.getPublicKey());
-    }
-    return publicKey;
+    return generatePublicKey(privateKey);
   }
 }
