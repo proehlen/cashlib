@@ -16,6 +16,10 @@ export default class Serializer {
     return this._hex;
   }
 
+  toBytes(): Uint8Array {
+    return toBytes(this._hex);
+  }
+
   _addUint(value: number, sizeBytes: number) {
     let hex = value.toString(16);
     hex = leftPad(hex, sizeBytes * 2, '0');

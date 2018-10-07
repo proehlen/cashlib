@@ -14,6 +14,10 @@ import PublicKey from './PublicKey';
 import ExtendedPrivateKey from './Wallet/ExtendedPrivateKey';
 import ExtendedPublicKey from './Wallet/ExtendedPublicKey';
 import Data from './Data';
+import Serializer from './Serializer';
+import { generatePublicKey } from './PrivateKey/secp256k1';
+
+const twoPower31 = 2 ^ 31;
 
 export default class Wallet {
   _seed: Data
@@ -27,11 +31,11 @@ export default class Wallet {
     const hmac = createHmac('sha512', 'Bitcoin seed');
     // $flow-disable-line Uint8Array *is* compatible with hmac.update
     hmac.update(seed.bytes);
-    const digest = hmac.digest();
-    assert.equal(digest.length, 64, 'Expected hmac to return 64 bytes');
-    const privateKey = new PrivateKey(digest.slice(0, 32), true);
+    const hashed = hmac.digest();
+    assert.equal(hashed.length, 64, 'Expected hmac to return 64 bytes');
+    const privateKey = new PrivateKey(hashed.slice(0, 32), true);
     const publicKey = privateKey.toPublicKey();
-    const masterChainCode = digest.slice(32, 64);
+    const masterChainCode = hashed.slice(32, 64);
     this._extendedPrivateKey = new ExtendedPrivateKey(
       privateKey,
       masterChainCode,
@@ -48,14 +52,41 @@ export default class Wallet {
     );
   }
 
-  derivePrivateChildFromPrivate() {
+  derivePrivateChildFromPrivate(parent: ExtendedPrivateKey, childNumber: number): ExtendedPrivateKey {
+    let hardened: boolean = childNumber >= twoPower31;
+    const toHash = new Serializer();
+    if (hardened) {
+      toHash.addUint8(0x00);
+      toHash.addBytes(parent.key.bytes);
+      // $flow-disable-line Uint8Array *is* compatible with hmac.update
+      hmac.update(toHash.toBytes());
+    } else {
+      const compressedPublicKey = generatePublicKey(parent.key, true);
+      const toHash = new Serializer();
+      toHash.addUint8(0x00);
+      toHash.addBytes(compressedPublicKey.bytes);
+      // $flow-disable-line Uint8Array *is* compatible with hmac.update
+      hmac.update(toHash.toBytes());
+    }
+    toHash.addUint32(childNumber);
+    // $flow-disable-line Uint8Array *is* compatible with hmac.create
+    let hmac = createHmac('sha512', parent.chainCode);
+    const hashed = hmac.digest();
 
+    // TODO remove next 2 lines
+    return this._extendedPrivateKey;
   }
 
-  derivePublicChildFromPublic() {
-
+  derivePublicChildFromPublic(parent: ExtendedPublicKey, childNumber: number): ExtendedPublicKey {
+    // TODO remove next 2 lines
+    assert(1 === 2, 'Method not  implemented yet');
+    return this._extendedPublicKey;
   }
 
-
+  derivePublicChildFromPrivate(parent: ExtendedPrivateKey, childNumber: number): ExtendedPublicKey {
+    // TODO remove next 2 lines
+    assert(1 === 2, 'Method not  implemented yet');
+    return this._extendedPublicKey;
+  }
 
 }

@@ -33,6 +33,7 @@ export default class ExtendedPrivateKey {
     this._parent = parent;
   }
 
+  get key() { return this._key; };
   get chainCode() { return this._chainCode; };
   get depth() { return this._depth; }
   get childNumber() { return this._childNumber; }

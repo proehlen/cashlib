@@ -66,8 +66,8 @@ function ecDouble(point: EcPoint) {
   return new EcPoint(x, y);
 }
 
-export function generatePublicKey(privateKey: PrivateKey): PublicKey {
-  // Convert bytes to BigInt  
+export function generatePublicKey(privateKey: PrivateKey, compressed?: boolean): PublicKey {
+  // Convert bytes to BigInt and validate
   const privKeyNumber = BigInt.fromArray(Array.from(privateKey.bytes), 256, false);
   if (privKeyNumber.isZero() || privKeyNumber.greaterOrEquals(prime)) {
     throw new Error('Invalid private key');
@@ -83,5 +83,9 @@ export function generatePublicKey(privateKey: PrivateKey): PublicKey {
     }
   }
 
-  return new PublicKey(q.toBytes(privateKey.compressPublicKey));
+  // Return point as public key
+  const compress = compressed !== undefined ?
+    compressed :
+    privateKey.compressPublicKey;
+  return new PublicKey(q.toBytes(compress));
 }
