@@ -16,23 +16,23 @@ import PrivateKey from '../PrivateKey';
 import Serializer from '../Serializer';
 import base58 from '../base58';
 
-export default class ExtendedPrivateKey extends PrivateKey {
+export default class ExtendedPrivateKey {
+  _key: PrivateKey
   _chainCode: Uint8Array
   _depth: number
   _childNumber: number
   _parent: ?ExtendedPrivateKey
 
-  constructor(key: Uint8Array, chainCode: Uint8Array, depth: number, childNumber: number, parent?: ExtendedPrivateKey) {
+  constructor(key: PrivateKey, chainCode: Uint8Array, depth: number, childNumber: number, parent?: ExtendedPrivateKey) {
     assert(depth < 256, 'Depth must be single byte value.');
     assert(childNumber <= 0xffffffff, 'Child number can only be four bytes long');
-    super(key);
+    this._key = key;
     this._chainCode = chainCode;
     this._depth = depth;
     this._childNumber = childNumber;
     this._parent = parent;
   }
 
-  get key() { return this.bytes; };
   get chainCode() { return this._chainCode; };
   get depth() { return this._depth; }
   get childNumber() { return this._childNumber; }
@@ -52,7 +52,7 @@ export default class ExtendedPrivateKey extends PrivateKey {
     toBeHashed.addUint32(this.childNumber);
     toBeHashed.addBytes(this.chainCode);
     toBeHashed.addUint8(0); // Padding/dummy prefix for private keys
-    toBeHashed.addBytes(this.key);
+    toBeHashed.addBytes(this._key.bytes);
 
     const bytesToBeHashed = toBytes(toBeHashed.hex);
     // $flow-disable-line Uint8Array *is* compatible with cipher.update

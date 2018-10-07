@@ -9,6 +9,7 @@
 import { createHmac } from 'crypto';
 import assert from 'assert';
 
+import PrivateKey from './PrivateKey';
 import ExtendedPrivateKey from './Wallet/ExtendedPrivateKey';
 import Data from './Data';
 
@@ -25,10 +26,10 @@ export default class Wallet {
     hmac.update(seed.bytes);
     const digest = hmac.digest();
     assert.equal(digest.length, 64, 'Expected hmac to return 64 bytes');
-    const masterSecretKey = digest.slice(0, 32);
+    const privateKey = new PrivateKey(digest.slice(0, 32));
     const masterChainCode = digest.slice(32, 64);
     this._extendedPrivateKey = new ExtendedPrivateKey(
-      masterSecretKey,
+      privateKey,
       masterChainCode,
       0,
       0,
