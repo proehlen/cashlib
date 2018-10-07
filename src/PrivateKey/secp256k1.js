@@ -83,5 +83,5 @@ export function generatePublicKey(privateKey: PrivateKey): PublicKey {
     }
   }
 
-  return PublicKey.fromHex(q.toHex(privateKey.compressed));
+  return PublicKey.fromHex(q.toHex(privateKey.compressPublicKey));
 }

@@ -13,16 +13,16 @@ import { generatePublicKey } from './PrivateKey/secp256k1';
 const BYTES_LENGTH: number = 32;
 
 export default class PrivateKey extends Data {
-  _compressed: boolean
+  _compressPublicKey: boolean
   _wif: string;
 
-  constructor(bytes: Uint8Array, compressed: boolean = false) {
+  constructor(bytes: Uint8Array, compressPublicKey: boolean = false) {
     super(bytes);
-    this._compressed = compressed;
+    this._compressPublicKey = compressPublicKey;
   }
 
-  get compressed() {
-    return this._compressed;
+  get compressPublicKey() {
+    return this._compressPublicKey;
   }
 
   static fromHex(hex: string) {
@@ -32,24 +32,24 @@ export default class PrivateKey extends Data {
 
   static fromWif(wifKey: string): PrivateKey {
     const firstChar = wifKey.substr(0, 1);
-    let compressed: boolean;
+    let compressPublicKey: boolean;
     switch (firstChar) {
       case '5':
         // Mainnet
-        compressed = false;
+        compressPublicKey = false;
         break;
       case 'K':
       case 'L':
         // Mainnet
-        compressed = true;
+        compressPublicKey = true;
         break;
       case '9':
         // Testnet
-        compressed = false;
+        compressPublicKey = false;
         break;
       case 'c':
         // Testnet
-        compressed = true;
+        compressPublicKey = true;
         break;
       default:
         // Don't know how to handle this (refer 'WIF to private key' @
@@ -60,12 +60,12 @@ export default class PrivateKey extends Data {
     const dropLast4 = wifBytes.slice(0, wifBytes.length - 4);
     const dropFirst = dropLast4.slice(1);
     let keyBytes;
-    if (compressed) {
+    if (compressPublicKey) {
       keyBytes = dropFirst.slice(0, dropFirst.length - 1);
     } else {
       keyBytes = dropFirst;
     }
-    return new PrivateKey(keyBytes, compressed);
+    return new PrivateKey(keyBytes, compressPublicKey);
   }
 
   toWif(network: Network): string {
