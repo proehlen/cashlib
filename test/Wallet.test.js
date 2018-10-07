@@ -16,7 +16,11 @@ describe('Wallet', () => {
       const wallet = new Wallet(Data.fromHex(seedHex));
       test('Extended Private Key', () => {
         const xpriv = wallet._extendedPrivateKey.toSerialized(network);
-        expect(xpriv).toEqual('xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmPGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi')
+        expect(xpriv).toEqual('xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmPGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi');
+      });
+      test('Extended Public Key', () => {
+        const xpub = wallet._extendedPublicKey.toSerialized(network);
+        expect(xpub).toEqual('xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8');
       });
     });
   });
