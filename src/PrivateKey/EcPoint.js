@@ -17,21 +17,28 @@ export default class EcPoint {
   get x() { return this._x; }
   get y() { return this._y; }
 
-  toHex(compressed: boolean = true) {
-    let prefix = '';
-    const x = stringfu.leftPad(this.x.toString(16), 64, '0');
-    let maybeY = '';
+  toBytes(compressed: boolean = true) {
+    const length = compressed ? 33 : 65;
+    let bytes = new Uint8Array(length);
     if (!compressed) {
-      prefix = '04'
-      maybeY = stringfu.leftPad(this.y.toString(16), 64, '0');
+      // Uncompressed === 0x04<x><y>
+      bytes.set([0x04], 0);
+      bytes.set(this.x.toArray(256).value, 1);
+      bytes.set(this.y.toArray(256).value, 33);
     } else {
+      // Compressed === 0x02||0x03<x>
       if (this.y.isEven()) {
-        prefix = '02'
+        bytes.set([0x02], 0);
       } else {
-        prefix = '03'
+        bytes.set([0x03], 0);
       }
+      bytes.set(this.x.toArray(256).value, 1);
     }
+    return bytes;
+  }
 
-    return `${prefix}${x}${maybeY}`;
+  toHex(compressed: boolean = true) {
+    const bytes = this.toBytes(compressed);
+    return stringfu.fromBytes(bytes);
   }
 }

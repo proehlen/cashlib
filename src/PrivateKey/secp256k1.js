@@ -4,6 +4,7 @@
 // @flow
 import BigInt from 'big-integer';
 import * as stringfu from 'stringfu';
+import assert from 'assert';
 
 import PrivateKey from '../PrivateKey';
 import PublicKey from '../PublicKey';
@@ -66,9 +67,8 @@ function ecDouble(point: EcPoint) {
 }
 
 export function generatePublicKey(privateKey: PrivateKey): PublicKey {
-  // Convert bytes to BigInt (big-integer lib array functions are troublesome so
-  // do via strings) & validate 
-  const privKeyNumber = new BigInt(privateKey.toHex(), 16);
+  // Convert bytes to BigInt  
+  const privKeyNumber = BigInt.fromArray(Array.from(privateKey.bytes), 256, false);
   if (privKeyNumber.isZero() || privKeyNumber.greaterOrEquals(prime)) {
     throw new Error('Invalid private key');
   }
@@ -83,5 +83,5 @@ export function generatePublicKey(privateKey: PrivateKey): PublicKey {
     }
   }
 
-  return PublicKey.fromHex(q.toHex(privateKey.compressPublicKey));
+  return new PublicKey(q.toBytes(privateKey.compressPublicKey));
 }
