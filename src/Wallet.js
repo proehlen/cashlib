@@ -93,6 +93,10 @@ export default class Wallet {
   //   return result;
   // }
 
+  /**
+   * BIP-0032 function CKDpriv((kpar, cpar), i) → (ki, ci) computes a child extended
+   * private key from the parent extended private key
+   */
   _derivePrivateChildFromPrivate(parent: ExtendedKey, childNumber: number): ExtendedKey {
     let parentKey: PrivateKey;
     if (parent.key instanceof PrivateKey) {
@@ -142,14 +146,30 @@ export default class Wallet {
       parentFingerPrint,
     );
   }
+  
+  /**
+   * BIP-0032 function N((k, c)) → (K, c) computes the extended public key corresponding
+   * to an extended private key
+   */
+  _derivePublicChildFromPrivate(parent: ExtendedKey, childNumber: number): ExtendedKey {
+    const privateChildExtended = this._derivePrivateChildFromPrivate(parent, childNumber);
+    let publicChild: PublicKey;
+    if (privateChildExtended.key instanceof PrivateKey) {
+      publicChild = privateChildExtended.key.toPublicKey();
+    } else {
+      throw new Error('Unexpected result in child public key derivation.')
+    }
+    return new ExtendedKey(
+      publicChild,
+      privateChildExtended.chainCode,
+      1, // TODO - FIX DEPTH
+      childNumber,
+      privateChildExtended.parentFingerprint,
+    );
+  }
+
 
   // _derivePublicChildFromPublic(parent: ExtendedPublicKey, childNumber: number): ExtendedPublicKey {
-  //   // TODO replace next 2 lines
-  //   assert(1 === 2, 'Method not  implemented yet');
-  //   return this._extendedPublicKey;
-  // }
-
-  // _derivePublicChildFromPrivate(parent: ExtendedPrivateKey, childNumber: number): ExtendedPublicKey {
   //   // TODO replace next 2 lines
   //   assert(1 === 2, 'Method not  implemented yet');
   //   return this._extendedPublicKey;
