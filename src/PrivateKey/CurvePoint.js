@@ -4,7 +4,7 @@
 // @flow
 import BigInt from 'big-integer';
 import * as stringfu from 'stringfu';
-import { field, basePoint } from './secp256k1';
+import { field, basePoint, prime } from './secp256k1';
 
 export default class CurvePoint {
   _x: BigInt
@@ -66,6 +66,20 @@ export default class CurvePoint {
     // Update x/y
     this._x = x;
     this._y = y;
+  }
+
+  multiply(key: BigInt) {
+    if (key.isZero() || key.greaterOrEquals(prime)) {
+      throw new Error('Invalid key');
+    }
+
+    const keyBits = key.toString(2).split('');
+    for (let i = 1; i <  keyBits.length; i++) {
+      this.double();
+      if (keyBits[i] === '1') {
+        this.add();
+      }
+    }
   }
 
   toBytes(compressed: boolean = true) {

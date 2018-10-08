@@ -3,8 +3,6 @@
  */
 // @flow
 import BigInt from 'big-integer';
-import * as stringfu from 'stringfu';
-import assert from 'assert';
 
 import PrivateKey from '../PrivateKey';
 import PublicKey from '../PublicKey';
@@ -22,23 +20,13 @@ export const basePoint = new CurvePoint(
 export const prime = BigInt('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141', 16);
 
 export function generatePublicKey(privateKey: PrivateKey, compressed?: boolean): PublicKey {
-  // Convert bytes to BigInt and validate
-  const privKeyNumber = BigInt.fromArray(Array.from(privateKey.bytes), 256, false);
-  if (privKeyNumber.isZero() || privKeyNumber.greaterOrEquals(prime)) {
-    throw new Error('Invalid private key');
-  }
-
-  // Get point on curve represented by private key
-  const privKeyBits = privKeyNumber.toString(2).split('');
+  // Use elliptic curve point multiplication to derive point on curve (public key)
+  // for the given private key
+  const privKeyNumber = privateKey.toBigInt();
   let q = new CurvePoint(basePoint.x, basePoint.y);
-  for (let i = 1; i <  privKeyBits.length; i++) {
-    q.double();
-    if (privKeyBits[i] === '1') {
-      q.add();
-    }
-  }
+  q.multiply(privKeyNumber);
 
-  // Return point as public key
+  // Return point as PublicKey
   const compress = compressed !== undefined ?
     compressed :
     privateKey.compressPublicKey;
