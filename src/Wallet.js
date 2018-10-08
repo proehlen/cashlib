@@ -13,8 +13,7 @@ import BigInt from 'big-integer';
 import DerivationPath from './Wallet/DerivationPath';
 import PrivateKey from './PrivateKey';
 import PublicKey from './PublicKey';
-import ExtendedPrivateKey from './Wallet/ExtendedPrivateKey';
-import ExtendedPublicKey from './Wallet/ExtendedPublicKey';
+import ExtendedKey from './Wallet/ExtendedKey';
 import Data from './Data';
 import Serializer from './Serializer';
 import { generatePublicKey } from './PrivateKey/secp256k1';
@@ -23,16 +22,16 @@ import { prime } from './PrivateKey/secp256k1';
 const twoPower31 = 2 ^ 31;
 
 export default class Wallet {
-  _masterPublicKey: ExtendedPublicKey
-  _masterPrivateKey: ?ExtendedPrivateKey
+  _masterPublicKey: ExtendedKey
+  _masterPrivateKey: ?ExtendedKey
 
-  constructor(masterPublicKey: ExtendedPublicKey, masterPrivateKey?: ExtendedPrivateKey) {
+  constructor(masterPublicKey: ExtendedKey, masterPrivateKey?: ExtendedKey) {
     this._masterPrivateKey = masterPrivateKey;
     this._masterPublicKey = masterPublicKey;
   }
 
   getMasterPublicKey() { return this._masterPublicKey; }
-  getMasterPrivateKey(): ExtendedPrivateKey {
+  getMasterPrivateKey(): ExtendedKey {
     if (this._masterPrivateKey) {
       return this._masterPrivateKey;
     } else {
@@ -51,19 +50,20 @@ export default class Wallet {
     const privateKey = new PrivateKey(privateKeyBytes, true);
     const publicKey = privateKey.toPublicKey();
     const masterChainCode = hashed.slice(32, 64);
-    const masterPrivateKey = new ExtendedPrivateKey(
+    const noParentFingerprint = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
+    const masterPrivateKey = new ExtendedKey(
       privateKey,
       masterChainCode,
       0,
       0,
-      new Uint8Array([0x00, 0x00, 0x00, 0x00]), // No parent, no fingerprint
+      noParentFingerprint,
     );
-    const masterPublicKey = new ExtendedPublicKey(
+    const masterPublicKey = new ExtendedKey(
       publicKey,
       masterChainCode,
       0,
       0,
-      undefined,
+      noParentFingerprint,
     );
     return new Wallet(masterPublicKey, masterPrivateKey);
   }
@@ -94,7 +94,14 @@ export default class Wallet {
   //   return result;
   // }
 
-  _derivePrivateChildFromPrivate(parent: ExtendedPrivateKey, childNumber: number): ExtendedPrivateKey {
+  _derivePrivateChildFromPrivate(parent: ExtendedKey, childNumber: number): ExtendedKey {
+    let parentKey: PrivateKey;
+    if (parent.key instanceof PrivateKey) {
+      parentKey = parent.key;
+    } else {
+      throw new Error('Parent is not PrivateKey');
+    }
+
     // Serialize data to be hashed
     let hardened: boolean = childNumber >= twoPower31;
     const toHash = new Serializer();
@@ -102,7 +109,7 @@ export default class Wallet {
       toHash.addUint8(0x00); // Pad parent key to 33 bytes
       toHash.addBytes(parent.key.bytes);
     } else {
-      const compressedPublicKey = generatePublicKey(parent.key, true);
+      const compressedPublicKey = generatePublicKey(parentKey, true);
       toHash.addBytes(compressedPublicKey.bytes);
     }
     toHash.addUint32(childNumber);
@@ -125,10 +132,10 @@ export default class Wallet {
 
     // Get parent fingerprint (first four bytes) of parent identifier (ie hash160'd public key)
     // TODO performance: recreating public key is slow - consider requiring it as a parameter
-    const parentFingerPrint = parent.key.toPublicKey().toHash160().slice(0, 4);
+    const parentFingerPrint = parentKey.toPublicKey().toHash160().slice(0, 4);
 
     // Build and return key
-    return new ExtendedPrivateKey(
+    return new ExtendedKey(
       new PrivateKey(newKeyBytes), // Will throw exception < 1 in 2^127 cases
       newChaincodeBytes,
       1, // TODO - FIX DEPTH

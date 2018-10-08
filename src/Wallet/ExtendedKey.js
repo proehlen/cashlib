@@ -1,5 +1,5 @@
 /**
- * Extended private key per BIP-0032
+ * Extended private or public key per BIP-0032
  * 
  * Extended keys are regular keys with an additional 256 bits of entropy (the
  * chain code).
@@ -13,18 +13,19 @@ import { toBytes } from 'stringfu';
 import Data from '../Data';
 import Network from '../Network';
 import PrivateKey from '../PrivateKey';
+import PublicKey from '../PublicKey';
 import Serializer from '../Serializer';
 import base58 from '../base58';
 
-export default class ExtendedPrivateKey {
-  _key: PrivateKey
+export default class ExtendedKey {
+  _key: PrivateKey | PublicKey
   _chainCode: Uint8Array
   _depth: number
   _childNumber: number
   _parentFingerprint: Uint8Array
 
   constructor(
-    key: PrivateKey,
+    key: PrivateKey | PublicKey,
     chainCode: Uint8Array,
     depth: number,
     childNumber: number,
@@ -46,14 +47,21 @@ export default class ExtendedPrivateKey {
   get parentFingerprint() { return this._parentFingerprint; }
 
   toSerialized(network: Network): string {
+    const networkPrefix = this.key instanceof PrivateKey
+      ? network.prefixes.extendedKeyVersion.private
+      : network.prefixes.extendedKeyVersion.public;
+
     // Serialize data to be encoded
     const toBeEncoded = new Serializer();
-    toBeEncoded.addBytes(network.prefixes.extendedKeyVersion.private);
+    toBeEncoded.addBytes(networkPrefix);
     toBeEncoded.addUint8(this.depth);
     toBeEncoded.addBytes(this._parentFingerprint);
     toBeEncoded.addUint32(this.childNumber);
     toBeEncoded.addBytes(this.chainCode);
-    toBeEncoded.addUint8(0); // Padding/dummy prefix for private keys
+    if (this._key instanceof PrivateKey) {
+      // Padding/dummy prefix for private keys to make them 33 bytes
+      toBeEncoded.addUint8(0);
+    }
     toBeEncoded.addBytes(this._key.bytes);
     const bytesToBeEncoded = toBytes(toBeEncoded.hex);
 
