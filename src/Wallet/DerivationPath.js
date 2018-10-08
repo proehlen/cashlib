@@ -63,6 +63,9 @@ export default class DerivationPath {
 
   get path() { return this._path; }
   get type() { return this._type; }
+  get isPrivate() { return this._type === 'private'; }
+  get isPublic() { return this._type === 'public'; }
+  get numLevels() { return this._levels.length; }
   get levels(): DerivationPathLevels {
     // Return deep copy so our prop is immutable 
     // (We expect returned array to be heavily modified during stack processing)

@@ -40,27 +40,31 @@ export default class ExtendedPrivateKey {
   get parent() { return this._parent; }
 
   toSerialized(network: Network): string {
-    const toBeHashed = new Serializer();
-    toBeHashed.addBytes(network.prefixes.extendedKeyVersion.private);
-    toBeHashed.addUint8(this.depth);
+    // Serialize data to be encoded
+    const toBeEncoded = new Serializer();
+    toBeEncoded.addBytes(network.prefixes.extendedKeyVersion.private);
+    toBeEncoded.addUint8(this.depth);
     if (this.parent) {
-      // Fingerprint of parent key
-      throw new Error('Child extended key not implemented yet');
+      // Fingerprint (first four bytes) of parent key
+      toBeEncoded.addBytes(this.parent.key.bytes.slice(0, 4));
     } else {
-      // Fingerprint of parent key (no parent)
-      toBeHashed.addUint32(0);
+      // No parent key to fingerprint, use 0x00000000
+      toBeEncoded.addUint32(0);
     }
-    toBeHashed.addUint32(this.childNumber);
-    toBeHashed.addBytes(this.chainCode);
-    toBeHashed.addUint8(0); // Padding/dummy prefix for private keys
-    toBeHashed.addBytes(this._key.bytes);
+    toBeEncoded.addUint32(this.childNumber);
+    toBeEncoded.addBytes(this.chainCode);
+    toBeEncoded.addUint8(0); // Padding/dummy prefix for private keys
+    toBeEncoded.addBytes(this._key.bytes);
+    const bytesToBeEncoded = toBytes(toBeEncoded.hex);
 
-    const bytesToBeHashed = toBytes(toBeHashed.hex);
+    // Build check sum from double-hash of bytes to be encoded
     // $flow-disable-line Uint8Array *is* compatible with cipher.update
-    const firstSHA = crypto.createHash('sha256').update(bytesToBeHashed).digest();
+    const firstSHA = crypto.createHash('sha256').update(bytesToBeEncoded).digest();
     const secondSHA = crypto.createHash('sha256').update(firstSHA).digest();
     const checksum = secondSHA.slice(0, 4);
-    const keyWithChecksum = Buffer.concat([Buffer.from(bytesToBeHashed), checksum]);
-    return base58.encode(keyWithChecksum);
+
+    // Encode data and checksum
+    const dataWithChecksum = Buffer.concat([Buffer.from(bytesToBeEncoded), checksum]);
+    return base58.encode(dataWithChecksum);
   }
 }
