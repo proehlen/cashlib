@@ -1,11 +1,11 @@
 /**
- * Secp256k1 curve related functions
+ * Point on Eliptic Curve
  */
 // @flow
 import BigInt from 'big-integer';
 import * as stringfu from 'stringfu';
 
-export default class EcPoint {
+export default class CurvePoint {
   _x: BigInt
   _y: BigInt
 
