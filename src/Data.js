@@ -4,6 +4,7 @@
 // @flow
 import * as stringfu from 'stringfu';
 import assert from 'assert';
+import crypto from 'crypto';
 import BigInt from 'big-integer';
 
 export default class Data {
@@ -35,6 +36,16 @@ export default class Data {
 
   toBigInt(): BigInt {
     return BigInt.fromArray(this.toArray(), 256, false);
+  }
+
+  toHash160(): Uint8Array {
+    const sha256ed = crypto
+      .createHash('sha256')
+      // $flow-disable-line cipher.update accepts Uint8Array contrary to flow error
+      .update(this._bytes)
+      .digest();
+    const hash160 = crypto.createHash('RIPEMD160').update(sha256ed).digest();
+    return new Uint8Array(hash160);
   }
 
   /**
