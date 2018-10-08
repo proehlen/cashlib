@@ -16,7 +16,7 @@ import PublicKey from './PublicKey';
 import ExtendedKey from './Wallet/ExtendedKey';
 import Data from './Data';
 import Serializer from './Serializer';
-import secp256k1, { generatePublicKey } from './secp256k1';
+import secp256k1 from './secp256k1';
 
 const twoPower31 = 2 ^ 31;
 
@@ -108,7 +108,7 @@ export default class Wallet {
       toHash.addUint8(0x00); // Pad parent key to 33 bytes
       toHash.addBytes(parent.key.bytes);
     } else {
-      const compressedPublicKey = generatePublicKey(parentKey, true);
+      const compressedPublicKey = parentKey.toPublicKey(true);
       toHash.addBytes(compressedPublicKey.bytes);
     }
     toHash.addUint32(childNumber);

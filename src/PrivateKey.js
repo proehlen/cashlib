@@ -3,12 +3,13 @@ import crypto from 'crypto';
 import { fromBytes, splitWidth } from 'stringfu';
 import * as stringfu from 'stringfu';
 
+import CurvePoint from './CurvePoint';
 import Data from './Data';
 import base58 from './base58';
 import base64 from './base64';
 import Network from './Network';
 import PublicKey from './PublicKey';
-import { generatePublicKey } from './secp256k1';
+import seckp256k1 from './secp256k1';
 
 const BYTES_LENGTH: number = 32;
 
@@ -119,5 +120,18 @@ export default class PrivateKey extends Data {
 
   toPublicKey(): PublicKey {
     return generatePublicKey(this);
+  }
+
+  toPublicKey(compressed?: boolean): PublicKey {
+    // Use elliptic curve point multiplication to derive point (public key) on
+    // secp256k1 curve for the given private key
+    const point = new CurvePoint(seckp256k1, seckp256k1.basePoint.x, seckp256k1.basePoint.y);
+    point.multiply(this.toBigInt());
+
+    // Return point as PublicKey
+    const compress = compressed !== undefined ?
+      compressed :
+      this.compressPublicKey;
+    return new PublicKey(point.toBytes(compress));
   }
 }

@@ -1,5 +1,8 @@
 /**
  * Point on Eliptic Curve
+ * 
+ * Note: methods add, double and multiply relate to elliptic curve point
+ * multiplication and not regular math operations.
  */
 // @flow
 import BigInt from 'big-integer';

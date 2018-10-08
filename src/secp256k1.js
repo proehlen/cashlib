@@ -1,13 +1,10 @@
 /**
- * Secp256k1 curve related functions
+ * Secp256k1 curve
  */
 // @flow
 import BigInt from 'big-integer';
 
-import PrivateKey from './PrivateKey';
-import PublicKey from './PublicKey';
 import Curve from './Curve';
-import CurvePoint from './CurvePoint';
 
 // secp256k1 constants.  Unlike for other curves, we only need 3 here.  They are:
 //   field.  aka 'p' - integer specifying the finite field
@@ -23,18 +20,3 @@ const seckp256k1 = new Curve(
 )
 
 export default seckp256k1;
-
-// TODO move this out of this module
-export function generatePublicKey(privateKey: PrivateKey, compressed?: boolean): PublicKey {
-  // Use elliptic curve point multiplication to derive point on curve (public key)
-  // for the given private key
-  const privKeyNumber = privateKey.toBigInt();
-  let q = new CurvePoint(seckp256k1, seckp256k1.basePoint.x, seckp256k1.basePoint.y);
-  q.multiply(privKeyNumber);
-
-  // Return point as PublicKey
-  const compress = compressed !== undefined ?
-    compressed :
-    privateKey.compressPublicKey;
-  return new PublicKey(q.toBytes(compress));
-}

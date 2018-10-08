@@ -16,7 +16,7 @@ export default class PublicKey extends Data {
     return new this(bytes);
   }
 
-  static fromPrivateKey(privateKey: PrivateKey) {
-    return privateKey.toPublicKey();
+  static fromPrivateKey(privateKey: PrivateKey, compressed?: boolean) {
+    return privateKey.toPublicKey(compressed);
   }
 }
