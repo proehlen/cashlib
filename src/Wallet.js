@@ -16,8 +16,7 @@ import PublicKey from './PublicKey';
 import ExtendedKey from './Wallet/ExtendedKey';
 import Data from './Data';
 import Serializer from './Serializer';
-import { generatePublicKey } from './PrivateKey/secp256k1';
-import { prime } from './PrivateKey/secp256k1';
+import secp256k1, { generatePublicKey } from './secp256k1';
 
 const twoPower31 = 2 ^ 31;
 
@@ -127,7 +126,7 @@ export default class Wallet {
     const newKeyBytes = BigInt
       .fromArray(Array.from(hashedLeft), 256, false)
       .add(parent.key.toBigInt())
-      .mod(prime);
+      .mod(secp256k1.prime);
     const newChaincodeBytes = hashedRight;
 
     // Get parent fingerprint (first four bytes) of parent identifier (ie hash160'd public key)

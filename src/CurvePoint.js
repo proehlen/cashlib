@@ -4,38 +4,44 @@
 // @flow
 import BigInt from 'big-integer';
 import * as stringfu from 'stringfu';
-import { field, basePoint, prime } from './secp256k1';
+
+import Curve from './Curve';
 
 export default class CurvePoint {
+  _curve: Curve
   _x: BigInt
   _y: BigInt
 
-  constructor(x: BigInt, y: BigInt) {
+  constructor(curve: Curve, x: BigInt, y: BigInt) {
+    this._curve = curve;
     this._x = x;
     this._y = y;
   }
 
+  get curve() { return this._curve; }
   get x() { return this._x; }
   get y() { return this._y; }
 
   add() {
-    const lamda = basePoint.y
+    const lamda = this.curve.basePoint.y
       .subtract(this.y)
       .multiply(
-        basePoint.x.subtract(this.x).modInv(field)
+        this.curve.basePoint.x
+          .subtract(this.x)
+          .modInv(this.curve.field)
       )
-      .mod(field);
+      .mod(this.curve.field);
     const x = lamda
       .pow(2)
       .subtract(this.x)
-      .subtract(basePoint.x)
-      .mod(field);
+      .subtract(this.curve.basePoint.x)
+      .mod(this.curve.field);
     let y = lamda
       .multiply(this.x.subtract(x))
       .subtract(this.y)
-      .mod(field);
+      .mod(this.curve.field);
     if (y.isNegative()) {
-      y = y.add(field);
+      y = y.add(this.curve.field);
     }
 
     // Update x/y
@@ -48,19 +54,22 @@ export default class CurvePoint {
       .pow(2)
       .multiply(3)
       .multiply(
-        this.y.multiply(2).modInv(field)
-      ).mod(field);
+        this.y
+          .multiply(2)
+          .modInv(this.curve.field)
+      )
+      .mod(this.curve.field);
     const x = lamda
       .pow(2)
       .subtract(this.x.multiply(2))
-      .mod(field);
+      .mod(this.curve.field);
     let y = lamda
       .multiply(this.x.subtract(x))
       .subtract(this.y)
-      .mod(field);
+      .mod(this.curve.field);
     
     if (y.isNegative()) {
-      y = y.add(field);
+      y = y.add(this.curve.field);
     }
     
     // Update x/y
@@ -69,7 +78,7 @@ export default class CurvePoint {
   }
 
   multiply(key: BigInt) {
-    if (key.isZero() || key.greaterOrEquals(prime)) {
+    if (key.isZero() || key.greaterOrEquals(this.curve.prime)) {
       throw new Error('Invalid key');
     }
 
