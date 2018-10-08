@@ -21,36 +21,36 @@ export default class ExtendedPrivateKey {
   _chainCode: Uint8Array
   _depth: number
   _childNumber: number
-  _parent: ?ExtendedPrivateKey
+  _parentFingerprint: Uint8Array
 
-  constructor(key: PrivateKey, chainCode: Uint8Array, depth: number, childNumber: number, parent?: ExtendedPrivateKey) {
+  constructor(
+    key: PrivateKey,
+    chainCode: Uint8Array,
+    depth: number,
+    childNumber: number,
+    parentFingerprint: Uint8Array,
+  ) {
     assert(depth < 256, 'Depth must be single byte value.');
     assert(childNumber <= 0xffffffff, 'Child number can only be four bytes long');
     this._key = key;
     this._chainCode = chainCode;
     this._depth = depth;
     this._childNumber = childNumber;
-    this._parent = parent;
+    this._parentFingerprint = parentFingerprint;
   }
 
   get key() { return this._key; };
   get chainCode() { return this._chainCode; };
   get depth() { return this._depth; }
   get childNumber() { return this._childNumber; }
-  get parent() { return this._parent; }
+  get parentFingerprint() { return this._parentFingerprint; }
 
   toSerialized(network: Network): string {
     // Serialize data to be encoded
     const toBeEncoded = new Serializer();
     toBeEncoded.addBytes(network.prefixes.extendedKeyVersion.private);
     toBeEncoded.addUint8(this.depth);
-    if (this.parent) {
-      // Fingerprint (first four bytes) of parent key
-      toBeEncoded.addBytes(this.parent.key.bytes.slice(0, 4));
-    } else {
-      // No parent key to fingerprint, use 0x00000000
-      toBeEncoded.addUint32(0);
-    }
+    toBeEncoded.addBytes(this._parentFingerprint);
     toBeEncoded.addUint32(this.childNumber);
     toBeEncoded.addBytes(this.chainCode);
     toBeEncoded.addUint8(0); // Padding/dummy prefix for private keys

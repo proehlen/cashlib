@@ -56,7 +56,7 @@ export default class Wallet {
       masterChainCode,
       0,
       0,
-      undefined,
+      new Uint8Array([0x00, 0x00, 0x00, 0x00]), // No parent, no fingerprint
     );
     const masterPublicKey = new ExtendedPublicKey(
       publicKey,
@@ -95,34 +95,37 @@ export default class Wallet {
   // }
 
   _derivePrivateChildFromPrivate(parent: ExtendedPrivateKey, childNumber: number): ExtendedPrivateKey {
-    // Serialize and hash data
+    // Serialize data to be hashed
     let hardened: boolean = childNumber >= twoPower31;
     const toHash = new Serializer();
-    // $flow-disable-line Uint8Array *is* compatible with hmac.create
-    let hmac = createHmac('sha512', parent.chainCode);
     if (hardened) {
-      toHash.addUint8(0x00);
+      toHash.addUint8(0x00); // Pad parent key to 33 bytes
       toHash.addBytes(parent.key.bytes);
-      // $flow-disable-line Uint8Array *is* compatible with hmac.update
-      hmac.update(toHash.toBytes());
     } else {
       const compressedPublicKey = generatePublicKey(parent.key, true);
-      const toHash = new Serializer();
-      toHash.addUint8(0x00);
       toHash.addBytes(compressedPublicKey.bytes);
-      // $flow-disable-line Uint8Array *is* compatible with hmac.update
-      hmac.update(toHash.toBytes());
     }
     toHash.addUint32(childNumber);
+
+    // Hash serialized data
+    // $flow-disable-line Uint8Array *is* compatible with hmac.create
+    let hmac = createHmac('sha512', parent.chainCode);
+    // $flow-disable-line Uint8Array *is* compatible with hmac.update
+    hmac.update(toHash.toBytes());
     const hashed = hmac.digest();
 
     // Build new key components
-    debugger;
+    const hashedLeft = hashed.slice(0, 32);
+    const hashedRight = hashed.slice(32, 64);
     const newKeyBytes = BigInt
-      .fromArray(Array.from(hashed.slice(0, 32)), 256, false)
+      .fromArray(Array.from(hashedLeft), 256, false)
       .add(parent.key.toBigInt())
       .mod(prime);
-    const newChaincodeBytes = hashed.slice(32);
+    const newChaincodeBytes = hashedRight;
+
+    // Get parent fingerprint (first four bytes) of parent identifier (ie hash160'd public key)
+    // TODO performance: recreating public key is slow - consider requiring it as a parameter
+    const parentFingerPrint = parent.key.toPublicKey().toHash160().slice(0, 4);
 
     // Build and return key
     return new ExtendedPrivateKey(
@@ -130,7 +133,7 @@ export default class Wallet {
       newChaincodeBytes,
       1, // TODO - FIX DEPTH
       childNumber,
-      parent
+      parentFingerPrint,
     );
   }
 
