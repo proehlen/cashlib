@@ -1,4 +1,6 @@
 // @flow
+import BigInt from 'big-integer';
+import assert from 'assert';
 import crypto from 'crypto';
 import { fromBytes, splitWidth } from 'stringfu';
 import * as stringfu from 'stringfu';
@@ -18,6 +20,7 @@ export default class PrivateKey extends Data {
   _wif: string;
 
   constructor(bytes: Uint8Array, compressPublicKey: boolean = false) {
+    assert(bytes.length === BYTES_LENGTH);
     super(bytes);
     this._compressPublicKey = compressPublicKey;
   }
@@ -69,6 +72,27 @@ export default class PrivateKey extends Data {
     return new PrivateKey(keyBytes, compressPublicKey);
   }
 
+  static fromInteger(value: BigInt | number) {
+    // Coerce into BigInt
+    let bigValue: BigInt;
+    if (value instanceof BigInt) {
+      bigValue = value;
+    } else if (typeof value === 'number') {
+      bigValue = new BigInt(value);
+    } else {
+      throw new Error('Unexpected value passed to PrivateKey.fromInteger');
+    }
+
+    // Get integer as bytes
+    const bytes = new Uint8Array(BYTES_LENGTH);
+    const maybeShortBytes = bigValue.toArray(256).value;
+    const offset = BYTES_LENGTH - maybeShortBytes.length 
+    bytes.set(maybeShortBytes, offset);
+    debugger;
+
+    return new PrivateKey(bytes);
+  }
+
   toWif(network: Network): string {
     if (!this._wif) {
       const privKeyAndVersion = new Uint8Array(this.bytes.length + 1);
@@ -118,15 +142,10 @@ export default class PrivateKey extends Data {
     return pem;
   }
 
-  toPublicKey(): PublicKey {
-    return generatePublicKey(this);
-  }
-
   toPublicKey(compressed?: boolean): PublicKey {
     // Use elliptic curve point multiplication to derive point (public key) on
     // secp256k1 curve for the given private key
-    const point = new CurvePoint(seckp256k1, seckp256k1.basePoint.x, seckp256k1.basePoint.y);
-    point.multiply(this.toBigInt());
+    const point = CurvePoint.fromInteger(seckp256k1, this.toBigInt());
 
     // Return point as PublicKey
     const compress = compressed !== undefined ?
