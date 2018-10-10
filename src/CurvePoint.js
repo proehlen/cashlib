@@ -7,6 +7,7 @@
 // @flow
 import BigInt from 'big-integer';
 import * as stringfu from 'stringfu';
+import assert from 'assert';
 
 import Curve from './Curve';
 import { modSqrt } from './math';
@@ -17,6 +18,7 @@ export default class CurvePoint {
   _y: BigInt
 
   constructor(curve: Curve, x: BigInt, y: BigInt) {
+    assert(!x.isZero() && !y.isZero());
     this._curve = curve;
     this._x = x;
     this._y = y;
