@@ -28,23 +28,23 @@ export default class CurvePoint {
   get x() { return this._x; }
   get y() { return this._y; }
 
-  add() {
+  add(point: CurvePoint = this) {
     const lamda = this.curve.basePoint.y
-      .subtract(this.y)
+      .subtract(point.y)
       .multiply(
         this.curve.basePoint.x
-          .subtract(this.x)
+          .subtract(point.x)
           .modInv(this.curve.field)
       )
       .mod(this.curve.field);
     const x = lamda
       .pow(2)
-      .subtract(this.x)
+      .subtract(point.x)
       .subtract(this.curve.basePoint.x)
       .mod(this.curve.field);
     let y = lamda
-      .multiply(this.x.subtract(x))
-      .subtract(this.y)
+      .multiply(point.x.subtract(x))
+      .subtract(point.y)
       .mod(this.curve.field);
     if (y.isNegative()) {
       y = y.add(this.curve.field);
