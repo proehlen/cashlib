@@ -9,6 +9,7 @@ import BigInt from 'big-integer';
 import * as stringfu from 'stringfu';
 
 import Curve from './Curve';
+import { modSqrt } from './math';
 
 export default class CurvePoint {
   _curve: Curve
@@ -80,15 +81,15 @@ export default class CurvePoint {
     this._y = y;
   }
 
-  multiply(key: BigInt) {
-    if (key.isZero() || key.greaterOrEquals(this.curve.prime)) {
-      throw new Error('Invalid key');
+  multiply(value: BigInt) {
+    if (value.isZero() || value.greaterOrEquals(this.curve.prime)) {
+      throw new Error('Invalid value/key for ec point multiplication');
     }
 
-    const keyBits = key.toString(2).split('');
-    for (let i = 1; i <  keyBits.length; i++) {
+    const bits = value.toString(2).split('');
+    for (let i = 1; i <  bits.length; i++) {
       this.double();
-      if (keyBits[i] === '1') {
+      if (bits[i] === '1') {
         this.add();
       }
     }
@@ -114,8 +115,59 @@ export default class CurvePoint {
     return bytes;
   }
 
-  toHex(compressed: boolean = true) {
+  toHex(compressed: boolean = true): string {
     const bytes = this.toBytes(compressed);
     return stringfu.fromBytes(bytes);
+  }
+
+  /**
+   * Use elliptic curve point multiplication to derive point (public key) on
+   * secp256k1 curve for the given integer (private key)
+   */
+  static fromInteger(curve: Curve, value: BigInt): CurvePoint {
+    const point = new CurvePoint(curve, curve.basePoint.x, curve.basePoint.y);
+    point.multiply(value);
+    return point;
+  }
+
+  static fromHex(curve: Curve, hex: string) {
+    const bytes = stringfu.toBytes(hex);
+    return CurvePoint.fromBytes(curve, bytes);
+  }
+  
+  static fromBytes(curve: Curve, bytes: Uint8Array): CurvePoint {
+    let x: BigInt;
+    let y: BigInt;
+    if (bytes.length === 65 && bytes[0] === 0x04) {
+      // Uncompressed public key
+      x = new BigInt.fromArray(Array.from(bytes.slice(1, 33)), 256, false);
+      y = new BigInt.fromArray(Array.from(bytes.slice(33, 65)), 256, false);
+    } else if (bytes.length === 33) {
+      // Compressed public key
+      x = new BigInt.fromArray(Array.from(bytes.slice(1)), 256, false);
+      let requireEven: boolean;
+      if (bytes[0] === 0x02) {
+        // Should produce point with even Y value
+        requireEven = true;
+      } else if (bytes[0] === 0x03) {
+        // Should produce point with odd Y value
+        requireEven = false;
+      }
+
+      // Calculate y
+      // const ySquared = x.pow(3).add(curve.elementB).mod(curve.field);
+      const ySquared = x.pow(3).add(curve.elementB).mod(curve.field);
+      y = modSqrt(ySquared, curve.field);
+      if (y.isEven() !== requireEven) {
+        // Get other square root
+        y = curve.field.subtract(y);
+      }
+    }
+
+    if (x === undefined || y === undefined) {
+      throw new Error('Unable to reconstruct curve point from unrecognized byte format');
+    } else {
+      return new CurvePoint(curve, x, y);
+    }
   }
 }
