@@ -15,10 +15,14 @@ Existing Bitcoin JavaScript libraries are quite large and involve learning the l
 
 ## Terminology
 
-This library uses the following terms:
+### Data formats and methods
 
-| Term | Uses | Meaning |
+This library uses the following terms and conventions in method naming:
+
+| Term | Methods | Meaning |
 |------|------|---------|
-| bytes | toBytes, fromBytes | Bytes are data stores as a JavaScript Uint8Array consisting of 8-bit bytes. Order/endianess/signed is not defined. The Data class provides a convenience wrapper for storing and working with bytes. |
-| hex  | toHex, fromHex | A JavaScript String of equal length consisting of two character hexadecimal bytes without any special prefix (ie no '0x').  Example data: "FF00". |
-| string | toString, fromString | Undefined. Should be avoided. |
+| bytes | toBytes, fromBytes | Bytes are data stored as a JavaScript Uint8Array consisting of 8-bit bytes. Order/endianess/signed is not defined. The Data class provides a convenient parent to subclass for objects that are fundamentally represented by bytes. |
+| hex  | toHex, fromHex | A JavaScript String of even length consisting of two character hexadecimal bytes without any special prefix (ie no '0x').  Example data: "FF00". |
+| raw | - | Term avoided due to semantic ambiguity.  See 'serialized' |
+| serialized | toSerialized, fromSerialized | Serialized data is in a format intended for transmission to other machines or humans. In the Bitcoin protocol, this is also often also known as 'raw'.  When talking about addresses, extended public keys etc, 'serialized' data is presented in a format that is easier for humans to work with (e.g. hashed and base58 or base64 encoded) |
+| string | toString, fromString | Where used, format is undefined. Should be avoided. |

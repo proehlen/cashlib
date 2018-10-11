@@ -1,28 +1,31 @@
 // @flow
+import BigInt from 'big-integer';
+import assert from 'assert';
 import crypto from 'crypto';
 import { fromBytes, splitWidth } from 'stringfu';
 import * as stringfu from 'stringfu';
 
+import CurvePoint from './CurvePoint';
 import Data from './Data';
 import base58 from './base58';
 import base64 from './base64';
 import Network from './Network';
 import PublicKey from './PublicKey';
-import { generatePublicKey } from './PrivateKey/secp256k1';
 
 const BYTES_LENGTH: number = 32;
 
 export default class PrivateKey extends Data {
-  _compressed: boolean
+  _compressPublicKey: boolean
   _wif: string;
 
-  constructor(bytes: Uint8Array, compressed: boolean = false) {
+  constructor(bytes: Uint8Array, compressPublicKey: boolean = false) {
+    assert(bytes.length === BYTES_LENGTH);
     super(bytes);
-    this._compressed = compressed;
+    this._compressPublicKey = compressPublicKey;
   }
 
-  get compressed() {
-    return this._compressed;
+  get compressPublicKey() {
+    return this._compressPublicKey;
   }
 
   static fromHex(hex: string) {
@@ -32,24 +35,24 @@ export default class PrivateKey extends Data {
 
   static fromWif(wifKey: string): PrivateKey {
     const firstChar = wifKey.substr(0, 1);
-    let compressed: boolean;
+    let compressPublicKey: boolean;
     switch (firstChar) {
       case '5':
         // Mainnet
-        compressed = false;
+        compressPublicKey = false;
         break;
       case 'K':
       case 'L':
         // Mainnet
-        compressed = true;
+        compressPublicKey = true;
         break;
       case '9':
         // Testnet
-        compressed = false;
+        compressPublicKey = false;
         break;
       case 'c':
         // Testnet
-        compressed = true;
+        compressPublicKey = true;
         break;
       default:
         // Don't know how to handle this (refer 'WIF to private key' @
@@ -60,12 +63,24 @@ export default class PrivateKey extends Data {
     const dropLast4 = wifBytes.slice(0, wifBytes.length - 4);
     const dropFirst = dropLast4.slice(1);
     let keyBytes;
-    if (compressed) {
+    if (compressPublicKey) {
       keyBytes = dropFirst.slice(0, dropFirst.length - 1);
     } else {
       keyBytes = dropFirst;
     }
-    return new PrivateKey(keyBytes, compressed);
+    return new PrivateKey(keyBytes, compressPublicKey);
+  }
+
+  static fromBigInt(value: BigInt) {
+    assert(value instanceof BigInt, 'Value is not a big integer');
+
+    // Get integer as bytes
+    const bytes = new Uint8Array(BYTES_LENGTH);
+    const maybeShortBytes = value.toArray(256).value;
+    const offset = BYTES_LENGTH - maybeShortBytes.length 
+    bytes.set(maybeShortBytes, offset);
+
+    return new PrivateKey(bytes);
   }
 
   toWif(network: Network): string {
@@ -117,7 +132,21 @@ export default class PrivateKey extends Data {
     return pem;
   }
 
-  toPublicKey(): PublicKey {
-    return generatePublicKey(this);
+  toPublicKey(compressed?: boolean): PublicKey {
+    const point = this.toCurvePoint();
+
+    // Return point as PublicKey
+    const compress = compressed !== undefined ?
+      compressed :
+      this.compressPublicKey;
+    return new PublicKey(point.toBytes(compress));
+  }
+  
+  /**
+   * Derive point (public key) on secp256k1 curve for the integer
+   * (private key)
+   */
+  toCurvePoint(): CurvePoint {
+    return CurvePoint.fromBigInt(this.toBigInt());
   }
 }

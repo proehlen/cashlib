@@ -42,12 +42,6 @@ export default class Address extends Data {
   }
 
   static fromPublicKey(publicKey: PublicKey, network: Network): Address {
-    const pubkey256 = crypto
-      .createHash('sha256')
-      // $flow-disable-line cipher.update accepts Uint8Array contrary to flow error
-      .update(publicKey.bytes)
-      .digest();
-    const hash160 = crypto.createHash('RIPEMD160').update(pubkey256).digest();
-    return Address.fromPublicKeyHash(hash160, network);
+    return Address.fromPublicKeyHash(publicKey.toHash160(), network);
   }
 }
