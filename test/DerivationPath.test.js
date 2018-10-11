@@ -4,8 +4,8 @@ declare var describe: any;
 declare var test: any;
 declare var expect: any;
 
-const DerivationPath = require('../../lib/Wallet/DerivationPath').default;
-const Network = require('../../lib/Network').default;
+const DerivationPath = require('../lib/Wallet/DerivationPath').default;
+const Network = require('../lib/Network').default;
 const network = Network.fromString('mainnet');
 let pathString: string;
 

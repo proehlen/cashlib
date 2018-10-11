@@ -69,16 +69,20 @@ export default class Wallet {
     return new Wallet(masterPublicKey, masterPrivateKey);
   }
 
-  // getChildKey(path: DerivationPath): ExtendedPublicKey | ExtendedPrivateKey | void {
-  //   let result;
-  //   if (!path.numLevels) {
-  //     // Return master key
-  //     if (path.isPrivate) {
-  //       result = this._extendedPrivateKey;
-  //     } else {
-  //       result = this._extendedPublicKey;
-  //     }
-  //   } else if (path.isPrivate) {
+  getKey(path: DerivationPath): ExtendedKey {
+    let result;
+    if (!path.numLevels) {
+      // Return master key
+      if (path.isPrivate) {
+        result = this.getMasterPrivateKey();
+      } else {
+        result = this.getMasterPublicKey();
+      }
+    } else {
+      // TODO REPLACE
+      throw new Error('Child key derivation not implemented yet');
+    }
+    // } else if (path.isPrivate) {
   //     // Walk key tree to get requested private key
   //     const levels = path.levels;
   //     let parent = this.extendedPrivateKey;
@@ -92,8 +96,8 @@ export default class Wallet {
 
   //   }
 
-  //   return result;
-  // }
+    return result;
+  }
 
   /**
    * BIP-0032 function CKDpriv((kpar, cpar), i) → (ki, ci) computes a child extended
