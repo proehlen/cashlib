@@ -70,33 +70,54 @@ export default class Wallet {
   }
 
   getKey(path: DerivationPath): ExtendedKey {
-    let result;
+    let key: ExtendedKey;
     if (!path.numLevels) {
-      // Return master key
-      if (path.isPrivate) {
-        result = this.getMasterPrivateKey();
-      } else {
-        result = this.getMasterPublicKey();
-      }
+      // No sub key requested just return appropriate master
+      key = path.isPrivate 
+        ? this.getMasterPrivateKey()
+        : this.getMasterPublicKey();
     } else {
-      // TODO REPLACE
-      throw new Error('Child key derivation not implemented yet');
+      key = this._getChildKey(path, 1, this._masterPrivateKey || this._masterPublicKey);
     }
-    // } else if (path.isPrivate) {
-  //     // Walk key tree to get requested private key
-  //     const levels = path.levels;
-  //     let parent = this.extendedPrivateKey;
-  //     for (let i = 0; i < path.numLevels; i++) {
-  //       const level = levels[i];
-  //       result = this._derivePrivateChildFromPrivate(parent, level.childNumber);
-  //       parent = result;
-  //     }
-  //   } else {
-  //     // Walk key tree to get requested public key
+    return key;
+  }
 
-  //   }
+  _getChildKey(path: DerivationPath, childDepth: number, parent: ExtendedKey): ExtendedKey {
+    let key: ExtendedKey;
+    const isLastLevel = childDepth === path.numLevels;
+    const currentLevel = path.levels[childDepth - 1];
 
-    return result;
+    if (!isLastLevel) {
+      // Use recursion to walk key tree favoring use of private keys for performance until last level
+      if (parent.key instanceof PrivateKey) {
+        key = this._derivePrivateChildFromPrivate(parent, childDepth, currentLevel.childNumber);
+      } else {
+        key = this._derivePublicChildFromPublic(parent, childDepth, currentLevel.childNumber);
+      }
+      key = this._getChildKey(path, childDepth + 1, key);
+    } else {
+      // At last level, return key of explicitly requested type
+      if (parent.key instanceof PrivateKey) {
+        // We have private key
+        if (path.isPrivate) {
+          // Return private child
+          key = this._derivePrivateChildFromPrivate(parent, childDepth, currentLevel.childNumber);
+        } else {
+          // Return public child
+          key = this._derivePublicChildFromPrivate(parent, childDepth, currentLevel.childNumber);
+        }
+      } else {
+        // We do not have private key
+        if (path.isPrivate) {
+          throw new Error('Unable to derive private key from public parent');
+        } else {
+          // Return public child
+          key = this._derivePublicChildFromPublic(parent, childDepth, currentLevel.childNumber);
+        }
+      }
+    }
+
+    return key;
   }
 
   /**
