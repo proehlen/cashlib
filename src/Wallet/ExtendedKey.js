@@ -72,7 +72,9 @@ export default class ExtendedKey {
     toBeEncoded.addBytes(networkPrefix);
     toBeEncoded.addUint8(this.depth);
     toBeEncoded.addBytes(this._parentFingerprint);
-    toBeEncoded.addUint32(this.childNumber);
+    // TODO understand why spec calls for following line but works with just raw bytes
+    // "4 bytes: child number. This is ser32(i) for i in xi = xpar/i, with xi the key being serialized. (0x00000000 if master key)"
+    toBeEncoded.addUint32(this.childNumber, 'BE');
     toBeEncoded.addBytes(this.chainCode);
     if (this._key instanceof PrivateKey) {
       // Padding/dummy prefix for private keys to make them 33 bytes

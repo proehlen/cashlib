@@ -56,10 +56,15 @@ export default class DerivationPath {
       .filter(rec => rec !== '')
       .map((encodedLevel, index) => {
         const levelAndHardened = encodedLevel.split(',');
+        const hardened = levelAndHardened[1] !== undefined && levelAndHardened[1] === "'";
+        let childNumber = parseInt(levelAndHardened[0]);
+        if (hardened) {
+          childNumber = childNumber + (2 ** 31);
+        }
         return {
           depth: index + 1,
-          childNumber: parseInt(levelAndHardened[0]),
-          hardened: levelAndHardened[1] !== undefined && levelAndHardened[1] === "'",
+          childNumber,
+          hardened,
         };
       });
 

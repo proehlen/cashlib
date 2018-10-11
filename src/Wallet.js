@@ -20,7 +20,7 @@ import Data from './Data';
 import Serializer from './Serializer';
 import secp256k1 from './secp256k1';
 
-const twoPower31 = 2 ^ 31;
+const twoPower31 = 2 ** 31;
 
 export default class Wallet {
   _masterPublicKey: ExtendedKey
@@ -139,7 +139,7 @@ export default class Wallet {
       const compressedPublicKey = parent.getPrivateKey().toPublicKey(true);
       toHash.addBytes(compressedPublicKey.bytes);
     }
-    toHash.addUint32(childNumber);
+    toHash.addUint32(childNumber, 'BE');
 
     // Hash serialized data
     // $flow-disable-line Uint8Array *is* compatible with hmac.create
@@ -218,7 +218,7 @@ export default class Wallet {
     } else {
       toHash.addBytes(parent.getPublicKey().bytes);
     }
-    toHash.addUint32(childNumber);
+    toHash.addUint32(childNumber, 'BE');
 
     // Hash serialized data
     // $flow-disable-line Uint8Array *is* compatible with hmac.create

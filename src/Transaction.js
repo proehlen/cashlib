@@ -87,17 +87,17 @@ export default class Transaction {
 
   serialize(): string {
     const bytes = new Serializer();
-    bytes.addUint32(VERSION);
+    bytes.addUint32(VERSION, 'LE');
 
     // Add transaction inputs
     bytes.addCompactSize(this._inputs.length);
     for (let x = 0; x < this._inputs.length; ++x) {
       const input = this._inputs[x];
       bytes.addBytesString(input.transactionId, true);
-      bytes.addUint32(input.outputIndex);
+      bytes.addUint32(input.outputIndex, 'LE');
       bytes.addCompactSize(input.signatureScript.length);
       bytes.addBytes(input.signatureScript);
-      bytes.addUint32(input.sequence);
+      bytes.addUint32(input.sequence, 'LE');
     }
       
     // Add transaction outputs
@@ -110,7 +110,7 @@ export default class Transaction {
     }
 
     // Locktime
-    bytes.addUint32(this._lockTime);
+    bytes.addUint32(this._lockTime, 'LE');
       
     return bytes.hex;
   }

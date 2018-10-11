@@ -66,8 +66,8 @@ describe('DerivationPath', () => {
       test('level 1 is decoded correctly', () => {
         const level1 = levels[0];
         expect(level1.depth).toEqual(1);
-        expect(level1.childNumber).toEqual(5);
         expect(level1.hardened).toEqual(true);
+        expect(level1.childNumber).toEqual(5 + 2 ** 31);
       });
       test('level 2 is decoded correctly', () => {
         const level2 = levels[1];
@@ -84,6 +84,6 @@ describe('DerivationPath', () => {
     levels.pop();
     levels = path.levels;
     expect(levels.length).toEqual(2);
-    expect(levels[0].childNumber).toEqual(5);
+    expect(levels[1].childNumber).toEqual(3);
   });
 });

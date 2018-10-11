@@ -5,6 +5,8 @@
 // @flow
 import { leftPad, reverseBytes, toBytes } from 'stringfu';
 
+export type Endianness = 'LE' | 'BE';
+
 export default class Serializer {
   _hex: string
 
@@ -20,23 +22,27 @@ export default class Serializer {
     return toBytes(this._hex);
   }
 
-  _addUint(value: number, sizeBytes: number) {
+  _addUint(value: number, sizeBytes: number, endianness: Endianness) {
     let hex = value.toString(16);
     hex = leftPad(hex, sizeBytes * 2, '0');
-    hex = reverseBytes(hex);
+    if (endianness === 'LE') {
+      hex = reverseBytes(hex);
+    }
     this._hex += hex;
   }
 
   addUint8(value: number) {
-    this._addUint(value, 1);
+    // Endianness doesn't matter for one byte value but is required by _addUint so
+    // just pass anything
+    this._addUint(value, 1, 'LE');
   }
 
-  addUint16(value: number) {
-    this._addUint(value, 2);
+  addUint16(value: number, endianness: Endianness) {
+    this._addUint(value, 2, endianness);
   }
 
-  addUint32(value: number) {
-    this._addUint(value, 4);
+  addUint32(value: number, endianness: Endianness) {
+    this._addUint(value, 4, endianness);
   }
 
   /**
@@ -97,10 +103,10 @@ export default class Serializer {
       this.addUint8(value);
     } else if (value <= 0xffff) {
       this.addUint8(0xfd);
-      this.addUint16(value);
+      this.addUint16(value, 'LE');
     } else if (value <= 0xffffffff) {
       this.addUint8(0xfe);
-      this.addUint32(value);
+      this.addUint32(value, 'LE');
     } else {
       this.addUint8(0xff);
       // Add 64-bit unsigned int.  Use method for signed int because up to 
