@@ -51,7 +51,7 @@ export default class DerivationPath {
     // Decode levels
     const levels: DerivationPathLevels = serialized
       .substr(1)
-      .replace("'", ",'")
+      .replace(/'/g, ",'")
       .split('/')
       .filter(rec => rec !== '')
       .map((encodedLevel, index) => {
