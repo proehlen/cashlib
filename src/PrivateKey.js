@@ -11,7 +11,6 @@ import base58 from './base58';
 import base64 from './base64';
 import Network from './Network';
 import PublicKey from './PublicKey';
-import seckp256k1 from './secp256k1';
 
 const BYTES_LENGTH: number = 32;
 
@@ -72,23 +71,14 @@ export default class PrivateKey extends Data {
     return new PrivateKey(keyBytes, compressPublicKey);
   }
 
-  static fromInteger(value: BigInt | number) {
-    // Coerce into BigInt
-    let bigValue: BigInt;
-    if (value instanceof BigInt) {
-      bigValue = value;
-    } else if (typeof value === 'number') {
-      bigValue = new BigInt(value);
-    } else {
-      throw new Error('Unexpected value passed to PrivateKey.fromInteger');
-    }
+  static fromBigInt(value: BigInt) {
+    assert(value instanceof BigInt, 'Value is not a big integer');
 
     // Get integer as bytes
     const bytes = new Uint8Array(BYTES_LENGTH);
-    const maybeShortBytes = bigValue.toArray(256).value;
+    const maybeShortBytes = value.toArray(256).value;
     const offset = BYTES_LENGTH - maybeShortBytes.length 
     bytes.set(maybeShortBytes, offset);
-    debugger;
 
     return new PrivateKey(bytes);
   }
@@ -143,14 +133,20 @@ export default class PrivateKey extends Data {
   }
 
   toPublicKey(compressed?: boolean): PublicKey {
-    // Use elliptic curve point multiplication to derive point (public key) on
-    // secp256k1 curve for the given private key
-    const point = CurvePoint.fromInteger(seckp256k1, this.toBigInt());
+    const point = this.toCurvePoint();
 
     // Return point as PublicKey
     const compress = compressed !== undefined ?
       compressed :
       this.compressPublicKey;
     return new PublicKey(point.toBytes(compress));
+  }
+  
+  /**
+   * Derive point (public key) on secp256k1 curve for the integer
+   * (private key)
+   */
+  toCurvePoint(): CurvePoint {
+    return CurvePoint.fromBigInt(this.toBigInt());
   }
 }

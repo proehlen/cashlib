@@ -46,6 +46,22 @@ export default class ExtendedKey {
   get childNumber() { return this._childNumber; }
   get parentFingerprint() { return this._parentFingerprint; }
 
+  getPrivateKey(): PrivateKey {
+    if (this._key instanceof PrivateKey) {
+      return this._key;
+    } else {
+      throw new Error('Key for this extended key is not a private key');
+    }
+  }
+
+  getPublicKey(): PublicKey {
+    if (this._key instanceof PublicKey) {
+      return this._key;
+    } else {
+      throw new Error('Key for this extended key is not a public key');
+    }
+  }
+
   toSerialized(network: Network): string {
     const networkPrefix = this.key instanceof PrivateKey
       ? network.prefixes.extendedKeyVersion.private

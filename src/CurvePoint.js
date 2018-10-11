@@ -3,98 +3,90 @@
  * 
  * Note: methods add, double and multiply relate to elliptic curve point
  * multiplication and not regular math operations.
+ * 
+ * Note: since we presently only use secp256k1, some simplifications are possible
+ * in elliptic curve point multiplication.  If other curves are implemented,
+ * these may not apply and this class would need to be updated.
  */
 // @flow
 import BigInt from 'big-integer';
 import * as stringfu from 'stringfu';
 import assert from 'assert';
 
-import Curve from './Curve';
+import Point from './Point';
+import secp256k1 from './secp256k1';
 import { modSqrt } from './math';
 
-export default class CurvePoint {
-  _curve: Curve
-  _x: BigInt
-  _y: BigInt
+export default class CurvePoint extends Point {
 
-  constructor(curve: Curve, x: BigInt, y: BigInt) {
-    assert(!x.isZero() && !y.isZero());
-    this._curve = curve;
-    this._x = x;
-    this._y = y;
-  }
-
-  get curve() { return this._curve; }
-  get x() { return this._x; }
-  get y() { return this._y; }
-
-  add(point: CurvePoint = this) {
-    const lamda = this.curve.basePoint.y
-      .subtract(point.y)
+  static add(pointA: Point, pointB: Point): CurvePoint {
+    const lamda = pointB.y
+      .subtract(pointA.y)
       .multiply(
-        this.curve.basePoint.x
-          .subtract(point.x)
-          .modInv(this.curve.field)
+        pointB.x
+          .subtract(pointA.x)
+          .modInv(secp256k1.field)
       )
-      .mod(this.curve.field);
+      .mod(secp256k1.field);
     const x = lamda
       .pow(2)
-      .subtract(point.x)
-      .subtract(this.curve.basePoint.x)
-      .mod(this.curve.field);
+      .subtract(pointA.x)
+      .subtract(pointB.x)
+      .mod(secp256k1.field);
     let y = lamda
-      .multiply(point.x.subtract(x))
-      .subtract(point.y)
-      .mod(this.curve.field);
+      .multiply(pointA.x.subtract(x))
+      .subtract(pointA.y)
+      .mod(secp256k1.field);
     if (y.isNegative()) {
-      y = y.add(this.curve.field);
+      y = y.add(secp256k1.field);
     }
 
-    // Update x/y
-    this._x = x;
-    this._y = y;
+    // Return new point
+    return new CurvePoint(x, y);
   }
 
-  double() {
-    const lamda = this.x
+  static double(point: Point): CurvePoint {
+    const lamda = point.x
       .pow(2)
       .multiply(3)
       .multiply(
-        this.y
+        point.y
           .multiply(2)
-          .modInv(this.curve.field)
+          .modInv(secp256k1.field)
       )
-      .mod(this.curve.field);
+      .mod(secp256k1.field);
     const x = lamda
       .pow(2)
-      .subtract(this.x.multiply(2))
-      .mod(this.curve.field);
+      .subtract(point.x.multiply(2))
+      .mod(secp256k1.field);
     let y = lamda
-      .multiply(this.x.subtract(x))
-      .subtract(this.y)
-      .mod(this.curve.field);
+      .multiply(point.x.subtract(x))
+      .subtract(point.y)
+      .mod(secp256k1.field);
     
     if (y.isNegative()) {
-      y = y.add(this.curve.field);
+      y = y.add(secp256k1.field);
     }
     
     // Update x/y
-    this._x = x;
-    this._y = y;
+    return new CurvePoint(x, y);
   }
 
-  multiply(value: BigInt) {
-    if (value.isZero() || value.greaterOrEquals(this.curve.prime)) {
+  static multiply(value: BigInt): CurvePoint {
+    if (value.isZero() || value.greaterOrEquals(secp256k1.order)) {
       throw new Error('Invalid value/key for ec point multiplication');
     }
 
+    let point = new CurvePoint(secp256k1.basePoint.x, secp256k1.basePoint.y);
     const bits = value.toString(2).split('');
     for (let i = 1; i <  bits.length; i++) {
-      this.double();
+      point = CurvePoint.double(point);
       if (bits[i] === '1') {
-        this.add();
+        point = CurvePoint.add(point, secp256k1.basePoint);
       }
     }
+    
+    return point;
   }
 
   toBytes(compressed: boolean = true) {
@@ -126,18 +118,17 @@ export default class CurvePoint {
    * Use elliptic curve point multiplication to derive point (public key) on
    * secp256k1 curve for the given integer (private key)
    */
-  static fromInteger(curve: Curve, value: BigInt): CurvePoint {
-    const point = new CurvePoint(curve, curve.basePoint.x, curve.basePoint.y);
-    point.multiply(value);
-    return point;
+  static fromBigInt(value: BigInt): CurvePoint {
+    assert(value instanceof BigInt, 'Value is not a big integer');
+    return CurvePoint.multiply(value);
   }
 
-  static fromHex(curve: Curve, hex: string) {
+  static fromHex(hex: string) {
     const bytes = stringfu.toBytes(hex);
-    return CurvePoint.fromBytes(curve, bytes);
+    return CurvePoint.fromBytes(bytes);
   }
   
-  static fromBytes(curve: Curve, bytes: Uint8Array): CurvePoint {
+  static fromBytes(bytes: Uint8Array): CurvePoint {
     let x: BigInt;
     let y: BigInt;
     if (bytes.length === 65 && bytes[0] === 0x04) {
@@ -157,19 +148,18 @@ export default class CurvePoint {
       }
 
       // Calculate y
-      // const ySquared = x.pow(3).add(curve.elementB).mod(curve.field);
-      const ySquared = x.pow(3).add(curve.elementB).mod(curve.field);
-      y = modSqrt(ySquared, curve.field);
+      const ySquared = x.pow(3).add(secp256k1.elementB).mod(secp256k1.field);
+      y = modSqrt(ySquared, secp256k1.field);
       if (y.isEven() !== requireEven) {
         // Get other square root
-        y = curve.field.subtract(y);
+        y = secp256k1.field.subtract(y);
       }
     }
 
     if (x === undefined || y === undefined) {
       throw new Error('Unable to reconstruct curve point from unrecognized byte format');
     } else {
-      return new CurvePoint(curve, x, y);
+      return new CurvePoint(x, y);
     }
   }
 }
