@@ -13,7 +13,7 @@ describe('DerivationPath', () => {
   describe('Decoding', () => {
     pathString = 'm';
     describe(pathString, () => {
-      const path = new DerivationPath(pathString);
+      const path = DerivationPath.fromSerialized(pathString);
       const levels = path.levels;
       test('is type private', () => {
         expect(path.type).toEqual('private');
@@ -25,7 +25,7 @@ describe('DerivationPath', () => {
 
     pathString = 'M';
     describe(pathString, () => {
-      const path = new DerivationPath(pathString);
+      const path = DerivationPath.fromSerialized(pathString);
       const levels = path.levels;
       test('is type public', () => {
         expect(path.type).toEqual('public');
@@ -37,7 +37,7 @@ describe('DerivationPath', () => {
 
     pathString = 'm/0';
     describe(pathString, () => {
-      const path = new DerivationPath(pathString);
+      const path = DerivationPath.fromSerialized(pathString);
       const levels = path.levels;
       test('is type private', () => {
         expect(path.type).toEqual('private');
@@ -55,7 +55,7 @@ describe('DerivationPath', () => {
 
     pathString = "M/5'/3";
     describe(pathString, () => {
-      const path = new DerivationPath(pathString);
+      const path = DerivationPath.fromSerialized(pathString);
       const levels = path.levels;
       test('is type public', () => {
         expect(path.type).toEqual('public');
@@ -78,7 +78,7 @@ describe('DerivationPath', () => {
     });
   });
   describe('DerivationPath.levels is immutable', () => {
-    const path = new DerivationPath("M/5'/3");
+    const path = DerivationPath.fromSerialized("M/5'/3");
     let levels = path.levels;
     levels[0].childNumber = 6;
     levels.pop();

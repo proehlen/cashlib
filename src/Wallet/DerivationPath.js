@@ -25,28 +25,31 @@ export type DerivationPathLevel = {
 export type DerivationPathLevels = Array<DerivationPathLevel>;
 
 export default class DerivationPath {
-  _path: string
   _type: DerivationPathType
   _levels: DerivationPathLevels
 
-  constructor(path: string) {
-    this._path = path;
+  constructor(type: DerivationPathType, levels: DerivationPathLevels) {
+    this._type = type;
+    this._levels = levels 
+  }
 
+  static fromSerialized(serialized: string): DerivationPath {
     // Determine type
-    const typeKey = path.substr(0, 1);
+    const typeKey = serialized.substr(0, 1);
+    let type: DerivationPathType;
     switch (typeKey) {
       case 'm':
-        this._type = 'private';
+        type = 'private';
         break;
       case 'M':
-        this._type = 'public';
+        type = 'public';
         break;
       default:
         throw new Error('Derivation path must begin with "m" or "M".');
     }
 
     // Decode levels
-    this._levels = path
+    const levels: DerivationPathLevels = serialized
       .substr(1)
       .replace("'", ",'")
       .split('/')
@@ -59,9 +62,10 @@ export default class DerivationPath {
           hardened: levelAndHardened[1] !== undefined && levelAndHardened[1] === "'",
         };
       });
+
+    return new DerivationPath(type, levels);
   }
 
-  get path() { return this._path; }
   get type() { return this._type; }
   get isPrivate() { return this._type === 'private'; }
   get isPublic() { return this._type === 'public'; }

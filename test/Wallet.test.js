@@ -19,7 +19,8 @@ describe('Wallet', () => {
           const wallet = Wallet.fromSeed(Data.fromHex(vector.seedHex));
           for (let chain of vector.chains) {
             test(`Path ${chain.path}`, () => {
-              const path = new DerivationPath(chain.path);
+              // if (chain.path === "M/0'") debugger;
+              const path = DerivationPath.fromSerialized(chain.path);
               const derivedKey = wallet.getKey(path).toSerialized(network);
               expect(derivedKey).toBe(chain.key);
             });
