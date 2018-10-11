@@ -62,6 +62,7 @@ describe('Wallet', () => {
       const wallet = Wallet.fromSeed(Data.fromHex(seedHex));
       const xpriv = wallet._derivePrivateChildFromPrivate(
         wallet.getMasterPrivateKey(),
+        1,
         0,
       ).toSerialized(network);
       expect(xpriv).toEqual('xprv9vHkqa6EV4sPZHYqZznhT2NPtPCjKuDKGY38FBWLvgaDx45zo9WQRUT3dKYnjwih2yJD9mkrocEZXo1ex8G81dwSM1fwqWpWkeS3v86pgKt');
@@ -73,6 +74,7 @@ describe('Wallet', () => {
       const wallet = Wallet.fromSeed(Data.fromHex(seedHex));
       const xpub = wallet._derivePublicChildFromPrivate(
         wallet.getMasterPrivateKey(),
+        1,
         0,
       ).toSerialized(network);
       expect(xpub).toEqual('xpub69H7F5d8KSRgmmdJg2KhpAK8SR3DjMwAdkxj3ZuxV27CprR9LgpeyGmXUbC6wb7ERfvrnKZjXoUmmDznezpbZb7ap6r1D3tgFxHmwMkQTPH');
@@ -84,6 +86,7 @@ describe('Wallet', () => {
       const wallet = Wallet.fromSeed(Data.fromHex(seedHex));
       const xpub = wallet._derivePublicChildFromPublic(
         wallet.getMasterPublicKey(),
+        1,
         0,
       ).toSerialized(network);
       expect(xpub).toEqual('xpub69H7F5d8KSRgmmdJg2KhpAK8SR3DjMwAdkxj3ZuxV27CprR9LgpeyGmXUbC6wb7ERfvrnKZjXoUmmDznezpbZb7ap6r1D3tgFxHmwMkQTPH');

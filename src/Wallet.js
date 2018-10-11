@@ -103,7 +103,7 @@ export default class Wallet {
    * "In case parse256(IL) ≥ n or ki = 0, the resulting key is invalid, and one should
    * proceed with the next value for i. (Note: this has probability lower than 1 in 2127.)"
    */
-  _derivePrivateChildFromPrivate(parent: ExtendedKey, childNumber: number): ExtendedKey {
+  _derivePrivateChildFromPrivate(parent: ExtendedKey, childDepth: number, childNumber: number): ExtendedKey {
     // Serialize data to be hashed
     let hardened: boolean = childNumber >= twoPower31;
     const toHash = new Serializer();
@@ -148,7 +148,7 @@ export default class Wallet {
     return new ExtendedKey(
       new PrivateKey(newKeyBytes), // Will throw exception < 1 in 2^127 cases
       newChaincodeBytes,
-      1, // TODO - FIX DEPTH
+      childDepth,
       childNumber,
       parentFingerPrint,
     );
@@ -158,8 +158,8 @@ export default class Wallet {
    * BIP-0032 function N((k, c)) → (K, c) computes the extended public key corresponding
    * to an extended private key
    */
-  _derivePublicChildFromPrivate(parent: ExtendedKey, childNumber: number): ExtendedKey {
-    const privateChildExtended = this._derivePrivateChildFromPrivate(parent, childNumber);
+  _derivePublicChildFromPrivate(parent: ExtendedKey, childDepth: number, childNumber: number): ExtendedKey {
+    const privateChildExtended = this._derivePrivateChildFromPrivate(parent, childDepth, childNumber);
     let publicChild: PublicKey;
     if (privateChildExtended.key instanceof PrivateKey) {
       publicChild = privateChildExtended.key.toPublicKey(true);
@@ -169,7 +169,7 @@ export default class Wallet {
     return new ExtendedKey(
       publicChild,
       privateChildExtended.chainCode,
-      1, // TODO - FIX DEPTH
+      childDepth,
       childNumber,
       privateChildExtended.parentFingerprint,
     );
@@ -184,7 +184,7 @@ export default class Wallet {
    * "In case parse256(IL) ≥ n or Ki is the point at infinity, the resulting key is
    * invalid, and one should proceed with the next value for i."
    */
-  _derivePublicChildFromPublic(parent: ExtendedKey, childNumber: number): ExtendedKey {
+  _derivePublicChildFromPublic(parent: ExtendedKey, childDepth: number, childNumber: number): ExtendedKey {
     // Serialize data to be hashed
     let hardened: boolean = childNumber >= twoPower31;
     const toHash = new Serializer();
@@ -224,7 +224,7 @@ export default class Wallet {
     return new ExtendedKey(
       new PublicKey(newKeyBytes),
       newChaincodeBytes,
-      1, // TODO - FIX DEPTH
+      childDepth,
       childNumber,
       parentFingerPrint,
     );
