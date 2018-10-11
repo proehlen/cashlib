@@ -98,6 +98,10 @@ export default class Wallet {
   /**
    * BIP-0032 function CKDpriv((kpar, cpar), i) → (ki, ci) computes a child extended
    * private key from the parent extended private key
+   * 
+   * TODO Pre-beta: Ensure we are handling this edge case:
+   * "In case parse256(IL) ≥ n or ki = 0, the resulting key is invalid, and one should
+   * proceed with the next value for i. (Note: this has probability lower than 1 in 2127.)"
    */
   _derivePrivateChildFromPrivate(parent: ExtendedKey, childNumber: number): ExtendedKey {
     // Serialize data to be hashed
@@ -175,6 +179,10 @@ export default class Wallet {
    * BIP-0032 function CKDpub((Kpar, cpar), i) → (Ki, ci) computes a child extended
    * public key from the parent extended public key. It only works for non-hardened
    * child keys.
+   * 
+   * TODO Pre-beta: Ensure we are handling this edge case:
+   * "In case parse256(IL) ≥ n or Ki is the point at infinity, the resulting key is
+   * invalid, and one should proceed with the next value for i."
    */
   _derivePublicChildFromPublic(parent: ExtendedKey, childNumber: number): ExtendedKey {
     // Serialize data to be hashed
