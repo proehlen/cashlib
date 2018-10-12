@@ -62,6 +62,30 @@ export default class ExtendedKey {
     }
   }
 
+  /**
+   * Return signature of extended key
+   * 
+   * The signature is a hex string with enough data to uniquiely id the
+   * extended key without collision. It is effectively the serialized
+   * extended key (refer BIP-0032#Serialization_format) but devoid of
+   * the network prefix and is not hashed
+   */
+  getSignature(): string {
+    const signature = new Serializer();
+    signature.addUint8(this.depth);
+    signature.addBytes(this._parentFingerprint);
+    // TODO understand why spec calls for following line but works with just raw bytes
+    // "4 bytes: child number. This is ser32(i) for i in xi = xpar/i, with xi the key being serialized. (0x00000000 if master key)"
+    signature.addUint32(this.childNumber, 'BE');
+    signature.addBytes(this.chainCode);
+    if (this._key instanceof PrivateKey) {
+      // Padding/dummy prefix for private keys to make them 33 bytes
+      signature.addUint8(0);
+    }
+    signature.addBytes(this._key.bytes);
+    return signature.hex;
+  }
+
   toSerialized(network: Network): string {
     const networkPrefix = this.key instanceof PrivateKey
       ? network.prefixes.extendedKeyVersion.private
@@ -70,17 +94,7 @@ export default class ExtendedKey {
     // Serialize data to be encoded
     const toBeEncoded = new Serializer();
     toBeEncoded.addBytes(networkPrefix);
-    toBeEncoded.addUint8(this.depth);
-    toBeEncoded.addBytes(this._parentFingerprint);
-    // TODO understand why spec calls for following line but works with just raw bytes
-    // "4 bytes: child number. This is ser32(i) for i in xi = xpar/i, with xi the key being serialized. (0x00000000 if master key)"
-    toBeEncoded.addUint32(this.childNumber, 'BE');
-    toBeEncoded.addBytes(this.chainCode);
-    if (this._key instanceof PrivateKey) {
-      // Padding/dummy prefix for private keys to make them 33 bytes
-      toBeEncoded.addUint8(0);
-    }
-    toBeEncoded.addBytes(this._key.bytes);
+    toBeEncoded.addBytesString(this.getSignature());
     const bytesToBeEncoded = toBytes(toBeEncoded.hex);
 
     // Build check sum from double-hash of bytes to be encoded
