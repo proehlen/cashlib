@@ -2,7 +2,7 @@
  * Class for working with Hierarchical Deterministic (HD) Wallets per BIP-0032
  *
  * Note: this class does *not* implement BIP-0039 or BIP-0044.  See MnemonicSeed
- * and MultiAccount (coming soon) classes respectively for those functionalities.
+ * and AccountWallet classes respectively for those functionalities.
  */
 // @flow
 
@@ -128,9 +128,10 @@ export default class Wallet {
    * 
    * These signatures are used as the key in the _childKeyCache
    */
-  static _getChildKeyRequestSignature(parent: ExtendedKey, childDepth: number, childNumber: number): string {
+  static _getChildKeyRequestSignature(type: 'pub' | 'prv', parent: ExtendedKey, childDepth: number, childNumber: number): string {
     // Build signature for this request
     return new Serializer()
+      .addBytesString(type)
       .addBytesString(parent.getSignature())
       .addUint32(childDepth, 'BE')
       .addUint32(childNumber, 'BE')
@@ -149,7 +150,7 @@ export default class Wallet {
     let key: ExtendedKey;
 
     // Try to get answer from child key cache
-    const signature = Wallet._getChildKeyRequestSignature(parent, childDepth, childNumber);
+    const signature = Wallet._getChildKeyRequestSignature('prv', parent, childDepth, childNumber);
     let maybeKey = this._childKeyCache.get(signature);
     if (maybeKey) {
       key = maybeKey;
@@ -218,7 +219,7 @@ export default class Wallet {
     let key: ExtendedKey;
 
     // Try to get answer from child key cache
-    const signature = Wallet._getChildKeyRequestSignature(parent, childDepth, childNumber);
+    const signature = Wallet._getChildKeyRequestSignature('pub', parent, childDepth, childNumber);
     let maybeKey = this._childKeyCache.get(signature);
     if (maybeKey) {
       key = maybeKey;
@@ -258,7 +259,7 @@ export default class Wallet {
     let key: ExtendedKey;
 
     // Try to get answer from child key cache
-    const signature = Wallet._getChildKeyRequestSignature(parent, childDepth, childNumber);
+    const signature = Wallet._getChildKeyRequestSignature('pub', parent, childDepth, childNumber);
     let maybeKey = this._childKeyCache.get(signature);
     if (maybeKey) {
       key = maybeKey;
