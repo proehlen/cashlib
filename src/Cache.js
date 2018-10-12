@@ -4,9 +4,9 @@
 // @flow
 
 
-export default class Cache<K, V> {
+export default class Cache<S, V> {
   _maxSize: number
-  _data: Map<K, V>
+  _data: Map<S, V>
 
   constructor(maxSize: number) {
     this._maxSize = maxSize;
@@ -15,25 +15,25 @@ export default class Cache<K, V> {
 
   get size() { return this._data.size; }
 
-  add(key: K, value: V) {
+  add(signature: S, value: V) {
     // Use .get() to return value and update cache entry age
-    const existing = this.get(key);
+    const existing = this.get(signature);
     if (!existing) {
       // Add new value to cache
-      this._data.set(key, value);
+      this._data.set(signature, value);
 
       // Prune older entries if necessary
       this.prune();
     }
   }
 
-  get(key: K): V | void {
-    const value: V | void = this._data.get(key);
+  get(signature: S): V | void {
+    const value: V | void = this._data.get(signature);
     if (value) {
       // Delete and readd cache entry to push it to the top/end of
       // map so it won't be pruned
-      this._data.delete(key);
-      this._data.set(key, value);
+      this._data.delete(signature);
+      this._data.set(signature, value);
     }
     return value;
   }
@@ -42,7 +42,7 @@ export default class Cache<K, V> {
     const numToDelete = this._data.size - this._maxSize
     for (let i = 0; i < numToDelete; i++) {
       // $flow-disable-line flow is confused here
-      const entry: [K, V] = this._data.entries().next().value;
+      const entry: [S, V] = this._data.entries().next().value;
       this._data.delete(entry[0]);
     }
   }
