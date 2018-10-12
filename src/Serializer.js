@@ -22,45 +22,33 @@ export default class Serializer {
     return toBytes(this._hex);
   }
 
-  _addUint(value: number, sizeBytes: number, endianness: Endianness): Serializer {
+  _addUint(value: number, sizeBytes: number, endianness: Endianness) {
     let hex = value.toString(16);
     hex = leftPad(hex, sizeBytes * 2, '0');
     if (endianness === 'LE') {
       hex = reverseBytes(hex);
     }
     this._hex += hex;
-
-    // Return this to support chaining
-    return this;
   }
 
-  addUint8(value: number): Serializer {
+  addUint8(value: number) {
     // Endianness doesn't matter for one byte value but is required by _addUint so
     // just pass anything
     this._addUint(value, 1, 'LE');
-
-    // Return this to support chaining
-    return this;
   }
 
-  addUint16(value: number, endianness: Endianness): Serializer {
+  addUint16(value: number, endianness: Endianness) {
     this._addUint(value, 2, endianness);
-
-    // Return this to support chaining
-    return this;
   }
 
-  addUint32(value: number, endianness: Endianness): Serializer {
+  addUint32(value: number, endianness: Endianness) {
     this._addUint(value, 4, endianness);
-
-    // Return this to support chaining
-    return this;
   }
 
   /**
    * Add signed integer of 64 bits
    */
-  addInt64(value: number): Serializer {
+  addInt64(value: number) {
     // Operating value is value with 1 subtracted to support two's complement conversion.
     // Much easier to do it now than later when we are working in bytes
     let operatingValue = value < 0 ?
@@ -82,42 +70,33 @@ export default class Serializer {
 
       this._hex += leftPad(byte.toString(16), 2, '0');
     }); 
-
-    // Return this to support chaining
-    return this;
   }
 
   /**
    * Add bytes
    * @param {number} length 
    */
-  addBytes(data: Uint8Array): Serializer {
+  addBytes(data: Uint8Array) {
     const converted = Array
       .from(data)
       .map(byte => leftPad(byte.toString(16), 2, '0'))
       .join('');
     this._hex += converted;
-
-    // Return this to support chaining
-    return this;
   }
 
-  addBytesString(bytes: string, reverse: boolean = false): Serializer {
+  addBytesString(bytes: string, reverse: boolean = false) {
     if (!reverse) {
       this._hex += bytes;
     } else {
       this._hex += reverseBytes(bytes);
     }
-
-    // Return this to support chaining
-    return this;
   }
 
 
   /**
    * Add compactSize unsigned int from current offset
    */
-  addCompactSize(value: number): Serializer {
+  addCompactSize(value: number) {
     if (value < 0) {
       throw new Error('compactSize can only store unsigned integers');
     } else if (value <= 252) {
@@ -134,8 +113,5 @@ export default class Serializer {
       // (ridiculously high) max value, int/uint is same for positive integers
       this.addInt64(value);  
     }
-
-    // Return this to support chaining
-    return this;
   }
 }

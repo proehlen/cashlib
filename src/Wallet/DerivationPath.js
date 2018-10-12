@@ -27,16 +27,10 @@ export type DerivationPathLevels = Array<DerivationPathLevel>;
 export default class DerivationPath {
   _type: DerivationPathType
   _levels: DerivationPathLevels
-  _serialized: string
 
-  constructor(type: DerivationPathType, levels: DerivationPathLevels, serialized: string) {
+  constructor(type: DerivationPathType, levels: DerivationPathLevels) {
     this._type = type;
-    this._levels = levels;
-    this._serialized = serialized; 
-  }
-
-  toSerialized(): string {
-    return this._serialized;
+    this._levels = levels 
   }
 
   static fromSerialized(serialized: string): DerivationPath {
@@ -74,7 +68,7 @@ export default class DerivationPath {
         };
       });
 
-    return new DerivationPath(type, levels, serialized);
+    return new DerivationPath(type, levels);
   }
 
   get type() { return this._type; }
