@@ -11,6 +11,7 @@ import assert from 'assert';
 import BigInt from 'big-integer';
 import * as stringfu from 'stringfu';
 
+import Cache from './Cache';
 import CurvePoint from './CurvePoint';
 import DerivationPath from './Wallet/DerivationPath';
 import PrivateKey from './PrivateKey';
@@ -25,10 +26,12 @@ const twoPower31 = 2 ** 31;
 export default class Wallet {
   _masterPublicKey: ExtendedKey
   _masterPrivateKey: ?ExtendedKey
+  _childKeyCache: Cache<string, ExtendedKey>
 
   constructor(masterPublicKey: ExtendedKey, masterPrivateKey?: ExtendedKey) {
     this._masterPrivateKey = masterPrivateKey;
     this._masterPublicKey = masterPublicKey;
+    this._childKeyCache = new Cache(50);
   }
 
   getMasterPublicKey() { return this._masterPublicKey; }
@@ -84,9 +87,9 @@ export default class Wallet {
 
   _getChildKey(path: DerivationPath, childDepth: number, parent: ExtendedKey): ExtendedKey {
     let key: ExtendedKey;
+
     const isLastLevel = childDepth === path.numLevels;
     const currentLevel = path.levels[childDepth - 1];
-
     if (!isLastLevel) {
       // Use recursion to walk key tree favoring use of private keys for performance until last level
       if (parent.key instanceof PrivateKey) {
@@ -121,6 +124,20 @@ export default class Wallet {
   }
 
   /**
+   * Build unique signature for a child key derivation request.
+   * 
+   * These signatures are used as the key in the _childKeyCache
+   */
+  static _getChildKeyRequestSignature(parent: ExtendedKey, childDepth: number, childNumber: number): string {
+    // Build signature for this request
+    return new Serializer()
+      .addBytesString(parent.getSignature())
+      .addUint32(childDepth, 'BE')
+      .addUint32(childNumber, 'BE')
+      .hex;
+  }
+
+  /**
    * BIP-0032 function CKDpriv((kpar, cpar), i) → (ki, ci) computes a child extended
    * private key from the parent extended private key
    * 
@@ -129,54 +146,68 @@ export default class Wallet {
    * proceed with the next value for i. (Note: this has probability lower than 1 in 2127.)"
    */
   _derivePrivateChildFromPrivate(parent: ExtendedKey, childDepth: number, childNumber: number): ExtendedKey {
-    // Serialize data to be hashed
-    let hardened: boolean = childNumber >= twoPower31;
-    const toHash = new Serializer();
-    if (hardened) {
-      toHash.addUint8(0x00); // Pad parent key to 33 bytes
-      toHash.addBytes(parent.key.bytes);
+    let key: ExtendedKey;
+
+    // Try to get answer from child key cache
+    const signature = Wallet._getChildKeyRequestSignature(parent, childDepth, childNumber);
+    let maybeKey = this._childKeyCache.get(signature);
+    if (maybeKey) {
+      key = maybeKey;
     } else {
-      const compressedPublicKey = parent.getPrivateKey().toPublicKey(true);
-      toHash.addBytes(compressedPublicKey.bytes);
+      // Not in cache, we'll have to build it
+      // Serialize data to be hashed
+      let hardened: boolean = childNumber >= twoPower31;
+      const toHash = new Serializer();
+      if (hardened) {
+        toHash.addUint8(0x00); // Pad parent key to 33 bytes
+        toHash.addBytes(parent.key.bytes);
+      } else {
+        const compressedPublicKey = parent.getPrivateKey().toPublicKey(true);
+        toHash.addBytes(compressedPublicKey.bytes);
+      }
+      toHash.addUint32(childNumber, 'BE');
+
+      // Hash serialized data
+      // $flow-disable-line Uint8Array *is* compatible with hmac.create
+      let hmac = createHmac('sha512', parent.chainCode);
+      // $flow-disable-line Uint8Array *is* compatible with hmac.update
+      hmac.update(toHash.toBytes());
+      const hashed = hmac.digest();
+
+      // Build new key components
+      const hashedLeft = hashed.slice(0, 32);
+      const hashedRight = hashed.slice(32, 64);
+      const newKeyBytes = new Uint8Array(
+        BigInt
+          .fromArray(Array.from(hashedLeft), 256, false)
+          .add(parent.key.toBigInt())
+          .mod(secp256k1.order)
+          .toArray(256)
+          .value
+      );
+      const newChaincodeBytes = hashedRight;
+
+      // Get parent fingerprint (first four bytes) of parent identifier (ie hash160'd public key)
+      // TODO performance: recreating public key is slow - consider requiring it as a parameter
+      const parentFingerPrint = parent
+        .getPrivateKey()
+        .toPublicKey(true)
+        .toHash160()
+        .slice(0, 4);
+
+      // Build key and add it to cache
+      key = new ExtendedKey(
+        new PrivateKey(newKeyBytes), // Will throw exception < 1 in 2^127 cases
+        newChaincodeBytes,
+        childDepth,
+        childNumber,
+        parentFingerPrint,
+      );
+
+      this._childKeyCache.add(signature, key);
     }
-    toHash.addUint32(childNumber, 'BE');
 
-    // Hash serialized data
-    // $flow-disable-line Uint8Array *is* compatible with hmac.create
-    let hmac = createHmac('sha512', parent.chainCode);
-    // $flow-disable-line Uint8Array *is* compatible with hmac.update
-    hmac.update(toHash.toBytes());
-    const hashed = hmac.digest();
-
-    // Build new key components
-    const hashedLeft = hashed.slice(0, 32);
-    const hashedRight = hashed.slice(32, 64);
-    const newKeyBytes = new Uint8Array(
-      BigInt
-        .fromArray(Array.from(hashedLeft), 256, false)
-        .add(parent.key.toBigInt())
-        .mod(secp256k1.order)
-        .toArray(256)
-        .value
-    );
-    const newChaincodeBytes = hashedRight;
-
-    // Get parent fingerprint (first four bytes) of parent identifier (ie hash160'd public key)
-    // TODO performance: recreating public key is slow - consider requiring it as a parameter
-    const parentFingerPrint = parent
-      .getPrivateKey()
-      .toPublicKey(true)
-      .toHash160()
-      .slice(0, 4);
-
-    // Build and return key
-    return new ExtendedKey(
-      new PrivateKey(newKeyBytes), // Will throw exception < 1 in 2^127 cases
-      newChaincodeBytes,
-      childDepth,
-      childNumber,
-      parentFingerPrint,
-    );
+    return key;
   }
   
   /**
@@ -184,20 +215,34 @@ export default class Wallet {
    * to an extended private key
    */
   _derivePublicChildFromPrivate(parent: ExtendedKey, childDepth: number, childNumber: number): ExtendedKey {
-    const privateChildExtended = this._derivePrivateChildFromPrivate(parent, childDepth, childNumber);
-    let publicChild: PublicKey;
-    if (privateChildExtended.key instanceof PrivateKey) {
-      publicChild = privateChildExtended.key.toPublicKey(true);
+    let key: ExtendedKey;
+
+    // Try to get answer from child key cache
+    const signature = Wallet._getChildKeyRequestSignature(parent, childDepth, childNumber);
+    let maybeKey = this._childKeyCache.get(signature);
+    if (maybeKey) {
+      key = maybeKey;
     } else {
-      throw new Error('Unexpected result in child public key derivation.')
+      // Not in cache, we'll have to build it
+      const privateChildExtended = this._derivePrivateChildFromPrivate(parent, childDepth, childNumber);
+      let publicChild: PublicKey;
+      if (privateChildExtended.key instanceof PrivateKey) {
+        publicChild = privateChildExtended.key.toPublicKey(true);
+      } else {
+        throw new Error('Unexpected result in child public key derivation.')
+      }
+      key = new ExtendedKey(
+        publicChild,
+        privateChildExtended.chainCode,
+        childDepth,
+        childNumber,
+        privateChildExtended.parentFingerprint,
+      );
+
+      this._childKeyCache.add(signature, key);
     }
-    return new ExtendedKey(
-      publicChild,
-      privateChildExtended.chainCode,
-      childDepth,
-      childNumber,
-      privateChildExtended.parentFingerprint,
-    );
+
+    return key;
   }
 
   /**
@@ -210,48 +255,62 @@ export default class Wallet {
    * invalid, and one should proceed with the next value for i."
    */
   _derivePublicChildFromPublic(parent: ExtendedKey, childDepth: number, childNumber: number): ExtendedKey {
-    // Serialize data to be hashed
-    let hardened: boolean = childNumber >= twoPower31;
-    const toHash = new Serializer();
-    if (hardened) {
-      throw new Error('Not possible to derive hardened child from public key.')
+    let key: ExtendedKey;
+
+    // Try to get answer from child key cache
+    const signature = Wallet._getChildKeyRequestSignature(parent, childDepth, childNumber);
+    let maybeKey = this._childKeyCache.get(signature);
+    if (maybeKey) {
+      key = maybeKey;
     } else {
-      toHash.addBytes(parent.getPublicKey().bytes);
+      // Not in cache, we'll have to build it
+      // Serialize data to be hashed
+      let hardened: boolean = childNumber >= twoPower31;
+      const toHash = new Serializer();
+      if (hardened) {
+        throw new Error('Not possible to derive hardened child from public key.')
+      } else {
+        toHash.addBytes(parent.getPublicKey().bytes);
+      }
+      toHash.addUint32(childNumber, 'BE');
+
+      // Hash serialized data
+      // $flow-disable-line Uint8Array *is* compatible with hmac.create
+      let hmac = createHmac('sha512', parent.chainCode);
+      // $flow-disable-line Uint8Array *is* compatible with hmac.update
+      hmac.update(toHash.toBytes());
+      const hashed = hmac.digest();
+      const hashedLeft = new Data(hashed.slice(0, 32));
+      const hashedRight = new Data(hashed.slice(32, 64));
+
+      // Build new key bytes
+      const exponent = hashedLeft.toBigInt().mod(secp256k1.order);
+      const pointA = CurvePoint.fromBigInt(exponent);
+      const parentPoint = parent.getPublicKey().toCurvePoint();
+      const point = CurvePoint.add(pointA, parentPoint);
+      const newKeyBytes = point.toBytes(true);
+
+      // Build new chaincode bytes
+      const newChaincodeBytes = hashedRight.bytes;
+
+      // Get parent fingerprint (first four bytes) of parent identifier (ie hash160'd public key)
+      const parentFingerPrint = parent
+        .getPublicKey()
+        .toHash160()
+        .slice(0, 4);
+
+      // Build key and add it to cache
+      key = new ExtendedKey(
+        new PublicKey(newKeyBytes),
+        newChaincodeBytes,
+        childDepth,
+        childNumber,
+        parentFingerPrint,
+      );
+
+      this._childKeyCache.add(signature, key);
     }
-    toHash.addUint32(childNumber, 'BE');
 
-    // Hash serialized data
-    // $flow-disable-line Uint8Array *is* compatible with hmac.create
-    let hmac = createHmac('sha512', parent.chainCode);
-    // $flow-disable-line Uint8Array *is* compatible with hmac.update
-    hmac.update(toHash.toBytes());
-    const hashed = hmac.digest();
-    const hashedLeft = new Data(hashed.slice(0, 32));
-    const hashedRight = new Data(hashed.slice(32, 64));
-
-    // Build new key bytes
-    const exponent = hashedLeft.toBigInt().mod(secp256k1.order);
-    const pointA = CurvePoint.fromBigInt(exponent);
-    const parentPoint = parent.getPublicKey().toCurvePoint();
-    const point = CurvePoint.add(pointA, parentPoint);
-    const newKeyBytes = point.toBytes(true);
-
-    // Build new chaincode bytes
-    const newChaincodeBytes = hashedRight.bytes;
-
-    // Get parent fingerprint (first four bytes) of parent identifier (ie hash160'd public key)
-    const parentFingerPrint = parent
-      .getPublicKey()
-      .toHash160()
-      .slice(0, 4);
-
-    // Build and return key
-    return new ExtendedKey(
-      new PublicKey(newKeyBytes),
-      newChaincodeBytes,
-      childDepth,
-      childNumber,
-      parentFingerPrint,
-    );
+    return key;
   }
 }
