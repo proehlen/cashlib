@@ -13,11 +13,8 @@ import Data from './Data';
 const wordlistFile = path.join(__dirname, 'MnemonicSeed', 'wordlist');
 const wordlist = fs.readFileSync(wordlistFile, { encoding: 'utf8' }).split('\n');
 
-export default class MnemonicSeed {
-  _seedWords: string[]
-  _seed: Data
-
-  constructor(seedWords: string[]) {
+export default class MnemonicSeed extends Data {
+  static fromWords(seedWords: string[]) {
     // Validate seedWords provided and correct type/length
     if (!seedWords || !Array.isArray(seedWords) || seedWords.length !== 12) {
       throw new Error(`MnemonicSeed requires exactly 12 seed words`);
@@ -38,9 +35,6 @@ export default class MnemonicSeed {
       64,
       'SHA512',
     );
-    this._seed = new Data(seedBytes);
+    return new MnemonicSeed(seedBytes);
   }
-
-  get seed() { return this._seed; }
-
 }

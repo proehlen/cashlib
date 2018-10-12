@@ -34,6 +34,14 @@ export default class DerivationPath {
     this._levels = levels;
     this._serialized = serialized; 
   }
+  
+  toPublic() {
+    return new DerivationPath(
+      'public',
+      this._levels,
+      this._serialized
+    );
+  }
 
   toSerialized(): string {
     return this._serialized;
