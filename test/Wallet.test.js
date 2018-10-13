@@ -1,6 +1,6 @@
 /**
  * HD Wallet tests.
- * 
+ *
  * Note: BIP32 test vectors are tested in 'bip32.test.js'
  */
 // @flow
@@ -10,19 +10,18 @@ declare var test: any;
 declare var expect: any;
 
 const Data = require('../lib/Data').default;
-const DerivationPath = require('../lib/Wallet/DerivationPath').default;
 const Network = require('../lib/Network').default;
-const PublicKey = require('../lib/PublicKey').default;
 const Wallet = require('../lib/Wallet').default;
 
 describe('Wallet', () => {
   describe('mainnet', () => {
     const network = Network.fromString('mainnet');
     /**
-     * Test deriving public child from public parent (BIP32 function CKDpub((Kpar, cpar), i) → (Ki, ci))
-     * 
+     * Test deriving public child from public parent
+     * (BIP32 function CKDpub((Kpar, cpar), i) → (Ki, ci))
+     *
      * This method isn't actually tested in any of the BIP32 test vectors since
-     * a) We have the seed hex for each chain (meaning we have the private extended key), and 
+     * a) We have the seed hex for each chain (meaning we have the private extended key), and
      * b) our bip32 implementation optimizes to avoid calling this function if the private master
      *    key is available.
      *

@@ -8,14 +8,13 @@ import Network from './Network';
 
 
 export default class Address extends Data {
-
   toString(): string {
-    return base58.encode(this.bytes);
+    return base58.encode(this.toBytes());
   }
 
   toPublicKeyHash(): Uint8Array {
     // Return bytes minus 1 byte version (start) and 4 byte checksum (end)
-    return this.bytes.slice(1, this.bytes.length - 4);
+    return this.toBytes().slice(1, this.toBytes().length - 4);
   }
 
   static fromString(address: string) {

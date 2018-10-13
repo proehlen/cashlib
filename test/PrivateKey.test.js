@@ -10,7 +10,6 @@ const PrivateKey = require('../lib/PrivateKey').default;
 const Network = require('../lib/Network').default;
 
 const mainnet = Network.fromString('mainnet');
-const regtest = Network.fromString('regtest');
 
 describe('PrivateKey', () => {
   const keyHex = '1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd';
@@ -51,12 +50,10 @@ describe('PrivateKey', () => {
     const privateKey = new PrivateKey(toBytes(privateKeyString));
     test('#toPem', () => {
       const returnedString = privateKey.toPem();
-      const expected = 
-        '-----BEGIN EC PRIVATE KEY-----\n' +
-        'MC4CAQEEIDzQVg9bJ1kZFsZDoLeqadA4OTgKc40ukSmQ3MVzcV0soAcGBSuBBAAK\n' +
-        '-----END EC PRIVATE KEY-----';
+      const expected = '-----BEGIN EC PRIVATE KEY-----\n'
+        + 'MC4CAQEEIDzQVg9bJ1kZFsZDoLeqadA4OTgKc40ukSmQ3MVzcV0soAcGBSuBBAAK\n'
+        + '-----END EC PRIVATE KEY-----';
       expect(returnedString).toEqual(expected);
     });
   });
-
 });

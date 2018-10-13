@@ -10,7 +10,7 @@ describe('Deserializer', () => {
   describe('#getCompactSize', () => {
     test('Uint8', () => {
       const data = new Uint8Array([
-        0xe8
+        0xe8,
       ]);
       const deserializer = new Deserializer(data);
       const value = deserializer.getCompactSize();
@@ -18,7 +18,7 @@ describe('Deserializer', () => {
     });
     test('Uint16', () => {
       const data = new Uint8Array([
-        0xfd, 0xff, 0x7f
+        0xfd, 0xff, 0x7f,
       ]);
       const deserializer = new Deserializer(data);
       const value = deserializer.getCompactSize();
@@ -26,7 +26,7 @@ describe('Deserializer', () => {
     });
     test('Uint32', () => {
       const data = new Uint8Array([
-        0xfe, 0xff, 0xff, 0xff, 0xff
+        0xfe, 0xff, 0xff, 0xff, 0xff,
       ]);
       const deserializer = new Deserializer(data);
       const value = deserializer.getCompactSize();
@@ -34,7 +34,7 @@ describe('Deserializer', () => {
     });
     test('Uint64', () => {
       const data = new Uint8Array([
-        0xff, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+        0xff, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
       ]);
       const deserializer = new Deserializer(data);
       const value = deserializer.getCompactSize();
@@ -79,7 +79,7 @@ describe('Deserializer', () => {
     });
     test('MIN_SAFE_INTEGER', () => {
       const data = new Uint8Array([
-        0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xff
+        0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xff,
       ]);
       const deserializer = new Deserializer(data);
       const value = deserializer.getInt64();
@@ -87,7 +87,7 @@ describe('Deserializer', () => {
     });
     test('MAX_SAFE_INTEGER', () => {
       const data = new Uint8Array([
-        0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x00
+        0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x1f, 0x00,
       ]);
       const deserializer = new Deserializer(data);
       const value = deserializer.getInt64();
@@ -95,14 +95,14 @@ describe('Deserializer', () => {
     });
     test('MIN_SAFE_INTEGER - 1 throws exception', () => {
       const data = new Uint8Array([
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xff
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xe0, 0xff,
       ]);
       const deserializer = new Deserializer(data);
       expect(() => deserializer.getInt64()).toThrow('safe range');
     });
     test('MAX_SAFE_INTEGER + 1 throws exception', () => {
       const data = new Uint8Array([
-        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00,
       ]);
       const deserializer = new Deserializer(data);
       expect(() => deserializer.getInt64()).toThrow('safe range');

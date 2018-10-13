@@ -15,7 +15,7 @@ export default class Transaction {
   _outputs: Output[]
   _lockTime: number;
 
-  constructor () {
+  constructor() {
     this._inputs = [];
     this._outputs = [];
     this._lockTime = 0;
@@ -41,7 +41,7 @@ export default class Transaction {
     this._lockTime = lockTime;
   }
 
-  static deserialize(raw: string) : Transaction {
+  static deserialize(raw: string): Transaction {
     if (raw.length < 10) {
       throw new Error('Raw string provided is too short');
     }
@@ -67,7 +67,7 @@ export default class Transaction {
       const input = new Input(transactionId, outputIndex, signatureScript, sequence);
       transaction.addInput(input);
     }
-      
+
     // Get transaction outputs
     const txOutCount = bytes.getCompactSize();
     for (let outputIndex = 0; outputIndex < txOutCount; ++outputIndex) {
@@ -81,7 +81,7 @@ export default class Transaction {
 
     // Locktime
     transaction.setLockTime(bytes.getUint32());
-      
+
     return transaction;
   }
 
@@ -99,7 +99,7 @@ export default class Transaction {
       bytes.addBytes(input.signatureScript);
       bytes.addUint32(input.sequence, 'LE');
     }
-      
+
     // Add transaction outputs
     bytes.addCompactSize(this._outputs.length);
     for (let x = 0; x < this._outputs.length; ++x) {
@@ -111,8 +111,8 @@ export default class Transaction {
 
     // Locktime
     bytes.addUint32(this._lockTime, 'LE');
-      
-    return bytes.hex;
+
+    return bytes.toHex();
   }
 
   getId(): string {

@@ -3,7 +3,6 @@
  */
 // @flow
 import * as stringfu from 'stringfu';
-import assert from 'assert';
 import crypto from 'crypto';
 import BigInt from 'big-integer';
 
@@ -22,7 +21,7 @@ export default class Data {
     }
   }
 
-  get bytes(): Uint8Array {
+  toBytes(): Uint8Array {
     return this._bytes;
   }
 

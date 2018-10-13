@@ -5,8 +5,7 @@ declare var test: any;
 declare var expect: any;
 
 const DerivationPath = require('../lib/Wallet/DerivationPath').default;
-const Network = require('../lib/Network').default;
-const network = Network.fromString('mainnet');
+
 let pathString: string;
 
 describe('DerivationPath', () => {
@@ -67,7 +66,7 @@ describe('DerivationPath', () => {
         const level1 = levels[0];
         expect(level1.depth).toEqual(1);
         expect(level1.hardened).toEqual(true);
-        expect(level1.childNumber).toEqual(5 + 2 ** 31);
+        expect(level1.childNumber).toEqual(5 + (2 ** 31));
       });
       test('level 2 is decoded correctly', () => {
         const level2 = levels[1];

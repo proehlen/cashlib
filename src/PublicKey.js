@@ -1,5 +1,4 @@
 // @flow
-import { toBytes } from 'stringfu';
 import * as stringfu from 'stringfu';
 
 import CurvePoint from './CurvePoint';
@@ -7,9 +6,8 @@ import Data from './Data';
 import PrivateKey from './PrivateKey';
 
 export default class PublicKey extends Data {
-
   get compressed() {
-    return this.bytes.length === 33;
+    return this.toBytes().length === 33;
   }
 
   static fromHex(hex: string) {
@@ -22,6 +20,6 @@ export default class PublicKey extends Data {
   }
 
   toCurvePoint(): CurvePoint {
-    return CurvePoint.fromBytes(this.bytes);
+    return CurvePoint.fromBytes(this.toBytes());
   }
 }

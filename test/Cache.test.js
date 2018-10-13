@@ -4,7 +4,6 @@ declare var describe: any;
 declare var test: any;
 declare var expect: any;
 
-const BigInt = require('big-integer');
 const Cache = require('../lib/Cache').default;
 
 describe('Cache', () => {
@@ -36,11 +35,10 @@ describe('Cache', () => {
     // Ordinarily, 'red' would be pruned next but if we access it
     // then 'green' becomes the oldest.
     cache.get('red');
-    cache.add('blue', BLUE)
+    cache.add('blue', BLUE);
     expect(cache.size).toEqual(maxSize);
     expect(cache.get('green')).toBeUndefined();
     expect(cache.get('red')).toEqual(RED);
     expect(cache.get('blue')).toEqual(BLUE);
-  })
-
+  });
 });

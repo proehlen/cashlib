@@ -1,6 +1,6 @@
 {
   "name": "cashlib",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Experimental Bitcoin Cash library",
   "homepage": "https://github.com/proehlen/cashlib#README.md",
   "author": "Peter Roehlen",
@@ -10,6 +10,9 @@
     "url": "https://github.com/proehlen/cashlib.git"
   },
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "keywords": [
     "bitcoin",
     "cash",
@@ -19,6 +22,7 @@
   ],
   "scripts": {
     "clean": "rimraf lib",
+    "eslint": "eslint src",
     "flow": "flow",
     "pretest": "npm run build",
     "test": "jest",
@@ -29,9 +33,17 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "flow-bin": "^0.80.0",
     "flow-copy-source": "^2.0.2",
     "jest": "^23.6.0",
