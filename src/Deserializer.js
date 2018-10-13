@@ -1,10 +1,9 @@
-/**
- * Raw Bitcoin protocol data deserializer
- */
-
 // @flow
 import { leftPad, toBytes, fromBytes } from 'stringfu';
 
+/**
+ * Class for deserializing data
+ */
 export default class Deserializer {
   _dataView: DataView
   _byteOffset: number
@@ -114,6 +113,8 @@ export default class Deserializer {
 
   /**
    * Get contents at nominated offset without advancing/changing position
+   * @private
+   *
    * @param {number} offset
    */
   _peek(offset: number): number {

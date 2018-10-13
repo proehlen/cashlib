@@ -13,6 +13,9 @@ import PublicKey from './PublicKey';
 
 const BYTES_LENGTH: number = 32;
 
+/**
+ * A private key
+ */
 export default class PrivateKey extends Data {
   _compressPublicKey: boolean
   _wif: string;

@@ -1,3 +1,30 @@
+// @flow
+
+/**
+ * Type of {@link DerivationPath} - pubic or private key
+ *
+ * In the example "m/44'/0'/0'", the "m" indicates a private
+ * key.  A capital "M" would represent a public key.
+ */
+export type DerivationPathType = 'public' | 'private';
+
+/**
+ * A single level in a {@link DerivationPath}
+ *
+ * In the example "m/44'/0'/0'", the "44'" and each of the
+ * "0'"s represent one level
+ */
+export type DerivationPathLevel = {
+  depth: number,
+  childNumber: number,
+  hardened: boolean,
+};
+
+/**
+ * An array of {@link DerivationPathLevel}s
+ */
+export type DerivationPathLevels = Array<DerivationPathLevel>;
+
 /**
  * Class for handling BIP32 derivation paths - a method of specifying a private
  * or public extended key in a key tree.
@@ -10,29 +37,23 @@
  *   '        optionally nominates the suffixed child key as hardened (subscript 'H' is the
  *            notation used in the BIP but apostrophe suffix is the public convention)
  */
-// @flow
-
-export type DerivationPathType = 'public' | 'private';
-
-export type DerivationPathLevel = {
-  depth: number,
-  childNumber: number,
-  hardened: boolean,
-};
-
-export type DerivationPathLevels = Array<DerivationPathLevel>;
-
 export default class DerivationPath {
   _type: DerivationPathType
   _levels: DerivationPathLevels
   _serialized: string
 
+  /**
+   * @hideconstructor
+   */
   constructor(type: DerivationPathType, levels: DerivationPathLevels, serialized: string) {
     this._type = type;
     this._levels = levels;
     this._serialized = serialized;
   }
 
+  /**
+   * Returns a new path but with the type set to 'public'
+   */
   toPublic() {
     return new DerivationPath(
       'public',
@@ -41,10 +62,20 @@ export default class DerivationPath {
     );
   }
 
+  /**
+   * Serializes the path into a string in the commonly used format
+   *
+   * E.g. returns "m/44'/0'/0'"
+   */
   toSerialized(): string {
     return this._serialized;
   }
 
+  /**
+   * Creates a {@link DerivationPath} instance from a serialized string
+   *
+   * E.g. expects something like "m/44'/0'/0'"
+   */
   static fromSerialized(serialized: string): DerivationPath {
     // Determine type
     const typeKey = serialized.substr(0, 1);
@@ -83,10 +114,26 @@ export default class DerivationPath {
     return new DerivationPath(type, levels, serialized);
   }
 
-  get type() { return this._type; }
-  get isPrivate() { return this._type === 'private'; }
-  get isPublic() { return this._type === 'public'; }
-  get numLevels() { return this._levels.length; }
+  /**
+   */
+  get type(): DerivationPathType { return this._type; }
+
+  /**
+   */
+  get isPrivate(): boolean { return this._type === 'private'; }
+
+  /**
+   */
+  get isPublic(): boolean { return this._type === 'public'; }
+
+  /**
+   * Number of levels in this path
+   */
+  get numLevels(): number { return this._levels.length; }
+
+  /**
+   * {@link DerivationPathLevels} for this path
+   */
   get levels(): DerivationPathLevels {
     // Return deep copy so our prop is immutable
     // (We expect returned array to be heavily modified during stack processing)

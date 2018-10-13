@@ -1,5 +1,8 @@
 // @flow
 
+/**
+ * A Bitcoin script opcode
+ */
 export default class OpCode {
   _value: number
   _mnemonic: string
