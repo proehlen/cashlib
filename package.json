@@ -30,7 +30,7 @@
     "flowbuild": "flow-copy-source src lib",
     "prebuild": "npm run clean && npm run flowbuild ",
     "build": "babel --plugins transform-flow-strip-types src/ -d lib/ --copy-files",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build && npm run docs"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
