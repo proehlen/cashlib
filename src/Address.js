@@ -7,6 +7,11 @@ import base58 from './base58';
 import Network from './Network';
 
 
+/**
+ * A Bitcoin address
+ *
+ * @hideconstructor
+ */
 export default class Address extends Data {
   toString(): string {
     return base58.encode(this.toBytes());

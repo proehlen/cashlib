@@ -1,3 +1,12 @@
+// @flow
+import BigInt from 'big-integer';
+import * as stringfu from 'stringfu';
+import assert from 'assert';
+
+import Point from './Point';
+import secp256k1 from './secp256k1';
+import { modSqrt } from './math';
+
 /**
  * Point on Eliptic Curve
  *
@@ -8,15 +17,6 @@
  * in elliptic curve point multiplication.  If other curves are implemented,
  * these may not apply and this class would need to be updated.
  */
-// @flow
-import BigInt from 'big-integer';
-import * as stringfu from 'stringfu';
-import assert from 'assert';
-
-import Point from './Point';
-import secp256k1 from './secp256k1';
-import { modSqrt } from './math';
-
 export default class CurvePoint extends Point {
   static add(pointA: Point, pointB: Point): CurvePoint {
     const lamda = pointB.y

@@ -1,12 +1,11 @@
-/**
- * Raw Bitcoin protocol data serializer
- */
-
 // @flow
 import { leftPad, reverseBytes, toBytes } from 'stringfu';
 
 export type Endianness = 'LE' | 'BE';
 
+/**
+ * Class for serializing data
+ */
 export default class Serializer {
   _hex: string
 

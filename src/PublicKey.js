@@ -5,6 +5,9 @@ import CurvePoint from './CurvePoint';
 import Data from './Data';
 import PrivateKey from './PrivateKey';
 
+/**
+ * A public key
+ */
 export default class PublicKey extends Data {
   get compressed() {
     return this.toBytes().length === 33;

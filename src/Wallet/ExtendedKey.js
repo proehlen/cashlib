@@ -1,9 +1,3 @@
-/**
- * Extended private or public key per BIP-0032
- *
- * Extended keys are regular keys with an additional 256 bits of entropy (the
- * chain code).
- */
 // @flow
 
 import crypto from 'crypto';
@@ -16,6 +10,12 @@ import PublicKey from '../PublicKey';
 import Serializer from '../Serializer';
 import base58 from '../base58';
 
+/**
+ * Extended private or public key per BIP-0032
+ *
+ * Extended keys are regular keys with an additional 256 bits of entropy (the
+ * chain code).
+ */
 export default class ExtendedKey {
   _key: PrivateKey | PublicKey
   _chainCode: Uint8Array

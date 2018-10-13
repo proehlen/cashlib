@@ -10,6 +10,9 @@ declare type NetworkPrefixes = {
   },
 }
 
+/**
+ * A Bitcoin network
+ */
 export default class Network {
   _label: string
   _prefixes: NetworkPrefixes

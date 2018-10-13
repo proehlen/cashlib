@@ -1,12 +1,3 @@
-/**
- * Wallet for a single account derived from a BIP-0044 path
- *
- * This class internally creates sub-wallets for and facilitates issuing of
- * external (public receiving) and internal (change) addresses.  It is up to
- * the client implementation to determine whether addresses have been
- * previously used (ie by scanning the blockchain) and calling setUsedAddressIndex()
- * accordingly.
- */
 // @flow
 
 import assert from 'assert';
@@ -24,14 +15,33 @@ const testnet = 1 + (2 ** 31); // 1 in hardened range
 const bitcoinCash = 145 + (2 ** 31); // 145 in hardened range
 const coinTypes = [bitcoin, testnet, bitcoinCash];
 
+/**
+ * Type of wallet address for an {@link AccountWallet}
+ *
+ * Internal addresses are used by the wallet implementation to recieve
+ * change and are not ordinarily shared. External addresses are for
+ * receiving payments and are shared with the sender.
+ */
 export type AccountWalletAddressType = 'internal' | 'external';
 
+/**
+ * Wallet for a single account derived from a BIP-0044 path
+ *
+ * This class internally creates sub-wallets for and facilitates issuing of
+ * external (public receiving) and internal (change) addresses.  It is up to
+ * the client implementation to determine whether addresses have been
+ * previously used (ie by scanning the blockchain) and calling setUsedAddressIndex()
+ * accordingly.
+ */
 export default class AccountWallet {
   _internalWallet: Wallet
   _externalWallet: Wallet
   _internalUsedIndex: number // Used change address index
   _externalUsedIndex: number // Used external address index
 
+  /**
+   * @hideconstructor
+   */
   constructor(externalWallet: Wallet, internalWallet: Wallet) {
     this._externalWallet = externalWallet;
     this._externalUsedIndex = -1;
@@ -39,13 +49,19 @@ export default class AccountWallet {
     this._internalUsedIndex = -1;
   }
 
+  /**
+   * Return highest used address index for nominated type
+   */
   getUsedAddressIndex(type: AccountWalletAddressType): number {
     return (type === 'external')
       ? this._externalUsedIndex
       : this._internalUsedIndex;
   }
 
-  setUsedAddressIndex(type: AccountWalletAddressType, addressIndex: number) {
+  /**
+   * Update the highest used address index for the nominated type
+   */
+  setUsedAddressIndex(type: AccountWalletAddressType, addressIndex: number): void {
     if (type === 'external') {
       this._externalUsedIndex = addressIndex;
     } else {
@@ -77,6 +93,9 @@ export default class AccountWallet {
     return Address.fromPublicKey(publicKey, network);
   }
 
+  /**
+   * Create new AccountWallet instance using a seed and BIP44 derivation path
+   */
   static fromSeed(seed: Data, accountPath: DerivationPath): AccountWallet {
     // Validate derivation path (require BIP44 format)
     const exampleText = "(e.g.  m44'0'0')";
