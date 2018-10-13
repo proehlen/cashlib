@@ -1,20 +1,28 @@
+// @flow
+
 /**
  * Simple generic cache with automatic pruning based on maxSize and entry access age
  */
-// @flow
-
-
 export default class Cache<S, V> {
   _maxSize: number
   _data: Map<S, V>
 
+  /**
+   * @constructor
+   */
   constructor(maxSize: number) {
     this._maxSize = maxSize;
     this._data = new Map();
   }
 
+  /**
+   * Size (number of entries) in cache
+   */
   get size() { return this._data.size; }
 
+  /**
+   * Adds a value to the Cache
+   */
   add(signature: S, value: V) {
     // Use .get() to return value and update cache entry age
     const existing = this.get(signature);
@@ -23,10 +31,13 @@ export default class Cache<S, V> {
       this._data.set(signature, value);
 
       // Prune older entries if necessary
-      this.prune();
+      this._prune();
     }
   }
 
+  /**
+   * Returns a value from the cache or 'undefined' not found
+   */
   get(signature: S): V | void {
     const value: V | void = this._data.get(signature);
     if (value) {
@@ -38,7 +49,11 @@ export default class Cache<S, V> {
     return value;
   }
 
-  prune() {
+  /**
+   * Prunes the cache of older entries to bring cache back down to maxSSize
+   * @private
+   */
+  _prune() {
     const numToDelete = this._data.size - this._maxSize;
     for (let i = 0; i < numToDelete; i++) {
       // $flow-disable-line flow is confused here

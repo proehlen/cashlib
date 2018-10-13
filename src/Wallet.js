@@ -1,9 +1,3 @@
-/**
- * Class for working with Hierarchical Deterministic (HD) Wallets per BIP-0032
- *
- * Note: this class does *not* implement BIP-0039 or BIP-0044.  See MnemonicSeed
- * and AccountWallet classes respectively for those functionalities.
- */
 // @flow
 
 import { createHmac } from 'crypto';
@@ -22,6 +16,12 @@ import secp256k1 from './secp256k1';
 
 const twoPower31 = 2 ** 31;
 
+/**
+ * Class for working with Hierarchical Deterministic (HD) Wallets per BIP-0032
+ *
+ * Note: this class does *not* implement BIP-0039 or BIP-0044.  See MnemonicSeed
+ * and AccountWallet classes respectively for those functionalities.
+ */
 export default class Wallet {
   _masterPublicKey: ExtendedKey
   _masterPrivateKey: ?ExtendedKey

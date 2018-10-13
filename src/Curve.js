@@ -1,10 +1,10 @@
-/**
- * Class representing an Elliptic Curve.
- */
 // @flow
 import BigInt from 'big-integer';
 import Point from './Point';
 
+/**
+ * The parameters that, when taken together, define the elliptic curve
+ */
 type CurveDomainParameters = {
   field: BigInt, // aka 'p' - integer specifying the finite field
   basePoint: Point, // aka 'G = (xG, yG)'
@@ -14,6 +14,9 @@ type CurveDomainParameters = {
   cofactor: BigInt, // aka 'h' - the cofactor
 }
 
+/**
+ * Class representing an elliptic curve.
+ */
 export default class Curve {
   _field: BigInt
   _basePoint: Point

@@ -4,6 +4,9 @@ import Address from './Address';
 import Network from './Network';
 import PublicKey from './PublicKey';
 
+/**
+ * A transaction output
+ */
 export default class Output {
   _value: number
   _pubKeyScript: Uint8Array

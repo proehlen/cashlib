@@ -2,6 +2,9 @@
 
 const DEFAULT_SEQUENCE = 0xfffffffe; // TODO revist when we understand
 
+/**
+ * A transaction input
+ */
 export default class Input {
   _transactionId: string;
   _outputIndex: number;

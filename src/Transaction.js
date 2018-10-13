@@ -10,6 +10,9 @@ import Output from './Output';
 
 const VERSION = 0x00000001;
 
+/**
+ * A Bitcoin transaction
+ */
 export default class Transaction {
   _inputs: Input[]
   _outputs: Output[]

@@ -2,6 +2,10 @@
 import BigInt from 'big-integer';
 import assert from 'assert';
 
+/**
+ * A simple point
+ * @private
+ */
 export default class Point {
   _x: BigInt
   _y: BigInt

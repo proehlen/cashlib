@@ -1,7 +1,3 @@
-/**
- * This module implements BIP-0039 - using mnemonic sentences to generate binary
- * seeds
- */
 // @flow
 
 import path from 'path';
@@ -13,6 +9,10 @@ import Data from './Data';
 const wordlistFile = path.join(__dirname, 'MnemonicSeed', 'wordlist');
 const wordlist = fs.readFileSync(wordlistFile, { encoding: 'utf8' }).split('\n');
 
+/**
+ * This class implements BIP-0039 - using mnemonic sentences to generate binary
+ * seeds
+ */
 export default class MnemonicSeed extends Data {
   static fromWords(seedWords: string[]) {
     // Validate seedWords provided and correct type/length
