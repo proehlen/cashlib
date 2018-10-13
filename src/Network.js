@@ -4,7 +4,7 @@ declare type NetworkPrefixes = {
   publicKeyAddress: number,
   scriptAddress: number,
   privateKeyWif: number,
-  extendedKeyVersion:  {
+  extendedKeyVersion: {
     public: Uint8Array,
     private: Uint8Array,
   },
@@ -39,7 +39,7 @@ export default class Network {
           extendedKeyVersion: {
             public: new Uint8Array([0x04, 0x88, 0xB2, 0x1E]),
             private: new Uint8Array([0x04, 0x88, 0xAD, 0xE4]),
-          }
+          },
         };
         break;
       case 'nol':
@@ -50,7 +50,7 @@ export default class Network {
           extendedKeyVersion: {
             public: new Uint8Array([0x42, 0x69, 0x67, 0x20]),
             private: new Uint8Array([0x42, 0x6c, 0x6b, 0x73]),
-          }
+          },
         };
         break;
       case 'testnet':
@@ -61,7 +61,7 @@ export default class Network {
           extendedKeyVersion: {
             public: new Uint8Array([0x04, 0x35, 0x87, 0xCF]),
             private: new Uint8Array([0x04, 0x35, 0x83, 0x94]),
-          }
+          },
         };
         break;
       case 'regtest':
@@ -72,8 +72,8 @@ export default class Network {
           extendedKeyVersion: {
             public: new Uint8Array([0x04, 0x35, 0x87, 0xCF]),
             private: new Uint8Array([0x04, 0x35, 0x83, 0x94]),
-          }
-        }
+          },
+        };
         break;
       default:
         throw new Error(`Unrecognized network '${label}'`);

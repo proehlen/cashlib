@@ -16,12 +16,13 @@ const pythonResults = JSON.parse(fs.readFileSync(pythonResultsFile, 'utf8'));
 describe('math', () => {
   describe('modSqrt', () => {
     describe('test against python results', () => {
-      for (let pyResult of pythonResults) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const pyResult of pythonResults) {
         test(`modSqrt(${pyResult.a}, ${pyResult.p}) === ${pyResult.x})`, () => {
           const a = new BigInt(pyResult.a);
           const p = new BigInt(pyResult.p);
           const ourResult = modSqrt(a, p);
-          expect (ourResult.toJSNumber()).toEqual(pyResult.x);
+          expect(ourResult.toJSNumber()).toEqual(pyResult.x);
         });
       }
     });

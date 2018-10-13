@@ -9,7 +9,7 @@ export default class Deserializer {
   _dataView: DataView
   _byteOffset: number
 
-  constructor (data: Uint8Array | string) {
+  constructor(data: Uint8Array | string) {
     let bytes;
     if (data instanceof Uint8Array) {
       bytes = data;
@@ -46,16 +46,16 @@ export default class Deserializer {
    * Get signed integer of 64 bits
    */
   getInt64(): number {
-    const data =this.getBytes(8).reverse();
+    const data = this.getBytes(8).reverse();
     let sign = 1;
-    if (data[0] >>> 7 === 1)  {
+    if (data[0] >>> 7 === 1) {
       // High bit set, number is signed (two's complement)
       sign = -1;
       // Flip bits
       data.forEach((byte, index) => {
-        const inverted = (~ byte) % 256;
+        const inverted = (~byte) % 256;
         data[index] = inverted;
-      }); 
+      });
     }
 
     const numberString = fromBytes(data);
@@ -81,7 +81,7 @@ export default class Deserializer {
     const numberString = data
       .map(byte => leftPad(byte.toString(16), 2, '0'))
       .join('');
-    let number = parseInt(numberString, 16);
+    const number = parseInt(numberString, 16);
     if (!Number.isSafeInteger(number)) {
       throw new Error('Integer is outside of safe range');
     }
@@ -92,14 +92,14 @@ export default class Deserializer {
   /**
    * Get raw bytes
    *
-   * @param {number} length 
+   * @param {number} length
    */
   getBytes(length: number) {
     const bytesBuffer = this._dataView.buffer.slice(
       this._byteOffset,
-      this._byteOffset + length
+      this._byteOffset + length,
     );
-    const bytes = new Uint8Array(bytesBuffer)
+    const bytes = new Uint8Array(bytesBuffer);
     this._byteOffset += length;
     return bytes;
   }
@@ -114,7 +114,7 @@ export default class Deserializer {
 
   /**
    * Get contents at nominated offset without advancing/changing position
-   * @param {number} offset 
+   * @param {number} offset
    */
   _peek(offset: number): number {
     return this._dataView.getUint8(offset);
@@ -131,7 +131,6 @@ export default class Deserializer {
    */
   getCompactSize(): number {
     let value = 0;
-    let bytesUsed = 0;
 
     value = this.getUint8();
     switch (value) {

@@ -22,5 +22,4 @@ export default class OpCode {
   get code(): () => void {
     return this._code;
   }
-
 }

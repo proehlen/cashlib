@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable import/prefer-default-export */
 
 import BigInt from 'big-integer';
 
@@ -7,7 +8,7 @@ const two = new BigInt(2);
 
 /**
  * Computes a modular square root.
- * 
+ *
  * Adapted from "Computing modular square roots in Python" by Eli Bendersky
  * https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python
  */
@@ -15,9 +16,9 @@ export function modSqrt(a: BigInt, p: BigInt): BigInt {
   let result: BigInt;
 
   // Computes the Legendre symbol a|p using Euler's criterion.
-  function legendreSymbol(a: BigInt, p: BigInt) {
-    const ls = a.modPow(p.subtract(1).divide(2), p);
-    return ls.equals(p.subtract(1))
+  function legendreSymbol(la: BigInt, lp: BigInt) {
+    const ls = la.modPow(lp.subtract(1).divide(2), lp);
+    return ls.equals(lp.subtract(1))
       ? BigInt.minusOne
       : ls;
   }

@@ -3,7 +3,6 @@
  */
 // @flow
 import * as stringfu from 'stringfu';
-import assert from 'assert';
 import crypto from 'crypto';
 import BigInt from 'big-integer';
 

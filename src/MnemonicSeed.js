@@ -17,11 +17,12 @@ export default class MnemonicSeed extends Data {
   static fromWords(seedWords: string[]) {
     // Validate seedWords provided and correct type/length
     if (!seedWords || !Array.isArray(seedWords) || seedWords.length !== 12) {
-      throw new Error(`MnemonicSeed requires exactly 12 seed words`);
+      throw new Error('MnemonicSeed requires exactly 12 seed words');
     }
 
     // Validate each word is in word list
-    for (let word of seedWords) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const word of seedWords) {
       if (wordlist.indexOf(word) < 0) {
         throw new Error(`'${word}' is not in the word list.`);
       }

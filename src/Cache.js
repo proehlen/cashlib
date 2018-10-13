@@ -39,7 +39,7 @@ export default class Cache<S, V> {
   }
 
   prune() {
-    const numToDelete = this._data.size - this._maxSize
+    const numToDelete = this._data.size - this._maxSize;
     for (let i = 0; i < numToDelete; i++) {
       // $flow-disable-line flow is confused here
       const entry: [S, V] = this._data.entries().next().value;

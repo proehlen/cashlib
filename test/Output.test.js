@@ -4,11 +4,10 @@ declare var describe: any;
 declare var test: any;
 declare var expect: any;
 
+const fromBytes = require('stringfu').fromBytes;
 const Transaction = require('../lib/Transaction').default;
 const Output = require('../lib/Output').default;
-const Address = require('../lib/Address').default;
 const Network = require('../lib/Network').default;
-const fromBytes = require('stringfu').fromBytes;
 
 const regtest = Network.fromString('regtest');
 

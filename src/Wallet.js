@@ -9,7 +9,6 @@
 import { createHmac } from 'crypto';
 import assert from 'assert';
 import BigInt from 'big-integer';
-import * as stringfu from 'stringfu';
 
 import Cache from './Cache';
 import CurvePoint from './CurvePoint';
@@ -36,11 +35,10 @@ export default class Wallet {
 
   getMasterPublicKey() { return this._masterPublicKey; }
   getMasterPrivateKey(): ExtendedKey {
-    if (this._masterPrivateKey) {
-      return this._masterPrivateKey;
-    } else {
+    if (!this._masterPrivateKey) {
       throw new Error('Master private key is not known by this wallet.');
     }
+    return this._masterPrivateKey;
   }
 
   static fromSeed(seed: Data): Wallet {
@@ -76,7 +74,7 @@ export default class Wallet {
     let key: ExtendedKey;
     if (!path.numLevels) {
       // No sub key requested just return appropriate master
-      key = path.isPrivate 
+      key = path.isPrivate
         ? this.getMasterPrivateKey()
         : this.getMasterPublicKey();
     } else {
@@ -91,7 +89,8 @@ export default class Wallet {
     const isLastLevel = childDepth === path.numLevels;
     const currentLevel = path.levels[childDepth - 1];
     if (!isLastLevel) {
-      // Use recursion to walk key tree favoring use of private keys for performance until last level
+      // Use recursion to walk key tree favoring use of private keys for performance
+      // until last level
       if (parent.key instanceof PrivateKey) {
         key = this._derivePrivateChildFromPrivate(parent, childDepth, currentLevel.childNumber);
       } else {
@@ -125,7 +124,7 @@ export default class Wallet {
 
   /**
    * Build unique signature for a child key derivation request.
-   * 
+   *
    * These signatures are used as the key in the _childKeyCache
    */
   static _getChildKeyRequestSignature(type: 'pub' | 'prv', parent: ExtendedKey, childDepth: number, childNumber: number): string {
@@ -141,23 +140,27 @@ export default class Wallet {
   /**
    * BIP-0032 function CKDpriv((kpar, cpar), i) → (ki, ci) computes a child extended
    * private key from the parent extended private key
-   * 
+   *
    * TODO Pre-beta: Ensure we are handling this edge case:
    * "In case parse256(IL) ≥ n or ki = 0, the resulting key is invalid, and one should
    * proceed with the next value for i. (Note: this has probability lower than 1 in 2127.)"
    */
-  _derivePrivateChildFromPrivate(parent: ExtendedKey, childDepth: number, childNumber: number): ExtendedKey {
+  _derivePrivateChildFromPrivate(
+    parent: ExtendedKey,
+    childDepth: number,
+    childNumber: number,
+  ): ExtendedKey {
     let key: ExtendedKey;
 
     // Try to get answer from child key cache
     const signature = Wallet._getChildKeyRequestSignature('prv', parent, childDepth, childNumber);
-    let maybeKey = this._childKeyCache.get(signature);
+    const maybeKey = this._childKeyCache.get(signature);
     if (maybeKey) {
       key = maybeKey;
     } else {
       // Not in cache, we'll have to build it
       // Serialize data to be hashed
-      let hardened: boolean = childNumber >= twoPower31;
+      const hardened: boolean = childNumber >= twoPower31;
       const toHash = new Serializer();
       if (hardened) {
         toHash.addUint8(0x00); // Pad parent key to 33 bytes
@@ -170,7 +173,7 @@ export default class Wallet {
 
       // Hash serialized data
       // $flow-disable-line Uint8Array *is* compatible with hmac.create
-      let hmac = createHmac('sha512', parent.chainCode);
+      const hmac = createHmac('sha512', parent.chainCode);
       // $flow-disable-line Uint8Array *is* compatible with hmac.update
       hmac.update(toHash.toBytes());
       const hashed = hmac.digest();
@@ -184,7 +187,7 @@ export default class Wallet {
           .add(parent.key.toBigInt())
           .mod(secp256k1.order)
           .toArray(256)
-          .value
+          .value,
       );
       const newChaincodeBytes = hashedRight;
 
@@ -210,27 +213,35 @@ export default class Wallet {
 
     return key;
   }
-  
+
   /**
    * BIP-0032 function N((k, c)) → (K, c) computes the extended public key corresponding
    * to an extended private key
    */
-  _derivePublicChildFromPrivate(parent: ExtendedKey, childDepth: number, childNumber: number): ExtendedKey {
+  _derivePublicChildFromPrivate(
+    parent: ExtendedKey,
+    childDepth: number,
+    childNumber: number,
+  ): ExtendedKey {
     let key: ExtendedKey;
 
     // Try to get answer from child key cache
     const signature = Wallet._getChildKeyRequestSignature('pub', parent, childDepth, childNumber);
-    let maybeKey = this._childKeyCache.get(signature);
+    const maybeKey = this._childKeyCache.get(signature);
     if (maybeKey) {
       key = maybeKey;
     } else {
       // Not in cache, we'll have to build it
-      const privateChildExtended = this._derivePrivateChildFromPrivate(parent, childDepth, childNumber);
+      const privateChildExtended = this._derivePrivateChildFromPrivate(
+        parent,
+        childDepth,
+        childNumber,
+      );
       let publicChild: PublicKey;
       if (privateChildExtended.key instanceof PrivateKey) {
         publicChild = privateChildExtended.key.toPublicKey(true);
       } else {
-        throw new Error('Unexpected result in child public key derivation.')
+        throw new Error('Unexpected result in child public key derivation.');
       }
       key = new ExtendedKey(
         publicChild,
@@ -250,26 +261,30 @@ export default class Wallet {
    * BIP-0032 function CKDpub((Kpar, cpar), i) → (Ki, ci) computes a child extended
    * public key from the parent extended public key. It only works for non-hardened
    * child keys.
-   * 
+   *
    * TODO Pre-beta: Ensure we are handling this edge case:
    * "In case parse256(IL) ≥ n or Ki is the point at infinity, the resulting key is
    * invalid, and one should proceed with the next value for i."
    */
-  _derivePublicChildFromPublic(parent: ExtendedKey, childDepth: number, childNumber: number): ExtendedKey {
+  _derivePublicChildFromPublic(
+    parent: ExtendedKey,
+    childDepth: number,
+    childNumber: number,
+  ): ExtendedKey {
     let key: ExtendedKey;
 
     // Try to get answer from child key cache
     const signature = Wallet._getChildKeyRequestSignature('pub', parent, childDepth, childNumber);
-    let maybeKey = this._childKeyCache.get(signature);
+    const maybeKey = this._childKeyCache.get(signature);
     if (maybeKey) {
       key = maybeKey;
     } else {
       // Not in cache, we'll have to build it
       // Serialize data to be hashed
-      let hardened: boolean = childNumber >= twoPower31;
+      const hardened: boolean = childNumber >= twoPower31;
       const toHash = new Serializer();
       if (hardened) {
-        throw new Error('Not possible to derive hardened child from public key.')
+        throw new Error('Not possible to derive hardened child from public key.');
       } else {
         toHash.addBytes(parent.getPublicKey().toBytes());
       }
@@ -277,7 +292,7 @@ export default class Wallet {
 
       // Hash serialized data
       // $flow-disable-line Uint8Array *is* compatible with hmac.create
-      let hmac = createHmac('sha512', parent.chainCode);
+      const hmac = createHmac('sha512', parent.chainCode);
       // $flow-disable-line Uint8Array *is* compatible with hmac.update
       hmac.update(toHash.toBytes());
       const hashed = hmac.digest();

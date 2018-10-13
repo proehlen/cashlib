@@ -1,5 +1,4 @@
 // @flow
-import { toBytes } from 'stringfu';
 import * as stringfu from 'stringfu';
 
 import CurvePoint from './CurvePoint';
@@ -7,7 +6,6 @@ import Data from './Data';
 import PrivateKey from './PrivateKey';
 
 export default class PublicKey extends Data {
-
   get compressed() {
     return this.toBytes().length === 33;
   }

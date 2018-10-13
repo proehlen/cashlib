@@ -8,7 +8,6 @@ import Network from './Network';
 
 
 export default class Address extends Data {
-
   toString(): string {
     return base58.encode(this.toBytes());
   }

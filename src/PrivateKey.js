@@ -2,7 +2,6 @@
 import BigInt from 'big-integer';
 import assert from 'assert';
 import crypto from 'crypto';
-import { fromBytes, splitWidth } from 'stringfu';
 import * as stringfu from 'stringfu';
 
 import CurvePoint from './CurvePoint';
@@ -77,7 +76,7 @@ export default class PrivateKey extends Data {
     // Get integer as bytes
     const bytes = new Uint8Array(BYTES_LENGTH);
     const maybeShortBytes = value.toArray(256).value;
-    const offset = BYTES_LENGTH - maybeShortBytes.length 
+    const offset = BYTES_LENGTH - maybeShortBytes.length;
     bytes.set(maybeShortBytes, offset);
 
     return new PrivateKey(bytes);
@@ -105,7 +104,7 @@ export default class PrivateKey extends Data {
     const keyLen = this.toBytes().length;
     const asn1PreString = [
       0x30, // declares the start of an ASN.1 sequence
-      0x2e, // length of following sequence 
+      0x2e, // length of following sequence
       0x02, // declares the start of an integer
       0x01, // length of integer in bytes (1 byte)
       0x01, // value of integer (1)
@@ -127,7 +126,7 @@ export default class PrivateKey extends Data {
     const suffix = '\n-----END EC PRIVATE KEY-----';
     const asn1 = this.toDer();
     const asn1encoded = base64.encode(asn1);
-    const asn1Lines = splitWidth(asn1encoded, 64).join('\n');
+    const asn1Lines = stringfu.splitWidth(asn1encoded, 64).join('\n');
     const pem = `${prefix}${asn1Lines}${suffix}`;
     return pem;
   }
@@ -136,12 +135,12 @@ export default class PrivateKey extends Data {
     const point = this.toCurvePoint();
 
     // Return point as PublicKey
-    const compress = compressed !== undefined ?
-      compressed :
-      this.compressPublicKey;
+    const compress = compressed !== undefined
+      ? compressed
+      : this.compressPublicKey;
     return new PublicKey(point.toBytes(compress));
   }
-  
+
   /**
    * Derive point (public key) on secp256k1 curve for the integer
    * (private key)

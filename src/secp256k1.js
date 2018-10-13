@@ -7,7 +7,7 @@ import BigInt from 'big-integer';
 import Curve from './Curve';
 import Point from './Point';
 
-// Build secp256k1 curve.  
+// Build secp256k1 curve.
 const seckp256k1 = new Curve({
   field: BigInt('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F', 16),
   basePoint: new Point(

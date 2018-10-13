@@ -4,7 +4,6 @@ declare var describe: any;
 declare var test: any;
 declare var expect: any;
 
-const fromBytes = require('stringfu').fromBytes;
 const MnemonicSeed = require('../lib/MnemonicSeed').default;
 
 describe('MnemonicSeed', () => {
@@ -20,7 +19,7 @@ describe('MnemonicSeed', () => {
         'able',
         'about',
         'above',
-        'absents',  // misspelled
+        'absents', // misspelled
         'absorb',
         'abstract',
         'absurd',
@@ -54,6 +53,5 @@ describe('MnemonicSeed', () => {
     //   ]);
     //   expect(createMnemonicSeed).toThrow('invalid checksum');
     // });
-
   });
 });
