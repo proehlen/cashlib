@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "clean": "rimraf lib",
-    "docs": "documentation build src/** -f html -o docs",
+    "docs": "documentation build src/** -f json -o docs/docs.json",
     "eslint": "eslint src",
     "flow": "flow",
     "pretest": "npm run build",
