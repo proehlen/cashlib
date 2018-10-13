@@ -1,10 +1,10 @@
 /**
  * Wallet for a single account derived from a BIP-0044 path
  * 
- * This class creates a wallet and facilitates issuing of external (public
- * receiving) and internal (change) addresses.  It is up to the
- * implementation to determine whether addresses have been previously used
- * (ie by scanning the blockchain) and calling setUsedAddressIndex()
+ * This class internally creates sub-wallets for and facilitates issuing of
+ * external (public receiving) and internal (change) addresses.  It is up to
+ * the client implementation to determine whether addresses have been
+ * previously used (ie by scanning the blockchain) and calling setUsedAddressIndex()
  * accordingly.
  */
 // @flow
@@ -28,14 +28,14 @@ const coinTypes = [bitcoin, testnet, bitcoinCash];
 export type AccountWalletAddressType = 'internal' | 'external';
 
 export default class AccountWallet {
-  _wallet: Wallet
-  _externalUsed: ?number // Used external address index
+  _internalWallet: Wallet
+  _externalWallet: Wallet
   _internalUsed: ?number // Used change address index
+  _externalUsed: ?number // Used external address index
 
-  constructor(wallet: Wallet, externalUsed?: number, internalUsed?: number) {
-    this._wallet = wallet;
-    this._externalUsed = externalUsed;
-    this._internalUsed = internalUsed;
+  constructor(externalWallet: Wallet, internalWallet: Wallet) {
+    this._externalWallet = externalWallet;
+    this._internalWallet = internalWallet;
   }
 
   setUsedAddressIndex(type: AccountWalletAddressType, addressIndex:number) {
@@ -57,8 +57,8 @@ export default class AccountWallet {
       ? this._externalUsed + 1
       : 0;
     this._externalUsed = nextIndex;
-    const path = DerivationPath.fromSerialized(`M/0/${nextIndex}`);
-    const publicKey = this._wallet.getKey(path).getPublicKey();
+    const path = DerivationPath.fromSerialized(`M${nextIndex}`);
+    const publicKey = this._externalWallet.getKey(path).getPublicKey();
     return Address.fromPublicKey(publicKey, network);
   }
 
@@ -73,8 +73,8 @@ export default class AccountWallet {
       ? this._internalUsed + 1
       : 0;
     this._internalUsed = nextIndex;
-    const path = DerivationPath.fromSerialized(`M/1/${nextIndex}`);
-    const publicKey = this._wallet.getKey(path).getPublicKey();
+    const path = DerivationPath.fromSerialized(`M/${nextIndex}`);
+    const publicKey = this._internalWallet.getKey(path).getPublicKey();
     return Address.fromPublicKey(publicKey, network);
   }
 
@@ -92,13 +92,23 @@ export default class AccountWallet {
     // Generate master wallet
     const masterWallet = Wallet.fromSeed(seed);
 
-    // Get keys for account and generate wallet
-    const privateKey = masterWallet.getKey(accountPath);
-    const publicKey = masterWallet.getKey(accountPath.toPublic());
-    const wallet = new Wallet(publicKey, privateKey);
+    // Get keys for and create account wallet
+    const accountPrivateKey = masterWallet.getKey(accountPath);
+    const accountPublicKey = masterWallet.getKey(accountPath.toPublic());
+    const accountWallet = new Wallet(accountPublicKey, accountPrivateKey);
 
-    return new AccountWallet(wallet);
+    // Get keys for and create external / receiving wallet
+    const externalPath = DerivationPath.fromSerialized('m/0');
+    const externalPrivateKey = accountWallet.getKey(externalPath);
+    const externalPublicKey = accountWallet.getKey(externalPath.toPublic());
+    const externalWallet = new Wallet(externalPublicKey, externalPrivateKey);
+
+    // Get keys for and create internal / change wallet
+    const internalPath = DerivationPath.fromSerialized('m/1');
+    const internalPrivateKey = accountWallet.getKey(internalPath);
+    const internalPublicKey = accountWallet.getKey(internalPath.toPublic());
+    const internalWallet = new Wallet(internalPublicKey, internalPrivateKey);
+
+    return new AccountWallet(externalWallet, internalWallet);
   }
-
-
 }

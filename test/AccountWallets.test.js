@@ -36,6 +36,7 @@ describe('AccountWallet', () => {
 
     test('Generates correct external addresses', () => {
       for (let i = 0; i < testExternalAddresses.length; i++) {
+        debugger;
         const address = wallet.nextExternalAddress(mainnet).toString();
         expect(address).toBe(testExternalAddresses[i]);
       }
