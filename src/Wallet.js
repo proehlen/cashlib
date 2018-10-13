@@ -47,7 +47,7 @@ export default class Wallet {
     // Generate master key
     const hmac = createHmac('sha512', 'Bitcoin seed');
     // $flow-disable-line Uint8Array *is* compatible with hmac.update
-    hmac.update(seed.bytes);
+    hmac.update(seed.toBytes());
     const hashed = hmac.digest();
     assert.equal(hashed.length, 64, 'Expected hmac to return 64 bytes');
     const privateKeyBytes = new Uint8Array(hashed.slice(0, 32));
@@ -135,7 +135,7 @@ export default class Wallet {
       .addBytesString(parent.getSignature())
       .addUint32(childDepth, 'BE')
       .addUint32(childNumber, 'BE')
-      .hex;
+      .toHex();
   }
 
   /**
@@ -161,10 +161,10 @@ export default class Wallet {
       const toHash = new Serializer();
       if (hardened) {
         toHash.addUint8(0x00); // Pad parent key to 33 bytes
-        toHash.addBytes(parent.key.bytes);
+        toHash.addBytes(parent.key.toBytes());
       } else {
         const compressedPublicKey = parent.getPrivateKey().toPublicKey(true);
-        toHash.addBytes(compressedPublicKey.bytes);
+        toHash.addBytes(compressedPublicKey.toBytes());
       }
       toHash.addUint32(childNumber, 'BE');
 
@@ -271,7 +271,7 @@ export default class Wallet {
       if (hardened) {
         throw new Error('Not possible to derive hardened child from public key.')
       } else {
-        toHash.addBytes(parent.getPublicKey().bytes);
+        toHash.addBytes(parent.getPublicKey().toBytes());
       }
       toHash.addUint32(childNumber, 'BE');
 
@@ -292,7 +292,7 @@ export default class Wallet {
       const newKeyBytes = point.toBytes(true);
 
       // Build new chaincode bytes
-      const newChaincodeBytes = hashedRight.bytes;
+      const newChaincodeBytes = hashedRight.toBytes();
 
       // Get parent fingerprint (first four bytes) of parent identifier (ie hash160'd public key)
       const parentFingerPrint = parent

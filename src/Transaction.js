@@ -112,7 +112,7 @@ export default class Transaction {
     // Locktime
     bytes.addUint32(this._lockTime, 'LE');
       
-    return bytes.hex;
+    return bytes.toHex();
   }
 
   getId(): string {

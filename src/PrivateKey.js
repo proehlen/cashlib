@@ -85,9 +85,9 @@ export default class PrivateKey extends Data {
 
   toWif(network: Network): string {
     if (!this._wif) {
-      const privKeyAndVersion = new Uint8Array(this.bytes.length + 1);
+      const privKeyAndVersion = new Uint8Array(this.toBytes().length + 1);
       privKeyAndVersion[0] = network.prefixes.privateKeyWif;
-      privKeyAndVersion.set(this.bytes, 1);
+      privKeyAndVersion.set(this.toBytes(), 1);
       const firstSHA = crypto.createHash('sha256').update(Buffer.from(privKeyAndVersion)).digest();
       const secondSHA = crypto.createHash('sha256').update(firstSHA).digest();
       const checksum = secondSHA.slice(0, 4);
@@ -102,7 +102,7 @@ export default class PrivateKey extends Data {
    * Returns private key encoded in ASN.1/DER format
    */
   toDer(): Uint8Array {
-    const keyLen = this.bytes.length;
+    const keyLen = this.toBytes().length;
     const asn1PreString = [
       0x30, // declares the start of an ASN.1 sequence
       0x2e, // length of following sequence 
@@ -117,7 +117,7 @@ export default class PrivateKey extends Data {
 
     const asn1 = new Uint8Array(asn1PreString.length + keyLen + asn1Seckp256k1.length);
     asn1.set(asn1PreString, 0);
-    asn1.set(this.bytes, asn1PreString.length);
+    asn1.set(this.toBytes(), asn1PreString.length);
     asn1.set(asn1Seckp256k1, asn1PreString.length + keyLen);
     return asn1;
   }

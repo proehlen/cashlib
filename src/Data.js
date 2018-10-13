@@ -22,7 +22,7 @@ export default class Data {
     }
   }
 
-  get bytes(): Uint8Array {
+  toBytes(): Uint8Array {
     return this._bytes;
   }
 

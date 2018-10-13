@@ -82,8 +82,8 @@ export default class ExtendedKey {
       // Padding/dummy prefix for private keys to make them 33 bytes
       signature.addUint8(0);
     }
-    signature.addBytes(this._key.bytes);
-    return signature.hex;
+    signature.addBytes(this._key.toBytes());
+    return signature.toHex();
   }
 
   toSerialized(network: Network): string {
@@ -95,7 +95,7 @@ export default class ExtendedKey {
     const toBeEncoded = new Serializer();
     toBeEncoded.addBytes(networkPrefix);
     toBeEncoded.addBytesString(this.getSignature());
-    const bytesToBeEncoded = toBytes(toBeEncoded.hex);
+    const bytesToBeEncoded = toBytes(toBeEncoded.toHex());
 
     // Build check sum from double-hash of bytes to be encoded
     // $flow-disable-line Uint8Array *is* compatible with cipher.update

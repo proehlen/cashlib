@@ -14,7 +14,7 @@ export default class Serializer {
     this._hex = '';
   }
 
-  get hex() {
+  toHex() {
     return this._hex;
   }
 
