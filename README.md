@@ -2,6 +2,8 @@
 
 Experimental Bitcoin Cash library.  This sofware is in pre-alpha state and should not be used for any purpose.
 
+[API docs (under construction)](https://proehlen.github.io/cashlib/)
+
 **Do NOT use this code!**
 
 ## History
