@@ -10,6 +10,9 @@
     "url": "https://github.com/proehlen/cashlib.git"
   },
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "keywords": [
     "bitcoin",
     "cash",
