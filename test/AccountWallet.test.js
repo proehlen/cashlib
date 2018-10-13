@@ -4,7 +4,6 @@ declare var describe: any;
 declare var test: any;
 declare var expect: any;
 
-const BigInt = require('big-integer');
 const AccountWallet = require('../lib/AccountWallet').default;
 const DerivationPath = require('../lib/Wallet/DerivationPath').default;
 const MnemonicSeed = require('../lib/MnemonicSeed').default;
@@ -71,6 +70,5 @@ describe('AccountWallet', () => {
         });
       });
     });
-
   });
 });

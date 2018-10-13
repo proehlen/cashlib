@@ -1,6 +1,6 @@
 /**
  * Test entry point to library
- * 
+ *
  * The purpose is mostly to test that initial require() doesn't fail due to
  * refactoring/moving of classes and the index.js file not being updated
  * (that problem isn't picked up by other tests.)  The 'toBeDefined' tests
@@ -9,12 +9,13 @@
  * A failure here will serve as a warning that the public interface to the
  * library has changed after we are stable (requiring major version bump).
  */
+// @flow
+
+const cashlib = require('../lib');
 
 declare var describe: any;
 declare var test: any;
 declare var expect: any;
-
-const cashlib = require('../lib');
 
 describe('Library (index.js)', () => {
   describe('objects are provided', () => {
