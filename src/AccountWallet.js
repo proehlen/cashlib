@@ -1,6 +1,6 @@
 /**
  * Wallet for a single account derived from a BIP-0044 path
- * 
+ *
  * This class internally creates sub-wallets for and facilitates issuing of
  * external (public receiving) and internal (change) addresses.  It is up to
  * the client implementation to determine whether addresses have been
@@ -14,7 +14,6 @@ import assert from 'assert';
 import Address from './Address';
 import Data from './Data';
 import DerivationPath from './Wallet/DerivationPath';
-import MnemonicSeed from './MnemonicSeed';
 import Network from './Network';
 import Wallet from './Wallet';
 
@@ -46,7 +45,7 @@ export default class AccountWallet {
       : this._internalUsedIndex;
   }
 
-  setUsedAddressIndex(type: AccountWalletAddressType, addressIndex:number) {
+  setUsedAddressIndex(type: AccountWalletAddressType, addressIndex: number) {
     if (type === 'external') {
       this._externalUsedIndex = addressIndex;
     } else {
@@ -60,8 +59,7 @@ export default class AccountWallet {
    * This address can be shared publicly to receive payments
    */
   nextExternalAddress(network: Network): Address {
-    let address: Address;
-    this._externalUsedIndex += 1
+    this._externalUsedIndex += 1;
     const path = DerivationPath.fromSerialized(`M${this._externalUsedIndex}`);
     const publicKey = this._externalWallet.getKey(path).getPublicKey();
     return Address.fromPublicKey(publicKey, network);
@@ -69,27 +67,25 @@ export default class AccountWallet {
 
   /**
    * Returns next/first unused internal change public key as an address
-   * 
+   *
    * This address should be used by wallet software to receive change
    */
   nextInternalAddress(network: Network): Address {
-    let address: Address;
-    this._internalUsedIndex += 1
+    this._internalUsedIndex += 1;
     const path = DerivationPath.fromSerialized(`M/${this._internalUsedIndex}`);
     const publicKey = this._internalWallet.getKey(path).getPublicKey();
     return Address.fromPublicKey(publicKey, network);
   }
 
   static fromSeed(seed: Data, accountPath: DerivationPath): AccountWallet {
-    
     // Validate derivation path (require BIP44 format)
-    const exampleText = `(e.g.  m44'0'0')`;
-    assert (accountPath.numLevels === 3, `Expected a 3 level derivation path ${exampleText}`);
-    assert (accountPath.isPrivate, `Expected derivation path to begin with 'm' (private)`);
-    const firstIndex = accountPath.levels[0].childNumber; 
-    assert (firstIndex === purposeBip44, `Expected first derivation path level to be 44 ${exampleText}`);
-    const secondIndex = accountPath.levels[1].childNumber; 
-    assert (coinTypes.indexOf(secondIndex) > -1, `Unrecognized coin type (${secondIndex})`);
+    const exampleText = "(e.g.  m44'0'0')";
+    assert(accountPath.numLevels === 3, `Expected a 3 level derivation path ${exampleText}`);
+    assert(accountPath.isPrivate, "Expected derivation path to begin with 'm' (private)");
+    const firstIndex = accountPath.levels[0].childNumber;
+    assert(firstIndex === purposeBip44, `Expected first derivation path level to be 44 ${exampleText}`);
+    const secondIndex = accountPath.levels[1].childNumber;
+    assert(coinTypes.indexOf(secondIndex) > -1, `Unrecognized coin type (${secondIndex})`);
 
     // Generate master wallet
     const masterWallet = Wallet.fromSeed(seed);

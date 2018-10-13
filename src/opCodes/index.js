@@ -1,6 +1,4 @@
 // @flow
-import OpCode from '../OpCode';
-
 import OP_CHECKSIG from './OP_CHECKSIG';
 import OP_DUP from './OP_DUP';
 import OP_EQUALVERIFY from './OP_EQUALVERIFY';
@@ -11,6 +9,6 @@ const codes = {
   OP_DUP,
   OP_EQUALVERIFY,
   OP_HASH160,
-}
+};
 
 export default codes;

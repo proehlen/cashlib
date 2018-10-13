@@ -10,7 +10,7 @@ export type Endianness = 'LE' | 'BE';
 export default class Serializer {
   _hex: string
 
-  constructor () {
+  constructor() {
     this._hex = '';
   }
 
@@ -63,9 +63,9 @@ export default class Serializer {
   addInt64(value: number): Serializer {
     // Operating value is value with 1 subtracted to support two's complement conversion.
     // Much easier to do it now than later when we are working in bytes
-    let operatingValue = value < 0 ?
-      Math.abs(value) - 1 :
-      Math.abs(value)
+    const operatingValue = value < 0
+      ? Math.abs(value) - 1
+      : Math.abs(value);
 
     // Get operating value as bytes
     let hexString = Math.abs(operatingValue).toString(16);
@@ -74,14 +74,13 @@ export default class Serializer {
 
     // Add bytes to output
     bytes.forEach((byte) => {
-      // Handle negatives
-      if (value < 0) {
-        // Flip bits
-        byte = 0xff - byte;
-      }
+      // Handle negatives by flipping bits
+      const handled = (value < 0)
+        ? 0xff - byte
+        : byte;
 
-      this._hex += leftPad(byte.toString(16), 2, '0');
-    }); 
+      this._hex += leftPad(handled.toString(16), 2, '0');
+    });
 
     // Return this to support chaining
     return this;
@@ -89,7 +88,7 @@ export default class Serializer {
 
   /**
    * Add bytes
-   * @param {number} length 
+   * @param {number} length
    */
   addBytes(data: Uint8Array): Serializer {
     const converted = Array
@@ -130,9 +129,9 @@ export default class Serializer {
       this.addUint32(value, 'LE');
     } else {
       this.addUint8(0xff);
-      // Add 64-bit unsigned int.  Use method for signed int because up to 
+      // Add 64-bit unsigned int.  Use method for signed int because up to
       // (ridiculously high) max value, int/uint is same for positive integers
-      this.addInt64(value);  
+      this.addInt64(value);
     }
 
     // Return this to support chaining

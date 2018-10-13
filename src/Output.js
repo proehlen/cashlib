@@ -6,7 +6,7 @@ import PublicKey from './PublicKey';
 
 export default class Output {
   _value: number
-  _pubKeyScript: Uint8Array 
+  _pubKeyScript: Uint8Array
   _scriptType: 'P2PK' | 'P2PKH' | 'unknown'
 
   constructor(value: number, pubKeyScript: Uint8Array) {
@@ -14,10 +14,10 @@ export default class Output {
     this._pubKeyScript = pubKeyScript;
 
     // Determine script type (TODO handle other types and efficiency improvements)
-    if (pubKeyScript[0] === opCodes.OP_DUP.value &&
-        pubKeyScript[1] === opCodes.OP_HASH160.value &&
-        pubKeyScript[pubKeyScript.length - 2] === opCodes.OP_EQUALVERIFY.value &&
-        pubKeyScript[pubKeyScript.length - 1] === opCodes.OP_CHECKSIG.value) {
+    if (pubKeyScript[0] === opCodes.OP_DUP.value
+        && pubKeyScript[1] === opCodes.OP_HASH160.value
+        && pubKeyScript[pubKeyScript.length - 2] === opCodes.OP_EQUALVERIFY.value
+        && pubKeyScript[pubKeyScript.length - 1] === opCodes.OP_CHECKSIG.value) {
       this._scriptType = 'P2PKH';
     } else if (pubKeyScript[0] >= 0x01
         && pubKeyScript[0] <= 0x4b
@@ -64,7 +64,7 @@ export default class Output {
   static createP2PKH(address: string, value: number): Output {
     const addr = Address.fromString(address);
     const pubKeyHash = addr.toPublicKeyHash();
-    const pubKeyScript: Uint8Array = new Uint8Array(pubKeyHash.length + 5); 
+    const pubKeyScript: Uint8Array = new Uint8Array(pubKeyHash.length + 5);
     pubKeyScript.set([opCodes.OP_DUP.value], 0);
     pubKeyScript.set([opCodes.OP_HASH160.value], 1);
     pubKeyScript.set([pubKeyHash.length], 2);
@@ -73,5 +73,4 @@ export default class Output {
     pubKeyScript.set([opCodes.OP_CHECKSIG.value], pubKeyHash.length + 4);
     return new Output(value, pubKeyScript);
   }
-
 }

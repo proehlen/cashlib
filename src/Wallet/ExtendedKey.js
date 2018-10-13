@@ -1,6 +1,6 @@
 /**
  * Extended private or public key per BIP-0032
- * 
+ *
  * Extended keys are regular keys with an additional 256 bits of entropy (the
  * chain code).
  */
@@ -10,7 +10,6 @@ import crypto from 'crypto';
 import assert from 'assert';
 import { toBytes } from 'stringfu';
 
-import Data from '../Data';
 import Network from '../Network';
 import PrivateKey from '../PrivateKey';
 import PublicKey from '../PublicKey';
@@ -40,31 +39,29 @@ export default class ExtendedKey {
     this._parentFingerprint = parentFingerprint;
   }
 
-  get key() { return this._key; };
-  get chainCode() { return this._chainCode; };
+  get key() { return this._key; }
+  get chainCode() { return this._chainCode; }
   get depth() { return this._depth; }
   get childNumber() { return this._childNumber; }
   get parentFingerprint() { return this._parentFingerprint; }
 
   getPrivateKey(): PrivateKey {
-    if (this._key instanceof PrivateKey) {
-      return this._key;
-    } else {
+    if (!(this._key instanceof PrivateKey)) {
       throw new Error('Key for this extended key is not a private key');
     }
+    return this._key;
   }
 
   getPublicKey(): PublicKey {
-    if (this._key instanceof PublicKey) {
-      return this._key;
-    } else {
+    if (!(this._key instanceof PublicKey)) {
       throw new Error('Key for this extended key is not a public key');
     }
+    return this._key;
   }
 
   /**
    * Return signature of extended key
-   * 
+   *
    * The signature is a hex string with enough data to uniquiely id the
    * extended key without collision. It is effectively the serialized
    * extended key (refer BIP-0032#Serialization_format) but devoid of
@@ -75,7 +72,8 @@ export default class ExtendedKey {
     signature.addUint8(this.depth);
     signature.addBytes(this._parentFingerprint);
     // TODO understand why spec calls for following line but works with just raw bytes
-    // "4 bytes: child number. This is ser32(i) for i in xi = xpar/i, with xi the key being serialized. (0x00000000 if master key)"
+    // "4 bytes: child number. This is ser32(i) for i in xi = xpar/i, with xi the
+    // key being serialized. (0x00000000 if master key)"
     signature.addUint32(this.childNumber, 'BE');
     signature.addBytes(this.chainCode);
     if (this._key instanceof PrivateKey) {

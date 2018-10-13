@@ -1,9 +1,9 @@
 /**
  * Point on Eliptic Curve
- * 
+ *
  * Note: methods add, double and multiply relate to elliptic curve point
  * multiplication and not regular math operations.
- * 
+ *
  * Note: since we presently only use secp256k1, some simplifications are possible
  * in elliptic curve point multiplication.  If other curves are implemented,
  * these may not apply and this class would need to be updated.
@@ -18,14 +18,13 @@ import secp256k1 from './secp256k1';
 import { modSqrt } from './math';
 
 export default class CurvePoint extends Point {
-
   static add(pointA: Point, pointB: Point): CurvePoint {
     const lamda = pointB.y
       .subtract(pointA.y)
       .multiply(
         pointB.x
           .subtract(pointA.x)
-          .modInv(secp256k1.field)
+          .modInv(secp256k1.field),
       )
       .mod(secp256k1.field);
     const x = lamda
@@ -52,7 +51,7 @@ export default class CurvePoint extends Point {
       .multiply(
         point.y
           .multiply(2)
-          .modInv(secp256k1.field)
+          .modInv(secp256k1.field),
       )
       .mod(secp256k1.field);
     const x = lamda
@@ -63,11 +62,11 @@ export default class CurvePoint extends Point {
       .multiply(point.x.subtract(x))
       .subtract(point.y)
       .mod(secp256k1.field);
-    
+
     if (y.isNegative()) {
       y = y.add(secp256k1.field);
     }
-    
+
     // Update x/y
     return new CurvePoint(x, y);
   }
@@ -79,19 +78,19 @@ export default class CurvePoint extends Point {
 
     let point = new CurvePoint(secp256k1.basePoint.x, secp256k1.basePoint.y);
     const bits = value.toString(2).split('');
-    for (let i = 1; i <  bits.length; i++) {
+    for (let i = 1; i < bits.length; i++) {
       point = CurvePoint.double(point);
       if (bits[i] === '1') {
         point = CurvePoint.add(point, secp256k1.basePoint);
       }
     }
-    
+
     return point;
   }
 
   toBytes(compressed: boolean = true) {
     const length = compressed ? 33 : 65;
-    let bytes = new Uint8Array(length);
+    const bytes = new Uint8Array(length);
     if (!compressed) {
       // Uncompressed === 0x04<x><y>
       bytes.set([0x04], 0);
@@ -127,17 +126,17 @@ export default class CurvePoint extends Point {
     const bytes = stringfu.toBytes(hex);
     return CurvePoint.fromBytes(bytes);
   }
-  
+
   static fromBytes(bytes: Uint8Array): CurvePoint {
     let x: BigInt;
     let y: BigInt;
     if (bytes.length === 65 && bytes[0] === 0x04) {
       // Uncompressed public key
-      x = new BigInt.fromArray(Array.from(bytes.slice(1, 33)), 256, false);
-      y = new BigInt.fromArray(Array.from(bytes.slice(33, 65)), 256, false);
+      x = BigInt.fromArray(Array.from(bytes.slice(1, 33)), 256, false);
+      y = BigInt.fromArray(Array.from(bytes.slice(33, 65)), 256, false);
     } else if (bytes.length === 33) {
       // Compressed public key
-      x = new BigInt.fromArray(Array.from(bytes.slice(1)), 256, false);
+      x = BigInt.fromArray(Array.from(bytes.slice(1)), 256, false);
       let requireEven: boolean;
       if (bytes[0] === 0x02) {
         // Should produce point with even Y value

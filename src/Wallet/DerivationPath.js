@@ -1,18 +1,16 @@
 /**
  * Class for handling BIP32 derivation paths - a method of specifying a private
  * or public extended key in a key tree.
- * 
+ *
  * A derivation path is a string in the format of format "m/n'/n'/n'" where:
  *
  *   m or M   is a literal.  Lowercase is a private key; uppercase is public key
  *   /        is a literal indicatating is an optional level (zero or more)
  *   n        the child key number in the current level
- *   '        optionally nominates the suffixed child key as hardened (subscript 'H' is the 
+ *   '        optionally nominates the suffixed child key as hardened (subscript 'H' is the
  *            notation used in the BIP but apostrophe suffix is the public convention)
  */
 // @flow
-
-import { containsOnly } from 'stringfu';
 
 export type DerivationPathType = 'public' | 'private';
 
@@ -32,14 +30,14 @@ export default class DerivationPath {
   constructor(type: DerivationPathType, levels: DerivationPathLevels, serialized: string) {
     this._type = type;
     this._levels = levels;
-    this._serialized = serialized; 
+    this._serialized = serialized;
   }
-  
+
   toPublic() {
     return new DerivationPath(
       'public',
       this._levels,
-      this._serialized
+      this._serialized,
     );
   }
 
@@ -71,9 +69,9 @@ export default class DerivationPath {
       .map((encodedLevel, index) => {
         const levelAndHardened = encodedLevel.split(',');
         const hardened = levelAndHardened[1] !== undefined && levelAndHardened[1] === "'";
-        let childNumber = parseInt(levelAndHardened[0]);
+        let childNumber = parseInt(levelAndHardened[0], 10);
         if (hardened) {
-          childNumber = childNumber + (2 ** 31);
+          childNumber += (2 ** 31);
         }
         return {
           depth: index + 1,
@@ -90,7 +88,7 @@ export default class DerivationPath {
   get isPublic() { return this._type === 'public'; }
   get numLevels() { return this._levels.length; }
   get levels(): DerivationPathLevels {
-    // Return deep copy so our prop is immutable 
+    // Return deep copy so our prop is immutable
     // (We expect returned array to be heavily modified during stack processing)
     return this._levels
       .slice()
