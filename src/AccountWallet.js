@@ -30,19 +30,27 @@ export type AccountWalletAddressType = 'internal' | 'external';
 export default class AccountWallet {
   _internalWallet: Wallet
   _externalWallet: Wallet
-  _internalUsed: ?number // Used change address index
-  _externalUsed: ?number // Used external address index
+  _internalUsedIndex: number // Used change address index
+  _externalUsedIndex: number // Used external address index
 
   constructor(externalWallet: Wallet, internalWallet: Wallet) {
     this._externalWallet = externalWallet;
+    this._externalUsedIndex = -1;
     this._internalWallet = internalWallet;
+    this._internalUsedIndex = -1;
+  }
+
+  getUsedAddressIndex(type: AccountWalletAddressType): number {
+    return (type === 'external')
+      ? this._externalUsedIndex
+      : this._internalUsedIndex;
   }
 
   setUsedAddressIndex(type: AccountWalletAddressType, addressIndex:number) {
     if (type === 'external') {
-      this._externalUsed = addressIndex;
+      this._externalUsedIndex = addressIndex;
     } else {
-      this._internalUsed = addressIndex;
+      this._internalUsedIndex = addressIndex;
     }
   }
 
@@ -53,11 +61,8 @@ export default class AccountWallet {
    */
   nextExternalAddress(network: Network): Address {
     let address: Address;
-    const nextIndex: number = this._externalUsed !== undefined 
-      ? this._externalUsed + 1
-      : 0;
-    this._externalUsed = nextIndex;
-    const path = DerivationPath.fromSerialized(`M${nextIndex}`);
+    this._externalUsedIndex += 1
+    const path = DerivationPath.fromSerialized(`M${this._externalUsedIndex}`);
     const publicKey = this._externalWallet.getKey(path).getPublicKey();
     return Address.fromPublicKey(publicKey, network);
   }
@@ -69,11 +74,8 @@ export default class AccountWallet {
    */
   nextInternalAddress(network: Network): Address {
     let address: Address;
-    const nextIndex: number = this._internalUsed !== undefined 
-      ? this._internalUsed + 1
-      : 0;
-    this._internalUsed = nextIndex;
-    const path = DerivationPath.fromSerialized(`M/${nextIndex}`);
+    this._internalUsedIndex += 1
+    const path = DerivationPath.fromSerialized(`M/${this._internalUsedIndex}`);
     const publicKey = this._internalWallet.getKey(path).getPublicKey();
     return Address.fromPublicKey(publicKey, network);
   }
