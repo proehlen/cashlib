@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "clean": "rimraf lib",
-    "docs": "documentation build src/** -f json -o docs/docs.json",
+    "docs": "copyfiles package.json README.md docs && documentation build src/** -g -f json -o docs/docs.json",
     "eslint": "eslint src",
     "flow": "flow",
     "pretest": "npm run build",
@@ -38,6 +38,7 @@
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
+    "copyfiles": "^2.1.0",
     "documentation": "^8.1.2",
     "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
