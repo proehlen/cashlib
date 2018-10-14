@@ -1,4 +1,5 @@
-# Experimental Bitcoin Cash Library
+# Cashlib
+## Experimental Bitcoin Cash Library
 
 Experimental Bitcoin Cash library.  This sofware is in pre-alpha state and should not be used for any purpose.
 
