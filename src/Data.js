@@ -21,22 +21,37 @@ export default class Data {
     }
   }
 
+  /**
+   * Return data as a array of unsigned integers betwen 0 and 255 (ie 8 bit bytes)
+   */
   toBytes(): Uint8Array {
     return this._bytes;
   }
 
+  /**
+   * Return data as a hex string
+   */
   toHex(): string {
     return stringfu.fromBytes(this._bytes);
   }
 
+  /**
+   * Return data as a regular array
+   */
   toArray(): Array<number> {
     return Array.from(this._bytes);
   }
 
+  /**
+   * Return data as a big integer
+   */
   toBigInt(): BigInt {
     return BigInt.fromArray(this.toArray(), 256, false);
   }
 
+  /**
+   * Return data hashed with SHA-256 and then hashed again with RIPEMD-160.
+   */
   toHash160(): Uint8Array {
     const sha256ed = crypto
       .createHash('sha256')
@@ -48,8 +63,10 @@ export default class Data {
   }
 
   /**
-   * Note: Don't know how to make 'this' polymorphic in flow;
-   * Override (replicate) in child classes to avoid type warnings.
+   * Create instance of {@link Data} from a hex string
+   *
+   * Note: The author doesn't know how to make 'this' polymorphic in flow-type;
+   * Override (replicate) this method in child classes to avoid type warnings.
    */
   static fromHex(hex: string): Data {
     const bytes = stringfu.toBytes(hex);

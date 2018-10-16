@@ -18,7 +18,6 @@ import { modSqrt } from './math';
  * these may not apply and this class may need to be updated.
  */
 export default class CurvePoint extends Point {
-
   /**
    * Return a new point from adding one point to another.
    *
@@ -83,6 +82,12 @@ export default class CurvePoint extends Point {
     return new CurvePoint(x, y);
   }
 
+  /**
+   * Return a curve point by multiplying the given value.
+   *
+   * This is commonly used to derive a public key from a private key.
+   * See {@link https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication Elliptic curve point multiplication}
+   */
   static multiply(value: BigInt): CurvePoint {
     if (value.isZero() || value.greaterOrEquals(secp256k1.order)) {
       throw new Error('Invalid value/key for ec point multiplication');
@@ -100,7 +105,14 @@ export default class CurvePoint extends Point {
     return point;
   }
 
-  toBytes(compressed: boolean = true) {
+  /**
+   * Return point as bytes
+   *
+   * Returns the point as a 33 or 65 byte array depending on wether
+   * the compressed argument is true or not.  The first byte indicates
+   * whether the data is uncompressed (0x04), or compressed(0x02 or 0x03).
+   */
+  toBytes(compressed: boolean = true): Uint8Array {
     const length = compressed ? 33 : 65;
     const bytes = new Uint8Array(length);
     if (!compressed) {
@@ -120,6 +132,13 @@ export default class CurvePoint extends Point {
     return bytes;
   }
 
+  /**
+   * Return point as hex string
+   *
+   * Returns the point as a 66 or 130 length string.  This
+   * is the same data as is returned by `toBytes` but in
+   * hex string format.
+   */
   toHex(compressed: boolean = true): string {
     const bytes = this.toBytes(compressed);
     return stringfu.fromBytes(bytes);
@@ -134,11 +153,19 @@ export default class CurvePoint extends Point {
     return CurvePoint.multiply(value);
   }
 
-  static fromHex(hex: string) {
+  /**
+   * Use elliptic curve point multiplication to derive the point (public key) on
+   * secp256k1 curve for the given integer (private key) provided in hex string format
+   */
+  static fromHex(hex: string): CurvePoint {
     const bytes = stringfu.toBytes(hex);
     return CurvePoint.fromBytes(bytes);
   }
 
+  /**
+   * Use elliptic curve point multiplication to derive the point (public key) on
+   * secp256k1 curve for the given integer (private key) provided in bytes
+   */
   static fromBytes(bytes: Uint8Array): CurvePoint {
     let x: BigInt;
     let y: BigInt;

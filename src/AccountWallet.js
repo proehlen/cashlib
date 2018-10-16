@@ -33,7 +33,7 @@ export type AccountWalletAddressType = 'internal' | 'external';
  * `nextInternalAddress` methods - ie, it won't reissue the same address.  However,
  * it is up to the client implementation to determine whether addresses have been
  * used prior to instantiation (ie by scanning the blockchain) and calling
- * setUsedAddressIndex() accordingly.
+ * `setUsedAddressIndex` accordingly.
  */
 export default class AccountWallet {
   _internalWallet: Wallet
