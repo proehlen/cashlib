@@ -6,16 +6,17 @@ import Point from './Point';
  * The parameters that, when taken together, define the elliptic curve
  */
 type CurveDomainParameters = {
-  field: BigInt, // aka 'p' - integer specifying the finite field
-  basePoint: Point, // aka 'G = (xG, yG)'
-  order: BigInt, // aka 'n' - a prime which is the order of basePoint/G
-  elementA: BigInt, // aka 'a' - one of two elements specifying the curve
-  elementB: BigInt, // aka 'b' - one of two elements specifying the curve
-  cofactor: BigInt, // aka 'h' - the cofactor
+  field: BigInt,
+  basePoint: Point,
+  order: BigInt,
+  elementA: BigInt,
+  elementB: BigInt,
+  cofactor: BigInt,
 }
 
 /**
  * Class representing an elliptic curve.
+ * @package
  */
 export default class Curve {
   _field: BigInt
@@ -34,10 +35,35 @@ export default class Curve {
     this._cofactor = domainParameters.cofactor;
   }
 
-  get field() { return this._field; }
-  get basePoint() { return this._basePoint; }
-  get order() { return this._order; }
-  get elementA() { return this._elementA; }
-  get elementB() { return this._elementB; }
-  get cofactor() { return this._cofactor; }
+  /**
+   * The curve's field, aka 'p' - an integer specifying the finite field
+   */
+  get field(): BigInt { return this._field; }
+
+  /**
+   * The curve's base point, aka 'G = (xG, yG)'
+   */
+  get basePoint(): Point { return this._basePoint; }
+
+  /**
+   * The curve's order, aka 'n' - a prime which is the order of basePoint/G
+   */
+  get order(): BigInt { return this._order; }
+
+
+  /**
+   * The curve's first element value, aka 'a' - one of two elements specifying the curve
+   */
+  get elementA(): BigInt { return this._elementA; }
+
+  /**
+   * The curve's second element value, aka 'b' - one of two elements specifying the curve
+   */
+  get elementB(): BigInt { return this._elementB; }
+
+
+  /**
+   * The curve's cofactor, aka 'h'
+   */
+  get cofactor(): BigInt { return this._cofactor; }
 }

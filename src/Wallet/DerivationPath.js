@@ -26,16 +26,19 @@ export type DerivationPathLevel = {
 export type DerivationPathLevels = Array<DerivationPathLevel>;
 
 /**
- * Class for handling BIP32 derivation paths - a method of specifying a private
- * or public extended key in a key tree.
+ * Class for handling derivation paths - a method of specifying a private
+ * or public extended key in a key tree. See:
  *
- * A derivation path is a string in the format of format "m/n'/n'/n'" where:
+ * * {@link https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki BIP32}
+ * * {@link https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki BIP44}
  *
- *   m or M   is a literal.  Lowercase is a private key; uppercase is public key
- *   /        is a literal indicatating is an optional level (zero or more)
- *   n        the child key number in the current level
- *   '        optionally nominates the suffixed child key as hardened (subscript 'H' is the
- *            notation used in the BIP but apostrophe suffix is the public convention)
+ * A derivation path is usually represented in its serialized format, e.g. "m/44'/0'/0'" where:
+ *
+ * * m or M   is a literal where lowercase "m" is a private key; uppercase "M" a public key
+ * * /        is a literal indicatating a level (zero or more)
+ * * n        is the child key number in the current level
+ * * '        indicates that the suffixed child key is hardened (subscript 'H' is the
+ *            notation used in the BIP but an apostrophe is the public convention)
  */
 export default class DerivationPath {
   _type: DerivationPathType
@@ -54,7 +57,7 @@ export default class DerivationPath {
   /**
    * Returns a new path but with the type set to 'public'
    */
-  toPublic() {
+  toPublic(): DerivationPath {
     return new DerivationPath(
       'public',
       this._levels,
@@ -63,18 +66,14 @@ export default class DerivationPath {
   }
 
   /**
-   * Serializes the path into a string in the commonly used format
-   *
-   * E.g. returns "m/44'/0'/0'"
+   * Serializes the path into a string in the commonly used format eg "m/44'/0'/0'"
    */
   toSerialized(): string {
     return this._serialized;
   }
 
   /**
-   * Creates a {@link DerivationPath} instance from a serialized string
-   *
-   * E.g. expects something like "m/44'/0'/0'"
+   * Creates a {@link DerivationPath} instance from a serialized string, eg "m/44'/0'/0'"
    */
   static fromSerialized(serialized: string): DerivationPath {
     // Determine type
@@ -115,14 +114,17 @@ export default class DerivationPath {
   }
 
   /**
+   * The derivation path type
    */
   get type(): DerivationPathType { return this._type; }
 
   /**
+   * The address represented by the path is private
    */
   get isPrivate(): boolean { return this._type === 'private'; }
 
   /**
+   * The address represented by the path is public
    */
   get isPublic(): boolean { return this._type === 'public'; }
 

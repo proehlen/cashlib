@@ -15,9 +15,16 @@ import { modSqrt } from './math';
  *
  * Note: since we presently only use secp256k1, some simplifications are possible
  * in elliptic curve point multiplication.  If other curves are implemented,
- * these may not apply and this class would need to be updated.
+ * these may not apply and this class may need to be updated.
  */
 export default class CurvePoint extends Point {
+
+  /**
+   * Return a new point from adding one point to another.
+   *
+   * The term 'Add' in this context refers to elliptic curve arithmetic and
+   * not regular addition.
+   */
   static add(pointA: Point, pointB: Point): CurvePoint {
     const lamda = pointB.y
       .subtract(pointA.y)
@@ -44,6 +51,11 @@ export default class CurvePoint extends Point {
     return new CurvePoint(x, y);
   }
 
+  /**
+   * Return a new point by doubling the provided point.
+   *
+   * See {@link https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication#Point_doubling Point doubling}
+   */
   static double(point: Point): CurvePoint {
     const lamda = point.x
       .pow(2)
@@ -114,7 +126,7 @@ export default class CurvePoint extends Point {
   }
 
   /**
-   * Use elliptic curve point multiplication to derive point (public key) on
+   * Use elliptic curve point multiplication to derive the point (public key) on
    * secp256k1 curve for the given integer (private key)
    */
   static fromBigInt(value: BigInt): CurvePoint {

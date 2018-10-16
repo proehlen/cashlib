@@ -51,7 +51,7 @@ export default class Data {
    * Note: Don't know how to make 'this' polymorphic in flow;
    * Override (replicate) in child classes to avoid type warnings.
    */
-  static fromHex(hex: string) {
+  static fromHex(hex: string): Data {
     const bytes = stringfu.toBytes(hex);
     return new this(bytes);
   }

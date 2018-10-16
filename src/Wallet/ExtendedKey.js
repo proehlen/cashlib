@@ -39,12 +39,37 @@ export default class ExtendedKey {
     this._parentFingerprint = parentFingerprint;
   }
 
-  get key() { return this._key; }
-  get chainCode() { return this._chainCode; }
-  get depth() { return this._depth; }
-  get childNumber() { return this._childNumber; }
-  get parentFingerprint() { return this._parentFingerprint; }
+  /**
+   * Private or public key for this extended key
+   */
+  get key(): PrivateKey | PublicKey { return this._key; }
 
+  /**
+   * Chaincode for this extended key
+   */
+  get chainCode(): Uint8Array { return this._chainCode; }
+
+  /**
+   * Depth / level number of this extended key in key tree
+   */
+  get depth(): number { return this._depth; }
+
+  /**
+   * Child node index at this depth in key tree
+   */
+  get childNumber(): number { return this._childNumber; }
+
+  /**
+   * Fingerprint of parent extended key
+   */
+  get parentFingerprint(): Uint8Array { return this._parentFingerprint; }
+
+  /**
+   * Returns {@link PrivateKey} for this extended key.
+   *
+   * Throws exception if key is not a PrivateKey.  Use `key` attribute instead
+   * for generic access without exceptions.
+   */
   getPrivateKey(): PrivateKey {
     if (!(this._key instanceof PrivateKey)) {
       throw new Error('Key for this extended key is not a private key');
@@ -52,6 +77,12 @@ export default class ExtendedKey {
     return this._key;
   }
 
+  /**
+   * Returns {@link PublicKey} for this extended key.
+   *
+   * Throws exception if key is not a PublicKey.  Use `key` attribute instead
+   * for generic access without exceptions.
+   */
   getPublicKey(): PublicKey {
     if (!(this._key instanceof PublicKey)) {
       throw new Error('Key for this extended key is not a public key');
@@ -84,6 +115,13 @@ export default class ExtendedKey {
     return signature.toHex();
   }
 
+  /**
+   * Returns extended key as a string in serialized format.
+   *
+   * Serialized format is the extended key and a checksum in base58
+   * encoded format.  These serialized keys are recognizable by their
+   * four digit prefix (eg. `xpub` or `xpriv` for mainnet keys).
+   */
   toSerialized(network: Network): string {
     const networkPrefix = this.key instanceof PrivateKey
       ? network.prefixes.extendedKeyVersion.private

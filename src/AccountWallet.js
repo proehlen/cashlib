@@ -25,13 +25,15 @@ const coinTypes = [bitcoin, testnet, bitcoinCash];
 export type AccountWalletAddressType = 'internal' | 'external';
 
 /**
- * Wallet for a single account derived from a BIP-0044 path
+ * Wallet for a single account derived from a BIP-0044 {@link DerivationPath}
  *
  * This class internally creates sub-wallets for and facilitates issuing of
- * external (public receiving) and internal (change) addresses.  It is up to
- * the client implementation to determine whether addresses have been
- * previously used (ie by scanning the blockchain) and calling setUsedAddressIndex()
- * accordingly.
+ * external (public receiving) and internal (change) addresses.  It will track
+ * addresses used (issued) for any addresses issued with the `nextExternalAddress` and
+ * `nextInternalAddress` methods - ie, it won't reissue the same address.  However,
+ * it is up to the client implementation to determine whether addresses have been
+ * used prior to instantiation (ie by scanning the blockchain) and calling
+ * setUsedAddressIndex() accordingly.
  */
 export default class AccountWallet {
   _internalWallet: Wallet

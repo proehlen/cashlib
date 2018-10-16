@@ -10,22 +10,36 @@ import Network from './Network';
 /**
  * A Bitcoin address
  *
- * @hideconstructor
+ * *Warning* this class may be deprecated in the near future in favor of
+ * additional methods on {@link PublicKey}
  */
 export default class Address extends Data {
+  /**
+   * Returns public representation of address
+   */
   toString(): string {
     return base58.encode(this.toBytes());
   }
 
+  /**
+   * Returns public key hash
+   */
   toPublicKeyHash(): Uint8Array {
     // Return bytes minus 1 byte version (start) and 4 byte checksum (end)
     return this.toBytes().slice(1, this.toBytes().length - 4);
   }
 
-  static fromString(address: string) {
+  /**
+   * Decodes public representation of address
+   */
+  static fromString(address: string): Address {
     return new Address(base58.decode(address));
   }
 
+  /**
+   * Returns an Address object from a public key hash (the representation used
+   * in the Bitcoin protocol.)
+   */
   static fromPublicKeyHash(publicKeyHash: Uint8Array, network: Network): Address {
     const versionAndHash160 = new Uint8Array(1 + publicKeyHash.length);
     versionAndHash160.set([network.prefixes.publicKeyAddress]);
@@ -45,6 +59,9 @@ export default class Address extends Data {
     return new Address(bytes);
   }
 
+  /**
+   * Creates an Address instance from a {@link PublicKey}.
+   */
   static fromPublicKey(publicKey: PublicKey, network: Network): Address {
     return Address.fromPublicKeyHash(publicKey.toHash160(), network);
   }

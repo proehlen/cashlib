@@ -4,7 +4,8 @@ import assert from 'assert';
 
 /**
  * A simple point
- * @private
+ *
+ * For an eliptic curve point see {@link CurvePoint}.
  */
 export default class Point {
   _x: BigInt
@@ -16,6 +17,13 @@ export default class Point {
     this._y = y;
   }
 
-  get x() { return this._x; }
-  get y() { return this._y; }
+  /**
+   * The point's x value
+   */
+  get x(): BigInt { return this._x; }
+
+  /**
+   * The point's y value
+   */
+  get y(): BigInt { return this._y; }
 }
