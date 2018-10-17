@@ -115,12 +115,12 @@ export default class PrivateKey extends Data {
       keyLen, // length of string to follow (should be 32/0x20 bytes)
     ];
 
-    const asn1Seckp256k1 = [0xa0, 0x07, 0x06, 0x05, 0x2b, 0x81, 0x04, 0x00, 0x0a];
+    const asn1Secp256k1 = [0xa0, 0x07, 0x06, 0x05, 0x2b, 0x81, 0x04, 0x00, 0x0a];
 
-    const asn1 = new Uint8Array(asn1PreString.length + keyLen + asn1Seckp256k1.length);
+    const asn1 = new Uint8Array(asn1PreString.length + keyLen + asn1Secp256k1.length);
     asn1.set(asn1PreString, 0);
     asn1.set(this.toBytes(), asn1PreString.length);
-    asn1.set(asn1Seckp256k1, asn1PreString.length + keyLen);
+    asn1.set(asn1Secp256k1, asn1PreString.length + keyLen);
     return asn1;
   }
 
