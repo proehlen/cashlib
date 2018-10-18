@@ -40,7 +40,7 @@ export default class Deserializer {
   /**
    * Returns the next 2 bytes from the serialized data as an unsigned 16 bit integer
    *
-   * TODO provide option for endianness
+   * @todo provide option for endianness
    */
   getUint16(): number {
     const result = this._dataView.getUint16(this._byteOffset, true);
@@ -51,7 +51,7 @@ export default class Deserializer {
   /**
    * Returns the next 4 bytes from the serialized data as an unsigned 32 bit integer
    *
-   * TODO provide option for endianness
+   * @todo provide option for endianness
    */
   getUint32(): number {
     const result = this._dataView.getUint32(this._byteOffset, true);
@@ -62,7 +62,7 @@ export default class Deserializer {
   /**
    * Returns the next 8 bytes from the serialized data as a signed 64 bit integer
    *
-   * TODO provide option for endianness
+   * @todo provide option for endianness
    */
   getInt64(): number {
     const data = this.getBytes(8).reverse();
@@ -95,7 +95,7 @@ export default class Deserializer {
   /**
    * Returns the next 8 bytes from the serialized data as an unsigned 64 bit integer
    *
-   * TODO provide option for endianness
+   * @todo provide option for endianness
    */
   getUInt64(): number {
     const data = Array.from(this.getBytes(8).reverse());

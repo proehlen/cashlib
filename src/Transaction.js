@@ -13,7 +13,7 @@ const VERSION = 0x00000001;
 /**
  * A Bitcoin transaction
  *
- * *TODO* Documentation under construction
+ * @todo Documentation under construction
  */
 export default class Transaction {
   _inputs: Input[]

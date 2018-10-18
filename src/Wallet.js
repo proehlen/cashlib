@@ -22,7 +22,7 @@ const twoPower31 = 2 ** 31;
  * Note: this class does *not* implement BIP-0039 or BIP-0044.  See MnemonicSeed
  * and AccountWallet classes respectively for those functionalities.
  *
- * *TODO* Documentation under construction
+ * @todo Documentation under construction
  */
 export default class Wallet {
   _masterPublicKey: ExtendedKey
@@ -145,7 +145,7 @@ export default class Wallet {
    * private key from the parent extended private key
    * @private
    *
-   * TODO Pre-beta: Ensure we are handling this edge case:
+   * @todo Pre-beta: Ensure we are handling this edge case:
    * "In case parse256(IL) ≥ n or ki = 0, the resulting key is invalid, and one should
    * proceed with the next value for i. (Note: this has probability lower than 1 in 2127.)"
    */
@@ -268,7 +268,7 @@ export default class Wallet {
    * child keys.
    * @private
    *
-   * TODO Pre-beta: Ensure we are handling this edge case:
+   * @todo Pre-beta: Ensure we are handling this edge case:
    * "In case parse256(IL) ≥ n or Ki is the point at infinity, the resulting key is
    * invalid, and one should proceed with the next value for i."
    */

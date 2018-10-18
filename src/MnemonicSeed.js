@@ -18,6 +18,8 @@ const wordlist = fs.readFileSync(wordlistFile, { encoding: 'utf8' }).split('\n')
 export default class MnemonicSeed extends Data {
   /**
    * Returns a MnemonicSeed from 12 seed words.
+   *
+   * @todo Support optional passphrase
    */
   static fromWords(seedWords: string[]): MnemonicSeed {
     // Validate seedWords provided and correct type/length
