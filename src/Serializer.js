@@ -5,6 +5,8 @@ export type Endianness = 'LE' | 'BE';
 
 /**
  * Class for serializing data
+ *
+ * *TODO* Documentation under construction
  */
 export default class Serializer {
   _hex: string

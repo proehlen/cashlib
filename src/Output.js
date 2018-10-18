@@ -4,13 +4,15 @@ import Address from './Address';
 import Network from './Network';
 import PublicKey from './PublicKey';
 
+export type OutputScriptType = 'P2PK' | 'P2PKH' | 'unknown';
+
 /**
  * A transaction output
  */
 export default class Output {
   _value: number
   _pubKeyScript: Uint8Array
-  _scriptType: 'P2PK' | 'P2PKH' | 'unknown'
+  _scriptType: OutputScriptType
 
   constructor(value: number, pubKeyScript: Uint8Array) {
     this._value = value;
@@ -31,18 +33,30 @@ export default class Output {
     }
   }
 
-  get value() {
+  /**
+   * The value in Satoshis for this output
+   */
+  get value(): number {
     return this._value;
   }
 
+  /**
+   * The public key script (aka 'ScriptPubKey') for this output
+   */
   get pubKeyScript() {
     return this._pubKeyScript;
   }
 
-  get scriptType() {
+  /**
+   * The type of output script for this output
+   */
+  get scriptType(): OutputScriptType {
     return this._scriptType;
   }
 
+  /**
+   * Return a Bitcoin address for this output
+   */
   getAddress(network: Network): Address | void {
     let address: Address | void;
     if (this.scriptType === 'P2PKH') {

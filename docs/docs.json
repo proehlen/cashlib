@@ -142,7 +142,7 @@
       },
       "file": "/home/p/Git/cashlib/src/AccountWallet.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/AccountWallet.js#L18-L24",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/AccountWallet.js#L18-L24",
         "path": "src/AccountWallet.js"
       }
     },
@@ -439,7 +439,7 @@
       },
       "file": "/home/p/Git/cashlib/src/AccountWallet.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/AccountWallet.js#L38-L133",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/AccountWallet.js#L38-L133",
         "path": "src/AccountWallet.js"
       }
     },
@@ -579,7 +579,7 @@
             },
             "file": "/home/p/Git/cashlib/src/AccountWallet.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/AccountWallet.js#L57-L61",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/AccountWallet.js#L57-L61",
               "path": "src/AccountWallet.js"
             }
           },
@@ -710,7 +710,7 @@
             },
             "file": "/home/p/Git/cashlib/src/AccountWallet.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/AccountWallet.js#L66-L72",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/AccountWallet.js#L66-L72",
               "path": "src/AccountWallet.js"
             }
           },
@@ -884,7 +884,7 @@
             },
             "file": "/home/p/Git/cashlib/src/AccountWallet.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/AccountWallet.js#L79-L84",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/AccountWallet.js#L79-L84",
               "path": "src/AccountWallet.js"
             }
           },
@@ -1050,7 +1050,7 @@
             },
             "file": "/home/p/Git/cashlib/src/AccountWallet.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/AccountWallet.js#L91-L96",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/AccountWallet.js#L91-L96",
               "path": "src/AccountWallet.js"
             }
           },
@@ -1184,7 +1184,7 @@
             },
             "file": "/home/p/Git/cashlib/src/AccountWallet.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/AccountWallet.js#L101-L132",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/AccountWallet.js#L101-L132",
               "path": "src/AccountWallet.js"
             }
           },
@@ -1433,7 +1433,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Address.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Address.js#L16-L68",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Address.js#L16-L68",
         "path": "src/Address.js"
       }
     },
@@ -1533,7 +1533,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Address.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Address.js#L20-L22",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Address.js#L20-L22",
               "path": "src/Address.js"
             }
           },
@@ -1654,7 +1654,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Address.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Address.js#L27-L30",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Address.js#L27-L30",
               "path": "src/Address.js"
             }
           },
@@ -1778,7 +1778,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Address.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Address.js#L35-L37",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Address.js#L35-L37",
               "path": "src/Address.js"
             }
           },
@@ -1913,7 +1913,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Address.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Address.js#L43-L60",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Address.js#L43-L60",
               "path": "src/Address.js"
             }
           },
@@ -2095,7 +2095,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Address.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Address.js#L65-L67",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Address.js#L65-L67",
               "path": "src/Address.js"
             }
           },
@@ -2423,7 +2423,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Cache.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Cache.js#L10-L65",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Cache.js#L10-L65",
         "path": "src/Cache.js"
       }
     },
@@ -2528,7 +2528,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Cache.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Cache.js#L22-L22",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Cache.js#L22-L22",
               "path": "src/Cache.js"
             }
           },
@@ -2649,7 +2649,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Cache.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Cache.js#L27-L37",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Cache.js#L27-L37",
               "path": "src/Cache.js"
             }
           },
@@ -2822,7 +2822,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Cache.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Cache.js#L42-L51",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Cache.js#L42-L51",
               "path": "src/Cache.js"
             }
           },
@@ -2973,7 +2973,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Curve.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Curve.js#L5-L7",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Curve.js#L5-L7",
         "path": "src/Curve.js"
       }
     },
@@ -3193,7 +3193,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Curve.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Curve.js#L21-L69",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Curve.js#L21-L69",
         "path": "src/Curve.js"
       }
     },
@@ -3298,7 +3298,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Curve.js#L41-L41",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Curve.js#L41-L41",
               "path": "src/Curve.js"
             }
           },
@@ -3419,7 +3419,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Curve.js#L46-L46",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Curve.js#L46-L46",
               "path": "src/Curve.js"
             }
           },
@@ -3540,7 +3540,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Curve.js#L51-L51",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Curve.js#L51-L51",
               "path": "src/Curve.js"
             }
           },
@@ -3661,7 +3661,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Curve.js#L57-L57",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Curve.js#L57-L57",
               "path": "src/Curve.js"
             }
           },
@@ -3782,7 +3782,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Curve.js#L62-L62",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Curve.js#L62-L62",
               "path": "src/Curve.js"
             }
           },
@@ -3903,7 +3903,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Curve.js#L68-L68",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Curve.js#L68-L68",
               "path": "src/Curve.js"
             }
           },
@@ -4116,7 +4116,7 @@
       },
       "file": "/home/p/Git/cashlib/src/CurvePoint.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/CurvePoint.js#L20-L203",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/CurvePoint.js#L20-L203",
         "path": "src/CurvePoint.js"
       }
     },
@@ -4257,7 +4257,7 @@
             },
             "file": "/home/p/Git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/CurvePoint.js#L115-L133",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/CurvePoint.js#L115-L133",
               "path": "src/CurvePoint.js"
             }
           },
@@ -4465,7 +4465,7 @@
             },
             "file": "/home/p/Git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/CurvePoint.js#L142-L145",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/CurvePoint.js#L142-L145",
               "path": "src/CurvePoint.js"
             }
           },
@@ -4639,7 +4639,7 @@
             },
             "file": "/home/p/Git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/CurvePoint.js#L27-L51",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/CurvePoint.js#L27-L51",
               "path": "src/CurvePoint.js"
             }
           },
@@ -4839,7 +4839,7 @@
             },
             "file": "/home/p/Git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/CurvePoint.js#L58-L83",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/CurvePoint.js#L58-L83",
               "path": "src/CurvePoint.js"
             }
           },
@@ -5034,7 +5034,7 @@
             },
             "file": "/home/p/Git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/CurvePoint.js#L91-L106",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/CurvePoint.js#L91-L106",
               "path": "src/CurvePoint.js"
             }
           },
@@ -5169,7 +5169,7 @@
             },
             "file": "/home/p/Git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/CurvePoint.js#L151-L154",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/CurvePoint.js#L151-L154",
               "path": "src/CurvePoint.js"
             }
           },
@@ -5304,7 +5304,7 @@
             },
             "file": "/home/p/Git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/CurvePoint.js#L160-L163",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/CurvePoint.js#L160-L163",
               "path": "src/CurvePoint.js"
             }
           },
@@ -5439,7 +5439,7 @@
             },
             "file": "/home/p/Git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/CurvePoint.js#L169-L202",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/CurvePoint.js#L169-L202",
               "path": "src/CurvePoint.js"
             }
           },
@@ -5580,7 +5580,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Data.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Data.js#L9-L75",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Data.js#L9-L75",
         "path": "src/Data.js"
       }
     },
@@ -5698,7 +5698,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Data.js#L27-L29",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Data.js#L27-L29",
               "path": "src/Data.js"
             }
           },
@@ -5819,7 +5819,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Data.js#L34-L36",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Data.js#L34-L36",
               "path": "src/Data.js"
             }
           },
@@ -5940,7 +5940,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Data.js#L41-L43",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Data.js#L41-L43",
               "path": "src/Data.js"
             }
           },
@@ -6070,7 +6070,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Data.js#L48-L50",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Data.js#L48-L50",
               "path": "src/Data.js"
             }
           },
@@ -6191,7 +6191,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Data.js#L55-L63",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Data.js#L55-L63",
               "path": "src/Data.js"
             }
           },
@@ -6396,7 +6396,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Data.js#L71-L74",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Data.js#L71-L74",
               "path": "src/Data.js"
             }
           },
@@ -6580,7 +6580,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Deserializer.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Deserializer.js#L12-L182",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Deserializer.js#L12-L182",
         "path": "src/Deserializer.js"
       }
     },
@@ -6694,7 +6694,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Deserializer.js#L34-L38",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Deserializer.js#L34-L38",
               "path": "src/Deserializer.js"
             }
           },
@@ -6850,7 +6850,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Deserializer.js#L45-L49",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Deserializer.js#L45-L49",
               "path": "src/Deserializer.js"
             }
           },
@@ -7006,7 +7006,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Deserializer.js#L56-L60",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Deserializer.js#L56-L60",
               "path": "src/Deserializer.js"
             }
           },
@@ -7162,7 +7162,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Deserializer.js#L67-L93",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Deserializer.js#L67-L93",
               "path": "src/Deserializer.js"
             }
           },
@@ -7318,7 +7318,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Deserializer.js#L100-L111",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Deserializer.js#L100-L111",
               "path": "src/Deserializer.js"
             }
           },
@@ -7473,7 +7473,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Deserializer.js#L116-L124",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Deserializer.js#L116-L124",
               "path": "src/Deserializer.js"
             }
           },
@@ -7690,7 +7690,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Deserializer.js#L131-L137",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Deserializer.js#L131-L137",
               "path": "src/Deserializer.js"
             }
           },
@@ -7891,7 +7891,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Deserializer.js#L160-L181",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Deserializer.js#L160-L181",
               "path": "src/Deserializer.js"
             }
           },
@@ -8024,7 +8024,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Input.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Input.js#L8-L50",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Input.js#L8-L50",
         "path": "src/Input.js"
       }
     },
@@ -8194,12 +8194,12 @@
               },
               "end": {
                 "line": 29,
-                "column": 53
+                "column": 61
               }
             },
             "file": "/home/p/Git/cashlib/src/Input.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Input.js#L29-L29",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Input.js#L29-L29",
               "path": "src/Input.js"
             }
           },
@@ -8207,7 +8207,15 @@
           "examples": [],
           "params": [],
           "properties": [],
-          "returns": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
           "sees": [],
           "throws": [],
           "todos": [],
@@ -8307,12 +8315,12 @@
               },
               "end": {
                 "line": 34,
-                "column": 49
+                "column": 57
               }
             },
             "file": "/home/p/Git/cashlib/src/Input.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Input.js#L34-L34",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Input.js#L34-L34",
               "path": "src/Input.js"
             }
           },
@@ -8320,7 +8328,15 @@
           "examples": [],
           "params": [],
           "properties": [],
-          "returns": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "number"
+              }
+            }
+          ],
           "sees": [],
           "throws": [],
           "todos": [],
@@ -8454,12 +8470,12 @@
               },
               "end": {
                 "line": 39,
-                "column": 57
+                "column": 69
               }
             },
             "file": "/home/p/Git/cashlib/src/Input.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Input.js#L39-L39",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Input.js#L39-L39",
               "path": "src/Input.js"
             }
           },
@@ -8467,7 +8483,15 @@
           "examples": [],
           "params": [],
           "properties": [],
-          "returns": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Uint8Array"
+              }
+            }
+          ],
           "sees": [],
           "throws": [],
           "todos": [],
@@ -8592,12 +8616,12 @@
               },
               "end": {
                 "line": 44,
-                "column": 43
+                "column": 51
               }
             },
             "file": "/home/p/Git/cashlib/src/Input.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Input.js#L44-L44",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Input.js#L44-L44",
               "path": "src/Input.js"
             }
           },
@@ -8605,7 +8629,15 @@
           "examples": [],
           "params": [],
           "properties": [],
-          "returns": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "number"
+              }
+            }
+          ],
           "sees": [],
           "throws": [],
           "todos": [],
@@ -8747,12 +8779,12 @@
               },
               "end": {
                 "line": 49,
-                "column": 63
+                "column": 72
               }
             },
             "file": "/home/p/Git/cashlib/src/Input.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Input.js#L49-L49",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Input.js#L49-L49",
               "path": "src/Input.js"
             }
           },
@@ -8760,7 +8792,15 @@
           "examples": [],
           "params": [],
           "properties": [],
-          "returns": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "boolean"
+              }
+            }
+          ],
           "sees": [],
           "throws": [],
           "todos": [],
@@ -8941,7 +8981,7 @@
       },
       "file": "/home/p/Git/cashlib/src/math.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/math.js#L15-L80",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/math.js#L15-L80",
         "path": "src/math.js"
       }
     },
@@ -9006,7 +9046,7 @@
           "children": [
             {
               "type": "text",
-              "value": "This class implements BIP-0039 - using mnemonic sentences to generate binary\nseeds",
+              "value": "This class implements ",
               "position": {
                 "start": {
                   "line": 1,
@@ -9014,13 +9054,55 @@
                   "offset": 0
                 },
                 "end": {
+                  "line": 1,
+                  "column": 23,
+                  "offset": 22
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "link",
+              "url": "https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "BIP-0039"
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 23,
+                  "offset": 22
+                },
+                "end": {
                   "line": 2,
-                  "column": 6,
-                  "offset": 82
+                  "column": 10,
+                  "offset": 101
                 },
                 "indent": [
                   1
                 ]
+              }
+            },
+            {
+              "type": "text",
+              "value": ", using mnemonic sentences to generate binary seeds",
+              "position": {
+                "start": {
+                  "line": 2,
+                  "column": 10,
+                  "offset": 101
+                },
+                "end": {
+                  "line": 2,
+                  "column": 61,
+                  "offset": 152
+                },
+                "indent": []
               }
             }
           ],
@@ -9032,8 +9114,8 @@
             },
             "end": {
               "line": 2,
-              "column": 6,
-              "offset": 82
+              "column": 61,
+              "offset": 152
             },
             "indent": [
               1
@@ -9049,36 +9131,47 @@
         },
         "end": {
           "line": 2,
-          "column": 6,
-          "offset": 82
+          "column": 61,
+          "offset": 152
         }
       }
     },
-    "tags": [],
+    "tags": [
+      {
+        "title": "todo",
+        "description": "Implement checksum checking",
+        "lineNumber": 3
+      },
+      {
+        "title": "todo",
+        "description": "Allow varying length phrase",
+        "lineNumber": 4
+      }
+    ],
     "loc": {
       "start": {
         "line": 12,
         "column": 0
       },
       "end": {
-        "line": 15,
+        "line": 17,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 16,
+          "line": 18,
           "column": 0
         },
         "end": {
-          "line": 41,
+          "line": 46,
           "column": 1
         }
       },
       "file": "/home/p/Git/cashlib/src/MnemonicSeed.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/MnemonicSeed.js#L16-L41",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/MnemonicSeed.js#L18-L46",
         "path": "src/MnemonicSeed.js"
       }
     },
@@ -9094,7 +9187,112 @@
     "returns": [],
     "sees": [],
     "throws": [],
-    "todos": [],
+    "todos": [
+      {
+        "type": "root",
+        "children": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "value": "Implement checksum checking",
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 28,
+                    "offset": 27
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 28,
+                "offset": 27
+              },
+              "indent": []
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 28,
+            "offset": 27
+          }
+        }
+      },
+      {
+        "type": "root",
+        "children": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "value": "Allow varying length phrase",
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 28,
+                    "offset": 27
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 28,
+                "offset": 27
+              },
+              "indent": []
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 28,
+            "offset": 27
+          }
+        }
+      }
+    ],
     "name": "MnemonicSeed",
     "kind": "class",
     "members": {
@@ -9102,7 +9300,148 @@
       "inner": [],
       "instance": [],
       "events": [],
-      "static": []
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Returns a MnemonicSeed from 12 seed words.",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 43,
+                        "offset": 42
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 43,
+                    "offset": 42
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 43,
+                "offset": 42
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 2
+            },
+            "end": {
+              "line": 21,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 22,
+                "column": 2
+              },
+              "end": {
+                "line": 45,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/MnemonicSeed.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/MnemonicSeed.js#L22-L45",
+              "path": "src/MnemonicSeed.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "seedWords",
+              "lineNumber": 22,
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Array"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "string"
+                  }
+                ]
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "MnemonicSeed"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "fromWords",
+          "kind": "function",
+          "memberof": "MnemonicSeed",
+          "scope": "static",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "MnemonicSeed",
+              "kind": "class"
+            },
+            {
+              "name": "fromWords",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "MnemonicSeed.fromWords"
+        }
+      ]
     },
     "path": [
       {
@@ -9121,7 +9460,7 @@
           "children": [
             {
               "type": "text",
-              "value": "A Bitcoin network",
+              "value": "Prefixes used for a pariticular Bitcoin Network",
               "position": {
                 "start": {
                   "line": 1,
@@ -9130,8 +9469,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 18,
-                  "offset": 17
+                  "column": 48,
+                  "offset": 47
                 },
                 "indent": []
               }
@@ -9145,8 +9484,8 @@
             },
             "end": {
               "line": 1,
-              "column": 18,
-              "offset": 17
+              "column": 48,
+              "offset": 47
             },
             "indent": []
           }
@@ -9160,36 +9499,268 @@
         },
         "end": {
           "line": 1,
-          "column": 18,
-          "offset": 17
+          "column": 48,
+          "offset": 47
         }
       }
     },
     "tags": [],
     "loc": {
       "start": {
-        "line": 13,
+        "line": 3,
         "column": 0
       },
       "end": {
-        "line": 15,
+        "line": 5,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 16,
+          "line": 6,
           "column": 0
         },
         "end": {
-          "line": 87,
+          "line": 14,
           "column": 1
         }
       },
       "file": "/home/p/Git/cashlib/src/Network.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Network.js#L16-L87",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Network.js#L3-L5",
+        "path": "src/Network.js"
+      }
+    },
+    "augments": [],
+    "examples": [],
+    "params": [],
+    "properties": [
+      {
+        "title": "property",
+        "name": "publicKeyAddress",
+        "lineNumber": 7,
+        "type": {
+          "type": "NameExpression",
+          "name": "number"
+        }
+      },
+      {
+        "title": "property",
+        "name": "scriptAddress",
+        "lineNumber": 8,
+        "type": {
+          "type": "NameExpression",
+          "name": "number"
+        }
+      },
+      {
+        "title": "property",
+        "name": "privateKeyWif",
+        "lineNumber": 9,
+        "type": {
+          "type": "NameExpression",
+          "name": "number"
+        }
+      },
+      {
+        "title": "property",
+        "name": "extendedKeyVersion",
+        "lineNumber": 10,
+        "type": {
+          "type": "RecordType",
+          "fields": [
+            {
+              "type": "FieldType",
+              "key": "public",
+              "value": {
+                "type": "NameExpression",
+                "name": "Uint8Array"
+              }
+            },
+            {
+              "type": "FieldType",
+              "key": "private",
+              "value": {
+                "type": "NameExpression",
+                "name": "Uint8Array"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "title": "property",
+        "name": "extendedKeyVersion.public",
+        "lineNumber": 11,
+        "type": {
+          "type": "NameExpression",
+          "name": "Uint8Array"
+        }
+      },
+      {
+        "title": "property",
+        "name": "extendedKeyVersion.private",
+        "lineNumber": 12,
+        "type": {
+          "type": "NameExpression",
+          "name": "Uint8Array"
+        }
+      }
+    ],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "todos": [],
+    "name": "NetworkPrefixes",
+    "kind": "typedef",
+    "type": {
+      "type": "RecordType",
+      "fields": [
+        {
+          "type": "FieldType",
+          "key": "publicKeyAddress",
+          "value": {
+            "type": "NameExpression",
+            "name": "number"
+          }
+        },
+        {
+          "type": "FieldType",
+          "key": "scriptAddress",
+          "value": {
+            "type": "NameExpression",
+            "name": "number"
+          }
+        },
+        {
+          "type": "FieldType",
+          "key": "privateKeyWif",
+          "value": {
+            "type": "NameExpression",
+            "name": "number"
+          }
+        },
+        {
+          "type": "FieldType",
+          "key": "extendedKeyVersion",
+          "value": {
+            "type": "RecordType",
+            "fields": [
+              {
+                "type": "FieldType",
+                "key": "public",
+                "value": {
+                  "type": "NameExpression",
+                  "name": "Uint8Array"
+                }
+              },
+              {
+                "type": "FieldType",
+                "key": "private",
+                "value": {
+                  "type": "NameExpression",
+                  "name": "Uint8Array"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": []
+    },
+    "path": [
+      {
+        "name": "NetworkPrefixes",
+        "kind": "typedef"
+      }
+    ],
+    "namespace": "NetworkPrefixes"
+  },
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "A Bitcoin network, e.g. mainnet, testnet etc",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1,
+                  "offset": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 45,
+                  "offset": 44
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 45,
+              "offset": 44
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 45,
+          "offset": 44
+        }
+      }
+    },
+    "tags": [],
+    "loc": {
+      "start": {
+        "line": 16,
+        "column": 0
+      },
+      "end": {
+        "line": 18,
+        "column": 3
+      }
+    },
+    "context": {
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 0
+        },
+        "end": {
+          "line": 99,
+          "column": 1
+        }
+      },
+      "file": "/home/p/Git/cashlib/src/Network.js",
+      "github": {
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Network.js#L19-L99",
         "path": "src/Network.js"
       }
     },
@@ -9199,7 +9770,7 @@
       {
         "title": "param",
         "name": "label",
-        "lineNumber": 20,
+        "lineNumber": 23,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -9208,7 +9779,7 @@
       {
         "title": "param",
         "name": "prefixes",
-        "lineNumber": 20,
+        "lineNumber": 23,
         "type": {
           "type": "NameExpression",
           "name": "NetworkPrefixes"
@@ -9225,9 +9796,384 @@
     "members": {
       "global": [],
       "inner": [],
-      "instance": [],
+      "instance": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Return network label",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 21,
+                        "offset": 20
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 21,
+                    "offset": 20
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 21,
+                "offset": 20
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 28,
+              "column": 2
+            },
+            "end": {
+              "line": 30,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 31,
+                "column": 2
+              },
+              "end": {
+                "line": 33,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/Network.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Network.js#L31-L33",
+              "path": "src/Network.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "label",
+          "kind": "member",
+          "memberof": "Network",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Network",
+              "kind": "class"
+            },
+            {
+              "name": "label",
+              "kind": "member",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "Network#label"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Return prefix values for this network",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 38,
+                        "offset": 37
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 38,
+                    "offset": 37
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 38,
+                "offset": 37
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 35,
+              "column": 2
+            },
+            "end": {
+              "line": 37,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 38,
+                "column": 2
+              },
+              "end": {
+                "line": 40,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/Network.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Network.js#L38-L40",
+              "path": "src/Network.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "NetworkPrefixes"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "prefixes",
+          "kind": "member",
+          "memberof": "Network",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Network",
+              "kind": "class"
+            },
+            {
+              "name": "prefixes",
+              "kind": "member",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "Network#prefixes"
+        }
+      ],
       "events": [],
-      "static": []
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Return Network for a given label",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 33,
+                        "offset": 32
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 33,
+                    "offset": 32
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 33,
+                "offset": 32
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 42,
+              "column": 2
+            },
+            "end": {
+              "line": 44,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 45,
+                "column": 2
+              },
+              "end": {
+                "line": 98,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/Network.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Network.js#L45-L98",
+              "path": "src/Network.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "label",
+              "lineNumber": 45,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Network"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "fromString",
+          "kind": "function",
+          "memberof": "Network",
+          "scope": "static",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Network",
+              "kind": "class"
+            },
+            {
+              "name": "fromString",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "Network.fromString"
+        }
+      ]
     },
     "path": [
       {
@@ -9293,28 +10239,28 @@
     "tags": [],
     "loc": {
       "start": {
-        "line": 3,
+        "line": 5,
         "column": 0
       },
       "end": {
-        "line": 5,
+        "line": 7,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 6,
+          "line": 8,
           "column": 0
         },
         "end": {
-          "line": 28,
+          "line": 39,
           "column": 1
         }
       },
       "file": "/home/p/Git/cashlib/src/OpCode.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/OpCode.js#L6-L28",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/OpCode.js#L8-L39",
         "path": "src/OpCode.js"
       }
     },
@@ -9324,7 +10270,7 @@
       {
         "title": "param",
         "name": "value",
-        "lineNumber": 11,
+        "lineNumber": 13,
         "type": {
           "type": "NameExpression",
           "name": "number"
@@ -9333,7 +10279,7 @@
       {
         "title": "param",
         "name": "mnemonic",
-        "lineNumber": 11,
+        "lineNumber": 13,
         "type": {
           "type": "NameExpression",
           "name": "string"
@@ -9342,13 +10288,10 @@
       {
         "title": "param",
         "name": "code",
-        "lineNumber": 11,
+        "lineNumber": 13,
         "type": {
-          "type": "FunctionType",
-          "params": [],
-          "result": {
-            "type": "VoidLiteral"
-          }
+          "type": "NameExpression",
+          "name": "OpCodeFunction"
         }
       }
     ],
@@ -9362,7 +10305,371 @@
     "members": {
       "global": [],
       "inner": [],
-      "instance": [],
+      "instance": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Value of this opcode",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 21,
+                        "offset": 20
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 21,
+                    "offset": 20
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 21,
+                "offset": 20
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 2
+            },
+            "end": {
+              "line": 21,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 22,
+                "column": 2
+              },
+              "end": {
+                "line": 24,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/OpCode.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/OpCode.js#L22-L24",
+              "path": "src/OpCode.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "number"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "value",
+          "kind": "member",
+          "memberof": "OpCode",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "OpCode",
+              "kind": "class"
+            },
+            {
+              "name": "value",
+              "kind": "member",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "OpCode#value"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Mnemonic associatd with this opcode",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 36,
+                        "offset": 35
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 36,
+                    "offset": 35
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 36,
+                "offset": 35
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 26,
+              "column": 2
+            },
+            "end": {
+              "line": 28,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 29,
+                "column": 2
+              },
+              "end": {
+                "line": 31,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/OpCode.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/OpCode.js#L29-L31",
+              "path": "src/OpCode.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "mnemonic",
+          "kind": "member",
+          "memberof": "OpCode",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "OpCode",
+              "kind": "class"
+            },
+            {
+              "name": "mnemonic",
+              "kind": "member",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "OpCode#mnemonic"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Function that executes when this opcode runs",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 45,
+                        "offset": 44
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 45,
+                    "offset": 44
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 45,
+                "offset": 44
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 33,
+              "column": 2
+            },
+            "end": {
+              "line": 35,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 36,
+                "column": 2
+              },
+              "end": {
+                "line": 38,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/OpCode.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/OpCode.js#L36-L38",
+              "path": "src/OpCode.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "OpCodeFunction"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "code",
+          "kind": "member",
+          "memberof": "OpCode",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "OpCode",
+              "kind": "class"
+            },
+            {
+              "name": "code",
+              "kind": "member",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "OpCode#code"
+        }
+      ],
       "events": [],
       "static": []
     },
@@ -9430,28 +10737,28 @@
     "tags": [],
     "loc": {
       "start": {
-        "line": 7,
+        "line": 9,
         "column": 0
       },
       "end": {
-        "line": 9,
+        "line": 11,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 10,
+          "line": 12,
           "column": 0
         },
         "end": {
-          "line": 79,
+          "line": 93,
           "column": 1
         }
       },
       "file": "/home/p/Git/cashlib/src/Output.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Output.js#L10-L79",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Output.js#L12-L93",
         "path": "src/Output.js"
       }
     },
@@ -9461,7 +10768,7 @@
       {
         "title": "param",
         "name": "value",
-        "lineNumber": 15,
+        "lineNumber": 17,
         "type": {
           "type": "NameExpression",
           "name": "number"
@@ -9470,7 +10777,7 @@
       {
         "title": "param",
         "name": "pubKeyScript",
-        "lineNumber": 15,
+        "lineNumber": 17,
         "type": {
           "type": "NameExpression",
           "name": "Uint8Array"
@@ -9487,7 +10794,502 @@
     "members": {
       "global": [],
       "inner": [],
-      "instance": [],
+      "instance": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The value in Satoshis for this output",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 38,
+                        "offset": 37
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 38,
+                    "offset": 37
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 38,
+                "offset": 37
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 36,
+              "column": 2
+            },
+            "end": {
+              "line": 38,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 39,
+                "column": 2
+              },
+              "end": {
+                "line": 41,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/Output.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Output.js#L39-L41",
+              "path": "src/Output.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "number"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "value",
+          "kind": "member",
+          "memberof": "Output",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Output",
+              "kind": "class"
+            },
+            {
+              "name": "value",
+              "kind": "member",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "Output#value"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The public key script (aka 'ScriptPubKey') for this output",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 59,
+                        "offset": 58
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 59,
+                    "offset": 58
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 59,
+                "offset": 58
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 43,
+              "column": 2
+            },
+            "end": {
+              "line": 45,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 46,
+                "column": 2
+              },
+              "end": {
+                "line": 48,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/Output.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Output.js#L46-L48",
+              "path": "src/Output.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "pubKeyScript",
+          "kind": "member",
+          "memberof": "Output",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Output",
+              "kind": "class"
+            },
+            {
+              "name": "pubKeyScript",
+              "kind": "member",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "Output#pubKeyScript"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The type of output script for this output",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 42,
+                        "offset": 41
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 42,
+                    "offset": 41
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 42,
+                "offset": 41
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 50,
+              "column": 2
+            },
+            "end": {
+              "line": 52,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 53,
+                "column": 2
+              },
+              "end": {
+                "line": 55,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/Output.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Output.js#L53-L55",
+              "path": "src/Output.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "OutputScriptType"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "scriptType",
+          "kind": "member",
+          "memberof": "Output",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Output",
+              "kind": "class"
+            },
+            {
+              "name": "scriptType",
+              "kind": "member",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "Output#scriptType"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Return a Bitcoin address for this output",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 41,
+                        "offset": 40
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 41,
+                    "offset": 40
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 41,
+                "offset": 40
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 57,
+              "column": 2
+            },
+            "end": {
+              "line": 59,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 60,
+                "column": 2
+              },
+              "end": {
+                "line": 76,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/Output.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Output.js#L60-L76",
+              "path": "src/Output.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "network",
+              "lineNumber": 60,
+              "type": {
+                "type": "NameExpression",
+                "name": "Network"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "Address"
+                  },
+                  {
+                    "type": "VoidLiteral"
+                  }
+                ]
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "getAddress",
+          "kind": "function",
+          "memberof": "Output",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "Output",
+              "kind": "class"
+            },
+            {
+              "name": "getAddress",
+              "kind": "function",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "Output#getAddress"
+        }
+      ],
       "events": [],
       "static": [
         {
@@ -9546,28 +11348,28 @@
           "tags": [],
           "loc": {
             "start": {
-              "line": 64,
+              "line": 78,
               "column": 2
             },
             "end": {
-              "line": 66,
+              "line": 80,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 67,
+                "line": 81,
                 "column": 2
               },
               "end": {
-                "line": 78,
+                "line": 92,
                 "column": 3
               }
             },
             "file": "/home/p/Git/cashlib/src/Output.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Output.js#L67-L78",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Output.js#L81-L92",
               "path": "src/Output.js"
             }
           },
@@ -9577,7 +11379,7 @@
             {
               "title": "param",
               "name": "address",
-              "lineNumber": 67,
+              "lineNumber": 81,
               "type": {
                 "type": "NameExpression",
                 "name": "string"
@@ -9586,7 +11388,7 @@
             {
               "title": "param",
               "name": "value",
-              "lineNumber": 67,
+              "lineNumber": 81,
               "type": {
                 "type": "NameExpression",
                 "name": "number"
@@ -9794,7 +11596,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Point.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Point.js#L10-L29",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Point.js#L10-L29",
         "path": "src/Point.js"
       }
     },
@@ -9908,7 +11710,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Point.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Point.js#L23-L23",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Point.js#L23-L23",
               "path": "src/Point.js"
             }
           },
@@ -10029,7 +11831,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Point.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Point.js#L28-L28",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Point.js#L28-L28",
               "path": "src/Point.js"
             }
           },
@@ -10156,13 +11958,13 @@
           "column": 0
         },
         "end": {
-          "line": 154,
+          "line": 180,
           "column": 1
         }
       },
       "file": "/home/p/Git/cashlib/src/PrivateKey.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/PrivateKey.js#L19-L154",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PrivateKey.js#L19-L180",
         "path": "src/PrivateKey.js"
       }
     },
@@ -10205,6 +12007,318 @@
       "global": [],
       "inner": [],
       "instance": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Indicator: should the public key derived from this private key be compressed?",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 78,
+                        "offset": 77
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 78,
+                    "offset": 77
+                  },
+                  "indent": []
+                }
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Usually automatically to true sometimes if importing a private key in WIF format",
+                    "position": {
+                      "start": {
+                        "line": 3,
+                        "column": 1,
+                        "offset": 79
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 81,
+                        "offset": 159
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 3,
+                    "column": 1,
+                    "offset": 79
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 81,
+                    "offset": 159
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 81,
+                "offset": 159
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 29,
+              "column": 2
+            },
+            "end": {
+              "line": 33,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 34,
+                "column": 2
+              },
+              "end": {
+                "line": 36,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PrivateKey.js#L34-L36",
+              "path": "src/PrivateKey.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "boolean"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "compressPublicKey",
+          "kind": "member",
+          "memberof": "PrivateKey",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "PrivateKey",
+              "kind": "class"
+            },
+            {
+              "name": "compressPublicKey",
+              "kind": "member",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "PrivateKey#compressPublicKey"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Returns private key as a string in ",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 36,
+                        "offset": 35
+                      },
+                      "indent": []
+                    }
+                  },
+                  {
+                    "type": "link",
+                    "url": "https://en.bitcoin.it/wiki/Wallet_import_format",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Wallet import format"
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 36,
+                        "offset": 35
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 112,
+                        "offset": 111
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 112,
+                    "offset": 111
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 112,
+                "offset": 111
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 103,
+              "column": 2
+            },
+            "end": {
+              "line": 105,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 106,
+                "column": 2
+              },
+              "end": {
+                "line": 119,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PrivateKey.js#L106-L119",
+              "path": "src/PrivateKey.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "network",
+              "lineNumber": 106,
+              "type": {
+                "type": "NameExpression",
+                "name": "Network"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "toWif",
+          "kind": "function",
+          "memberof": "PrivateKey",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "PrivateKey",
+              "kind": "class"
+            },
+            {
+              "name": "toWif",
+              "kind": "function",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "PrivateKey#toWif"
+        },
         {
           "description": {
             "type": "root",
@@ -10261,28 +12375,28 @@
           "tags": [],
           "loc": {
             "start": {
-              "line": 103,
+              "line": 121,
               "column": 2
             },
             "end": {
-              "line": 105,
+              "line": 123,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 106,
+                "line": 124,
                 "column": 2
               },
               "end": {
-                "line": 125,
+                "line": 143,
                 "column": 3
               }
             },
             "file": "/home/p/Git/cashlib/src/PrivateKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/PrivateKey.js#L106-L125",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PrivateKey.js#L124-L143",
               "path": "src/PrivateKey.js"
             }
           },
@@ -10325,6 +12439,328 @@
             }
           ],
           "namespace": "PrivateKey#toDer"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Return private key as certificate",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 34,
+                        "offset": 33
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 34,
+                    "offset": 33
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 34,
+                "offset": 33
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 145,
+              "column": 2
+            },
+            "end": {
+              "line": 147,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 148,
+                "column": 2
+              },
+              "end": {
+                "line": 156,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PrivateKey.js#L148-L156",
+              "path": "src/PrivateKey.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "toPem",
+          "kind": "function",
+          "memberof": "PrivateKey",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "PrivateKey",
+              "kind": "class"
+            },
+            {
+              "name": "toPem",
+              "kind": "function",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "PrivateKey#toPem"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Derive public key from private key",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 35,
+                        "offset": 34
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 35,
+                    "offset": 34
+                  },
+                  "indent": []
+                }
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "emphasis",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Warning",
+                        "position": {
+                          "start": {
+                            "line": 3,
+                            "column": 2,
+                            "offset": 37
+                          },
+                          "end": {
+                            "line": 3,
+                            "column": 9,
+                            "offset": 44
+                          },
+                          "indent": []
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 3,
+                        "column": 1,
+                        "offset": 36
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 10,
+                        "offset": 45
+                      },
+                      "indent": []
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " this operation is slow/expensive; cache results where possible.",
+                    "position": {
+                      "start": {
+                        "line": 3,
+                        "column": 10,
+                        "offset": 45
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 74,
+                        "offset": 109
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 3,
+                    "column": 1,
+                    "offset": 36
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 74,
+                    "offset": 109
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 74,
+                "offset": 109
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 158,
+              "column": 2
+            },
+            "end": {
+              "line": 162,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 163,
+                "column": 2
+              },
+              "end": {
+                "line": 171,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PrivateKey.js#L163-L171",
+              "path": "src/PrivateKey.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "compressed",
+              "lineNumber": 163,
+              "type": {
+                "type": "NameExpression",
+                "name": "boolean"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "PublicKey"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "toPublicKey",
+          "kind": "function",
+          "memberof": "PrivateKey",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "PrivateKey",
+              "kind": "class"
+            },
+            {
+              "name": "toPublicKey",
+              "kind": "function",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "PrivateKey#toPublicKey"
         },
         {
           "description": {
@@ -10386,28 +12822,28 @@
           "tags": [],
           "loc": {
             "start": {
-              "line": 147,
+              "line": 173,
               "column": 2
             },
             "end": {
-              "line": 150,
+              "line": 176,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 151,
+                "line": 177,
                 "column": 2
               },
               "end": {
-                "line": 153,
+                "line": 179,
                 "column": 3
               }
             },
             "file": "/home/p/Git/cashlib/src/PrivateKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/PrivateKey.js#L151-L153",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PrivateKey.js#L177-L179",
               "path": "src/PrivateKey.js"
             }
           },
@@ -10453,7 +12889,430 @@
         }
       ],
       "events": [],
-      "static": []
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Return a private key from a hex string",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 39,
+                        "offset": 38
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 39,
+                    "offset": 38
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 39,
+                "offset": 38
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 38,
+              "column": 2
+            },
+            "end": {
+              "line": 40,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 41,
+                "column": 2
+              },
+              "end": {
+                "line": 44,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PrivateKey.js#L41-L44",
+              "path": "src/PrivateKey.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "hex",
+              "lineNumber": 41,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "PrivateKey"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "fromHex",
+          "kind": "function",
+          "memberof": "PrivateKey",
+          "scope": "static",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "PrivateKey",
+              "kind": "class"
+            },
+            {
+              "name": "fromHex",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "PrivateKey.fromHex"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Return a private key object from a string in ",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 46,
+                        "offset": 45
+                      },
+                      "indent": []
+                    }
+                  },
+                  {
+                    "type": "link",
+                    "url": "https://en.bitcoin.it/wiki/Wallet_import_format",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Wallet import format"
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 46,
+                        "offset": 45
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 22,
+                        "offset": 121
+                      },
+                      "indent": [
+                        1
+                      ]
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 22,
+                    "offset": 121
+                  },
+                  "indent": [
+                    1
+                  ]
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 2,
+                "column": 22,
+                "offset": 121
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 46,
+              "column": 2
+            },
+            "end": {
+              "line": 49,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 50,
+                "column": 2
+              },
+              "end": {
+                "line": 86,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PrivateKey.js#L50-L86",
+              "path": "src/PrivateKey.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "wifKey",
+              "lineNumber": 50,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "PrivateKey"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "fromWif",
+          "kind": "function",
+          "memberof": "PrivateKey",
+          "scope": "static",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "PrivateKey",
+              "kind": "class"
+            },
+            {
+              "name": "fromWif",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "PrivateKey.fromWif"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Return a private key object from an integer value",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 50,
+                        "offset": 49
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 50,
+                    "offset": 49
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 50,
+                "offset": 49
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 88,
+              "column": 2
+            },
+            "end": {
+              "line": 90,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 91,
+                "column": 2
+              },
+              "end": {
+                "line": 101,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PrivateKey.js#L91-L101",
+              "path": "src/PrivateKey.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "value",
+              "lineNumber": 91,
+              "type": {
+                "type": "NameExpression",
+                "name": "BigInt"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "PrivateKey"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "fromBigInt",
+          "kind": "function",
+          "memberof": "PrivateKey",
+          "scope": "static",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "PrivateKey",
+              "kind": "class"
+            },
+            {
+              "name": "fromBigInt",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "PrivateKey.fromBigInt"
+        }
+      ]
     },
     "path": [
       {
@@ -10472,7 +13331,7 @@
           "children": [
             {
               "type": "text",
-              "value": "A public key",
+              "value": "A Bitcoin public key",
               "position": {
                 "start": {
                   "line": 1,
@@ -10481,8 +13340,8 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 13,
-                  "offset": 12
+                  "column": 21,
+                  "offset": 20
                 },
                 "indent": []
               }
@@ -10496,8 +13355,8 @@
             },
             "end": {
               "line": 1,
-              "column": 13,
-              "offset": 12
+              "column": 21,
+              "offset": 20
             },
             "indent": []
           }
@@ -10511,8 +13370,8 @@
         },
         "end": {
           "line": 1,
-          "column": 13,
-          "offset": 12
+          "column": 21,
+          "offset": 20
         }
       }
     },
@@ -10534,13 +13393,13 @@
           "column": 0
         },
         "end": {
-          "line": 28,
+          "line": 42,
           "column": 1
         }
       },
       "file": "/home/p/Git/cashlib/src/PublicKey.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/PublicKey.js#L11-L28",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PublicKey.js#L11-L42",
         "path": "src/PublicKey.js"
       }
     },
@@ -10562,9 +13421,578 @@
     "members": {
       "global": [],
       "inner": [],
-      "instance": [],
+      "instance": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Indicator: this public key is compressed",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 41,
+                        "offset": 40
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 41,
+                    "offset": 40
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 41,
+                "offset": 40
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 2
+            },
+            "end": {
+              "line": 14,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 15,
+                "column": 2
+              },
+              "end": {
+                "line": 17,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/PublicKey.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PublicKey.js#L15-L17",
+              "path": "src/PublicKey.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "boolean"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "compressed",
+          "kind": "member",
+          "memberof": "PublicKey",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "PublicKey",
+              "kind": "class"
+            },
+            {
+              "name": "compressed",
+              "kind": "member",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "PublicKey#compressed"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Return the point on the secp256k1 curve associated with this public key",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 72,
+                        "offset": 71
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 72,
+                    "offset": 71
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 72,
+                "offset": 71
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 36,
+              "column": 2
+            },
+            "end": {
+              "line": 38,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 39,
+                "column": 2
+              },
+              "end": {
+                "line": 41,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/PublicKey.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PublicKey.js#L39-L41",
+              "path": "src/PublicKey.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "CurvePoint"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "toCurvePoint",
+          "kind": "function",
+          "memberof": "PublicKey",
+          "scope": "instance",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "PublicKey",
+              "kind": "class"
+            },
+            {
+              "name": "toCurvePoint",
+              "kind": "function",
+              "scope": "instance"
+            }
+          ],
+          "namespace": "PublicKey#toCurvePoint"
+        }
+      ],
       "events": [],
-      "static": []
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Return public key instance from bytes in hex string format",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 59,
+                        "offset": 58
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 59,
+                    "offset": 58
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 59,
+                "offset": 58
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 19,
+              "column": 2
+            },
+            "end": {
+              "line": 21,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 22,
+                "column": 2
+              },
+              "end": {
+                "line": 25,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/PublicKey.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PublicKey.js#L22-L25",
+              "path": "src/PublicKey.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "hex",
+              "lineNumber": 22,
+              "type": {
+                "type": "NameExpression",
+                "name": "string"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "fromHex",
+          "kind": "function",
+          "memberof": "PublicKey",
+          "scope": "static",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "PublicKey",
+              "kind": "class"
+            },
+            {
+              "name": "fromHex",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "PublicKey.fromHex"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Derive public key from an instance of a private key",
+                    "position": {
+                      "start": {
+                        "line": 1,
+                        "column": 1,
+                        "offset": 0
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 52,
+                        "offset": 51
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 52,
+                    "offset": 51
+                  },
+                  "indent": []
+                }
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "emphasis",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Warning:",
+                        "position": {
+                          "start": {
+                            "line": 3,
+                            "column": 2,
+                            "offset": 54
+                          },
+                          "end": {
+                            "line": 3,
+                            "column": 10,
+                            "offset": 62
+                          },
+                          "indent": []
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 3,
+                        "column": 1,
+                        "offset": 53
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 11,
+                        "offset": 63
+                      },
+                      "indent": []
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": " This operation is slow/expensive; cache results where possible.",
+                    "position": {
+                      "start": {
+                        "line": 3,
+                        "column": 11,
+                        "offset": 63
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 75,
+                        "offset": 127
+                      },
+                      "indent": []
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 3,
+                    "column": 1,
+                    "offset": 53
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 75,
+                    "offset": 127
+                  },
+                  "indent": []
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 1,
+                "offset": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 75,
+                "offset": 127
+              }
+            }
+          },
+          "tags": [],
+          "loc": {
+            "start": {
+              "line": 27,
+              "column": 2
+            },
+            "end": {
+              "line": 31,
+              "column": 5
+            }
+          },
+          "context": {
+            "loc": {
+              "start": {
+                "line": 32,
+                "column": 2
+              },
+              "end": {
+                "line": 34,
+                "column": 3
+              }
+            },
+            "file": "/home/p/Git/cashlib/src/PublicKey.js",
+            "github": {
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/PublicKey.js#L32-L34",
+              "path": "src/PublicKey.js"
+            }
+          },
+          "augments": [],
+          "examples": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "privateKey",
+              "lineNumber": 32,
+              "type": {
+                "type": "NameExpression",
+                "name": "PrivateKey"
+              }
+            },
+            {
+              "title": "param",
+              "name": "compressed",
+              "lineNumber": 32,
+              "type": {
+                "type": "NameExpression",
+                "name": "boolean"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "todos": [],
+          "name": "fromPrivateKey",
+          "kind": "function",
+          "memberof": "PublicKey",
+          "scope": "static",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "path": [
+            {
+              "name": "PublicKey",
+              "kind": "class"
+            },
+            {
+              "name": "fromPrivateKey",
+              "kind": "function",
+              "scope": "static"
+            }
+          ],
+          "namespace": "PublicKey.fromPrivateKey"
+        }
+      ]
     },
     "path": [
       {
@@ -10676,7 +14104,7 @@
       },
       "file": "/home/p/Git/cashlib/src/secp256k1.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/secp256k1.js#L10-L20",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/secp256k1.js#L10-L20",
         "path": "src/secp256k1.js"
       }
     },
@@ -10743,6 +14171,76 @@
             },
             "indent": []
           }
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "TODO",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 2,
+                      "offset": 29
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 6,
+                      "offset": 33
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 1,
+                  "offset": 28
+                },
+                "end": {
+                  "line": 3,
+                  "column": 7,
+                  "offset": 34
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " Documentation under construction",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 7,
+                  "offset": 34
+                },
+                "end": {
+                  "line": 3,
+                  "column": 40,
+                  "offset": 67
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 28
+            },
+            "end": {
+              "line": 3,
+              "column": 40,
+              "offset": 67
+            },
+            "indent": []
+          }
         }
       ],
       "position": {
@@ -10752,9 +14250,9 @@
           "offset": 0
         },
         "end": {
-          "line": 1,
-          "column": 27,
-          "offset": 26
+          "line": 3,
+          "column": 40,
+          "offset": 67
         }
       }
     },
@@ -10765,24 +14263,24 @@
         "column": 0
       },
       "end": {
-        "line": 8,
+        "line": 10,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 9,
+          "line": 11,
           "column": 0
         },
         "end": {
-          "line": 139,
+          "line": 141,
           "column": 1
         }
       },
       "file": "/home/p/Git/cashlib/src/Serializer.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Serializer.js#L9-L139",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Serializer.js#L11-L141",
         "path": "src/Serializer.js"
       }
     },
@@ -10856,28 +14354,28 @@
           "tags": [],
           "loc": {
             "start": {
-              "line": 59,
+              "line": 61,
               "column": 2
             },
             "end": {
-              "line": 61,
+              "line": 63,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 62,
+                "line": 64,
                 "column": 2
               },
               "end": {
-                "line": 86,
+                "line": 88,
                 "column": 3
               }
             },
             "file": "/home/p/Git/cashlib/src/Serializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Serializer.js#L62-L86",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Serializer.js#L64-L88",
               "path": "src/Serializer.js"
             }
           },
@@ -10887,7 +14385,7 @@
             {
               "title": "param",
               "name": "value",
-              "lineNumber": 62,
+              "lineNumber": 64,
               "type": {
                 "type": "NameExpression",
                 "name": "number"
@@ -10998,28 +14496,28 @@
           ],
           "loc": {
             "start": {
-              "line": 88,
+              "line": 90,
               "column": 2
             },
             "end": {
-              "line": 91,
+              "line": 93,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 92,
+                "line": 94,
                 "column": 2
               },
               "end": {
-                "line": 101,
+                "line": 103,
                 "column": 3
               }
             },
             "file": "/home/p/Git/cashlib/src/Serializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Serializer.js#L92-L101",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Serializer.js#L94-L103",
               "path": "src/Serializer.js"
             }
           },
@@ -11029,7 +14527,7 @@
             {
               "title": "param",
               "name": "data",
-              "lineNumber": 92,
+              "lineNumber": 94,
               "type": {
                 "type": "NameExpression",
                 "name": "Uint8Array"
@@ -11138,28 +14636,28 @@
           "tags": [],
           "loc": {
             "start": {
-              "line": 115,
+              "line": 117,
               "column": 2
             },
             "end": {
-              "line": 117,
+              "line": 119,
               "column": 5
             }
           },
           "context": {
             "loc": {
               "start": {
-                "line": 118,
+                "line": 120,
                 "column": 2
               },
               "end": {
-                "line": 138,
+                "line": 140,
                 "column": 3
               }
             },
             "file": "/home/p/Git/cashlib/src/Serializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Serializer.js#L118-L138",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Serializer.js#L120-L140",
               "path": "src/Serializer.js"
             }
           },
@@ -11169,7 +14667,7 @@
             {
               "title": "param",
               "name": "value",
-              "lineNumber": 118,
+              "lineNumber": 120,
               "type": {
                 "type": "NameExpression",
                 "name": "number"
@@ -11263,6 +14761,76 @@
             },
             "indent": []
           }
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "TODO",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 2,
+                      "offset": 24
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 6,
+                      "offset": 28
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 1,
+                  "offset": 23
+                },
+                "end": {
+                  "line": 3,
+                  "column": 7,
+                  "offset": 29
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " Documentation under construction",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 7,
+                  "offset": 29
+                },
+                "end": {
+                  "line": 3,
+                  "column": 40,
+                  "offset": 62
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 23
+            },
+            "end": {
+              "line": 3,
+              "column": 40,
+              "offset": 62
+            },
+            "indent": []
+          }
         }
       ],
       "position": {
@@ -11272,9 +14840,9 @@
           "offset": 0
         },
         "end": {
-          "line": 1,
-          "column": 22,
-          "offset": 21
+          "line": 3,
+          "column": 40,
+          "offset": 62
         }
       }
     },
@@ -11285,24 +14853,24 @@
         "column": 0
       },
       "end": {
-        "line": 15,
+        "line": 17,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 16,
+          "line": 18,
           "column": 0
         },
         "end": {
-          "line": 132,
+          "line": 134,
           "column": 1
         }
       },
       "file": "/home/p/Git/cashlib/src/Transaction.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Transaction.js#L16-L132",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Transaction.js#L18-L134",
         "path": "src/Transaction.js"
       }
     },
@@ -11460,6 +15028,76 @@
               1
             ]
           }
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "TODO",
+                  "position": {
+                    "start": {
+                      "line": 6,
+                      "column": 2,
+                      "offset": 223
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 6,
+                      "offset": 227
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 6,
+                  "column": 1,
+                  "offset": 222
+                },
+                "end": {
+                  "line": 6,
+                  "column": 7,
+                  "offset": 228
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " Documentation under construction",
+              "position": {
+                "start": {
+                  "line": 6,
+                  "column": 7,
+                  "offset": 228
+                },
+                "end": {
+                  "line": 6,
+                  "column": 40,
+                  "offset": 261
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 1,
+              "offset": 222
+            },
+            "end": {
+              "line": 6,
+              "column": 40,
+              "offset": 261
+            },
+            "indent": []
+          }
         }
       ],
       "position": {
@@ -11469,9 +15107,9 @@
           "offset": 0
         },
         "end": {
-          "line": 4,
-          "column": 66,
-          "offset": 220
+          "line": 6,
+          "column": 40,
+          "offset": 261
         }
       }
     },
@@ -11482,24 +15120,24 @@
         "column": 0
       },
       "end": {
-        "line": 24,
+        "line": 26,
         "column": 3
       }
     },
     "context": {
       "loc": {
         "start": {
-          "line": 25,
+          "line": 27,
           "column": 0
         },
         "end": {
-          "line": 332,
+          "line": 338,
           "column": 1
         }
       },
       "file": "/home/p/Git/cashlib/src/Wallet.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet.js#L25-L332",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet.js#L27-L338",
         "path": "src/Wallet.js"
       }
     },
@@ -11509,7 +15147,7 @@
       {
         "title": "param",
         "name": "masterPublicKey",
-        "lineNumber": 30,
+        "lineNumber": 32,
         "type": {
           "type": "NameExpression",
           "name": "ExtendedKey"
@@ -11518,7 +15156,7 @@
       {
         "title": "param",
         "name": "masterPrivateKey",
-        "lineNumber": 30,
+        "lineNumber": 32,
         "type": {
           "type": "NameExpression",
           "name": "ExtendedKey"
@@ -11535,756 +15173,9 @@
     "members": {
       "global": [],
       "inner": [],
-      "instance": [
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "BIP-0032 function CKDpriv((kpar, cpar), i) → (ki, ci) computes a child extended\nprivate key from the parent extended private key",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 49,
-                        "offset": 128
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 49,
-                    "offset": 128
-                  },
-                  "indent": [
-                    1
-                  ]
-                }
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "TODO Pre-beta: Ensure we are handling this edge case:\n\"In case parse256(IL) ≥ n or ki = 0, the resulting key is invalid, and one should\nproceed with the next value for i. (Note: this has probability lower than 1 in 2127.)\"",
-                    "position": {
-                      "start": {
-                        "line": 4,
-                        "column": 1,
-                        "offset": 130
-                      },
-                      "end": {
-                        "line": 6,
-                        "column": 87,
-                        "offset": 352
-                      },
-                      "indent": [
-                        1,
-                        1
-                      ]
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 4,
-                    "column": 1,
-                    "offset": 130
-                  },
-                  "end": {
-                    "line": 6,
-                    "column": 87,
-                    "offset": 352
-                  },
-                  "indent": [
-                    1,
-                    1
-                  ]
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 6,
-                "column": 87,
-                "offset": 352
-              }
-            }
-          },
-          "tags": [],
-          "loc": {
-            "start": {
-              "line": 140,
-              "column": 2
-            },
-            "end": {
-              "line": 147,
-              "column": 5
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 148,
-                "column": 2
-              },
-              "end": {
-                "line": 215,
-                "column": 3
-              }
-            },
-            "file": "/home/p/Git/cashlib/src/Wallet.js",
-            "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet.js#L148-L215",
-              "path": "src/Wallet.js"
-            }
-          },
-          "augments": [],
-          "examples": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "parent",
-              "lineNumber": 149,
-              "type": {
-                "type": "NameExpression",
-                "name": "ExtendedKey"
-              }
-            },
-            {
-              "title": "param",
-              "name": "childDepth",
-              "lineNumber": 150,
-              "type": {
-                "type": "NameExpression",
-                "name": "number"
-              }
-            },
-            {
-              "title": "param",
-              "name": "childNumber",
-              "lineNumber": 151,
-              "type": {
-                "type": "NameExpression",
-                "name": "number"
-              }
-            }
-          ],
-          "properties": [],
-          "returns": [
-            {
-              "title": "returns",
-              "type": {
-                "type": "NameExpression",
-                "name": "ExtendedKey"
-              }
-            }
-          ],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "name": "_derivePrivateChildFromPrivate",
-          "kind": "function",
-          "memberof": "Wallet",
-          "scope": "instance",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "Wallet",
-              "kind": "class"
-            },
-            {
-              "name": "_derivePrivateChildFromPrivate",
-              "kind": "function",
-              "scope": "instance"
-            }
-          ],
-          "namespace": "Wallet#_derivePrivateChildFromPrivate"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "BIP-0032 function N((k, c)) → (K, c) computes the extended public key corresponding\nto an extended private key",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 2,
-                        "column": 27,
-                        "offset": 110
-                      },
-                      "indent": [
-                        1
-                      ]
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 27,
-                    "offset": 110
-                  },
-                  "indent": [
-                    1
-                  ]
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 2,
-                "column": 27,
-                "offset": 110
-              }
-            }
-          },
-          "tags": [],
-          "loc": {
-            "start": {
-              "line": 217,
-              "column": 2
-            },
-            "end": {
-              "line": 220,
-              "column": 5
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 221,
-                "column": 2
-              },
-              "end": {
-                "line": 258,
-                "column": 3
-              }
-            },
-            "file": "/home/p/Git/cashlib/src/Wallet.js",
-            "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet.js#L221-L258",
-              "path": "src/Wallet.js"
-            }
-          },
-          "augments": [],
-          "examples": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "parent",
-              "lineNumber": 222,
-              "type": {
-                "type": "NameExpression",
-                "name": "ExtendedKey"
-              }
-            },
-            {
-              "title": "param",
-              "name": "childDepth",
-              "lineNumber": 223,
-              "type": {
-                "type": "NameExpression",
-                "name": "number"
-              }
-            },
-            {
-              "title": "param",
-              "name": "childNumber",
-              "lineNumber": 224,
-              "type": {
-                "type": "NameExpression",
-                "name": "number"
-              }
-            }
-          ],
-          "properties": [],
-          "returns": [
-            {
-              "title": "returns",
-              "type": {
-                "type": "NameExpression",
-                "name": "ExtendedKey"
-              }
-            }
-          ],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "name": "_derivePublicChildFromPrivate",
-          "kind": "function",
-          "memberof": "Wallet",
-          "scope": "instance",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "Wallet",
-              "kind": "class"
-            },
-            {
-              "name": "_derivePublicChildFromPrivate",
-              "kind": "function",
-              "scope": "instance"
-            }
-          ],
-          "namespace": "Wallet#_derivePublicChildFromPrivate"
-        },
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "BIP-0032 function CKDpub((Kpar, cpar), i) → (Ki, ci) computes a child extended\npublic key from the parent extended public key. It only works for non-hardened\nchild keys.",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 12,
-                        "offset": 169
-                      },
-                      "indent": [
-                        1,
-                        1
-                      ]
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 3,
-                    "column": 12,
-                    "offset": 169
-                  },
-                  "indent": [
-                    1,
-                    1
-                  ]
-                }
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "TODO Pre-beta: Ensure we are handling this edge case:\n\"In case parse256(IL) ≥ n or Ki is the point at infinity, the resulting key is\ninvalid, and one should proceed with the next value for i.\"",
-                    "position": {
-                      "start": {
-                        "line": 5,
-                        "column": 1,
-                        "offset": 171
-                      },
-                      "end": {
-                        "line": 7,
-                        "column": 60,
-                        "offset": 363
-                      },
-                      "indent": [
-                        1,
-                        1
-                      ]
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 5,
-                    "column": 1,
-                    "offset": 171
-                  },
-                  "end": {
-                    "line": 7,
-                    "column": 60,
-                    "offset": 363
-                  },
-                  "indent": [
-                    1,
-                    1
-                  ]
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 7,
-                "column": 60,
-                "offset": 363
-              }
-            }
-          },
-          "tags": [],
-          "loc": {
-            "start": {
-              "line": 260,
-              "column": 2
-            },
-            "end": {
-              "line": 268,
-              "column": 5
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 269,
-                "column": 2
-              },
-              "end": {
-                "line": 331,
-                "column": 3
-              }
-            },
-            "file": "/home/p/Git/cashlib/src/Wallet.js",
-            "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet.js#L269-L331",
-              "path": "src/Wallet.js"
-            }
-          },
-          "augments": [],
-          "examples": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "parent",
-              "lineNumber": 270,
-              "type": {
-                "type": "NameExpression",
-                "name": "ExtendedKey"
-              }
-            },
-            {
-              "title": "param",
-              "name": "childDepth",
-              "lineNumber": 271,
-              "type": {
-                "type": "NameExpression",
-                "name": "number"
-              }
-            },
-            {
-              "title": "param",
-              "name": "childNumber",
-              "lineNumber": 272,
-              "type": {
-                "type": "NameExpression",
-                "name": "number"
-              }
-            }
-          ],
-          "properties": [],
-          "returns": [
-            {
-              "title": "returns",
-              "type": {
-                "type": "NameExpression",
-                "name": "ExtendedKey"
-              }
-            }
-          ],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "name": "_derivePublicChildFromPublic",
-          "kind": "function",
-          "memberof": "Wallet",
-          "scope": "instance",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "Wallet",
-              "kind": "class"
-            },
-            {
-              "name": "_derivePublicChildFromPublic",
-              "kind": "function",
-              "scope": "instance"
-            }
-          ],
-          "namespace": "Wallet#_derivePublicChildFromPublic"
-        }
-      ],
+      "instance": [],
       "events": [],
-      "static": [
-        {
-          "description": {
-            "type": "root",
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Build unique signature for a child key derivation request.",
-                    "position": {
-                      "start": {
-                        "line": 1,
-                        "column": 1,
-                        "offset": 0
-                      },
-                      "end": {
-                        "line": 1,
-                        "column": 59,
-                        "offset": 58
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 1,
-                    "column": 1,
-                    "offset": 0
-                  },
-                  "end": {
-                    "line": 1,
-                    "column": 59,
-                    "offset": 58
-                  },
-                  "indent": []
-                }
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "These signatures are used as the key in the _childKeyCache",
-                    "position": {
-                      "start": {
-                        "line": 3,
-                        "column": 1,
-                        "offset": 60
-                      },
-                      "end": {
-                        "line": 3,
-                        "column": 59,
-                        "offset": 118
-                      },
-                      "indent": []
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 3,
-                    "column": 1,
-                    "offset": 60
-                  },
-                  "end": {
-                    "line": 3,
-                    "column": 59,
-                    "offset": 118
-                  },
-                  "indent": []
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 1,
-                "column": 1,
-                "offset": 0
-              },
-              "end": {
-                "line": 3,
-                "column": 59,
-                "offset": 118
-              }
-            }
-          },
-          "tags": [],
-          "loc": {
-            "start": {
-              "line": 125,
-              "column": 2
-            },
-            "end": {
-              "line": 129,
-              "column": 5
-            }
-          },
-          "context": {
-            "loc": {
-              "start": {
-                "line": 130,
-                "column": 2
-              },
-              "end": {
-                "line": 138,
-                "column": 3
-              }
-            },
-            "file": "/home/p/Git/cashlib/src/Wallet.js",
-            "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet.js#L130-L138",
-              "path": "src/Wallet.js"
-            }
-          },
-          "augments": [],
-          "examples": [],
-          "params": [
-            {
-              "title": "param",
-              "name": "type",
-              "lineNumber": 130,
-              "type": {
-                "type": "UnionType",
-                "elements": [
-                  {
-                    "type": "StringLiteralType",
-                    "value": "pub"
-                  },
-                  {
-                    "type": "StringLiteralType",
-                    "value": "prv"
-                  }
-                ]
-              }
-            },
-            {
-              "title": "param",
-              "name": "parent",
-              "lineNumber": 130,
-              "type": {
-                "type": "NameExpression",
-                "name": "ExtendedKey"
-              }
-            },
-            {
-              "title": "param",
-              "name": "childDepth",
-              "lineNumber": 130,
-              "type": {
-                "type": "NameExpression",
-                "name": "number"
-              }
-            },
-            {
-              "title": "param",
-              "name": "childNumber",
-              "lineNumber": 130,
-              "type": {
-                "type": "NameExpression",
-                "name": "number"
-              }
-            }
-          ],
-          "properties": [],
-          "returns": [
-            {
-              "title": "returns",
-              "type": {
-                "type": "NameExpression",
-                "name": "string"
-              }
-            }
-          ],
-          "sees": [],
-          "throws": [],
-          "todos": [],
-          "name": "_getChildKeyRequestSignature",
-          "kind": "function",
-          "memberof": "Wallet",
-          "scope": "static",
-          "members": {
-            "global": [],
-            "inner": [],
-            "instance": [],
-            "events": [],
-            "static": []
-          },
-          "path": [
-            {
-              "name": "Wallet",
-              "kind": "class"
-            },
-            {
-              "name": "_getChildKeyRequestSignature",
-              "kind": "function",
-              "scope": "static"
-            }
-          ],
-          "namespace": "Wallet._getChildKeyRequestSignature"
-        }
-      ]
+      "static": []
     },
     "path": [
       {
@@ -12452,7 +15343,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L3-L8",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L3-L8",
         "path": "src/Wallet/DerivationPath.js"
       }
     },
@@ -12635,7 +15526,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L11-L16",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L11-L16",
         "path": "src/Wallet/DerivationPath.js"
       }
     },
@@ -12840,7 +15731,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L23-L25",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L23-L25",
         "path": "src/Wallet/DerivationPath.js"
       }
     },
@@ -13399,7 +16290,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L43-L146",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L43-L146",
         "path": "src/Wallet/DerivationPath.js"
       }
     },
@@ -13539,7 +16430,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L60-L66",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L60-L66",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -13660,7 +16551,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L71-L73",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L71-L73",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -13781,7 +16672,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L119-L119",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L119-L119",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -13902,7 +16793,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L124-L124",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L124-L124",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -14023,7 +16914,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L129-L129",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L129-L129",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -14144,7 +17035,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L134-L134",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L134-L134",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -14290,7 +17181,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L139-L145",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L139-L145",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -14456,7 +17347,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/DerivationPath.js#L78-L114",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/DerivationPath.js#L78-L114",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -14636,7 +17527,7 @@
       },
       "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/ExtendedKey.js#L19-L146",
+        "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/ExtendedKey.js#L19-L146",
         "path": "src/Wallet/ExtendedKey.js"
       }
     },
@@ -14786,7 +17677,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/ExtendedKey.js#L45-L45",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/ExtendedKey.js#L45-L45",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -14916,7 +17807,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/ExtendedKey.js#L50-L50",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/ExtendedKey.js#L50-L50",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -15037,7 +17928,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/ExtendedKey.js#L55-L55",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/ExtendedKey.js#L55-L55",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -15158,7 +18049,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/ExtendedKey.js#L60-L60",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/ExtendedKey.js#L60-L60",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -15279,7 +18170,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/ExtendedKey.js#L65-L65",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/ExtendedKey.js#L65-L65",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -15515,7 +18406,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/ExtendedKey.js#L73-L78",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/ExtendedKey.js#L73-L78",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -15751,7 +18642,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/ExtendedKey.js#L86-L91",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/ExtendedKey.js#L86-L91",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -15915,7 +18806,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/ExtendedKey.js#L101-L116",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/ExtendedKey.js#L101-L116",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -16145,7 +19036,7 @@
             },
             "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/d834c0304127a582098a6e1ebbe664109f058693/src/Wallet/ExtendedKey.js#L125-L145",
+              "url": "https://github.com/proehlen/cashlib/blob/6d67245a8a66dc7e092a9d963f314c17ec0674a3/src/Wallet/ExtendedKey.js#L125-L145",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },

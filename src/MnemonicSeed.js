@@ -10,11 +10,16 @@ const wordlistFile = path.join(__dirname, 'MnemonicSeed', 'wordlist');
 const wordlist = fs.readFileSync(wordlistFile, { encoding: 'utf8' }).split('\n');
 
 /**
- * This class implements BIP-0039 - using mnemonic sentences to generate binary
- * seeds
+ * This class implements {@link https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
+ * BIP-0039}, using mnemonic sentences to generate binary seeds
+ * @todo Implement checksum checking
+ * @todo Allow varying length phrase
  */
 export default class MnemonicSeed extends Data {
-  static fromWords(seedWords: string[]) {
+  /**
+   * Returns a MnemonicSeed from 12 seed words.
+   */
+  static fromWords(seedWords: string[]): MnemonicSeed {
     // Validate seedWords provided and correct type/length
     if (!seedWords || !Array.isArray(seedWords) || seedWords.length !== 12) {
       throw new Error('MnemonicSeed requires exactly 12 seed words');

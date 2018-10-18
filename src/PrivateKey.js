@@ -26,15 +26,27 @@ export default class PrivateKey extends Data {
     this._compressPublicKey = compressPublicKey;
   }
 
-  get compressPublicKey() {
+  /**
+   * Indicator: should the public key derived from this private key be compressed?
+   *
+   * Usually automatically to true sometimes if importing a private key in WIF format
+   */
+  get compressPublicKey(): boolean {
     return this._compressPublicKey;
   }
 
-  static fromHex(hex: string) {
+  /**
+   * Return a private key from a hex string
+   */
+  static fromHex(hex: string): PrivateKey {
     const bytes = stringfu.toBytes(hex);
     return new this(bytes);
   }
 
+  /**
+   * Return a private key object from a string in {@link https://en.bitcoin.it/wiki/Wallet_import_format
+   * Wallet import format}
+   */
   static fromWif(wifKey: string): PrivateKey {
     const firstChar = wifKey.substr(0, 1);
     let compressPublicKey: boolean;
@@ -73,7 +85,10 @@ export default class PrivateKey extends Data {
     return new PrivateKey(keyBytes, compressPublicKey);
   }
 
-  static fromBigInt(value: BigInt) {
+  /**
+   * Return a private key object from an integer value
+   */
+  static fromBigInt(value: BigInt): PrivateKey {
     assert(value instanceof BigInt, 'Value is not a big integer');
 
     // Get integer as bytes
@@ -85,6 +100,9 @@ export default class PrivateKey extends Data {
     return new PrivateKey(bytes);
   }
 
+  /**
+   * Returns private key as a string in {@link https://en.bitcoin.it/wiki/Wallet_import_format Wallet import format}
+   */
   toWif(network: Network): string {
     if (!this._wif) {
       const privKeyAndVersion = new Uint8Array(this.toBytes().length + 1);
@@ -124,7 +142,10 @@ export default class PrivateKey extends Data {
     return asn1;
   }
 
-  toPem() {
+  /**
+   * Return private key as certificate
+   */
+  toPem(): string {
     const prefix = '-----BEGIN EC PRIVATE KEY-----\n';
     const suffix = '\n-----END EC PRIVATE KEY-----';
     const asn1 = this.toDer();
@@ -134,6 +155,11 @@ export default class PrivateKey extends Data {
     return pem;
   }
 
+  /**
+   * Derive public key from private key
+   *
+   * *Warning* this operation is slow/expensive; cache results where possible.
+   */
   toPublicKey(compressed?: boolean): PublicKey {
     const point = this.toCurvePoint();
 

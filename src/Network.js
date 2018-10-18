@@ -1,6 +1,9 @@
 // @flow
 
-declare type NetworkPrefixes = {
+/**
+ * Prefixes used for a pariticular Bitcoin Network
+ */
+export type NetworkPrefixes = {
   publicKeyAddress: number,
   scriptAddress: number,
   privateKeyWif: number,
@@ -11,7 +14,7 @@ declare type NetworkPrefixes = {
 }
 
 /**
- * A Bitcoin network
+ * A Bitcoin network, e.g. mainnet, testnet etc
  */
 export default class Network {
   _label: string
@@ -22,14 +25,23 @@ export default class Network {
     this._prefixes = prefixes;
   }
 
-  get label() {
+  /**
+   * Return network label
+   */
+  get label(): string {
     return this._label;
   }
 
-  get prefixes() {
+  /**
+   * Return prefix values for this network
+   */
+  get prefixes(): NetworkPrefixes {
     return this._prefixes;
   }
 
+  /**
+   * Return Network for a given label
+   */
   static fromString(label: string): Network {
     let prefixes: NetworkPrefixes;
     switch (label) {

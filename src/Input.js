@@ -26,25 +26,25 @@ export default class Input {
   /**
    * The id of the {@link Transaction} containing the output that this input spends
    */
-  get transactionId() { return this._transactionId; }
+  get transactionId(): string { return this._transactionId; }
 
   /**
    * The index of the output that this input spends
    */
-  get outputIndex() { return this._outputIndex; }
+  get outputIndex(): number { return this._outputIndex; }
 
   /**
    * The signature script (aka `scriptSig`) for this input
    */
-  get signatureScript() { return this._signatureScript; }
+  get signatureScript(): Uint8Array { return this._signatureScript; }
 
   /**
    * The input {@link https://bitcoin.org/en/glossary/sequence-number sequence number}
    */
-  get sequence() { return this._sequence; }
+  get sequence(): number { return this._sequence; }
 
   /**
    * Returns true if this input is the {@link https://bitcoin.org/en/glossary/coinbase-transaction coinbase} input
    */
-  get isCoinbase() { return this._outputIndex === 0xFFFFFFFF; }
+  get isCoinbase(): boolean { return this._outputIndex === 0xFFFFFFFF; }
 }
