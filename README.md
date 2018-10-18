@@ -1,11 +1,8 @@
-# Cashlib
-## Experimental Bitcoin Cash Library
+# Cashlib - Experimental Bitcoin Cash Library
 
-Experimental Bitcoin Cash library.  This sofware is in pre-alpha state and should not be used for any purpose.
+Cashlib is an experimental Bitcoin Cash library.  This sofware is in pre-alpha state and should not be used for any serious purpose.
 
-[API docs (under construction)](https://proehlen.github.io/cashlib/)
-
-**Do NOT use this code!**
+[API docs (under construction)](https://proehlen.github.io/cashlib/#/api)
 
 ## History
 
