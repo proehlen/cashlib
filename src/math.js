@@ -8,10 +8,9 @@ const two = new BigInt(2);
 
 /**
  * Computes a modular square root.
- * @exports
  *
- * Adapted from "Computing modular square roots in Python" by Eli Bendersky
- * https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python
+ * Adapted from {@link https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python
+ * "Computing modular square roots in Python" by Eli Bendersky}
  */
 export function modSqrt(a: BigInt, p: BigInt): BigInt {
   let result: BigInt;
