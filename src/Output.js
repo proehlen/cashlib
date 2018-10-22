@@ -4,7 +4,7 @@ import Address from './Address';
 import Network from './Network';
 import PublicKey from './PublicKey';
 
-export type OutputScriptType = 'P2PK' | 'P2PKH' | 'unknown';
+export type OutputScriptType = 'P2PK' | 'P2PKH' | 'P2SH' | 'unknown';
 
 /**
  * A transaction output
@@ -28,6 +28,11 @@ export default class Output {
         && pubKeyScript[0] <= 0x4b
         && pubKeyScript[pubKeyScript[0] + 1] === opCodes.OP_CHECKSIG.value) {
       this._scriptType = 'P2PK';
+    } else if (pubKeyScript.length === 23
+        && pubKeyScript[0] === opCodes.OP_HASH160.value
+        && pubKeyScript[1] === 20
+        && pubKeyScript[pubKeyScript.length - 1] === opCodes.OP_EQUAL.value) {
+      this._scriptType = 'P2SH';
     } else {
       this._scriptType = 'unknown';
     }
