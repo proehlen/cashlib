@@ -55,9 +55,10 @@ export default class Transaction {
     const transaction = new Transaction();
 
     // Get tx version
+    // Todo - add better validation when we understand this field
     const version = bytes.getUint32();
-    if (version !== VERSION) {
-      throw new Error(`Unrecognized transaction version (${version.toString(16)})`);
+    if (!version) {
+      throw new Error('Transaction version not found');
     }
 
     // Get transaction inputs
@@ -92,6 +93,9 @@ export default class Transaction {
 
   serialize(): string {
     const bytes = new Serializer();
+
+    // TODO check this version constant is appropriate when
+    // we understand this field
     bytes.addUint32(VERSION, 'LE');
 
     // Add transaction inputs
