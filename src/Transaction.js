@@ -38,8 +38,16 @@ export default class Transaction {
     this._inputs.push(input);
   }
 
+  removeInput(index: number) {
+    this._inputs.splice(index, 1);
+  }
+
   addOutput(output: Output) {
     this._outputs.push(output);
+  }
+
+  removeOutput(index: number) {
+    this._outputs.splice(index, 1);
   }
 
   setLockTime(lockTime: number) {
