@@ -140,9 +140,9 @@
           "column": 63
         }
       },
-      "file": "/home/p/Git/cashlib/src/AccountWallet.js",
+      "file": "/home/p/git/cashlib/src/AccountWallet.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/AccountWallet.js#L18-L24",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/AccountWallet.js#L18-L24",
         "path": "src/AccountWallet.js"
       }
     },
@@ -437,9 +437,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/AccountWallet.js",
+      "file": "/home/p/git/cashlib/src/AccountWallet.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/AccountWallet.js#L38-L133",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/AccountWallet.js#L38-L133",
         "path": "src/AccountWallet.js"
       }
     },
@@ -481,8 +481,8 @@
             "column": 3
           }
         },
-        "file": "/home/p/Git/cashlib/src/AccountWallet.js",
-        "sortKey": "!/home/p/Git/cashlib/src/AccountWallet.js 00000047",
+        "file": "/home/p/git/cashlib/src/AccountWallet.js",
+        "sortKey": "!/home/p/git/cashlib/src/AccountWallet.js 00000047",
         "code": "{\n  _internalWallet: Wallet\n  _externalWallet: Wallet\n  _internalUsedIndex: number // Used change address index\n  _externalUsedIndex: number // Used external address index\n\n  /**\n   * @hideconstructor\n   */\n  constructor(externalWallet: Wallet, internalWallet: Wallet) {\n    this._externalWallet = externalWallet;\n    this._externalUsedIndex = -1;\n    this._internalWallet = internalWallet;\n    this._internalUsedIndex = -1;\n  }\n\n  /**\n   * Return highest used address index for nominated type\n   */\n  getUsedAddressIndex(type: AccountWalletAddressType): number {\n    return (type === 'external')\n      ? this._externalUsedIndex\n      : this._internalUsedIndex;\n  }\n\n  /**\n   * Update the highest used address index for the nominated type\n   */\n  setUsedAddressIndex(type: AccountWalletAddressType, addressIndex: number): void {\n    if (type === 'external') {\n      this._externalUsedIndex = addressIndex;\n    } else {\n      this._internalUsedIndex = addressIndex;\n    }\n  }\n\n  /**\n   * Returns next/first unused external shareable public key as an address\n   *\n   * This address can be shared publicly to receive payments\n   */\n  nextExternalAddress(network: Network): Address {\n    this._externalUsedIndex += 1;\n    const path = DerivationPath.fromSerialized(`M${this._externalUsedIndex}`);\n    const publicKey = this._externalWallet.getKey(path).getPublicKey();\n    return Address.fromPublicKey(publicKey, network);\n  }\n\n  /**\n   * Returns next/first unused internal change public key as an address\n   *\n   * This address should be used by wallet software to receive change\n   */\n  nextInternalAddress(network: Network): Address {\n    this._internalUsedIndex += 1;\n    const path = DerivationPath.fromSerialized(`M/${this._internalUsedIndex}`);\n    const publicKey = this._internalWallet.getKey(path).getPublicKey();\n    return Address.fromPublicKey(publicKey, network);\n  }\n\n  /**\n   * Create new AccountWallet instance using a seed and BIP44 derivation path\n   */\n  static fromSeed(seed: Data, accountPath: DerivationPath): AccountWallet {\n    // Validate derivation path (require BIP44 format)\n    const exampleText = \"(e.g.  m44'0'0')\";\n    assert(accountPath.numLevels === 3, `Expected a 3 level derivation path ${exampleText}`);\n    assert(accountPath.isPrivate, \"Expected derivation path to begin with 'm' (private)\");\n    const firstIndex = accountPath.levels[0].childNumber;\n    assert(firstIndex === purposeBip44, `Expected first derivation path level to be 44 ${exampleText}`);\n    const secondIndex = accountPath.levels[1].childNumber;\n    assert(coinTypes.indexOf(secondIndex) > -1, `Unrecognized coin type (${secondIndex})`);\n\n    // Generate master wallet\n    const masterWallet = Wallet.fromSeed(seed);\n\n    // Get keys for and create account wallet\n    const accountPrivateKey = masterWallet.getKey(accountPath);\n    const accountPublicKey = masterWallet.getKey(accountPath.toPublic());\n    const accountWallet = new Wallet(accountPublicKey, accountPrivateKey);\n\n    // Get keys for and create external / receiving wallet\n    const externalPath = DerivationPath.fromSerialized('m/0');\n    const externalPrivateKey = accountWallet.getKey(externalPath);\n    const externalPublicKey = accountWallet.getKey(externalPath.toPublic());\n    const externalWallet = new Wallet(externalPublicKey, externalPrivateKey);\n\n    // Get keys for and create internal / change wallet\n    const internalPath = DerivationPath.fromSerialized('m/1');\n    const internalPrivateKey = accountWallet.getKey(internalPath);\n    const internalPublicKey = accountWallet.getKey(internalPath.toPublic());\n    const internalWallet = new Wallet(internalPublicKey, internalPrivateKey);\n\n    return new AccountWallet(externalWallet, internalWallet);\n  }\n}"
       },
       "augments": [],
@@ -577,9 +577,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/AccountWallet.js",
+            "file": "/home/p/git/cashlib/src/AccountWallet.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/AccountWallet.js#L57-L61",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/AccountWallet.js#L57-L61",
               "path": "src/AccountWallet.js"
             }
           },
@@ -708,9 +708,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/AccountWallet.js",
+            "file": "/home/p/git/cashlib/src/AccountWallet.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/AccountWallet.js#L66-L72",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/AccountWallet.js#L66-L72",
               "path": "src/AccountWallet.js"
             }
           },
@@ -882,9 +882,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/AccountWallet.js",
+            "file": "/home/p/git/cashlib/src/AccountWallet.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/AccountWallet.js#L79-L84",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/AccountWallet.js#L79-L84",
               "path": "src/AccountWallet.js"
             }
           },
@@ -1048,9 +1048,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/AccountWallet.js",
+            "file": "/home/p/git/cashlib/src/AccountWallet.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/AccountWallet.js#L91-L96",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/AccountWallet.js#L91-L96",
               "path": "src/AccountWallet.js"
             }
           },
@@ -1182,9 +1182,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/AccountWallet.js",
+            "file": "/home/p/git/cashlib/src/AccountWallet.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/AccountWallet.js#L101-L132",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/AccountWallet.js#L101-L132",
               "path": "src/AccountWallet.js"
             }
           },
@@ -1431,9 +1431,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Address.js",
+      "file": "/home/p/git/cashlib/src/Address.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Address.js#L16-L68",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Address.js#L16-L68",
         "path": "src/Address.js"
       }
     },
@@ -1531,9 +1531,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Address.js",
+            "file": "/home/p/git/cashlib/src/Address.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Address.js#L20-L22",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Address.js#L20-L22",
               "path": "src/Address.js"
             }
           },
@@ -1652,9 +1652,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Address.js",
+            "file": "/home/p/git/cashlib/src/Address.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Address.js#L27-L30",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Address.js#L27-L30",
               "path": "src/Address.js"
             }
           },
@@ -1776,9 +1776,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Address.js",
+            "file": "/home/p/git/cashlib/src/Address.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Address.js#L35-L37",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Address.js#L35-L37",
               "path": "src/Address.js"
             }
           },
@@ -1911,9 +1911,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Address.js",
+            "file": "/home/p/git/cashlib/src/Address.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Address.js#L43-L60",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Address.js#L43-L60",
               "path": "src/Address.js"
             }
           },
@@ -2093,9 +2093,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Address.js",
+            "file": "/home/p/git/cashlib/src/Address.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Address.js#L65-L67",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Address.js#L65-L67",
               "path": "src/Address.js"
             }
           },
@@ -2421,9 +2421,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Cache.js",
+      "file": "/home/p/git/cashlib/src/Cache.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Cache.js#L10-L65",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Cache.js#L10-L65",
         "path": "src/Cache.js"
       }
     },
@@ -2526,9 +2526,9 @@
                 "column": 48
               }
             },
-            "file": "/home/p/Git/cashlib/src/Cache.js",
+            "file": "/home/p/git/cashlib/src/Cache.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Cache.js#L22-L22",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Cache.js#L22-L22",
               "path": "src/Cache.js"
             }
           },
@@ -2647,9 +2647,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Cache.js",
+            "file": "/home/p/git/cashlib/src/Cache.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Cache.js#L27-L37",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Cache.js#L27-L37",
               "path": "src/Cache.js"
             }
           },
@@ -2820,9 +2820,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Cache.js",
+            "file": "/home/p/git/cashlib/src/Cache.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Cache.js#L42-L51",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Cache.js#L42-L51",
               "path": "src/Cache.js"
             }
           },
@@ -2971,9 +2971,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Curve.js",
+      "file": "/home/p/git/cashlib/src/Curve.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Curve.js#L5-L7",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Curve.js#L5-L7",
         "path": "src/Curve.js"
       }
     },
@@ -3191,9 +3191,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Curve.js",
+      "file": "/home/p/git/cashlib/src/Curve.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Curve.js#L21-L69",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Curve.js#L21-L69",
         "path": "src/Curve.js"
       }
     },
@@ -3296,9 +3296,9 @@
                 "column": 45
               }
             },
-            "file": "/home/p/Git/cashlib/src/Curve.js",
+            "file": "/home/p/git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Curve.js#L41-L41",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Curve.js#L41-L41",
               "path": "src/Curve.js"
             }
           },
@@ -3417,9 +3417,9 @@
                 "column": 52
               }
             },
-            "file": "/home/p/Git/cashlib/src/Curve.js",
+            "file": "/home/p/git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Curve.js#L46-L46",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Curve.js#L46-L46",
               "path": "src/Curve.js"
             }
           },
@@ -3538,9 +3538,9 @@
                 "column": 45
               }
             },
-            "file": "/home/p/Git/cashlib/src/Curve.js",
+            "file": "/home/p/git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Curve.js#L51-L51",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Curve.js#L51-L51",
               "path": "src/Curve.js"
             }
           },
@@ -3659,9 +3659,9 @@
                 "column": 51
               }
             },
-            "file": "/home/p/Git/cashlib/src/Curve.js",
+            "file": "/home/p/git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Curve.js#L57-L57",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Curve.js#L57-L57",
               "path": "src/Curve.js"
             }
           },
@@ -3780,9 +3780,9 @@
                 "column": 51
               }
             },
-            "file": "/home/p/Git/cashlib/src/Curve.js",
+            "file": "/home/p/git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Curve.js#L62-L62",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Curve.js#L62-L62",
               "path": "src/Curve.js"
             }
           },
@@ -3901,9 +3901,9 @@
                 "column": 51
               }
             },
-            "file": "/home/p/Git/cashlib/src/Curve.js",
+            "file": "/home/p/git/cashlib/src/Curve.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Curve.js#L68-L68",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Curve.js#L68-L68",
               "path": "src/Curve.js"
             }
           },
@@ -4114,9 +4114,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/CurvePoint.js",
+      "file": "/home/p/git/cashlib/src/CurvePoint.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/CurvePoint.js#L20-L203",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/CurvePoint.js#L20-L203",
         "path": "src/CurvePoint.js"
       }
     },
@@ -4255,9 +4255,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/CurvePoint.js",
+            "file": "/home/p/git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/CurvePoint.js#L115-L133",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/CurvePoint.js#L115-L133",
               "path": "src/CurvePoint.js"
             }
           },
@@ -4463,9 +4463,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/CurvePoint.js",
+            "file": "/home/p/git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/CurvePoint.js#L142-L145",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/CurvePoint.js#L142-L145",
               "path": "src/CurvePoint.js"
             }
           },
@@ -4637,9 +4637,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/CurvePoint.js",
+            "file": "/home/p/git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/CurvePoint.js#L27-L51",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/CurvePoint.js#L27-L51",
               "path": "src/CurvePoint.js"
             }
           },
@@ -4837,9 +4837,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/CurvePoint.js",
+            "file": "/home/p/git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/CurvePoint.js#L58-L83",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/CurvePoint.js#L58-L83",
               "path": "src/CurvePoint.js"
             }
           },
@@ -5032,9 +5032,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/CurvePoint.js",
+            "file": "/home/p/git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/CurvePoint.js#L91-L106",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/CurvePoint.js#L91-L106",
               "path": "src/CurvePoint.js"
             }
           },
@@ -5167,9 +5167,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/CurvePoint.js",
+            "file": "/home/p/git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/CurvePoint.js#L151-L154",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/CurvePoint.js#L151-L154",
               "path": "src/CurvePoint.js"
             }
           },
@@ -5302,9 +5302,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/CurvePoint.js",
+            "file": "/home/p/git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/CurvePoint.js#L160-L163",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/CurvePoint.js#L160-L163",
               "path": "src/CurvePoint.js"
             }
           },
@@ -5437,9 +5437,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/CurvePoint.js",
+            "file": "/home/p/git/cashlib/src/CurvePoint.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/CurvePoint.js#L169-L202",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/CurvePoint.js#L169-L202",
               "path": "src/CurvePoint.js"
             }
           },
@@ -5578,9 +5578,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Data.js",
+      "file": "/home/p/git/cashlib/src/Data.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Data.js#L9-L75",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Data.js#L9-L75",
         "path": "src/Data.js"
       }
     },
@@ -5696,9 +5696,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Data.js",
+            "file": "/home/p/git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Data.js#L27-L29",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Data.js#L27-L29",
               "path": "src/Data.js"
             }
           },
@@ -5817,9 +5817,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Data.js",
+            "file": "/home/p/git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Data.js#L34-L36",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Data.js#L34-L36",
               "path": "src/Data.js"
             }
           },
@@ -5938,9 +5938,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Data.js",
+            "file": "/home/p/git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Data.js#L41-L43",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Data.js#L41-L43",
               "path": "src/Data.js"
             }
           },
@@ -6068,9 +6068,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Data.js",
+            "file": "/home/p/git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Data.js#L48-L50",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Data.js#L48-L50",
               "path": "src/Data.js"
             }
           },
@@ -6189,9 +6189,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Data.js",
+            "file": "/home/p/git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Data.js#L55-L63",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Data.js#L55-L63",
               "path": "src/Data.js"
             }
           },
@@ -6394,9 +6394,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Data.js",
+            "file": "/home/p/git/cashlib/src/Data.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Data.js#L71-L74",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Data.js#L71-L74",
               "path": "src/Data.js"
             }
           },
@@ -6578,9 +6578,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Deserializer.js",
+      "file": "/home/p/git/cashlib/src/Deserializer.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Deserializer.js#L12-L182",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Deserializer.js#L12-L182",
         "path": "src/Deserializer.js"
       }
     },
@@ -6692,9 +6692,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Deserializer.js",
+            "file": "/home/p/git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Deserializer.js#L34-L38",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Deserializer.js#L34-L38",
               "path": "src/Deserializer.js"
             }
           },
@@ -6819,9 +6819,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Deserializer.js",
+            "file": "/home/p/git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Deserializer.js#L45-L49",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Deserializer.js#L45-L49",
               "path": "src/Deserializer.js"
             }
           },
@@ -6999,9 +6999,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Deserializer.js",
+            "file": "/home/p/git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Deserializer.js#L56-L60",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Deserializer.js#L56-L60",
               "path": "src/Deserializer.js"
             }
           },
@@ -7179,9 +7179,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Deserializer.js",
+            "file": "/home/p/git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Deserializer.js#L67-L93",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Deserializer.js#L67-L93",
               "path": "src/Deserializer.js"
             }
           },
@@ -7359,9 +7359,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Deserializer.js",
+            "file": "/home/p/git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Deserializer.js#L100-L111",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Deserializer.js#L100-L111",
               "path": "src/Deserializer.js"
             }
           },
@@ -7567,9 +7567,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Deserializer.js",
+            "file": "/home/p/git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Deserializer.js#L116-L124",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Deserializer.js#L116-L124",
               "path": "src/Deserializer.js"
             }
           },
@@ -7784,9 +7784,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Deserializer.js",
+            "file": "/home/p/git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Deserializer.js#L131-L137",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Deserializer.js#L131-L137",
               "path": "src/Deserializer.js"
             }
           },
@@ -7985,9 +7985,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Deserializer.js",
+            "file": "/home/p/git/cashlib/src/Deserializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Deserializer.js#L160-L181",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Deserializer.js#L160-L181",
               "path": "src/Deserializer.js"
             }
           },
@@ -8118,9 +8118,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Input.js",
+      "file": "/home/p/git/cashlib/src/Input.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Input.js#L8-L50",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Input.js#L8-L50",
         "path": "src/Input.js"
       }
     },
@@ -8293,9 +8293,9 @@
                 "column": 61
               }
             },
-            "file": "/home/p/Git/cashlib/src/Input.js",
+            "file": "/home/p/git/cashlib/src/Input.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Input.js#L29-L29",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Input.js#L29-L29",
               "path": "src/Input.js"
             }
           },
@@ -8414,9 +8414,9 @@
                 "column": 57
               }
             },
-            "file": "/home/p/Git/cashlib/src/Input.js",
+            "file": "/home/p/git/cashlib/src/Input.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Input.js#L34-L34",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Input.js#L34-L34",
               "path": "src/Input.js"
             }
           },
@@ -8569,9 +8569,9 @@
                 "column": 69
               }
             },
-            "file": "/home/p/Git/cashlib/src/Input.js",
+            "file": "/home/p/git/cashlib/src/Input.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Input.js#L39-L39",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Input.js#L39-L39",
               "path": "src/Input.js"
             }
           },
@@ -8715,9 +8715,9 @@
                 "column": 51
               }
             },
-            "file": "/home/p/Git/cashlib/src/Input.js",
+            "file": "/home/p/git/cashlib/src/Input.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Input.js#L44-L44",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Input.js#L44-L44",
               "path": "src/Input.js"
             }
           },
@@ -8878,9 +8878,9 @@
                 "column": 72
               }
             },
-            "file": "/home/p/Git/cashlib/src/Input.js",
+            "file": "/home/p/git/cashlib/src/Input.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Input.js#L49-L49",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Input.js#L49-L49",
               "path": "src/Input.js"
             }
           },
@@ -9075,9 +9075,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/math.js",
+      "file": "/home/p/git/cashlib/src/math.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/math.js#L15-L80",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/math.js#L15-L80",
         "path": "src/math.js"
       }
     },
@@ -9265,9 +9265,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/MnemonicSeed.js",
+      "file": "/home/p/git/cashlib/src/MnemonicSeed.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/MnemonicSeed.js#L18-L48",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/MnemonicSeed.js#L18-L48",
         "path": "src/MnemonicSeed.js"
       }
     },
@@ -9478,9 +9478,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/MnemonicSeed.js",
+            "file": "/home/p/git/cashlib/src/MnemonicSeed.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/MnemonicSeed.js#L24-L47",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/MnemonicSeed.js#L24-L47",
               "path": "src/MnemonicSeed.js"
             }
           },
@@ -9681,9 +9681,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Network.js",
+      "file": "/home/p/git/cashlib/src/Network.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Network.js#L3-L5",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Network.js#L3-L5",
         "path": "src/Network.js"
       }
     },
@@ -9913,9 +9913,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Network.js",
+      "file": "/home/p/git/cashlib/src/Network.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Network.js#L19-L99",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Network.js#L19-L99",
         "path": "src/Network.js"
       }
     },
@@ -10027,9 +10027,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Network.js",
+            "file": "/home/p/git/cashlib/src/Network.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Network.js#L31-L33",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Network.js#L31-L33",
               "path": "src/Network.js"
             }
           },
@@ -10148,9 +10148,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Network.js",
+            "file": "/home/p/git/cashlib/src/Network.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Network.js#L38-L40",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Network.js#L38-L40",
               "path": "src/Network.js"
             }
           },
@@ -10272,9 +10272,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Network.js",
+            "file": "/home/p/git/cashlib/src/Network.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Network.js#L45-L98",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Network.js#L45-L98",
               "path": "src/Network.js"
             }
           },
@@ -10413,9 +10413,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/OpCode.js",
+      "file": "/home/p/git/cashlib/src/OpCode.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/OpCode.js#L8-L39",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/OpCode.js#L8-L39",
         "path": "src/OpCode.js"
       }
     },
@@ -10536,9 +10536,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/OpCode.js",
+            "file": "/home/p/git/cashlib/src/OpCode.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/OpCode.js#L22-L24",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/OpCode.js#L22-L24",
               "path": "src/OpCode.js"
             }
           },
@@ -10657,9 +10657,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/OpCode.js",
+            "file": "/home/p/git/cashlib/src/OpCode.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/OpCode.js#L29-L31",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/OpCode.js#L29-L31",
               "path": "src/OpCode.js"
             }
           },
@@ -10778,9 +10778,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/OpCode.js",
+            "file": "/home/p/git/cashlib/src/OpCode.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/OpCode.js#L36-L38",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/OpCode.js#L36-L38",
               "path": "src/OpCode.js"
             }
           },
@@ -10911,9 +10911,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Output.js",
+      "file": "/home/p/git/cashlib/src/Output.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Output.js#L12-L98",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Output.js#L12-L98",
         "path": "src/Output.js"
       }
     },
@@ -11025,9 +11025,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Output.js",
+            "file": "/home/p/git/cashlib/src/Output.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Output.js#L44-L46",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Output.js#L44-L46",
               "path": "src/Output.js"
             }
           },
@@ -11146,9 +11146,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Output.js",
+            "file": "/home/p/git/cashlib/src/Output.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Output.js#L51-L53",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Output.js#L51-L53",
               "path": "src/Output.js"
             }
           },
@@ -11259,9 +11259,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Output.js",
+            "file": "/home/p/git/cashlib/src/Output.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Output.js#L58-L60",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Output.js#L58-L60",
               "path": "src/Output.js"
             }
           },
@@ -11380,9 +11380,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Output.js",
+            "file": "/home/p/git/cashlib/src/Output.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Output.js#L65-L81",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Output.js#L65-L81",
               "path": "src/Output.js"
             }
           },
@@ -11522,9 +11522,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Output.js",
+            "file": "/home/p/git/cashlib/src/Output.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Output.js#L86-L97",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Output.js#L86-L97",
               "path": "src/Output.js"
             }
           },
@@ -11749,9 +11749,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Point.js",
+      "file": "/home/p/git/cashlib/src/Point.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Point.js#L10-L29",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Point.js#L10-L29",
         "path": "src/Point.js"
       }
     },
@@ -11863,9 +11863,9 @@
                 "column": 37
               }
             },
-            "file": "/home/p/Git/cashlib/src/Point.js",
+            "file": "/home/p/git/cashlib/src/Point.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Point.js#L23-L23",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Point.js#L23-L23",
               "path": "src/Point.js"
             }
           },
@@ -11984,9 +11984,9 @@
                 "column": 37
               }
             },
-            "file": "/home/p/Git/cashlib/src/Point.js",
+            "file": "/home/p/git/cashlib/src/Point.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Point.js#L28-L28",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Point.js#L28-L28",
               "path": "src/Point.js"
             }
           },
@@ -12117,9 +12117,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+      "file": "/home/p/git/cashlib/src/PrivateKey.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PrivateKey.js#L19-L180",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PrivateKey.js#L19-L180",
         "path": "src/PrivateKey.js"
       }
     },
@@ -12272,9 +12272,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "file": "/home/p/git/cashlib/src/PrivateKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PrivateKey.js#L34-L36",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PrivateKey.js#L34-L36",
               "path": "src/PrivateKey.js"
             }
           },
@@ -12418,9 +12418,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "file": "/home/p/git/cashlib/src/PrivateKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PrivateKey.js#L106-L119",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PrivateKey.js#L106-L119",
               "path": "src/PrivateKey.js"
             }
           },
@@ -12549,9 +12549,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "file": "/home/p/git/cashlib/src/PrivateKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PrivateKey.js#L124-L143",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PrivateKey.js#L124-L143",
               "path": "src/PrivateKey.js"
             }
           },
@@ -12670,9 +12670,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "file": "/home/p/git/cashlib/src/PrivateKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PrivateKey.js#L148-L156",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PrivateKey.js#L148-L156",
               "path": "src/PrivateKey.js"
             }
           },
@@ -12861,9 +12861,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "file": "/home/p/git/cashlib/src/PrivateKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PrivateKey.js#L163-L171",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PrivateKey.js#L163-L171",
               "path": "src/PrivateKey.js"
             }
           },
@@ -12996,9 +12996,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "file": "/home/p/git/cashlib/src/PrivateKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PrivateKey.js#L177-L179",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PrivateKey.js#L177-L179",
               "path": "src/PrivateKey.js"
             }
           },
@@ -13120,9 +13120,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "file": "/home/p/git/cashlib/src/PrivateKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PrivateKey.js#L41-L44",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PrivateKey.js#L41-L44",
               "path": "src/PrivateKey.js"
             }
           },
@@ -13280,9 +13280,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "file": "/home/p/git/cashlib/src/PrivateKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PrivateKey.js#L50-L86",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PrivateKey.js#L50-L86",
               "path": "src/PrivateKey.js"
             }
           },
@@ -13411,9 +13411,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PrivateKey.js",
+            "file": "/home/p/git/cashlib/src/PrivateKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PrivateKey.js#L91-L101",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PrivateKey.js#L91-L101",
               "path": "src/PrivateKey.js"
             }
           },
@@ -13552,9 +13552,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/PublicKey.js",
+      "file": "/home/p/git/cashlib/src/PublicKey.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PublicKey.js#L11-L42",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PublicKey.js#L11-L42",
         "path": "src/PublicKey.js"
       }
     },
@@ -13652,9 +13652,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PublicKey.js",
+            "file": "/home/p/git/cashlib/src/PublicKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PublicKey.js#L15-L17",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PublicKey.js#L15-L17",
               "path": "src/PublicKey.js"
             }
           },
@@ -13773,9 +13773,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PublicKey.js",
+            "file": "/home/p/git/cashlib/src/PublicKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PublicKey.js#L39-L41",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PublicKey.js#L39-L41",
               "path": "src/PublicKey.js"
             }
           },
@@ -13897,9 +13897,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PublicKey.js",
+            "file": "/home/p/git/cashlib/src/PublicKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PublicKey.js#L22-L25",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PublicKey.js#L22-L25",
               "path": "src/PublicKey.js"
             }
           },
@@ -14090,9 +14090,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/PublicKey.js",
+            "file": "/home/p/git/cashlib/src/PublicKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/PublicKey.js#L32-L34",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/PublicKey.js#L32-L34",
               "path": "src/PublicKey.js"
             }
           },
@@ -14257,9 +14257,9 @@
           "column": 3
         }
       },
-      "file": "/home/p/Git/cashlib/src/secp256k1.js",
+      "file": "/home/p/git/cashlib/src/secp256k1.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/secp256k1.js#L10-L20",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/secp256k1.js#L10-L20",
         "path": "src/secp256k1.js"
       }
     },
@@ -14369,9 +14369,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Serializer.js",
+      "file": "/home/p/git/cashlib/src/Serializer.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Serializer.js#L11-L141",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Serializer.js#L11-L141",
         "path": "src/Serializer.js"
       }
     },
@@ -14517,9 +14517,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Serializer.js",
+            "file": "/home/p/git/cashlib/src/Serializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Serializer.js#L64-L88",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Serializer.js#L64-L88",
               "path": "src/Serializer.js"
             }
           },
@@ -14659,9 +14659,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Serializer.js",
+            "file": "/home/p/git/cashlib/src/Serializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Serializer.js#L94-L103",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Serializer.js#L94-L103",
               "path": "src/Serializer.js"
             }
           },
@@ -14799,9 +14799,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Serializer.js",
+            "file": "/home/p/git/cashlib/src/Serializer.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Serializer.js#L120-L140",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Serializer.js#L120-L140",
               "path": "src/Serializer.js"
             }
           },
@@ -14944,13 +14944,13 @@
           "column": 0
         },
         "end": {
-          "line": 138,
+          "line": 146,
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Transaction.js",
+      "file": "/home/p/git/cashlib/src/Transaction.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Transaction.js#L18-L138",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Transaction.js#L18-L146",
         "path": "src/Transaction.js"
       }
     },
@@ -15204,9 +15204,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Wallet.js",
+      "file": "/home/p/git/cashlib/src/Wallet.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet.js#L27-L338",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet.js#L27-L338",
         "path": "src/Wallet.js"
       }
     },
@@ -15463,9 +15463,9 @@
           "column": 54
         }
       },
-      "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+      "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L3-L8",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L3-L8",
         "path": "src/Wallet/DerivationPath.js"
       }
     },
@@ -15646,9 +15646,9 @@
           "column": 2
         }
       },
-      "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+      "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L11-L16",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L11-L16",
         "path": "src/Wallet/DerivationPath.js"
       }
     },
@@ -15851,9 +15851,9 @@
           "column": 62
         }
       },
-      "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+      "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L23-L25",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L23-L25",
         "path": "src/Wallet/DerivationPath.js"
       }
     },
@@ -16410,9 +16410,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+      "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L43-L146",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L43-L146",
         "path": "src/Wallet/DerivationPath.js"
       }
     },
@@ -16454,8 +16454,8 @@
             "column": 3
           }
         },
-        "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
-        "sortKey": "!/home/p/Git/cashlib/src/Wallet/DerivationPath.js 00000051",
+        "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
+        "sortKey": "!/home/p/git/cashlib/src/Wallet/DerivationPath.js 00000051",
         "code": "{\n  _type: DerivationPathType\n  _levels: DerivationPathLevels\n  _serialized: string\n\n  /**\n   * @hideconstructor\n   */\n  constructor(type: DerivationPathType, levels: DerivationPathLevels, serialized: string) {\n    this._type = type;\n    this._levels = levels;\n    this._serialized = serialized;\n  }\n\n  /**\n   * Returns a new path but with the type set to 'public'\n   */\n  toPublic(): DerivationPath {\n    return new DerivationPath(\n      'public',\n      this._levels,\n      this._serialized,\n    );\n  }\n\n  /**\n   * Serializes the path into a string in the commonly used format eg \"m/44'/0'/0'\"\n   */\n  toSerialized(): string {\n    return this._serialized;\n  }\n\n  /**\n   * Creates a {@link DerivationPath} instance from a serialized string, eg \"m/44'/0'/0'\"\n   */\n  static fromSerialized(serialized: string): DerivationPath {\n    // Determine type\n    const typeKey = serialized.substr(0, 1);\n    let type: DerivationPathType;\n    switch (typeKey) {\n      case 'm':\n        type = 'private';\n        break;\n      case 'M':\n        type = 'public';\n        break;\n      default:\n        throw new Error('Derivation path must begin with \"m\" or \"M\".');\n    }\n\n    // Decode levels\n    const levels: DerivationPathLevels = serialized\n      .substr(1)\n      .replace(/'/g, \",'\")\n      .split('/')\n      .filter(rec => rec !== '')\n      .map((encodedLevel, index) => {\n        const levelAndHardened = encodedLevel.split(',');\n        const hardened = levelAndHardened[1] !== undefined && levelAndHardened[1] === \"'\";\n        let childNumber = parseInt(levelAndHardened[0], 10);\n        if (hardened) {\n          childNumber += (2 ** 31);\n        }\n        return {\n          depth: index + 1,\n          childNumber,\n          hardened,\n        };\n      });\n\n    return new DerivationPath(type, levels, serialized);\n  }\n\n  /**\n   * The derivation path type\n   */\n  get type(): DerivationPathType { return this._type; }\n\n  /**\n   * The address represented by the path is private\n   */\n  get isPrivate(): boolean { return this._type === 'private'; }\n\n  /**\n   * The address represented by the path is public\n   */\n  get isPublic(): boolean { return this._type === 'public'; }\n\n  /**\n   * Number of levels in this path\n   */\n  get numLevels(): number { return this._levels.length; }\n\n  /**\n   * {@link DerivationPathLevels} for this path\n   */\n  get levels(): DerivationPathLevels {\n    // Return deep copy so our prop is immutable\n    // (We expect returned array to be heavily modified during stack processing)\n    return this._levels\n      .slice()\n      .map(level => Object.assign({}, level));\n  }\n}"
       },
       "augments": [],
@@ -16550,9 +16550,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+            "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L60-L66",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L60-L66",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -16671,9 +16671,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+            "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L71-L73",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L71-L73",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -16792,9 +16792,9 @@
                 "column": 55
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+            "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L119-L119",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L119-L119",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -16913,9 +16913,9 @@
                 "column": 63
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+            "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L124-L124",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L124-L124",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -17034,9 +17034,9 @@
                 "column": 61
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+            "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L129-L129",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L129-L129",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -17155,9 +17155,9 @@
                 "column": 57
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+            "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L134-L134",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L134-L134",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -17301,9 +17301,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+            "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L139-L145",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L139-L145",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -17467,9 +17467,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/DerivationPath.js",
+            "file": "/home/p/git/cashlib/src/Wallet/DerivationPath.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/DerivationPath.js#L78-L114",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/DerivationPath.js#L78-L114",
               "path": "src/Wallet/DerivationPath.js"
             }
           },
@@ -17647,9 +17647,9 @@
           "column": 1
         }
       },
-      "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
+      "file": "/home/p/git/cashlib/src/Wallet/ExtendedKey.js",
       "github": {
-        "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/ExtendedKey.js#L19-L146",
+        "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/ExtendedKey.js#L19-L146",
         "path": "src/Wallet/ExtendedKey.js"
       }
     },
@@ -17797,9 +17797,9 @@
                 "column": 57
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
+            "file": "/home/p/git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/ExtendedKey.js#L45-L45",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/ExtendedKey.js#L45-L45",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -17927,9 +17927,9 @@
                 "column": 57
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
+            "file": "/home/p/git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/ExtendedKey.js#L50-L50",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/ExtendedKey.js#L50-L50",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -18048,9 +18048,9 @@
                 "column": 45
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
+            "file": "/home/p/git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/ExtendedKey.js#L55-L55",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/ExtendedKey.js#L55-L55",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -18169,9 +18169,9 @@
                 "column": 57
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
+            "file": "/home/p/git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/ExtendedKey.js#L60-L60",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/ExtendedKey.js#L60-L60",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -18290,9 +18290,9 @@
                 "column": 73
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
+            "file": "/home/p/git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/ExtendedKey.js#L65-L65",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/ExtendedKey.js#L65-L65",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -18526,9 +18526,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
+            "file": "/home/p/git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/ExtendedKey.js#L73-L78",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/ExtendedKey.js#L73-L78",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -18762,9 +18762,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
+            "file": "/home/p/git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/ExtendedKey.js#L86-L91",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/ExtendedKey.js#L86-L91",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -18926,9 +18926,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
+            "file": "/home/p/git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/ExtendedKey.js#L101-L116",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/ExtendedKey.js#L101-L116",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
@@ -19156,9 +19156,9 @@
                 "column": 3
               }
             },
-            "file": "/home/p/Git/cashlib/src/Wallet/ExtendedKey.js",
+            "file": "/home/p/git/cashlib/src/Wallet/ExtendedKey.js",
             "github": {
-              "url": "https://github.com/proehlen/cashlib/blob/280e7d9e662196401f2d300432f3be6356442cd8/src/Wallet/ExtendedKey.js#L125-L145",
+              "url": "https://github.com/proehlen/cashlib/blob/f9d751657ecb27ea99aa450bd63edd9bef98ddb5/src/Wallet/ExtendedKey.js#L125-L145",
               "path": "src/Wallet/ExtendedKey.js"
             }
           },
