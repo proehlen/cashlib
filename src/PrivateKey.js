@@ -5,7 +5,7 @@ import crypto from 'crypto';
 import * as stringfu from 'stringfu';
 
 import CurvePoint from './CurvePoint';
-import Data from './Data';
+import Data, { type DataFrom } from './Data';
 import base58 from './base58';
 import base64 from './base64';
 import Network from './Network';
@@ -20,7 +20,7 @@ export default class PrivateKey extends Data {
   _compressPublicKey: boolean
   _wif: string;
 
-  constructor(bytes: Uint8Array | Buffer | BigInt | string, compressPublicKey: boolean = false) {
+  constructor(bytes: DataFrom, compressPublicKey: boolean = false) {
     super(bytes);
     assert(this._bytes.length === BYTES_LENGTH);
     this._compressPublicKey = compressPublicKey;

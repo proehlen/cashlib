@@ -29,7 +29,7 @@ export default class Output {
   /**
    * The public key script (aka 'ScriptPubKey') for this output
    */
-  get pubKeyScript() {
+  get pubKeyScript(): Script {
     return this._pubKeyScript;
   }
 

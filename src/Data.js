@@ -4,12 +4,20 @@ import crypto from 'crypto';
 import BigInt from 'big-integer';
 
 /**
+ * Types of data {@link Data} class can be constructed from
+ *
+ * Note: all types assume data is in 8 bit byte format - that is numbers between
+ * 0 and 255.  Strings should be hex strings, e.g. 'FFA0' etc
+ */
+export type DataFrom = Array<number> | Uint8Array | Buffer | BigInt | string;
+
+/**
  * Base/wrapper class for objects that primarily consist or derive from data in bytes
  */
 export default class Data {
   _bytes: Uint8Array
 
-  constructor(bytes: Uint8Array | Buffer | BigInt | string) {
+  constructor(bytes: DataFrom) {
     if (bytes instanceof Uint8Array) {
       this._bytes = bytes;
     } else if (bytes instanceof Buffer) {
@@ -18,9 +26,18 @@ export default class Data {
       this._bytes = new Uint8Array(bytes.toArray(256).value);
     } else if (typeof bytes === 'string') {
       this._bytes = stringfu.toBytes(bytes);
+    } else if (Array.isArray(bytes)) {
+      this._bytes = Uint8Array.from(bytes);
     } else {
       throw new Error('Invalid bytes argument');
     }
+  }
+
+  /**
+   * The length of the data in number of bytes
+   */
+  get length(): number {
+    return this._bytes.length;
   }
 
   /**

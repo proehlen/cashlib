@@ -1,4 +1,7 @@
 // @flow
+import { type DataFrom } from './Data';
+import TransactionId from './TransactionId';
+import Script from './Script';
 
 const DEFAULT_SEQUENCE = 0xfffffffe; // TODO revist when we understand
 
@@ -6,18 +9,18 @@ const DEFAULT_SEQUENCE = 0xfffffffe; // TODO revist when we understand
  * A transaction input
  */
 export default class Input {
-  _transactionId: string;
+  _transactionId: TransactionId;
   _outputIndex: number;
-  _signatureScript: Uint8Array;
+  _signatureScript: Script;
   _sequence: number;
 
   constructor(
-    transactionId: string,
+    transactionId: DataFrom,
     outputIndex: number,
-    signatureScript: Uint8Array,
+    signatureScript: Script,
     sequence: number = DEFAULT_SEQUENCE,
   ) {
-    this._transactionId = transactionId;
+    this._transactionId = new TransactionId(transactionId);
     this._outputIndex = outputIndex;
     this._signatureScript = signatureScript;
     this._sequence = sequence;
@@ -26,7 +29,7 @@ export default class Input {
   /**
    * The id of the {@link Transaction} containing the output that this input spends
    */
-  get transactionId(): string { return this._transactionId; }
+  get transactionId(): TransactionId { return this._transactionId; }
 
   /**
    * The index of the output that this input spends
@@ -36,7 +39,7 @@ export default class Input {
   /**
    * The signature script (aka `scriptSig`) for this input
    */
-  get signatureScript(): Uint8Array { return this._signatureScript; }
+  get signatureScript(): Script { return this._signatureScript; }
 
   /**
    * The input {@link https://bitcoin.org/en/glossary/sequence-number sequence number}

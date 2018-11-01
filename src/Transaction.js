@@ -76,10 +76,11 @@ export default class Transaction {
       const transactionId = bytes.getBytesString(32, true);
       const outputIndex = bytes.getUint32();
       const scriptBytesLength = bytes.getCompactSize();
-      const signatureScript = bytes.getBytes(scriptBytesLength);
+      const sigScriptBytes = bytes.getBytes(scriptBytesLength);
+      const sigScript = new Script(sigScriptBytes);
       const sequence = bytes.getUint32();
 
-      const input = new Input(transactionId, outputIndex, signatureScript, sequence);
+      const input = new Input(transactionId, outputIndex, sigScript, sequence);
       transaction.addInput(input);
     }
 
@@ -111,10 +112,11 @@ export default class Transaction {
     bytes.addCompactSize(this._inputs.length);
     for (let x = 0; x < this._inputs.length; ++x) {
       const input = this._inputs[x];
-      bytes.addBytesString(input.transactionId, true);
+      bytes.addBytesString(input.transactionId.toHex(), true);
       bytes.addUint32(input.outputIndex, 'LE');
-      bytes.addCompactSize(input.signatureScript.length);
-      bytes.addBytes(input.signatureScript);
+      const sigScriptBytes = input.signatureScript.toBytes();
+      bytes.addCompactSize(sigScriptBytes.length);
+      bytes.addBytes(sigScriptBytes);
       bytes.addUint32(input.sequence, 'LE');
     }
 
