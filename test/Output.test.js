@@ -4,7 +4,6 @@ declare var describe: any;
 declare var test: any;
 declare var expect: any;
 
-const fromBytes = require('stringfu').fromBytes;
 const Transaction = require('../lib/Transaction').default;
 const Output = require('../lib/Output').default;
 const Network = require('../lib/Network').default;
@@ -44,7 +43,7 @@ describe('Output', () => {
     const value = 33300000;
     const output = Output.createP2PKH(address, value);
     test('scriptPubKey', () => {
-      const byteString = fromBytes(output.pubKeyScript);
+      const byteString = output.pubKeyScript.toHex();
       expect(byteString).toEqual('76a914373e5431d04e79aa1435923f68efb4e4be69aa8188ac');
     });
   });

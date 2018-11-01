@@ -13,7 +13,7 @@ describe('PublicKey', () => {
     const publicKeyHex = '04d0988bfa799f7d7ef9ab3de97ef481cd0f75d2367ad456607647edde665d6f6fbdd594388756a7beaf73b4822bc22d36e9bda7db82df2b8b623673eefc0b7495';
     let publicKey: PublicKey;
     test('#constructor', () => {
-      const privateKey = PrivateKey.fromHex(privateKeyHex);
+      const privateKey = new PrivateKey(privateKeyHex);
       publicKey = PublicKey.fromPrivateKey(privateKey);
       expect(publicKey).toBeDefined();
     });

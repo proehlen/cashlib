@@ -20,9 +20,9 @@ export default class PrivateKey extends Data {
   _compressPublicKey: boolean
   _wif: string;
 
-  constructor(bytes: Uint8Array, compressPublicKey: boolean = false) {
-    assert(bytes.length === BYTES_LENGTH);
+  constructor(bytes: Uint8Array | Buffer | BigInt | string, compressPublicKey: boolean = false) {
     super(bytes);
+    assert(this._bytes.length === BYTES_LENGTH);
     this._compressPublicKey = compressPublicKey;
   }
 
@@ -33,14 +33,6 @@ export default class PrivateKey extends Data {
    */
   get compressPublicKey(): boolean {
     return this._compressPublicKey;
-  }
-
-  /**
-   * Return a private key from a hex string
-   */
-  static fromHex(hex: string): PrivateKey {
-    const bytes = stringfu.toBytes(hex);
-    return new this(bytes);
   }
 
   /**

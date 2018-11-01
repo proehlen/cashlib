@@ -22,7 +22,7 @@ describe('Wallet', () => {
       // eslint-disable-next-line no-restricted-syntax
       for (const vector of bip32TestVectors) {
         describe(`Test ${vector.id}`, () => {
-          const wallet = Wallet.fromSeed(Data.fromHex(vector.seedHex));
+          const wallet = Wallet.fromSeed(new Data(vector.seedHex));
           // eslint-disable-next-line no-restricted-syntax
           for (const chain of vector.chains) {
             test(`Path ${chain.path}`, () => {

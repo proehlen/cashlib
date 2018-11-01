@@ -15,7 +15,7 @@ describe('Address', () => {
     describe('From private key', () => {
       const privateKeyString = '1184CD2CDD640CA42CFC3A091C51D549B2F016D454B2774019C2B2D2E08529FD';
       const btcAddress = '16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS';
-      const privateKey = PrivateKey.fromHex(privateKeyString);
+      const privateKey = new PrivateKey(privateKeyString);
       const publicKey = PublicKey.fromPrivateKey(privateKey);
       let address: Address;
       test('#fromPublicKey', () => {
@@ -30,7 +30,7 @@ describe('Address', () => {
     describe('From public key (string)', () => {
       const publicKeyHex = '03919f9806cd4d07b588b14bcf7f5e8466d1c59f3694eb24101bbf59b91f933bfa';
       const btcAddress = '1KHL3He8D171NX8MpLH4XGsBqBjMmEDrHC';
-      const publicKey: PublicKey = PublicKey.fromHex(publicKeyHex);
+      const publicKey: PublicKey = new PublicKey(publicKeyHex);
       let address: Address;
       test('#fromPublicKey', () => {
         address = Address.fromPublicKey(publicKey, network);
@@ -63,7 +63,7 @@ describe('Address', () => {
       describe('From public key (string)', () => {
         const publicKeyHex = '03919f9806cd4d07b588b14bcf7f5e8466d1c59f3694eb24101bbf59b91f933bfa';
         const btcAddress = 'myoHLLj722YG9dbyXuFSMC5WhBL4h7nqhs';
-        const publicKey = PublicKey.fromHex(publicKeyHex);
+        const publicKey = new PublicKey(publicKeyHex);
         let address: Address;
         test('#fromPublicKey', () => {
           address = Address.fromPublicKey(publicKey, network);

@@ -7,6 +7,7 @@ import Deserializer from './Deserializer';
 import Serializer from './Serializer';
 import Input from './Input';
 import Output from './Output';
+import Script from './Script';
 
 const VERSION = 0x00000001;
 
@@ -87,9 +88,9 @@ export default class Transaction {
     for (let outputIndex = 0; outputIndex < txOutCount; ++outputIndex) {
       const value = bytes.getInt64();
       const pubkeyScriptBytesLen = bytes.getCompactSize();
-      const pubKeyScript = bytes.getBytes(pubkeyScriptBytesLen);
+      const pubKeyScriptBytes = bytes.getBytes(pubkeyScriptBytesLen);
 
-      const output = new Output(value, pubKeyScript);
+      const output = new Output(value, new Script(pubKeyScriptBytes));
       transaction.addOutput(output);
     }
 
@@ -122,8 +123,9 @@ export default class Transaction {
     for (let x = 0; x < this._outputs.length; ++x) {
       const output = this._outputs[x];
       bytes.addInt64(output.value);
-      bytes.addCompactSize(output.pubKeyScript.length);
-      bytes.addBytes(output.pubKeyScript);
+      const scriptBytes = output.pubKeyScript.toBytes();
+      bytes.addCompactSize(scriptBytes.length);
+      bytes.addBytes(scriptBytes);
     }
 
     // Locktime

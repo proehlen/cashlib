@@ -18,7 +18,7 @@ describe('PrivateKey', () => {
   describe('from hex', () => {
     let privateKey;
     test('#constructor', () => {
-      privateKey = PrivateKey.fromHex(keyHex);
+      privateKey = new PrivateKey(keyHex);
       expect(privateKey).toBeDefined();
     });
     test('#toHex', () => {

@@ -1,6 +1,4 @@
 // @flow
-import * as stringfu from 'stringfu';
-
 import CurvePoint from './CurvePoint';
 import Data from './Data';
 import PrivateKey from './PrivateKey';
@@ -14,14 +12,6 @@ export default class PublicKey extends Data {
    */
   get compressed(): boolean {
     return this.toBytes().length === 33;
-  }
-
-  /**
-   * Return public key instance from bytes in hex string format
-   */
-  static fromHex(hex: string) {
-    const bytes = stringfu.toBytes(hex);
-    return new this(bytes);
   }
 
   /**
